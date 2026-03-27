@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merch Store — Alex Gonzaga Official</title>
+    <meta name="description" content="Shop exclusive Alex Gonzaga merch. Limited drops, catchphrase-inspired apparel, accessories, and more. Rep your ate!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* ── Merch Page Styles ── */
+
+        /* Hero */
+        .merch-hero {
+            background: var(--gradient-hero);
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .merch-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5l5 10 10 2-7 7 2 10-10-5-10 5 2-10-7-7 10-2z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
+        }
+
+        .merch-hero__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .merch-hero__title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+
+        .merch-hero__title span {
+            font-family: var(--font-accent);
+            font-size: 2.4rem;
+            display: block;
+            color: var(--yellow);
+        }
+
+        .merch-hero__subtitle {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* Limited Drop Banner */
+        .limited-drop-banner {
+            background: var(--gradient-dark);
+            border-bottom: 3px solid var(--pink);
+            padding: var(--space-2xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .limited-drop-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(255, 0, 110, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
+            animation: pulseBg 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseBg {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .limited-drop-banner__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .limited-drop-banner__eyebrow {
+            display: inline-block;
+            background: var(--pink);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 6px 18px;
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-md);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 0, 110, 0.5); }
+            50% { box-shadow: 0 0 20px 6px rgba(255, 0, 110, 0.3); }
+        }
+
+        .limited-drop-banner__title {
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: var(--space-xs);
+        }
+
+        .limited-drop-banner__collection {
+            font-family: var(--font-accent);
+            font-size: 1.8rem;
+            color: var(--yellow);
+            margin-bottom: var(--space-sm);
+        }
+
+        .limited-drop-banner__pieces {
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            margin-bottom: var(--space-lg);
+        }
+
+        /* Filters & Sort Bar */
+        .merch-toolbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
+            padding: var(--space-lg) 0;
+            position: sticky;
+            top: 72px;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .merch-toolbar__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .filter-pills {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .filter-pill {
+            padding: 8px 20px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            background: var(--gray-50);
+            border: 2px solid transparent;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .filter-pill:hover {
+            color: var(--pink);
+            border-color: var(--pink-glow);
+            background: var(--pink-glow);
+        }
+
+        .filter-pill--active {
+            color: var(--white);
+            background: var(--gradient-cta);
+            border-color: transparent;
+            box-shadow: 0 2px 10px rgba(255, 0, 110, 0.25);
+        }
+
+        .filter-pill--active:hover {
+            color: var(--white);
+        }
+
+        .merch-sort {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .merch-sort__label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            white-space: nowrap;
+        }
+
+        .merch-sort__select {
+            padding: 8px 36px 8px 14px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            background: var(--white);
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B5B7B' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+        }
+
+        .merch-sort__select:focus {
+            outline: none;
+            border-color: var(--pink);
+        }
+
+        /* Product Grid */
+        .merch-grid-section {
+            background: var(--off-white);
+            padding: var(--space-3xl) 0 var(--space-4xl);
+        }
+
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-xl);
+        }
+
+        /* Product Card */
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: all var(--transition-base);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-card--limited {
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .product-card--limited::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: calc(var(--radius-lg) + 2px);
+            background: var(--gradient-primary);
+            z-index: 0;
+        }
+
+        .product-card--limited::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: calc(var(--radius-lg) + 2px);
+            background: var(--gradient-primary);
+            z-index: 0;
+            filter: blur(12px);
+            opacity: 0.4;
+            transition: opacity var(--transition-base);
+        }
+
+        .product-card--limited:hover::after {
+            opacity: 0.7;
+        }
+
+        .product-card--limited > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card--limited .product-card__inner {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .product-card--sold-out {
+            opacity: 0.65;
+            pointer-events: none;
+        }
+
+        .product-card--sold-out .product-card__image::after {
+            content: 'SOLD OUT';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: var(--white);
+            letter-spacing: 0.1em;
+        }
+
+        .product-card__badges {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .product-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            font-family: var(--font-display);
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .product-badge--limited {
+            background: var(--pink);
+            color: var(--white);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        .product-badge--new {
+            background: var(--gradient-gold);
+            color: var(--gray-800);
+        }
+
+        .product-badge--sold-out {
+            background: var(--gray-600);
+            color: var(--white);
+        }
+
+        .product-card__image {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card__image--1 { background: linear-gradient(135deg, #FFE4F0 0%, #F0E4FF 100%); }
+        .product-card__image--2 { background: linear-gradient(135deg, #E4F0FF 0%, #F0FFE4 100%); }
+        .product-card__image--3 { background: linear-gradient(135deg, #FFF0E4 0%, #FFE4F0 100%); }
+        .product-card__image--4 { background: linear-gradient(135deg, #F0E4FF 0%, #E4FFF0 100%); }
+        .product-card__image--5 { background: linear-gradient(135deg, #E4FFFA 0%, #E4E8FF 100%); }
+        .product-card__image--6 { background: linear-gradient(135deg, #FFF8E4 0%, #FFE4EE 100%); }
+
+        .product-card__body {
+            padding: var(--space-lg);
+        }
+
+        .product-card__name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--gray-800);
+            margin-bottom: var(--space-xs);
+            line-height: 1.3;
+        }
+
+        .product-card__price {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--pink);
+            margin-bottom: var(--space-md);
+        }
+
+        .product-card__sizes {
+            display: flex;
+            gap: 6px;
+            margin-bottom: var(--space-md);
+        }
+
+        .size-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--gray-200);
+            background: var(--white);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.7rem;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .size-btn:hover,
+        .size-btn--active {
+            border-color: var(--pink);
+            color: var(--pink);
+            background: var(--pink-glow);
+        }
+
+        .product-card__add-btn {
+            width: 100%;
+            padding: 12px 20px;
+            background: var(--gradient-cta);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: 0 3px 12px rgba(255, 0, 110, 0.2);
+        }
+
+        .product-card__add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 110, 0.35);
+        }
+
+        .product-card__add-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Cart Icon (floating) */
+        .cart-toggle {
+            position: fixed;
+            top: 82px;
+            right: 24px;
+            z-index: 999;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--gradient-cta);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 20px rgba(255, 0, 110, 0.35);
+            transition: all var(--transition-base);
+        }
+
+        .cart-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(255, 0, 110, 0.45);
+        }
+
+        .cart-toggle__count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--yellow);
+            color: var(--gray-800);
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--white);
+            transition: transform var(--transition-bounce);
+        }
+
+        .cart-toggle__count--bump {
+            transform: scale(1.3);
+        }
+
+        .cart-toggle__count:empty {
+            display: none;
+        }
+
+        /* Cart Slide-out Panel */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(13, 5, 25, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .cart-overlay--open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 420px;
+            max-width: 90vw;
+            background: var(--white);
+            z-index: 2001;
+            transform: translateX(100%);
+            transition: transform var(--transition-slow);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .cart-overlay--open + .cart-panel,
+        .cart-panel--open {
+            transform: translateX(0);
+        }
+
+        .cart-panel__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-lg) var(--space-xl);
+            border-bottom: 2px solid var(--gray-100);
+        }
+
+        .cart-panel__title {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--gray-800);
+        }
+
+        .cart-panel__close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gray-50);
+            border: none;
+            font-size: 1.2rem;
+            color: var(--gray-500);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .cart-panel__close:hover {
+            background: var(--pink-glow);
+            color: var(--pink);
+        }
+
+        .cart-panel__items {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--space-lg) var(--space-xl);
+        }
+
+        .cart-item {
+            display: flex;
+            gap: var(--space-md);
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item__image {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .cart-item__details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cart-item__name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            margin-bottom: 2px;
+        }
+
+        .cart-item__meta {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .cart-item__price {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--pink);
+            margin-top: 4px;
+        }
+
+        .cart-item__qty {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .cart-item__qty-btn {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid var(--gray-200);
+            background: var(--white);
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .cart-item__qty-btn:hover {
+            border-color: var(--pink);
+            color: var(--pink);
+        }
+
+        .cart-item__qty-num {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .cart-item__remove {
+            align-self: flex-start;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            color: var(--gray-300);
+            cursor: pointer;
+            padding: 4px;
+            transition: color var(--transition-fast);
+        }
+
+        .cart-item__remove:hover {
+            color: var(--pink);
+        }
+
+        .cart-panel__empty {
+            text-align: center;
+            padding: var(--space-3xl) var(--space-xl);
+            color: var(--gray-400);
+        }
+
+        .cart-panel__empty-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .cart-panel__empty-text {
+            font-family: var(--font-display);
+            font-weight: 600;
+        }
+
+        .cart-panel__footer {
+            border-top: 2px solid var(--gray-100);
+            padding: var(--space-lg) var(--space-xl);
+        }
+
+        .cart-panel__subtotal {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-md);
+        }
+
+        .cart-panel__subtotal-label {
+            font-family: var(--font-display);
+            font-weight: 600;
+            color: var(--gray-500);
+        }
+
+        .cart-panel__subtotal-price {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--gray-800);
+        }
+
+        .cart-panel__checkout-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gradient-cta);
+            color: var(--white);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 0, 110, 0.3);
+            transition: all var(--transition-base);
+        }
+
+        .cart-panel__checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 0, 110, 0.4);
+        }
+
+        .cart-panel__note {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--gray-400);
+            margin-top: var(--space-sm);
+        }
+
+        /* Results count */
+        .merch-results {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: var(--space-xl);
+        }
+
+        .merch-results strong {
+            color: var(--gray-700);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .merch-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .merch-hero__title { font-size: 2.2rem; }
+            .merch-hero__title span { font-size: 1.6rem; }
+            .merch-grid { grid-template-columns: repeat(2, 1fr); }
+            .merch-toolbar__inner { flex-direction: column; align-items: flex-start; }
+            .filter-pills { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; width: 100%; }
+            .cart-toggle { top: 78px; right: 12px; width: 46px; height: 46px; font-size: 1.2rem; }
+            .limited-drop-banner__title { font-size: 1.3rem; }
+            .limited-drop-banner__collection { font-size: 1.4rem; }
+        }
+
+        @media (max-width: 480px) {
+            .merch-hero { padding: 120px 0 60px; }
+            .merch-hero__title { font-size: 1.8rem; }
+            .merch-grid { grid-template-columns: 1fr; }
+            .product-card__image { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ── Navigation ── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">ALEX GONZAGA<span>official fan hub</span></a>
+            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <ul class="nav__links">
+                <li><a href="/" class="nav__link">Home</a></li>
+                <li><a href="/vlogs.html" class="nav__link">Vlogs</a></li>
+                <li><a href="/community.html" class="nav__link">Community</a></li>
+                <li><a href="/merch.html" class="nav__link nav__link--active">Merch</a></li>
+                <li><a href="/react.html" class="nav__link">Alex Reacts</a></li>
+                <li><a href="/membership.html" class="nav__link">Membership</a></li>
+                <li data-guest><a href="/login.html" class="nav__link">Log In</a></li>
+                <li data-guest><a href="/signup.html" class="nav__link nav__cta">Join the Fam!</a></li>
+                <li data-auth style="display:none"><a href="/profile.html" class="nav__link">My Profile</a></li>
+                <li data-auth style="display:none"><a href="#" class="nav__link" onclick="Auth.clearSession();window.location.reload();">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── Cart Toggle Button ── -->
+    <button class="cart-toggle" id="cart-toggle-btn" aria-label="Open shopping cart">
+        &#128722;
+        <span class="cart-toggle__count" id="cart-count"></span>
+    </button>
+
+    <!-- ── Hero ── -->
+    <section class="merch-hero">
+        <div class="merch-hero__content container">
+            <h1 class="merch-hero__title">
+                Alex Gonzaga Merch
+                <span>Wear the charot energy!</span>
+            </h1>
+            <p class="merch-hero__subtitle">Limited drops and catchphrase-inspired merch straight from your favorite ate. Rep the fam, flex the vibe.</p>
+        </div>
+    </section>
+
+    <!-- ── Ticker ── -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker__inner">
+            <span class="ticker__item">CHAROT LANG</span>
+            <span class="ticker__item">ATE GIRL ERA</span>
+            <span class="ticker__item">GONZAGA STRONG</span>
+            <span class="ticker__item">WALANG KUPAS</span>
+            <span class="ticker__item">LODI ENERGY</span>
+            <span class="ticker__item">ALEX NATION</span>
+            <span class="ticker__item">CHAROT LANG</span>
+            <span class="ticker__item">ATE GIRL ERA</span>
+            <span class="ticker__item">GONZAGA STRONG</span>
+            <span class="ticker__item">WALANG KUPAS</span>
+            <span class="ticker__item">LODI ENERGY</span>
+            <span class="ticker__item">ALEX NATION</span>
+        </div>
+    </div>
+
+    <!-- ── Limited Drop Banner ── -->
+    <section class="limited-drop-banner">
+        <div class="limited-drop-banner__content container">
+            <span class="limited-drop-banner__eyebrow">&#128293; Limited Drop Alert</span>
+            <h2 class="limited-drop-banner__title">Next Exclusive Drop</h2>
+            <div class="limited-drop-banner__collection">"Charot Lang" Collection</div>
+            <p class="limited-drop-banner__pieces">Limited to 500 pieces — once it's gone, it's gone!</p>
+            <div class="countdown" id="merch-drop-countdown"></div>
+        </div>
+    </section>
+
+    <!-- ── Filter & Sort Toolbar ── -->
+    <div class="merch-toolbar">
+        <div class="container">
+            <div class="merch-toolbar__inner">
+                <ul class="filter-pills" id="filter-pills">
+                    <li><button class="filter-pill filter-pill--active" data-filter="all">All</button></li>
+                    <li><button class="filter-pill" data-filter="apparel">Apparel</button></li>
+                    <li><button class="filter-pill" data-filter="accessories">Accessories</button></li>
+                    <li><button class="filter-pill" data-filter="home">Home &amp; Lifestyle</button></li>
+                    <li><button class="filter-pill" data-filter="limited">Limited Edition</button></li>
+                    <li><button class="filter-pill" data-filter="stickers">Stickers &amp; Fun</button></li>
+                </ul>
+                <div class="merch-sort">
+                    <span class="merch-sort__label">Sort by:</span>
+                    <select class="merch-sort__select" id="sort-select">
+                        <option value="best">Best Sellers</option>
+                        <option value="newest">Newest</option>
+                        <option value="price-low">Price: Low - High</option>
+                        <option value="price-high">Price: High - Low</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Product Grid ── -->
+    <section class="merch-grid-section">
+        <div class="container">
+            <p class="merch-results" id="merch-results">Showing <strong>12</strong> products</p>
+            <div class="merch-grid" id="product-grid">
+
+                <!-- 1. "Charot Lang" Hoodie — LIMITED -->
+                <div class="product-card product-card--limited animate-on-scroll" data-category="apparel,limited" data-price="1299" data-date="2026-03-20" data-sales="420">
+                    <div class="product-card__inner">
+                        <div class="product-card__badges">
+                            <span class="product-badge product-badge--limited">&#128293; Limited</span>
+                        </div>
+                        <div class="product-card__image product-card__image--1">&#129509;</div>
+                        <div class="product-card__body">
+                            <div class="product-card__name">"Charot Lang" Hoodie</div>
+                            <div class="product-card__price">&#8369;1,299</div>
+                            <div class="product-card__sizes">
+                                <button class="size-btn" data-size="XS">XS</button>
+                                <button class="size-btn" data-size="S">S</button>
+                                <button class="size-btn size-btn--active" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                            </div>
+                            <button class="product-card__add-btn" data-product="charot-hoodie" data-name="&quot;Charot Lang&quot; Hoodie" data-price="1299" data-emoji="&#129509;" data-has-size="true">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. "Ate Girl" Tee -->
+                <div class="product-card animate-on-scroll" data-category="apparel" data-price="599" data-date="2026-03-10" data-sales="890">
+                    <div class="product-card__badges">
+                        <span class="product-badge product-badge--new">&#10024; New</span>
+                    </div>
+                    <div class="product-card__image product-card__image--2">&#128085;</div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">"Ate Girl" Tee</div>
+                        <div class="product-card__price">&#8369;599</div>
+                        <div class="product-card__sizes">
+                            <button class="size-btn" data-size="XS">XS</button>
+                            <button class="size-btn" data-size="S">S</button>
+                            <button class="size-btn size-btn--active" data-size="M">M</button>
+                            <button class="size-btn" data-size="L">L</button>
+                            <button class="size-btn" data-size="XL">XL</button>
+                        </div>
+                        <button class="product-card__add-btn" data-product="ate-girl-tee" data-name="&quot;Ate Girl&quot; Tee" data-price="599" data-emoji="&#128085;" data-has-size="true">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- 3. Alex Nation Cap -->
+                <div class="product-card animate-on-scroll" data-category="accessories" data-price="449" data-date="2026-03-15" data-sales="650">
+                    <div class="product-card__badges">
+                        <span class="product-badge product-badge--new">&#10024; New</span>
+                    </div>
+                    <div class="product-card__image product-card__image--3">&#129506;</div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">Alex Nation Cap</div>
+                        <div class="product-card__price">&#8369;449</div>
+                        <button class="product-card__add-btn" data-product="alex-nation-cap" data-name="Alex Nation Cap" data-price="449" data-emoji="&#129506;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- 4. "Walang Kupas" Mug -->
+                <div class="product-card animate-on-scroll" data-category="home" data-price="349" data-date="2026-02-20" data-sales="780">
+                    <div class="product-card__image product-card__image--4">&#9749;</div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">"Walang Kupas" Mug</div>
+                        <div class="product-card__price">&#8369;349</div>
+                        <button class="product-card__add-btn" data-product="walang-kupas-mug" data-name="&quot;Walang Kupas&quot; Mug" data-price="349" data-emoji="&#9749;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- 5. "GRWM with Alex" Tote Bag -->
+                <div class="product-card animate-on-scroll" data-category="accessories" data-price="399" data-date="2026-03-05" data-sales="520">
+                    <div class="product-card__image product-card__image--5">&#128092;</div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">"GRWM with Alex" Tote Bag</div>
+                        <div class="product-card__price">&#8369;399</div>
+                        <button class="product-card__add-btn" data-product="grwm-tote" data-name="&quot;GRWM with Alex&quot; Tote Bag" data-price="399" data-emoji="&#128092;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- 6. Alex Gonzaga Sticker Pack -->
+                <div class="product-card animate-on-scroll" data-category="stickers" data-price="149" data-date="2026-03-01" data-sales="1200">
+                    <div class="product-card__image product-card__image--6">&#127912;</div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">Alex Gonzaga Sticker Pack</div>
+                        <div class="product-card__price">&#8369;149</div>
+                        <button class="product-card__add-btn" data-product="sticker-pack" data-name="Alex Gonzaga Sticker Pack" data-price="149" data-emoji="&#127912;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- 7. "Lodi" Phone Case -->
+                <div class="product-card animate-on-scroll" data-category="accessories" data-price="499" data-date="2026-02-28" data-sales="430">
+                    <div class="product-card__image product-card__image--1">&#128241;</div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">"Lodi" Phone Case</div>
+                        <div class="product-card__price">&#8369;499</div>
+                        <button class="product-card__add-btn" data-product="lodi-phone-case" data-name="&quot;Lodi&quot; Phone Case" data-price="499" data-emoji="&#128241;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- 8. "Gonzaga Strong" Crew Neck — LIMITED -->
+                <div class="product-card product-card--limited animate-on-scroll" data-category="apparel,limited" data-price="899" data-date="2026-03-18" data-sales="310">
+                    <div class="product-card__inner">
+                        <div class="product-card__badges">
+                            <span class="product-badge product-badge--limited">&#128293; Limited</span>
+                        </div>
+                        <div class="product-card__image product-card__image--2">&#128085;</div>
+                        <div class="product-card__body">
+                            <div class="product-card__name">"Gonzaga Strong" Crew Neck</div>
+                            <div class="product-card__price">&#8369;899</div>
+                            <div class="product-card__sizes">
+                                <button class="size-btn" data-size="S">S</button>
+                                <button class="size-btn size-btn--active" data-size="M">M</button>
+                                <button class="size-btn" data-size="L">L</button>
+                                <button class="size-btn" data-size="XL">XL</button>
+                            </div>
+                            <button class="product-card__add-btn" data-product="gonzaga-strong-crew" data-name="&quot;Gonzaga Strong&quot; Crew Neck" data-price="899" data-emoji="&#128085;" data-has-size="true">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Alex G Enamel Pin Set -->
+                <div class="product-card animate-on-scroll" data-category="accessories,stickers" data-price="249" data-date="2026-02-15" data-sales="950">
+                    <div class="product-card__image product-card__image--3">&#128204;</div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">Alex G Enamel Pin Set</div>
+                        <div class="product-card__price">&#8369;249</div>
+                        <button class="product-card__add-btn" data-product="enamel-pin-set" data-name="Alex G Enamel Pin Set" data-price="249" data-emoji="&#128204;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- 10. "Charot Lang" Bucket Hat — LIMITED -->
+                <div class="product-card product-card--limited animate-on-scroll" data-category="accessories,limited" data-price="549" data-date="2026-03-20" data-sales="280">
+                    <div class="product-card__inner">
+                        <div class="product-card__badges">
+                            <span class="product-badge product-badge--limited">&#128293; Limited</span>
+                        </div>
+                        <div class="product-card__image product-card__image--4">&#127913;</div>
+                        <div class="product-card__body">
+                            <div class="product-card__name">"Charot Lang" Bucket Hat</div>
+                            <div class="product-card__price">&#8369;549</div>
+                            <button class="product-card__add-btn" data-product="charot-bucket-hat" data-name="&quot;Charot Lang&quot; Bucket Hat" data-price="549" data-emoji="&#127913;">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Fan Club Lanyard -->
+                <div class="product-card animate-on-scroll" data-category="accessories" data-price="199" data-date="2026-01-20" data-sales="1050">
+                    <div class="product-card__image product-card__image--5">&#127991;</div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">Fan Club Lanyard</div>
+                        <div class="product-card__price">&#8369;199</div>
+                        <button class="product-card__add-btn" data-product="fan-club-lanyard" data-name="Fan Club Lanyard" data-price="199" data-emoji="&#127991;">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- 12. "Ate Girl" Laptop Sleeve — SOLD OUT -->
+                <div class="product-card product-card--sold-out animate-on-scroll" data-category="accessories" data-price="699" data-date="2026-02-10" data-sales="500">
+                    <div class="product-card__badges">
+                        <span class="product-badge product-badge--sold-out">Sold Out</span>
+                    </div>
+                    <div class="product-card__image product-card__image--6">&#128187;</div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">"Ate Girl" Laptop Sleeve</div>
+                        <div class="product-card__price">&#8369;699</div>
+                        <button class="product-card__add-btn" disabled>Sold Out</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Cart Slide-out ── -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-panel__header">
+            <h2 class="cart-panel__title">&#128722; Your Cart</h2>
+            <button class="cart-panel__close" id="cart-close-btn" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-panel__items" id="cart-items">
+            <!-- Cart items rendered by JS -->
+        </div>
+        <div class="cart-panel__footer" id="cart-footer" style="display:none;">
+            <div class="cart-panel__subtotal">
+                <span class="cart-panel__subtotal-label">Subtotal</span>
+                <span class="cart-panel__subtotal-price" id="cart-subtotal">&#8369;0</span>
+            </div>
+            <button class="cart-panel__checkout-btn" onclick="showToast('Checkout coming soon! Charot lang!', 'info')">Proceed to Checkout</button>
+            <p class="cart-panel__note">Shipping calculated at checkout. Delivery within Metro Manila in 3-5 days.</p>
+        </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
+                    <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
+                    <div class="footer__socials">
+                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
+                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
+                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="Facebook">f</a>
+                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Explore</h4>
+                    <ul class="footer__list">
+                        <li><a href="/vlogs.html">Vlog Archive</a></li>
+                        <li><a href="/merch.html">Merch Store</a></li>
+                        <li><a href="/community.html">Community</a></li>
+                        <li><a href="/react.html">Alex Reacts</a></li>
+                        <li><a href="/membership.html">Membership</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Account</h4>
+                    <ul class="footer__list">
+                        <li><a href="/signup.html">Create Account</a></li>
+                        <li><a href="/login.html">Log In</a></li>
+                        <li><a href="/profile.html">My Profile</a></li>
+                        <li><a href="/profile.html#orders">My Orders</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Management</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Business Inquiries</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Brand Partnerships</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>&copy; 2026 Alex Gonzaga Official. All rights reserved.</span>
+                <span>A <a href="#" style="color:var(--pink-light);">Global Media</a> Project</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script>
+        /* ═══════════════════════════════════════════════════
+           MERCH PAGE — Cart, Filtering, Sorting
+           ═══════════════════════════════════════════════════ */
+
+        const CART_KEY = 'ag_cart';
+
+        /* ── Cart State ── */
+        function getCart() {
+            try {
+                return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+            } catch { return []; }
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+            renderCart();
+            updateCartCount();
+        }
+
+        function addToCart(product, name, price, emoji, size) {
+            const cart = getCart();
+            const key = size ? `${product}-${size}` : product;
+            const existing = cart.find(i => i.key === key);
+
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({
+                    key,
+                    product,
+                    name: name.replace(/&quot;/g, '"'),
+                    price: parseInt(price),
+                    emoji,
+                    size: size || null,
+                    qty: 1
+                });
+            }
+
+            saveCart(cart);
+            showToast(`Added "${name.replace(/&quot;/g, '"')}" to cart!`, 'success');
+            bumpCartCount();
+        }
+
+        function removeFromCart(key) {
+            const cart = getCart().filter(i => i.key !== key);
+            saveCart(cart);
+        }
+
+        function updateQty(key, delta) {
+            const cart = getCart();
+            const item = cart.find(i => i.key === key);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                saveCart(cart.filter(i => i.key !== key));
+            } else {
+                saveCart(cart);
+            }
+        }
+
+        function getCartTotal() {
+            return getCart().reduce((sum, item) => sum + item.price * item.qty, 0);
+        }
+
+        function getCartItemCount() {
+            return getCart().reduce((sum, item) => sum + item.qty, 0);
+        }
+
+        /* ── Cart UI ── */
+        function updateCartCount() {
+            const countEl = document.getElementById('cart-count');
+            const count = getCartItemCount();
+            countEl.textContent = count > 0 ? count : '';
+        }
+
+        function bumpCartCount() {
+            const countEl = document.getElementById('cart-count');
+            countEl.classList.add('cart-toggle__count--bump');
+            setTimeout(() => countEl.classList.remove('cart-toggle__count--bump'), 300);
+        }
+
+        function renderCart() {
+            const cart = getCart();
+            const itemsEl = document.getElementById('cart-items');
+            const footerEl = document.getElementById('cart-footer');
+            const subtotalEl = document.getElementById('cart-subtotal');
+
+            if (cart.length === 0) {
+                itemsEl.innerHTML = `
+                    <div class="cart-panel__empty">
+                        <div class="cart-panel__empty-icon">&#128722;</div>
+                        <p class="cart-panel__empty-text">Your cart is empty!</p>
+                        <p style="font-size:0.85rem;color:var(--gray-400);margin-top:8px;">Browse the merch and add something fun.</p>
+                    </div>
+                `;
+                footerEl.style.display = 'none';
+                return;
+            }
+
+            footerEl.style.display = 'block';
+
+            const gradients = [
+                'linear-gradient(135deg, #FFE4F0 0%, #F0E4FF 100%)',
+                'linear-gradient(135deg, #E4F0FF 0%, #F0FFE4 100%)',
+                'linear-gradient(135deg, #FFF0E4 0%, #FFE4F0 100%)',
+                'linear-gradient(135deg, #F0E4FF 0%, #E4FFF0 100%)',
+            ];
+
+            itemsEl.innerHTML = cart.map((item, i) => `
+                <div class="cart-item">
+                    <div class="cart-item__image" style="background:${gradients[i % gradients.length]}">${item.emoji}</div>
+                    <div class="cart-item__details">
+                        <div class="cart-item__name">${item.name}</div>
+                        ${item.size ? `<div class="cart-item__meta">Size: ${item.size}</div>` : ''}
+                        <div class="cart-item__price">&#8369;${(item.price * item.qty).toLocaleString()}</div>
+                        <div class="cart-item__qty">
+                            <button class="cart-item__qty-btn" onclick="updateQty('${item.key}', -1)">&minus;</button>
+                            <span class="cart-item__qty-num">${item.qty}</span>
+                            <button class="cart-item__qty-btn" onclick="updateQty('${item.key}', 1)">+</button>
+                        </div>
+                    </div>
+                    <button class="cart-item__remove" onclick="removeFromCart('${item.key}')" aria-label="Remove item">&times;</button>
+                </div>
+            `).join('');
+
+            subtotalEl.innerHTML = `&#8369;${getCartTotal().toLocaleString()}`;
+        }
+
+        function openCart() {
+            document.getElementById('cart-overlay').classList.add('cart-overlay--open');
+            document.getElementById('cart-panel').classList.add('cart-panel--open');
+            document.body.style.overflow = 'hidden';
+            renderCart();
+        }
+
+        function closeCart() {
+            document.getElementById('cart-overlay').classList.remove('cart-overlay--open');
+            document.getElementById('cart-panel').classList.remove('cart-panel--open');
+            document.body.style.overflow = '';
+        }
+
+        /* ── Cart Events ── */
+        document.getElementById('cart-toggle-btn').addEventListener('click', openCart);
+        document.getElementById('cart-close-btn').addEventListener('click', closeCart);
+        document.getElementById('cart-overlay').addEventListener('click', closeCart);
+
+        /* ── Add to Cart Buttons ── */
+        document.querySelectorAll('.product-card__add-btn').forEach(btn => {
+            if (btn.disabled) return;
+            btn.addEventListener('click', function () {
+                const product = this.dataset.product;
+                const name = this.dataset.name;
+                const price = this.dataset.price;
+                const emoji = this.dataset.emoji;
+                const hasSize = this.dataset.hasSize;
+
+                let size = null;
+                if (hasSize) {
+                    const card = this.closest('.product-card__body') || this.closest('.product-card__inner')?.querySelector('.product-card__body') || this.closest('.product-card');
+                    const activeSize = card.querySelector('.size-btn--active');
+                    size = activeSize ? activeSize.dataset.size : 'M';
+                }
+
+                addToCart(product, name, price, emoji, size);
+            });
+        });
+
+        /* ── Size Selector ── */
+        document.querySelectorAll('.product-card__sizes').forEach(container => {
+            container.querySelectorAll('.size-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    container.querySelectorAll('.size-btn').forEach(b => b.classList.remove('size-btn--active'));
+                    this.classList.add('size-btn--active');
+                });
+            });
+        });
+
+        /* ── Category Filtering ── */
+        const filterPills = document.querySelectorAll('.filter-pill');
+        const productCards = document.querySelectorAll('.product-card');
+        const resultsEl = document.getElementById('merch-results');
+
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', function () {
+                filterPills.forEach(p => p.classList.remove('filter-pill--active'));
+                this.classList.add('filter-pill--active');
+
+                const filter = this.dataset.filter;
+                let visibleCount = 0;
+
+                productCards.forEach(card => {
+                    const categories = card.dataset.category || '';
+                    if (filter === 'all' || categories.split(',').includes(filter)) {
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                resultsEl.innerHTML = `Showing <strong>${visibleCount}</strong> product${visibleCount !== 1 ? 's' : ''}`;
+            });
+        });
+
+        /* ── Sorting ── */
+        const sortSelect = document.getElementById('sort-select');
+        const productGrid = document.getElementById('product-grid');
+
+        sortSelect.addEventListener('change', function () {
+            const cards = Array.from(productCards);
+
+            cards.sort((a, b) => {
+                switch (this.value) {
+                    case 'price-low':
+                        return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+                    case 'price-high':
+                        return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+                    case 'newest':
+                        return new Date(b.dataset.date) - new Date(a.dataset.date);
+                    case 'best':
+                    default:
+                        return parseInt(b.dataset.sales) - parseInt(a.dataset.sales);
+                }
+            });
+
+            cards.forEach(card => productGrid.appendChild(card));
+        });
+
+        /* ── Countdown Timer ── */
+        const dropDate = new Date();
+        dropDate.setDate(dropDate.getDate() + 7);
+        initCountdown('merch-drop-countdown', dropDate.toISOString());
+
+        /* ── Init ── */
+        updateCartCount();
+        renderCart();
+    </script>
+</body>
+</html>

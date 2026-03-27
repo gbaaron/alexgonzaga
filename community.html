@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Nation Community — Alex Gonzaga Official Fan Hub</title>
+    <meta name="description" content="Join the Alex Nation! Connect with fellow Alex Gonzaga fans, share fan art, memes, stories, and be part of the most chaotic and loving fandom ever.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* ── Community Page Styles ── */
+
+        /* Hero */
+        .hero--community {
+            min-height: auto;
+            padding: 120px 0 60px;
+            background: var(--off-white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero--community .hero__bg {
+            opacity: 0.5;
+        }
+
+        .hero--community h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--gray-800);
+            margin-bottom: var(--space-sm);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero--community h1 .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero--community .hero__subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-500);
+            max-width: 550px;
+            margin: 0 auto var(--space-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero--community .hero__stats {
+            display: flex;
+            gap: var(--space-2xl);
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero__stat-item {
+            text-align: center;
+        }
+
+        .hero__stat-number {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.6rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero__stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            font-weight: 600;
+        }
+
+        /* Filter Tabs */
+        .community-filters {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
+            padding: var(--space-md) 0;
+            position: sticky;
+            top: 72px;
+            z-index: 100;
+        }
+
+        .community-filters__inner {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .community-filters__inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-tab {
+            padding: 8px 20px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            background: none;
+            border: 2px solid transparent;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .filter-tab:hover {
+            color: var(--pink);
+            background: var(--pink-glow);
+        }
+
+        .filter-tab--active {
+            color: var(--white);
+            background: var(--gradient-cta);
+            border-color: transparent;
+        }
+
+        .filter-tab--active:hover {
+            color: var(--white);
+            background: var(--gradient-cta);
+        }
+
+        /* Main Layout */
+        .community-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: var(--space-2xl);
+            padding: var(--space-2xl) 0;
+        }
+
+        /* Post Creation */
+        .post-creator {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-card);
+            margin-bottom: var(--space-xl);
+        }
+
+        .post-creator__header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .post-creator__avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .post-creator__input-fake {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            font-size: 0.95rem;
+            color: var(--gray-400);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .post-creator__input-fake:hover {
+            border-color: var(--pink);
+        }
+
+        .post-creator__types {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-lg);
+        }
+
+        .post-type-btn {
+            padding: 6px 16px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: 2px solid var(--gray-200);
+            background: var(--white);
+            color: var(--gray-500);
+        }
+
+        .post-type-btn:hover,
+        .post-type-btn--active {
+            border-color: transparent;
+        }
+
+        .post-type-btn[data-type="post"] { --type-color: var(--pink); --type-bg: var(--pink-glow); }
+        .post-type-btn[data-type="fanart"] { --type-color: var(--purple); --type-bg: rgba(139,92,246,0.12); }
+        .post-type-btn[data-type="meme"] { --type-color: var(--coral); --type-bg: rgba(255,107,107,0.12); }
+        .post-type-btn[data-type="story"] { --type-color: var(--teal); --type-bg: rgba(6,214,160,0.12); }
+        .post-type-btn[data-type="question"] { --type-color: var(--orange); --type-bg: rgba(255,159,28,0.12); }
+        .post-type-btn[data-type="edit"] { --type-color: #B8860B; --type-bg: rgba(255,214,0,0.15); }
+
+        .post-type-btn:hover,
+        .post-type-btn--active {
+            background: var(--type-bg);
+            color: var(--type-color);
+            border-color: transparent;
+        }
+
+        .post-creator__form {
+            display: none;
+        }
+
+        .post-creator__form--open {
+            display: block;
+        }
+
+        .post-creator__textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 14px 18px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            background: var(--white);
+            resize: vertical;
+            font-family: var(--font-body);
+            transition: border-color var(--transition-fast);
+        }
+
+        .post-creator__textarea:focus {
+            outline: none;
+            border-color: var(--pink);
+            box-shadow: 0 0 0 4px var(--pink-glow);
+        }
+
+        .post-creator__actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: var(--space-md);
+        }
+
+        .post-creator__attachments {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .post-creator__attach-btn {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--gray-400);
+            transition: color var(--transition-fast);
+            padding: 4px;
+        }
+
+        .post-creator__attach-btn:hover {
+            color: var(--pink);
+        }
+
+        /* Guest CTA */
+        .post-creator__guest-cta {
+            text-align: center;
+            padding: var(--space-lg);
+        }
+
+        .post-creator__guest-cta p {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            margin-bottom: var(--space-md);
+        }
+
+        /* Pinned Post */
+        .pinned-post {
+            position: relative;
+            border: 2px solid var(--yellow);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-card);
+            margin-bottom: var(--space-xl);
+        }
+
+        .pinned-post__label {
+            position: absolute;
+            top: -1px;
+            left: var(--space-lg);
+            background: var(--gradient-gold);
+            color: var(--gray-800);
+            padding: 4px 16px;
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Feed Post */
+        .feed-post {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-card);
+            margin-bottom: var(--space-lg);
+            transition: all var(--transition-base);
+        }
+
+        .feed-post:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .feed-post__header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .feed-post__avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .feed-post__user-info {
+            flex: 1;
+        }
+
+        .feed-post__username {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+        }
+
+        .feed-post__meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: 2px;
+        }
+
+        .feed-post__time {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .feed-post__featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            border-radius: var(--radius-full);
+            background: var(--gradient-gold);
+            color: var(--gray-800);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .feed-post__content {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .feed-post__image {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: var(--space-md);
+        }
+
+        .feed-post__image-placeholder {
+            width: 100%;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: var(--space-sm);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .feed-post__image-placeholder span:first-child {
+            font-size: 3rem;
+        }
+
+        .feed-post__actions {
+            display: flex;
+            gap: var(--space-lg);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .feed-post__action-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+            background: none;
+            border: none;
+            font-family: var(--font-body);
+            padding: 4px 0;
+        }
+
+        .feed-post__action-btn:hover {
+            color: var(--pink);
+        }
+
+        .feed-post__action-btn--liked {
+            color: var(--pink);
+        }
+
+        .feed-post__action-btn .icon {
+            font-size: 1.1rem;
+        }
+
+        /* Sidebar */
+        .community-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-card);
+        }
+
+        .sidebar-card__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--gray-800);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        /* Community Stats */
+        .community-stat {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) 0;
+        }
+
+        .community-stat:not(:last-child) {
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .community-stat__label {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+        }
+
+        .community-stat__value {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+        }
+
+        /* Leaderboard */
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-sm) 0;
+        }
+
+        .leaderboard-item:not(:last-child) {
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .leaderboard-item__rank {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1rem;
+            color: var(--gray-300);
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .leaderboard-item:nth-child(1) .leaderboard-item__rank { color: var(--yellow); }
+        .leaderboard-item:nth-child(2) .leaderboard-item__rank { color: var(--gray-400); }
+        .leaderboard-item:nth-child(3) .leaderboard-item__rank { color: #CD7F32; }
+
+        .leaderboard-item__avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .leaderboard-item__info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .leaderboard-item__name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--gray-700);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .leaderboard-item__points {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+        }
+
+        /* Guidelines */
+        .guidelines-list {
+            list-style: none;
+        }
+
+        .guidelines-list li {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            padding: var(--space-sm) 0;
+            display: flex;
+            gap: var(--space-sm);
+            line-height: 1.5;
+        }
+
+        .guidelines-list li:not(:last-child) {
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .guidelines-list li::before {
+            content: attr(data-icon);
+            flex-shrink: 0;
+        }
+
+        /* Floating New Post Button (Mobile) */
+        .fab-new-post {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-cta);
+            color: var(--white);
+            font-size: 1.8rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 0, 110, 0.4);
+            z-index: 99;
+            transition: all var(--transition-base);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fab-new-post:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(255, 0, 110, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .community-layout {
+                grid-template-columns: 1fr 280px;
+                gap: var(--space-xl);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero--community h1 { font-size: 2rem; }
+            .hero--community .hero__stats { gap: var(--space-xl); }
+            .hero__stat-number { font-size: 1.3rem; }
+
+            .community-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .community-sidebar {
+                order: -1;
+            }
+
+            .fab-new-post {
+                display: flex;
+            }
+
+            .post-creator {
+                display: none;
+            }
+
+            .post-creator--mobile-open {
+                display: block;
+                position: fixed;
+                inset: 0;
+                z-index: 200;
+                border-radius: 0;
+                overflow-y: auto;
+                margin: 0;
+            }
+
+            .filter-tab {
+                padding: 6px 14px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero--community h1 { font-size: 1.6rem; }
+            .hero--community .hero__stats { flex-wrap: wrap; gap: var(--space-lg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- ── Navigation ── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">ALEX GONZAGA<span>official fan hub</span></a>
+            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <ul class="nav__links">
+                <li><a href="/" class="nav__link">Home</a></li>
+                <li><a href="/vlogs.html" class="nav__link">Vlogs</a></li>
+                <li><a href="/community.html" class="nav__link nav__link--active">Community</a></li>
+                <li><a href="/merch.html" class="nav__link">Merch</a></li>
+                <li><a href="/react.html" class="nav__link">Alex Reacts</a></li>
+                <li><a href="/membership.html" class="nav__link">Membership</a></li>
+                <li data-guest><a href="/login.html" class="nav__link">Log In</a></li>
+                <li data-guest><a href="/signup.html" class="nav__link nav__cta">Join the Fam!</a></li>
+                <li data-auth style="display:none"><a href="/profile.html" class="nav__link">My Profile</a></li>
+                <li data-auth style="display:none"><a href="#" class="nav__link" onclick="Auth.clearSession();window.location.reload();">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── Hero ── -->
+    <section class="hero hero--community">
+        <div class="hero__bg">
+            <div class="hero__blob hero__blob--1"></div>
+            <div class="hero__blob hero__blob--2"></div>
+            <div class="hero__blob hero__blob--3"></div>
+        </div>
+        <div class="container">
+            <h1>
+                <span class="highlight">Alex Nation</span> Community
+            </h1>
+            <p class="hero__subtitle">
+                The ultimate hangout for Alex Gonzaga fans! Share your fan art, memes, stories, and connect with fellow ate lovers from all over the world. Tara, mag-bonding tayo!
+            </p>
+            <div class="hero__stats">
+                <div class="hero__stat-item">
+                    <div class="hero__stat-number">24.8K</div>
+                    <div class="hero__stat-label">Members</div>
+                </div>
+                <div class="hero__stat-item">
+                    <div class="hero__stat-number">3.2K</div>
+                    <div class="hero__stat-label">Posts Today</div>
+                </div>
+                <div class="hero__stat-item">
+                    <div class="hero__stat-number">890</div>
+                    <div class="hero__stat-label">Online Now</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Ticker ── -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker__inner">
+            <span class="ticker__item">ALEX NATION</span>
+            <span class="ticker__item">FAN ART</span>
+            <span class="ticker__item">MEMES</span>
+            <span class="ticker__item">ATE GIRL ERA</span>
+            <span class="ticker__item">COMMUNITY LOVE</span>
+            <span class="ticker__item">WALANG KUPAS</span>
+            <span class="ticker__item">ALEX NATION</span>
+            <span class="ticker__item">FAN ART</span>
+            <span class="ticker__item">MEMES</span>
+            <span class="ticker__item">ATE GIRL ERA</span>
+            <span class="ticker__item">COMMUNITY LOVE</span>
+            <span class="ticker__item">WALANG KUPAS</span>
+        </div>
+    </div>
+
+    <!-- ── Filter Tabs ── -->
+    <div class="community-filters">
+        <div class="container">
+            <div class="community-filters__inner">
+                <button class="filter-tab filter-tab--active" data-filter="all">All Posts</button>
+                <button class="filter-tab" data-filter="fanart">&#127912; Fan Art</button>
+                <button class="filter-tab" data-filter="meme">&#128514; Memes</button>
+                <button class="filter-tab" data-filter="story">&#128214; Stories</button>
+                <button class="filter-tab" data-filter="question">&#10067; Questions</button>
+                <button class="filter-tab" data-filter="featured">&#11088; Featured</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Main Content ── -->
+    <div class="container">
+        <div class="community-layout">
+
+            <!-- ── Feed Column ── -->
+            <div class="community-feed">
+
+                <!-- Post Creator (logged-in view) -->
+                <div class="post-creator" id="postCreator" data-auth style="display:none">
+                    <div class="post-creator__header">
+                        <div class="post-creator__avatar" id="creatorAvatar">?</div>
+                        <div class="post-creator__input-fake" id="postCreatorTrigger">What's on your mind, fan?</div>
+                    </div>
+                    <div class="post-creator__types" id="postTypeSelector">
+                        <button class="post-type-btn post-type-btn--active" data-type="post">&#128172; Post</button>
+                        <button class="post-type-btn" data-type="fanart">&#127912; Fan Art</button>
+                        <button class="post-type-btn" data-type="meme">&#128514; Meme</button>
+                        <button class="post-type-btn" data-type="story">&#128214; Story</button>
+                        <button class="post-type-btn" data-type="question">&#10067; Question</button>
+                        <button class="post-type-btn" data-type="edit">&#9998; Edit</button>
+                    </div>
+                    <div class="post-creator__form" id="postForm">
+                        <textarea class="post-creator__textarea" placeholder="Share something with the Alex Nation..." id="postContent"></textarea>
+                        <div class="post-creator__actions">
+                            <div class="post-creator__attachments">
+                                <button class="post-creator__attach-btn" title="Add photo" aria-label="Add photo">&#128247;</button>
+                                <button class="post-creator__attach-btn" title="Add GIF" aria-label="Add GIF">GIF</button>
+                                <button class="post-creator__attach-btn" title="Add poll" aria-label="Add poll">&#128202;</button>
+                            </div>
+                            <button class="btn btn--primary btn--sm" id="postSubmitBtn">Post It!</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post Creator (guest view) -->
+                <div class="post-creator" data-guest>
+                    <div class="post-creator__guest-cta">
+                        <p>&#128150; Want to share your thoughts with the Alex Nation? Join the fam!</p>
+                        <a href="/signup.html" class="btn btn--primary">Join to Post</a>
+                    </div>
+                </div>
+
+                <!-- ── Pinned Post ── -->
+                <div class="pinned-post feed-post" data-type="featured" data-featured="true">
+                    <div class="pinned-post__label">&#128204; Pinned</div>
+                    <div class="feed-post__header" style="margin-top: var(--space-md);">
+                        <div class="feed-post__avatar" style="background: var(--gradient-gold);">&#9733;</div>
+                        <div class="feed-post__user-info">
+                            <div class="feed-post__username">@AlexGonzagaOfficial <span class="badge badge--gold" style="font-size:0.65rem;">Admin</span></div>
+                            <div class="feed-post__meta">
+                                <span class="feed-post__time">March 20, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-post__content">
+                        Hey Alex Nation! Grabe, sobrang thankful ako sa inyong lahat! We just hit 24K members in this community! To celebrate, we are doing a FAN ART CONTEST this month. Best fan art wins a signed merch bundle + a personal video message from yours truly. Tara na, submit na kayo! Tag your entries with #AlexNationArt &#127912;&#128150;&#128293;
+                    </div>
+                    <div class="feed-post__actions">
+                        <button class="feed-post__action-btn feed-post__action-btn--liked" onclick="toggleLike(this)">
+                            <span class="icon">&#10084;</span>
+                            <span class="count">2,847</span>
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128172;</span>
+                            <span class="count">312</span> Comments
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128257;</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── Post 1: Fan Art ── -->
+                <div class="feed-post" data-type="fanart" data-featured="true">
+                    <div class="feed-post__header">
+                        <div class="feed-post__avatar" style="background: var(--gradient-purple);">K</div>
+                        <div class="feed-post__user-info">
+                            <div class="feed-post__username">@kuya_art</div>
+                            <div class="feed-post__meta">
+                                <span class="badge badge--purple">Fan Art</span>
+                                <span class="feed-post__time">2 hours ago</span>
+                                <span class="feed-post__featured-badge">&#11088; Featured</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-post__content">
+                        Spent 3 weeks on this digital painting of Alex from the "Ate Girl Era" era! Watercolor style! Hope she sees it! &#127912;&#10024;
+                    </div>
+                    <div class="feed-post__image">
+                        <div class="feed-post__image-placeholder" style="background: linear-gradient(135deg, #F0E4FF 0%, #FFE4F0 50%, #E4F0FF 100%);">
+                            <span>&#127912;</span>
+                            <span style="color: var(--purple);">Digital Watercolor Fan Art</span>
+                        </div>
+                    </div>
+                    <div class="feed-post__actions">
+                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
+                            <span class="icon">&#9825;</span>
+                            <span class="count">1,203</span>
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128172;</span>
+                            <span class="count">89</span> Comments
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128257;</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── Post 2: Meme ── -->
+                <div class="feed-post" data-type="meme">
+                    <div class="feed-post__header">
+                        <div class="feed-post__avatar" style="background: var(--gradient-cta);">J</div>
+                        <div class="feed-post__user-info">
+                            <div class="feed-post__username">@jollibee_memes</div>
+                            <div class="feed-post__meta">
+                                <span class="badge badge--coral">Meme</span>
+                                <span class="feed-post__time">4 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-post__content">
+                        When Alex says "Charot lang" but you know she's 100% serious &#128514;&#128514;&#128514;
+                    </div>
+                    <div class="feed-post__image">
+                        <div class="feed-post__image-placeholder" style="background: linear-gradient(135deg, #FFE4E4 0%, #FFF0E4 100%); height: 240px;">
+                            <span>&#128514;</span>
+                            <span style="color: var(--coral);">Charot Lang Meme</span>
+                        </div>
+                    </div>
+                    <div class="feed-post__actions">
+                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
+                            <span class="icon">&#9825;</span>
+                            <span class="count">876</span>
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128172;</span>
+                            <span class="count">54</span> Comments
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128257;</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── Post 3: Text Post ── -->
+                <div class="feed-post" data-type="post">
+                    <div class="feed-post__header">
+                        <div class="feed-post__avatar" style="background: var(--gradient-primary);">M</div>
+                        <div class="feed-post__user-info">
+                            <div class="feed-post__username">@manilaFanGirl</div>
+                            <div class="feed-post__meta">
+                                <span class="badge badge--pink">Post</span>
+                                <span class="feed-post__time">5 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-post__content">
+                        Just rewatched Alex's wedding vlog for the 100th time and I'm still crying! Why is she so funny even on her wedding day?! The way Mikee was looking at her during the vows... my heart cannot take it! Gonzaga genes are really something else. Anyone else ugly crying right now or just me? &#128557;&#128150;
+                    </div>
+                    <div class="feed-post__actions">
+                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
+                            <span class="icon">&#9825;</span>
+                            <span class="count">432</span>
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128172;</span>
+                            <span class="count">28</span> Comments
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128257;</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── Post 4: Question ── -->
+                <div class="feed-post" data-type="question">
+                    <div class="feed-post__header">
+                        <div class="feed-post__avatar" style="background: linear-gradient(135deg, var(--orange), var(--yellow));">D</div>
+                        <div class="feed-post__user-info">
+                            <div class="feed-post__username">@dave_cebufan</div>
+                            <div class="feed-post__meta">
+                                <span class="badge badge--gold">Question</span>
+                                <span class="feed-post__time">6 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-post__content">
+                        Guys, question! What's your all-time FAVORITE Alex vlog? I need to make a binge-watch list this weekend. I've been a fan for years but I feel like I've missed some gems. Drop your top 3 below! &#128071;&#128071;&#128071;
+                    </div>
+                    <div class="feed-post__actions">
+                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
+                            <span class="icon">&#9825;</span>
+                            <span class="count">215</span>
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128172;</span>
+                            <span class="count">142</span> Comments
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128257;</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── Post 5: Story ── -->
+                <div class="feed-post" data-type="story" data-featured="true">
+                    <div class="feed-post__header">
+                        <div class="feed-post__avatar" style="background: linear-gradient(135deg, var(--teal), #06D6A0);">A</div>
+                        <div class="feed-post__user-info">
+                            <div class="feed-post__username">@angel_iligan</div>
+                            <div class="feed-post__meta">
+                                <span class="badge badge--teal">Story</span>
+                                <span class="feed-post__time">8 hours ago</span>
+                                <span class="feed-post__featured-badge">&#11088; Featured</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-post__content">
+                        I have to share this! Last year I was going through a really tough time — lost my job, feeling down about everything. Then I binged Alex's vlogs and her energy literally pulled me out of it. She reminded me that life doesn't have to be perfect to be funny and beautiful. Yesterday, I finally started my own small business and I named my first product line "Walang Kupas" in her honor. Thank you, Ate Alex, for being our sunshine! &#9728;&#128150;
+                    </div>
+                    <div class="feed-post__actions">
+                        <button class="feed-post__action-btn feed-post__action-btn--liked" onclick="toggleLike(this)">
+                            <span class="icon">&#10084;</span>
+                            <span class="count">1,890</span>
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128172;</span>
+                            <span class="count">203</span> Comments
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128257;</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── Post 6: Fan Art with Image ── -->
+                <div class="feed-post" data-type="fanart">
+                    <div class="feed-post__header">
+                        <div class="feed-post__avatar" style="background: var(--gradient-purple);">S</div>
+                        <div class="feed-post__user-info">
+                            <div class="feed-post__username">@sketch_by_sam</div>
+                            <div class="feed-post__meta">
+                                <span class="badge badge--purple">Fan Art</span>
+                                <span class="feed-post__time">10 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-post__content">
+                        Quick chibi doodle of Alex and Toni! Sisters goals talaga sila &#128150; Took me about 2 hours. Should I do a full series of Gonzaga family chibis?
+                    </div>
+                    <div class="feed-post__image">
+                        <div class="feed-post__image-placeholder" style="background: linear-gradient(135deg, #E8D5FF 0%, #FFD5E5 100%); height: 300px;">
+                            <span>&#9998;</span>
+                            <span style="color: var(--purple);">Chibi Sisters Fan Art</span>
+                        </div>
+                    </div>
+                    <div class="feed-post__actions">
+                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
+                            <span class="icon">&#9825;</span>
+                            <span class="count">654</span>
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128172;</span>
+                            <span class="count">47</span> Comments
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128257;</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── Post 7: Meme ── -->
+                <div class="feed-post" data-type="meme">
+                    <div class="feed-post__header">
+                        <div class="feed-post__avatar" style="background: linear-gradient(135deg, var(--coral), var(--pink));">R</div>
+                        <div class="feed-post__user-info">
+                            <div class="feed-post__username">@reyesJM</div>
+                            <div class="feed-post__meta">
+                                <span class="badge badge--coral">Meme</span>
+                                <span class="feed-post__time">12 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-post__content">
+                        POV: You're explaining to your friends why you need to leave the party early because Alex just uploaded a new vlog &#128514; No regrets. Priorities, people!
+                    </div>
+                    <div class="feed-post__image">
+                        <div class="feed-post__image-placeholder" style="background: linear-gradient(135deg, #FFE8E8 0%, #FFF5E0 100%); height: 220px;">
+                            <span>&#128694;</span>
+                            <span style="color: var(--coral);">Priorities Meme</span>
+                        </div>
+                    </div>
+                    <div class="feed-post__actions">
+                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
+                            <span class="icon">&#9825;</span>
+                            <span class="count">543</span>
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128172;</span>
+                            <span class="count">31</span> Comments
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128257;</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ── Post 8: Text Post ── -->
+                <div class="feed-post" data-type="post">
+                    <div class="feed-post__header">
+                        <div class="feed-post__avatar" style="background: var(--gradient-primary);">L</div>
+                        <div class="feed-post__user-info">
+                            <div class="feed-post__username">@lovelyLiza_ph</div>
+                            <div class="feed-post__meta">
+                                <span class="badge badge--pink">Post</span>
+                                <span class="feed-post__time">Yesterday</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-post__content">
+                        Alex's energy is literally what gets me through Monday mornings at work. Just got my "Charot Lang" hoodie delivered and my officemates are SO jealous! Best purchase I've made this year. Now I need the matching cap! Anyone know when the caps are restocking? &#128293;&#128085;
+                    </div>
+                    <div class="feed-post__actions">
+                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
+                            <span class="icon">&#9825;</span>
+                            <span class="count">167</span>
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128172;</span>
+                            <span class="count">12</span> Comments
+                        </button>
+                        <button class="feed-post__action-btn">
+                            <span class="icon">&#128257;</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ── Sidebar ── -->
+            <aside class="community-sidebar">
+
+                <!-- Community Stats -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-card__title">&#128202; Community Stats</h3>
+                    <div class="community-stat">
+                        <span class="community-stat__label">Total Members</span>
+                        <span class="community-stat__value">24,823</span>
+                    </div>
+                    <div class="community-stat">
+                        <span class="community-stat__label">Posts This Week</span>
+                        <span class="community-stat__value">1,247</span>
+                    </div>
+                    <div class="community-stat">
+                        <span class="community-stat__label">Fan Art Submissions</span>
+                        <span class="community-stat__value">389</span>
+                    </div>
+                    <div class="community-stat">
+                        <span class="community-stat__label">Active Discussions</span>
+                        <span class="community-stat__value">156</span>
+                    </div>
+                    <div class="community-stat">
+                        <span class="community-stat__label">Online Now</span>
+                        <span class="community-stat__value" style="color: var(--teal);">890</span>
+                    </div>
+                </div>
+
+                <!-- Top Contributors -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-card__title">&#127942; Top Contributors</h3>
+                    <div class="leaderboard-item">
+                        <span class="leaderboard-item__rank">1</span>
+                        <div class="leaderboard-item__avatar" style="background: var(--gradient-gold);">K</div>
+                        <div class="leaderboard-item__info">
+                            <div class="leaderboard-item__name">@kuya_art</div>
+                            <div class="leaderboard-item__points">4,820 pts</div>
+                        </div>
+                    </div>
+                    <div class="leaderboard-item">
+                        <span class="leaderboard-item__rank">2</span>
+                        <div class="leaderboard-item__avatar" style="background: var(--gradient-purple);">M</div>
+                        <div class="leaderboard-item__info">
+                            <div class="leaderboard-item__name">@manilaFanGirl</div>
+                            <div class="leaderboard-item__points">3,945 pts</div>
+                        </div>
+                    </div>
+                    <div class="leaderboard-item">
+                        <span class="leaderboard-item__rank">3</span>
+                        <div class="leaderboard-item__avatar" style="background: var(--gradient-cta);">J</div>
+                        <div class="leaderboard-item__info">
+                            <div class="leaderboard-item__name">@jollibee_memes</div>
+                            <div class="leaderboard-item__points">3,210 pts</div>
+                        </div>
+                    </div>
+                    <div class="leaderboard-item">
+                        <span class="leaderboard-item__rank">4</span>
+                        <div class="leaderboard-item__avatar" style="background: linear-gradient(135deg, var(--teal), #06D6A0);">A</div>
+                        <div class="leaderboard-item__info">
+                            <div class="leaderboard-item__name">@angel_iligan</div>
+                            <div class="leaderboard-item__points">2,780 pts</div>
+                        </div>
+                    </div>
+                    <div class="leaderboard-item">
+                        <span class="leaderboard-item__rank">5</span>
+                        <div class="leaderboard-item__avatar" style="background: var(--gradient-primary);">S</div>
+                        <div class="leaderboard-item__info">
+                            <div class="leaderboard-item__name">@sketch_by_sam</div>
+                            <div class="leaderboard-item__points">2,315 pts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Guidelines -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-card__title">&#128220; Community Guidelines</h3>
+                    <ul class="guidelines-list">
+                        <li data-icon="&#128150;">Spread love and positivity. We're all here because we love Alex!</li>
+                        <li data-icon="&#128588;">Be respectful to all members. No hate, bullying, or discrimination.</li>
+                        <li data-icon="&#127912;">Credit original artists when sharing fan art or edits.</li>
+                        <li data-icon="&#128683;">No spam, self-promotion, or off-topic content.</li>
+                        <li data-icon="&#128274;">Don't share personal info about Alex or other members.</li>
+                        <li data-icon="&#127881;">Have fun! This is your space to celebrate our favorite ate!</li>
+                    </ul>
+                </div>
+
+            </aside>
+        </div>
+    </div>
+
+    <!-- Floating New Post Button (Mobile) -->
+    <button class="fab-new-post" id="fabNewPost" aria-label="Create new post" title="New Post">+</button>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
+                    <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
+                    <div class="footer__socials">
+                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
+                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
+                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="Facebook">f</a>
+                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Explore</h4>
+                    <ul class="footer__list">
+                        <li><a href="/vlogs.html">Vlog Archive</a></li>
+                        <li><a href="/merch.html">Merch Store</a></li>
+                        <li><a href="/community.html">Community</a></li>
+                        <li><a href="/react.html">Alex Reacts</a></li>
+                        <li><a href="/membership.html">Membership</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Account</h4>
+                    <ul class="footer__list">
+                        <li><a href="/signup.html">Create Account</a></li>
+                        <li><a href="/login.html">Log In</a></li>
+                        <li><a href="/profile.html">My Profile</a></li>
+                        <li><a href="/profile.html#orders">My Orders</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Management</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Business Inquiries</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Brand Partnerships</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>&copy; 2026 Alex Gonzaga Official. All rights reserved.</span>
+                <span>A <a href="#" style="color:var(--pink-light);">Global Media</a> Project</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script>
+        /* ── Community Page Interactions ── */
+        (function() {
+            'use strict';
+
+            // ── Filter Tabs ──
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const feedPosts = document.querySelectorAll('.community-feed .feed-post');
+
+            filterTabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    filterTabs.forEach(function(t) { t.classList.remove('filter-tab--active'); });
+                    tab.classList.add('filter-tab--active');
+
+                    const filter = tab.getAttribute('data-filter');
+
+                    feedPosts.forEach(function(post) {
+                        if (filter === 'all') {
+                            post.style.display = '';
+                        } else if (filter === 'featured') {
+                            post.style.display = post.getAttribute('data-featured') === 'true' ? '' : 'none';
+                        } else {
+                            post.style.display = post.getAttribute('data-type') === filter ? '' : 'none';
+                        }
+                    });
+                });
+            });
+
+            // ── Post Creator Toggle ──
+            var postCreatorTrigger = document.getElementById('postCreatorTrigger');
+            var postForm = document.getElementById('postForm');
+            var postContent = document.getElementById('postContent');
+
+            if (postCreatorTrigger && postForm) {
+                postCreatorTrigger.addEventListener('click', function() {
+                    postForm.classList.toggle('post-creator__form--open');
+                    if (postForm.classList.contains('post-creator__form--open')) {
+                        postContent.focus();
+                    }
+                });
+            }
+
+            // ── Post Type Selector ──
+            var postTypeSelector = document.getElementById('postTypeSelector');
+            if (postTypeSelector) {
+                var typeBtns = postTypeSelector.querySelectorAll('.post-type-btn');
+                typeBtns.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        typeBtns.forEach(function(b) { b.classList.remove('post-type-btn--active'); });
+                        btn.classList.add('post-type-btn--active');
+                        // Open the form when a type is selected
+                        if (postForm) {
+                            postForm.classList.add('post-creator__form--open');
+                            if (postContent) postContent.focus();
+                        }
+                    });
+                });
+            }
+
+            // ── Post Submit (demo) ──
+            var postSubmitBtn = document.getElementById('postSubmitBtn');
+            if (postSubmitBtn) {
+                postSubmitBtn.addEventListener('click', function() {
+                    var content = postContent ? postContent.value.trim() : '';
+                    if (!content) {
+                        if (typeof showToast === 'function') {
+                            showToast('Please write something first!', 'error');
+                        }
+                        return;
+                    }
+                    if (typeof showToast === 'function') {
+                        showToast('Post shared with the Alex Nation!', 'success');
+                    }
+                    if (postContent) postContent.value = '';
+                    if (postForm) postForm.classList.remove('post-creator__form--open');
+                });
+            }
+
+            // ── Floating Action Button (Mobile) ──
+            var fabNewPost = document.getElementById('fabNewPost');
+            if (fabNewPost) {
+                fabNewPost.addEventListener('click', function() {
+                    // On mobile, scroll to post creator or show login prompt
+                    var postCreator = document.getElementById('postCreator');
+                    if (postCreator && postCreator.style.display !== 'none') {
+                        postCreator.classList.toggle('post-creator--mobile-open');
+                        if (postCreator.classList.contains('post-creator--mobile-open')) {
+                            postCreator.style.display = 'block';
+                            if (postForm) postForm.classList.add('post-creator__form--open');
+                            if (postContent) postContent.focus();
+                        }
+                    } else {
+                        // Guest — redirect to signup
+                        window.location.href = '/signup.html';
+                    }
+                });
+            }
+        })();
+
+        // ── Like Toggle ──
+        function toggleLike(btn) {
+            var countEl = btn.querySelector('.count');
+            var iconEl = btn.querySelector('.icon');
+            var isLiked = btn.classList.contains('feed-post__action-btn--liked');
+
+            if (isLiked) {
+                btn.classList.remove('feed-post__action-btn--liked');
+                iconEl.innerHTML = '&#9825;';
+                if (countEl) {
+                    var val = parseInt(countEl.textContent.replace(/,/g, ''), 10);
+                    countEl.textContent = (val - 1).toLocaleString();
+                }
+            } else {
+                btn.classList.add('feed-post__action-btn--liked');
+                iconEl.innerHTML = '&#10084;';
+                if (countEl) {
+                    var val = parseInt(countEl.textContent.replace(/,/g, ''), 10);
+                    countEl.textContent = (val + 1).toLocaleString();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

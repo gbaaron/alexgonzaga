@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlog Archive — Alex Gonzaga Official</title>
+    <meta name="description" content="Browse, search, and filter Alex Gonzaga's complete vlog archive. Comedy, challenges, mukbang, family moments, and all the chaotic content you love.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* ── Vlogs Page Styles ── */
+
+        /* Hero / Search */
+        .vlogs-hero {
+            background: var(--off-white);
+            padding: 140px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vlogs-hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -150px;
+            width: 500px;
+            height: 500px;
+            background: var(--pink);
+            border-radius: 50%;
+            opacity: 0.06;
+            filter: blur(80px);
+        }
+
+        .vlogs-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: var(--purple);
+            border-radius: 50%;
+            opacity: 0.06;
+            filter: blur(80px);
+        }
+
+        .vlogs-hero__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .vlogs-hero__eyebrow {
+            font-family: var(--font-accent);
+            font-size: 1.4rem;
+            color: var(--pink);
+            display: block;
+            margin-bottom: var(--space-xs);
+        }
+
+        .vlogs-hero__title {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-sm);
+        }
+
+        .vlogs-hero__subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 550px;
+            margin: 0 auto var(--space-2xl);
+        }
+
+        .vlogs-search {
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .vlogs-search__input {
+            width: 100%;
+            padding: 18px 60px 18px 24px;
+            border: 3px solid var(--gray-200);
+            border-radius: var(--radius-full);
+            font-size: 1.05rem;
+            font-family: var(--font-body);
+            color: var(--gray-700);
+            background: var(--white);
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .vlogs-search__input:focus {
+            outline: none;
+            border-color: var(--pink);
+            box-shadow: 0 0 0 6px var(--pink-glow), var(--shadow-md);
+        }
+
+        .vlogs-search__input::placeholder {
+            color: var(--gray-300);
+            font-style: italic;
+        }
+
+        .vlogs-search__btn {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-cta);
+            border: none;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-base);
+        }
+
+        .vlogs-search__btn:hover {
+            transform: translateY(-50%) scale(1.08);
+            box-shadow: 0 4px 15px rgba(255, 0, 110, 0.4);
+        }
+
+        /* Alex Picks Featured */
+        .alex-picks {
+            background: var(--white);
+            padding: var(--space-3xl) 0;
+        }
+
+        .alex-picks__label {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--pink);
+            margin-bottom: var(--space-xl);
+        }
+
+        .alex-picks__label span {
+            font-family: var(--font-accent);
+            font-size: 1.6rem;
+            color: var(--purple);
+        }
+
+        .alex-picks__card {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: var(--space-2xl);
+            background: var(--gradient-card);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+        }
+
+        .alex-picks__card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .alex-picks__thumbnail {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #FFE4F0 0%, #E4D4FF 50%, #D4E4FF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--gray-300);
+            cursor: pointer;
+        }
+
+        .alex-picks__play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 0, 110, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.6rem;
+            transition: all var(--transition-base);
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .alex-picks__thumbnail:hover .alex-picks__play {
+            transform: translate(-50%, -50%) scale(1.12);
+            box-shadow: 0 0 50px rgba(255, 0, 110, 0.5);
+        }
+
+        .alex-picks__duration {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.75);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+        }
+
+        .alex-picks__info {
+            padding: var(--space-2xl) var(--space-2xl) var(--space-2xl) 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .alex-picks__tag {
+            display: inline-block;
+            padding: 5px 14px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: var(--radius-full);
+            background: var(--pink-glow);
+            color: var(--pink);
+            margin-bottom: var(--space-md);
+            width: fit-content;
+        }
+
+        .alex-picks__title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--gray-800);
+            line-height: 1.3;
+            margin-bottom: var(--space-md);
+        }
+
+        .alex-picks__desc {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+            margin-bottom: var(--space-lg);
+        }
+
+        .alex-picks__meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            font-weight: 600;
+        }
+
+        .alex-picks__meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: var(--white);
+            border-top: 1px solid var(--gray-100);
+            border-bottom: 1px solid var(--gray-100);
+            padding: var(--space-xl) 0;
+            position: sticky;
+            top: 72px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .filter-bar__section {
+            margin-bottom: var(--space-md);
+        }
+
+        .filter-bar__section:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-bar__row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .filter-bar__label {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--gray-500);
+            white-space: nowrap;
+        }
+
+        .filter-pills {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .filter-pill {
+            padding: 7px 18px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.82rem;
+            border-radius: var(--radius-full);
+            border: 2px solid var(--gray-200);
+            background: var(--white);
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .filter-pill:hover {
+            border-color: var(--pink-light);
+            color: var(--pink);
+            background: var(--pink-glow);
+        }
+
+        .filter-pill--active {
+            background: var(--gradient-cta);
+            color: var(--white);
+            border-color: transparent;
+        }
+
+        .filter-pill--active:hover {
+            background: var(--gradient-cta);
+            color: var(--white);
+            border-color: transparent;
+            opacity: 0.9;
+        }
+
+        /* Mood pills — each mood gets a distinct color */
+        .mood-pill--funny { --mood-color: var(--yellow); --mood-bg: rgba(255, 214, 0, 0.15); --mood-text: #8B6914; }
+        .mood-pill--emotional { --mood-color: var(--purple); --mood-bg: rgba(139, 92, 246, 0.12); --mood-text: var(--purple); }
+        .mood-pill--chaotic { --mood-color: var(--coral); --mood-bg: rgba(255, 107, 107, 0.12); --mood-text: var(--coral); }
+        .mood-pill--wholesome { --mood-color: var(--teal); --mood-bg: rgba(6, 214, 160, 0.12); --mood-text: #059669; }
+        .mood-pill--savage { --mood-color: var(--pink); --mood-bg: var(--pink-glow); --mood-text: var(--pink); }
+        .mood-pill--kilig { --mood-color: var(--orange); --mood-bg: rgba(255, 159, 28, 0.12); --mood-text: #C87000; }
+        .mood-pill--inspirational { --mood-color: var(--purple-light); --mood-bg: rgba(167, 139, 250, 0.12); --mood-text: var(--purple-light); }
+
+        .mood-pill.filter-pill--active {
+            background: var(--mood-bg, var(--pink-glow));
+            color: var(--mood-text, var(--pink));
+            border-color: var(--mood-color, var(--pink));
+        }
+
+        /* Sort controls */
+        .sort-controls {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-left: auto;
+        }
+
+        .sort-btn {
+            padding: 7px 16px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.82rem;
+            border-radius: var(--radius-full);
+            background: none;
+            border: none;
+            color: var(--gray-400);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .sort-btn:hover {
+            color: var(--pink);
+        }
+
+        .sort-btn--active {
+            color: var(--pink);
+            background: var(--pink-glow);
+        }
+
+        /* Results info */
+        .results-bar {
+            padding: var(--space-lg) 0 var(--space-sm);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .results-bar__count {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--gray-500);
+        }
+
+        .results-bar__count strong {
+            color: var(--pink);
+        }
+
+        /* Vlog Grid */
+        .vlogs-section {
+            background: var(--off-white);
+            padding: var(--space-xl) 0 var(--space-4xl);
+        }
+
+        .vlogs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-xl);
+        }
+
+        /* Vlog Card */
+        .vlog-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+
+        .vlog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .vlog-card__thumbnail {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #FFE4F0 0%, #F0E4FF 50%, #E4F0FF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--gray-300);
+            overflow: hidden;
+        }
+
+        .vlog-card__play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 52px;
+            height: 52px;
+            background: rgba(255, 0, 110, 0.85);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            opacity: 0;
+            transition: all var(--transition-base);
+        }
+
+        .vlog-card:hover .vlog-card__play {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .vlog-card__duration {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.75);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+        }
+
+        .vlog-card__category {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            border-radius: var(--radius-full);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
+            color: var(--pink);
+        }
+
+        .vlog-card__category--purple { color: var(--purple); }
+        .vlog-card__category--gold { color: #B8860B; }
+        .vlog-card__category--teal { color: #059669; }
+        .vlog-card__category--coral { color: var(--coral); }
+        .vlog-card__category--orange { color: var(--orange); }
+
+        .vlog-card__body {
+            padding: var(--space-md) var(--space-lg) var(--space-lg);
+        }
+
+        .vlog-card__mood {
+            display: inline-block;
+            padding: 3px 10px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-sm);
+        }
+
+        .vlog-card__mood--funny { background: rgba(255, 214, 0, 0.15); color: #8B6914; }
+        .vlog-card__mood--emotional { background: rgba(139, 92, 246, 0.12); color: var(--purple); }
+        .vlog-card__mood--chaotic { background: rgba(255, 107, 107, 0.12); color: var(--coral); }
+        .vlog-card__mood--wholesome { background: rgba(6, 214, 160, 0.12); color: #059669; }
+        .vlog-card__mood--savage { background: var(--pink-glow); color: var(--pink); }
+        .vlog-card__mood--kilig { background: rgba(255, 159, 28, 0.12); color: #C87000; }
+        .vlog-card__mood--inspirational { background: rgba(167, 139, 250, 0.12); color: var(--purple-light); }
+
+        .vlog-card__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--gray-800);
+            line-height: 1.4;
+            margin-bottom: var(--space-md);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .vlog-card__meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            font-size: 0.78rem;
+            color: var(--gray-400);
+        }
+
+        .vlog-card__meta span {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* Load More */
+        .load-more {
+            text-align: center;
+            padding: var(--space-3xl) 0 0;
+        }
+
+        /* Empty / No Results */
+        .no-results {
+            text-align: center;
+            padding: var(--space-4xl) var(--space-xl);
+            display: none;
+        }
+
+        .no-results__icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .no-results__title {
+            font-size: 1.4rem;
+            color: var(--gray-600);
+            margin-bottom: var(--space-sm);
+        }
+
+        .no-results__text {
+            color: var(--gray-400);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Active filter count badge */
+        .filter-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 22px;
+            height: 22px;
+            background: var(--gradient-cta);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 800;
+            border-radius: 50%;
+            font-family: var(--font-display);
+        }
+
+        .clear-filters {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color var(--transition-fast);
+            display: none;
+        }
+
+        .clear-filters:hover {
+            color: var(--pink);
+        }
+
+        .clear-filters--visible {
+            display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .vlogs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .alex-picks__card {
+                grid-template-columns: 1fr;
+            }
+            .alex-picks__info {
+                padding: var(--space-xl);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vlogs-hero {
+                padding: 120px 0 40px;
+            }
+            .vlogs-hero__title {
+                font-size: 2rem;
+            }
+            .vlogs-grid {
+                grid-template-columns: 1fr;
+            }
+            .filter-bar__row {
+                gap: var(--space-sm);
+            }
+            .filter-pill {
+                padding: 6px 14px;
+                font-size: 0.78rem;
+            }
+            .sort-controls {
+                margin-left: 0;
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .alex-picks__title {
+                font-size: 1.3rem;
+            }
+            .results-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-sm);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vlogs-hero__title {
+                font-size: 1.6rem;
+            }
+            .vlogs-search__input {
+                padding: 14px 52px 14px 18px;
+                font-size: 0.95rem;
+            }
+            .vlogs-search__btn {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ── Navigation ── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">ALEX GONZAGA<span>official fan hub</span></a>
+            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <ul class="nav__links">
+                <li><a href="/" class="nav__link">Home</a></li>
+                <li><a href="/vlogs.html" class="nav__link nav__link--active">Vlogs</a></li>
+                <li><a href="/community.html" class="nav__link">Community</a></li>
+                <li><a href="/merch.html" class="nav__link">Merch</a></li>
+                <li><a href="/react.html" class="nav__link">Alex Reacts</a></li>
+                <li><a href="/membership.html" class="nav__link">Membership</a></li>
+                <li data-guest><a href="/login.html" class="nav__link">Log In</a></li>
+                <li data-guest><a href="/signup.html" class="nav__link nav__cta">Join the Fam!</a></li>
+                <li data-auth style="display:none"><a href="/profile.html" class="nav__link">My Profile</a></li>
+                <li data-auth style="display:none"><a href="#" class="nav__link" onclick="Auth.clearSession();window.location.reload();">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── Hero / Search ── -->
+    <section class="vlogs-hero">
+        <div class="container vlogs-hero__content">
+            <span class="vlogs-hero__eyebrow">ate's content vault</span>
+            <h1 class="vlogs-hero__title">Vlog Archive</h1>
+            <p class="vlogs-hero__subtitle">Over 500 vlogs of chaos, comedy, family moments, and everything in between. Search, filter, and binge!</p>
+            <div class="vlogs-search">
+                <input type="text" class="vlogs-search__input" id="vlogSearch" placeholder="Search for chaos, mukbang, Toni moments..." aria-label="Search vlogs">
+                <button class="vlogs-search__btn" aria-label="Search" id="searchBtn">&#128269;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Alex Picks ── -->
+    <section class="alex-picks">
+        <div class="container">
+            <div class="alex-picks__label">&#11088; Alex Picks <span>ate's fave!</span></div>
+            <div class="alex-picks__card">
+                <div class="alex-picks__thumbnail">
+                    &#127916;
+                    <div class="alex-picks__play">&#9654;</div>
+                    <span class="alex-picks__duration">28:14</span>
+                </div>
+                <div class="alex-picks__info">
+                    <span class="alex-picks__tag">Family</span>
+                    <h2 class="alex-picks__title">GONZAGA FAMILY REUNION 2025 — Full Chaos Mode! (Toni Cried!!)</h2>
+                    <p class="alex-picks__desc">The whole Gonzaga fam in one house for three days. Pranks, karaoke battles, Daddy's cooking challenge, and Toni's emotional surprise for Mommy. This vlog has EVERYTHING.</p>
+                    <div class="alex-picks__meta">
+                        <span>&#128065; 8.2M views</span>
+                        <span>&#128197; Dec 28, 2025</span>
+                        <span>&#128150; 412K likes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Filter Bar ── -->
+    <div class="filter-bar">
+        <div class="container">
+            <!-- Category filters -->
+            <div class="filter-bar__section">
+                <div class="filter-bar__row">
+                    <span class="filter-bar__label">Category</span>
+                    <div class="filter-pills" id="categoryFilters">
+                        <button class="filter-pill filter-pill--active" data-category="all">All</button>
+                        <button class="filter-pill" data-category="comedy">Comedy</button>
+                        <button class="filter-pill" data-category="challenges">Challenges</button>
+                        <button class="filter-pill" data-category="family">Family</button>
+                        <button class="filter-pill" data-category="travel">Travel</button>
+                        <button class="filter-pill" data-category="mukbang">Mukbang</button>
+                        <button class="filter-pill" data-category="bts">Behind-the-Scenes</button>
+                        <button class="filter-pill" data-category="pranks">Pranks</button>
+                        <button class="filter-pill" data-category="qa">Q&amp;A</button>
+                        <button class="filter-pill" data-category="collabs">Collabs</button>
+                        <button class="filter-pill" data-category="grwm">GRWM</button>
+                        <button class="filter-pill" data-category="storytime">Storytime</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mood filters -->
+            <div class="filter-bar__section">
+                <div class="filter-bar__row">
+                    <span class="filter-bar__label">Mood</span>
+                    <div class="filter-pills" id="moodFilters">
+                        <button class="filter-pill mood-pill--funny" data-mood="funny">&#128514; Funny</button>
+                        <button class="filter-pill mood-pill--emotional" data-mood="emotional">&#128557; Emotional</button>
+                        <button class="filter-pill mood-pill--chaotic" data-mood="chaotic">&#129395; Chaotic</button>
+                        <button class="filter-pill mood-pill--wholesome" data-mood="wholesome">&#128150; Wholesome</button>
+                        <button class="filter-pill mood-pill--savage" data-mood="savage">&#128293; Savage</button>
+                        <button class="filter-pill mood-pill--kilig" data-mood="kilig">&#129392; Kilig</button>
+                        <button class="filter-pill mood-pill--inspirational" data-mood="inspirational">&#10024; Inspirational</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sort + Clear -->
+            <div class="filter-bar__section">
+                <div class="filter-bar__row">
+                    <span class="filter-bar__label">Sort</span>
+                    <div class="sort-controls" id="sortControls">
+                        <button class="sort-btn sort-btn--active" data-sort="newest">Newest</button>
+                        <button class="sort-btn" data-sort="oldest">Oldest</button>
+                        <button class="sort-btn" data-sort="popular">Most Popular</button>
+                    </div>
+                    <button class="clear-filters" id="clearFilters">Clear All Filters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Vlogs Grid ── -->
+    <section class="vlogs-section">
+        <div class="container">
+            <div class="results-bar">
+                <span class="results-bar__count" id="resultsCount">Showing <strong>9</strong> vlogs</span>
+            </div>
+
+            <div class="vlogs-grid" id="vlogsGrid">
+                <!-- Cards are rendered by JS -->
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults">
+                <div class="no-results__icon">&#128533;</div>
+                <h3 class="no-results__title">No vlogs found, sis!</h3>
+                <p class="no-results__text">Try a different search term or clear your filters to see all the content.</p>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more" id="loadMore">
+                <button class="btn btn--secondary" id="loadMoreBtn">Load More Vlogs &#128293;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
+                    <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
+                    <div class="footer__socials">
+                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
+                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
+                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="Facebook">f</a>
+                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Explore</h4>
+                    <ul class="footer__list">
+                        <li><a href="/vlogs.html">Vlog Archive</a></li>
+                        <li><a href="/merch.html">Merch Store</a></li>
+                        <li><a href="/community.html">Community</a></li>
+                        <li><a href="/react.html">Alex Reacts</a></li>
+                        <li><a href="/membership.html">Membership</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Account</h4>
+                    <ul class="footer__list">
+                        <li><a href="/signup.html">Create Account</a></li>
+                        <li><a href="/login.html">Log In</a></li>
+                        <li><a href="/profile.html">My Profile</a></li>
+                        <li><a href="/profile.html#orders">My Orders</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Management</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Business Inquiries</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Brand Partnerships</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>&copy; 2026 Alex Gonzaga Official. All rights reserved.</span>
+                <span>A <a href="#" style="color:var(--pink-light);">Global Media</a> Project</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script>
+        /* ── Vlogs Page — Client-Side Filtering ── */
+        (function () {
+            'use strict';
+
+            // Demo vlog data
+            const vlogs = [
+                {
+                    id: 1,
+                    title: 'I Tried Living Like Toni For 24 Hours... DISASTER!',
+                    category: 'comedy',
+                    mood: 'chaotic',
+                    views: 5200000,
+                    viewsLabel: '5.2M views',
+                    date: '2026-03-20',
+                    dateLabel: 'Mar 20, 2026',
+                    duration: '18:32',
+                    emoji: '&#127916;'
+                },
+                {
+                    id: 2,
+                    title: 'Extreme Spicy Noodle Challenge With Mommy Pinty (Grabe Ang Init!)',
+                    category: 'challenges',
+                    mood: 'funny',
+                    views: 3800000,
+                    viewsLabel: '3.8M views',
+                    date: '2026-03-15',
+                    dateLabel: 'Mar 15, 2026',
+                    duration: '22:15',
+                    emoji: '&#127836;'
+                },
+                {
+                    id: 3,
+                    title: 'Wedding Anniversary Surprise for Mikee — He CRIED!',
+                    category: 'family',
+                    mood: 'emotional',
+                    views: 7100000,
+                    viewsLabel: '7.1M views',
+                    date: '2026-03-10',
+                    dateLabel: 'Mar 10, 2026',
+                    duration: '25:48',
+                    emoji: '&#128150;'
+                },
+                {
+                    id: 4,
+                    title: 'Japan Vlog Day 1: Lost in Tokyo at 2AM (Help!)',
+                    category: 'travel',
+                    mood: 'chaotic',
+                    views: 4500000,
+                    viewsLabel: '4.5M views',
+                    date: '2026-03-05',
+                    dateLabel: 'Mar 5, 2026',
+                    duration: '31:20',
+                    emoji: '&#127471;&#127477;'
+                },
+                {
+                    id: 5,
+                    title: 'Eating EVERYTHING at Jollibee Menu — Complete Mukbang!',
+                    category: 'mukbang',
+                    mood: 'funny',
+                    views: 6300000,
+                    viewsLabel: '6.3M views',
+                    date: '2026-02-28',
+                    dateLabel: 'Feb 28, 2026',
+                    duration: '35:12',
+                    emoji: '&#127831;'
+                },
+                {
+                    id: 6,
+                    title: 'What Really Happens Behind My Show (BTS Secrets!)',
+                    category: 'bts',
+                    mood: 'wholesome',
+                    views: 2900000,
+                    viewsLabel: '2.9M views',
+                    date: '2026-02-22',
+                    dateLabel: 'Feb 22, 2026',
+                    duration: '19:44',
+                    emoji: '&#127909;'
+                },
+                {
+                    id: 7,
+                    title: 'Pranking Daddy Bonoy With a Fake Tattoo (GALIT!)',
+                    category: 'pranks',
+                    mood: 'savage',
+                    views: 8100000,
+                    viewsLabel: '8.1M views',
+                    date: '2026-02-14',
+                    dateLabel: 'Feb 14, 2026',
+                    duration: '16:08',
+                    emoji: '&#128520;'
+                },
+                {
+                    id: 8,
+                    title: 'Answering Your Most CHAOTIC Questions — Q&A Special',
+                    category: 'qa',
+                    mood: 'funny',
+                    views: 2400000,
+                    viewsLabel: '2.4M views',
+                    date: '2026-02-08',
+                    dateLabel: 'Feb 8, 2026',
+                    duration: '27:30',
+                    emoji: '&#129300;'
+                },
+                {
+                    id: 9,
+                    title: 'Collab With Vice Ganda — We Almost Got Kicked Out!',
+                    category: 'collabs',
+                    mood: 'chaotic',
+                    views: 9400000,
+                    viewsLabel: '9.4M views',
+                    date: '2026-01-30',
+                    dateLabel: 'Jan 30, 2026',
+                    duration: '24:55',
+                    emoji: '&#127775;'
+                },
+                {
+                    id: 10,
+                    title: 'GRWM: My Everyday Glow-Up Routine (Affordable Products!)',
+                    category: 'grwm',
+                    mood: 'wholesome',
+                    views: 3200000,
+                    viewsLabel: '3.2M views',
+                    date: '2026-01-22',
+                    dateLabel: 'Jan 22, 2026',
+                    duration: '20:16',
+                    emoji: '&#128132;'
+                },
+                {
+                    id: 11,
+                    title: 'The REAL Story Behind Our Biggest Family Fight (Storytime)',
+                    category: 'storytime',
+                    mood: 'emotional',
+                    views: 5800000,
+                    viewsLabel: '5.8M views',
+                    date: '2026-01-15',
+                    dateLabel: 'Jan 15, 2026',
+                    duration: '29:03',
+                    emoji: '&#128172;'
+                },
+                {
+                    id: 12,
+                    title: 'How I Went From Crying to Comedy Queen — My Story',
+                    category: 'storytime',
+                    mood: 'inspirational',
+                    views: 4100000,
+                    viewsLabel: '4.1M views',
+                    date: '2026-01-08',
+                    dateLabel: 'Jan 8, 2026',
+                    duration: '33:47',
+                    emoji: '&#10024;'
+                },
+                {
+                    id: 13,
+                    title: 'Toni vs Alex: Sister Cook-Off Challenge (Sino Mas Masarap?)',
+                    category: 'challenges',
+                    mood: 'savage',
+                    views: 6700000,
+                    viewsLabel: '6.7M views',
+                    date: '2025-12-20',
+                    dateLabel: 'Dec 20, 2025',
+                    duration: '26:11',
+                    emoji: '&#127859;'
+                },
+                {
+                    id: 14,
+                    title: 'My First Time Riding a Roller Coaster... NEVER AGAIN!',
+                    category: 'travel',
+                    mood: 'funny',
+                    views: 4900000,
+                    viewsLabel: '4.9M views',
+                    date: '2025-12-12',
+                    dateLabel: 'Dec 12, 2025',
+                    duration: '17:38',
+                    emoji: '&#127906;'
+                },
+                {
+                    id: 15,
+                    title: 'Midnight Street Food Tour in Cebu — MASARAP LAHAT!',
+                    category: 'mukbang',
+                    mood: 'wholesome',
+                    views: 3600000,
+                    viewsLabel: '3.6M views',
+                    date: '2025-12-05',
+                    dateLabel: 'Dec 5, 2025',
+                    duration: '28:22',
+                    emoji: '&#127846;'
+                },
+                {
+                    id: 16,
+                    title: 'Kilig Overload: Reading Love Letters From Mikee On Cam',
+                    category: 'family',
+                    mood: 'kilig',
+                    views: 5500000,
+                    viewsLabel: '5.5M views',
+                    date: '2025-11-28',
+                    dateLabel: 'Nov 28, 2025',
+                    duration: '14:50',
+                    emoji: '&#128140;'
+                },
+                {
+                    id: 17,
+                    title: 'Hidden Camera Prank on My Entire Team (SORRY NA!)',
+                    category: 'pranks',
+                    mood: 'savage',
+                    views: 7300000,
+                    viewsLabel: '7.3M views',
+                    date: '2025-11-20',
+                    dateLabel: 'Nov 20, 2025',
+                    duration: '21:05',
+                    emoji: '&#128248;'
+                },
+                {
+                    id: 18,
+                    title: 'GRWM for My Concert Look + Backstage Reveal!',
+                    category: 'grwm',
+                    mood: 'kilig',
+                    views: 2800000,
+                    viewsLabel: '2.8M views',
+                    date: '2025-11-12',
+                    dateLabel: 'Nov 12, 2025',
+                    duration: '23:19',
+                    emoji: '&#127924;'
+                }
+            ];
+
+            // State
+            let activeCategory = 'all';
+            let activeMoods = [];
+            let activeSort = 'newest';
+            let searchQuery = '';
+            let visibleCount = 9;
+
+            // Category color map
+            const categoryColors = {
+                comedy: '',
+                challenges: '--coral',
+                family: '--purple',
+                travel: '--teal',
+                mukbang: '--gold',
+                bts: '--orange',
+                pranks: '--coral',
+                qa: '--purple',
+                collabs: '--teal',
+                grwm: '--orange',
+                storytime: '--gold'
+            };
+
+            const categoryLabels = {
+                comedy: 'Comedy',
+                challenges: 'Challenges',
+                family: 'Family',
+                travel: 'Travel',
+                mukbang: 'Mukbang',
+                bts: 'BTS',
+                pranks: 'Pranks',
+                qa: 'Q&A',
+                collabs: 'Collabs',
+                grwm: 'GRWM',
+                storytime: 'Storytime'
+            };
+
+            const moodLabels = {
+                funny: 'Funny',
+                emotional: 'Emotional',
+                chaotic: 'Chaotic',
+                wholesome: 'Wholesome',
+                savage: 'Savage',
+                kilig: 'Kilig',
+                inspirational: 'Inspirational'
+            };
+
+            // DOM refs
+            const grid = document.getElementById('vlogsGrid');
+            const noResults = document.getElementById('noResults');
+            const loadMoreWrap = document.getElementById('loadMore');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const resultsCount = document.getElementById('resultsCount');
+            const searchInput = document.getElementById('vlogSearch');
+            const searchBtn = document.getElementById('searchBtn');
+            const clearBtn = document.getElementById('clearFilters');
+
+            // Build a vlog card HTML
+            function buildCard(vlog) {
+                var colorMod = categoryColors[vlog.category] || '';
+                var catClass = colorMod ? ' vlog-card__category' + colorMod : '';
+                return '<div class="vlog-card" data-id="' + vlog.id + '">' +
+                    '<div class="vlog-card__thumbnail">' +
+                        vlog.emoji +
+                        '<div class="vlog-card__play">&#9654;</div>' +
+                        '<span class="vlog-card__duration">' + vlog.duration + '</span>' +
+                        '<span class="vlog-card__category' + catClass + '">' + categoryLabels[vlog.category] + '</span>' +
+                    '</div>' +
+                    '<div class="vlog-card__body">' +
+                        '<span class="vlog-card__mood vlog-card__mood--' + vlog.mood + '">' + moodLabels[vlog.mood] + '</span>' +
+                        '<h3 class="vlog-card__title">' + vlog.title + '</h3>' +
+                        '<div class="vlog-card__meta">' +
+                            '<span>&#128065; ' + vlog.viewsLabel + '</span>' +
+                            '<span>&#128197; ' + vlog.dateLabel + '</span>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+            }
+
+            // Filter + sort + render
+            function render() {
+                var filtered = vlogs.filter(function (v) {
+                    // Category
+                    if (activeCategory !== 'all' && v.category !== activeCategory) return false;
+                    // Moods — show vlogs that match ANY active mood
+                    if (activeMoods.length > 0 && activeMoods.indexOf(v.mood) === -1) return false;
+                    // Search
+                    if (searchQuery) {
+                        var q = searchQuery.toLowerCase();
+                        var haystack = (v.title + ' ' + v.category + ' ' + v.mood).toLowerCase();
+                        if (haystack.indexOf(q) === -1) return false;
+                    }
+                    return true;
+                });
+
+                // Sort
+                filtered.sort(function (a, b) {
+                    if (activeSort === 'newest') return new Date(b.date) - new Date(a.date);
+                    if (activeSort === 'oldest') return new Date(a.date) - new Date(b.date);
+                    if (activeSort === 'popular') return b.views - a.views;
+                    return 0;
+                });
+
+                // Update count
+                var total = filtered.length;
+                var showing = Math.min(visibleCount, total);
+                resultsCount.innerHTML = 'Showing <strong>' + showing + '</strong> of <strong>' + total + '</strong> vlogs';
+
+                // No results
+                if (total === 0) {
+                    grid.innerHTML = '';
+                    noResults.style.display = 'block';
+                    loadMoreWrap.style.display = 'none';
+                    return;
+                }
+                noResults.style.display = 'none';
+
+                // Render visible cards
+                var visible = filtered.slice(0, visibleCount);
+                grid.innerHTML = visible.map(buildCard).join('');
+
+                // Load more visibility
+                loadMoreWrap.style.display = visibleCount < total ? 'block' : 'none';
+
+                // Clear filters button
+                var hasFilters = activeCategory !== 'all' || activeMoods.length > 0 || searchQuery !== '';
+                clearBtn.classList.toggle('clear-filters--visible', hasFilters);
+            }
+
+            // Category pills
+            document.getElementById('categoryFilters').addEventListener('click', function (e) {
+                var pill = e.target.closest('.filter-pill');
+                if (!pill) return;
+                activeCategory = pill.dataset.category;
+                visibleCount = 9;
+                // Update active state
+                this.querySelectorAll('.filter-pill').forEach(function (p) {
+                    p.classList.toggle('filter-pill--active', p.dataset.category === activeCategory);
+                });
+                render();
+            });
+
+            // Mood pills (toggle, multi-select)
+            document.getElementById('moodFilters').addEventListener('click', function (e) {
+                var pill = e.target.closest('.filter-pill');
+                if (!pill) return;
+                var mood = pill.dataset.mood;
+                var idx = activeMoods.indexOf(mood);
+                if (idx === -1) {
+                    activeMoods.push(mood);
+                    pill.classList.add('filter-pill--active');
+                } else {
+                    activeMoods.splice(idx, 1);
+                    pill.classList.remove('filter-pill--active');
+                }
+                visibleCount = 9;
+                render();
+            });
+
+            // Sort buttons
+            document.getElementById('sortControls').addEventListener('click', function (e) {
+                var btn = e.target.closest('.sort-btn');
+                if (!btn) return;
+                activeSort = btn.dataset.sort;
+                this.querySelectorAll('.sort-btn').forEach(function (b) {
+                    b.classList.toggle('sort-btn--active', b.dataset.sort === activeSort);
+                });
+                render();
+            });
+
+            // Search
+            function doSearch() {
+                searchQuery = searchInput.value.trim();
+                visibleCount = 9;
+                render();
+            }
+
+            searchInput.addEventListener('input', function () {
+                // Debounce
+                clearTimeout(searchInput._timer);
+                searchInput._timer = setTimeout(doSearch, 300);
+            });
+
+            searchBtn.addEventListener('click', doSearch);
+
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    doSearch();
+                }
+            });
+
+            // Load more
+            loadMoreBtn.addEventListener('click', function () {
+                visibleCount += 9;
+                render();
+            });
+
+            // Clear all filters
+            clearBtn.addEventListener('click', function () {
+                activeCategory = 'all';
+                activeMoods = [];
+                searchQuery = '';
+                activeSort = 'newest';
+                visibleCount = 9;
+                searchInput.value = '';
+
+                // Reset pill states
+                document.querySelectorAll('#categoryFilters .filter-pill').forEach(function (p) {
+                    p.classList.toggle('filter-pill--active', p.dataset.category === 'all');
+                });
+                document.querySelectorAll('#moodFilters .filter-pill').forEach(function (p) {
+                    p.classList.remove('filter-pill--active');
+                });
+                document.querySelectorAll('#sortControls .sort-btn').forEach(function (b) {
+                    b.classList.toggle('sort-btn--active', b.dataset.sort === 'newest');
+                });
+
+                render();
+            });
+
+            // Initial render
+            render();
+        })();
+    </script>
+</body>
+</html>

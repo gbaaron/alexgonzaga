@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Gonzaga Official — Your Favorite Ate's Digital Home</title>
+    <meta name="description" content="The official fan hub of Alex Gonzaga. Exclusive content, merch drops, fan community, and everything Alex — all in one place.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* ── Index-specific styles ── */
+        .hero--home {
+            background: var(--off-white);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .hero--home .hero__content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-xl);
+        }
+
+        .hero__text h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.05;
+            color: var(--gray-800);
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero__text h1 .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero__text h1 .accent {
+            font-family: var(--font-accent);
+            font-size: 2.8rem;
+            display: block;
+            -webkit-text-fill-color: var(--purple);
+            margin-top: -4px;
+        }
+
+        .hero__subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+            margin-bottom: var(--space-2xl);
+            max-width: 500px;
+        }
+
+        .hero__buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .hero__image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero__photo-frame {
+            width: 420px;
+            height: 520px;
+            border-radius: var(--radius-xl);
+            background: var(--gradient-primary);
+            padding: 4px;
+            position: relative;
+            box-shadow: var(--shadow-glow);
+            transform: rotate(2deg);
+        }
+
+        .hero__photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: calc(var(--radius-xl) - 3px);
+        }
+
+        .hero__photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: calc(var(--radius-xl) - 3px);
+            background: linear-gradient(135deg, #FFE4F0 0%, #F0E4FF 50%, #E4F0FF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: var(--font-display);
+            color: var(--pink);
+        }
+
+        .hero__photo-placeholder span:first-child {
+            font-size: 5rem;
+        }
+
+        .hero__photo-placeholder span:last-child {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: var(--space-sm);
+        }
+
+        .hero__float-badge {
+            position: absolute;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 12px 18px;
+            box-shadow: var(--shadow-md);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero__float-badge--1 {
+            top: 30px;
+            right: -20px;
+            color: var(--pink);
+            animation-delay: 0s;
+        }
+
+        .hero__float-badge--2 {
+            bottom: 60px;
+            left: -30px;
+            color: var(--purple);
+            animation-delay: -1.5s;
+        }
+
+        .hero__float-badge--3 {
+            top: 50%;
+            right: -40px;
+            color: var(--teal);
+            animation-delay: -3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Features strip */
+        .features-strip {
+            background: var(--white);
+            padding: var(--space-3xl) 0;
+        }
+
+        .features-strip__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-xl);
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+        }
+
+        .feature-item:hover {
+            background: var(--gray-50);
+            transform: translateY(-4px);
+        }
+
+        .feature-item__icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .feature-item__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--gray-700);
+            margin-bottom: var(--space-xs);
+        }
+
+        .feature-item__text {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        /* Featured vlogs */
+        .featured-vlogs {
+            background: var(--off-white);
+        }
+
+        .vlog-featured-card {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .vlog-featured-card__thumbnail {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--gray-300);
+            position: relative;
+        }
+
+        .vlog-featured-card__play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 0, 110, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: all var(--transition-base);
+        }
+
+        .vlog-featured-card:hover .vlog-featured-card__play {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.4);
+        }
+
+        .vlog-featured-card__duration {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* Merch preview */
+        .merch-preview {
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .merch-preview::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: var(--yellow);
+            border-radius: 50%;
+            opacity: 0.06;
+        }
+
+        .merch-card {
+            position: relative;
+        }
+
+        .merch-card__badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 1;
+        }
+
+        .merch-card__image {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #FFF0F5 0%, #F5F0FF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .merch-card__price {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--pink);
+            margin-top: var(--space-sm);
+        }
+
+        /* Drop countdown */
+        .drop-banner {
+            background: var(--gradient-dark);
+            padding: var(--space-3xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drop-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5l5 10 10 2-7 7 2 10-10-5-10 5 2-10-7-7 10-2z' fill='rgba(255,255,255,0.02)'/%3E%3C/svg%3E");
+        }
+
+        .drop-banner__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .drop-banner__title {
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+        }
+
+        .drop-banner__subtitle {
+            color: var(--gray-400);
+            margin-bottom: var(--space-2xl);
+        }
+
+        /* Community preview */
+        .community-preview {
+            background: var(--off-white);
+        }
+
+        .community-post {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-card);
+            transition: all var(--transition-base);
+        }
+
+        .community-post:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .community-post__header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .community-post__avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .community-post__username {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+        }
+
+        .community-post__time {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .community-post__content {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .community-post__image {
+            margin-top: var(--space-md);
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, #FFE4F0 0%, #F0E4FF 100%);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .community-post__actions {
+            display: flex;
+            gap: var(--space-lg);
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .community-post__action {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+            background: none;
+        }
+
+        .community-post__action:hover {
+            color: var(--pink);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-hero);
+            padding: var(--space-4xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-section p {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.1rem;
+            margin-bottom: var(--space-2xl);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn--gold {
+            font-size: 1.1rem;
+            padding: 16px 40px;
+        }
+
+        /* Stats strip */
+        .stats-strip {
+            background: var(--white);
+            padding: var(--space-2xl) 0;
+            border-top: 1px solid var(--gray-100);
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .stats-strip__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-xl);
+            text-align: center;
+        }
+
+        .stat__number {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 2.2rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat__label {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero--home .hero__content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: var(--space-2xl);
+            }
+            .hero__text h1 { font-size: 2.4rem; }
+            .hero__subtitle { margin: 0 auto var(--space-2xl); }
+            .hero__buttons { justify-content: center; }
+            .hero__image { order: -1; }
+            .hero__photo-frame { width: 280px; height: 350px; }
+            .features-strip__grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-strip__grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); }
+            .drop-banner__title { font-size: 1.5rem; }
+            .cta-section h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ── Navigation ── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">
+                ALEX GONZAGA
+                <span>official fan hub</span>
+            </a>
+            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav__links">
+                <li><a href="/" class="nav__link nav__link--active">Home</a></li>
+                <li><a href="/vlogs.html" class="nav__link">Vlogs</a></li>
+                <li><a href="/community.html" class="nav__link">Community</a></li>
+                <li><a href="/merch.html" class="nav__link">Merch</a></li>
+                <li><a href="/react.html" class="nav__link">Alex Reacts</a></li>
+                <li><a href="/membership.html" class="nav__link">Membership</a></li>
+                <li data-guest><a href="/login.html" class="nav__link">Log In</a></li>
+                <li data-guest><a href="/signup.html" class="nav__link nav__cta">Join the Fam!</a></li>
+                <li data-auth style="display:none"><a href="/profile.html" class="nav__link">My Profile</a></li>
+                <li data-auth style="display:none"><a href="#" class="nav__link" onclick="Auth.clearSession();window.location.reload();">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── Hero Section ── -->
+    <section class="hero hero--home">
+        <div class="hero__bg">
+            <div class="hero__blob hero__blob--1"></div>
+            <div class="hero__blob hero__blob--2"></div>
+            <div class="hero__blob hero__blob--3"></div>
+        </div>
+        <div class="hero__content">
+            <div class="hero__text">
+                <h1>
+                    Welcome to the
+                    <span class="highlight">Alex Gonzaga</span>
+                    <span class="accent">Universe!</span>
+                </h1>
+                <p class="hero__subtitle">
+                    Your ate's digital home. Exclusive content, merch drops, fan community, and all the chaotic energy you love — all in one place. Tara na!
+                </p>
+                <div class="hero__buttons">
+                    <a href="/membership.html" class="btn btn--primary btn--lg">Become a Member</a>
+                    <a href="/vlogs.html" class="btn btn--secondary btn--lg">Watch Vlogs</a>
+                </div>
+            </div>
+            <div class="hero__image">
+                <div class="hero__photo-frame">
+                    <div class="hero__photo-placeholder">
+                        <span>&#9733;</span>
+                        <span>ALEX G PHOTO</span>
+                    </div>
+                </div>
+                <div class="hero__float-badge hero__float-badge--1">
+                    &#10024; 17M+ Subscribers
+                </div>
+                <div class="hero__float-badge hero__float-badge--2">
+                    &#127881; 500+ Vlogs
+                </div>
+                <div class="hero__float-badge hero__float-badge--3">
+                    &#128150; #AlexNation
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Ticker ── -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker__inner">
+            <span class="ticker__item">ATE GIRL ERA</span>
+            <span class="ticker__item">CHAOTIC QUEEN</span>
+            <span class="ticker__item">GONZAGA STRONG</span>
+            <span class="ticker__item">ALEX NATION</span>
+            <span class="ticker__item">WALANG KUPAS</span>
+            <span class="ticker__item">LODI ENERGY</span>
+            <span class="ticker__item">ATE GIRL ERA</span>
+            <span class="ticker__item">CHAOTIC QUEEN</span>
+            <span class="ticker__item">GONZAGA STRONG</span>
+            <span class="ticker__item">ALEX NATION</span>
+            <span class="ticker__item">WALANG KUPAS</span>
+            <span class="ticker__item">LODI ENERGY</span>
+        </div>
+    </div>
+
+    <!-- ── Features Strip ── -->
+    <section class="features-strip">
+        <div class="container">
+            <div class="features-strip__grid">
+                <div class="feature-item animate-on-scroll">
+                    <div class="feature-item__icon">&#127909;</div>
+                    <div class="feature-item__title">Vlog Archive</div>
+                    <div class="feature-item__text">All of Alex's content organized by mood, category, and more</div>
+                </div>
+                <div class="feature-item animate-on-scroll">
+                    <div class="feature-item__icon">&#128142;</div>
+                    <div class="feature-item__title">Exclusive Access</div>
+                    <div class="feature-item__text">BTS footage, uncut moments, and personal messages from Alex</div>
+                </div>
+                <div class="feature-item animate-on-scroll">
+                    <div class="feature-item__icon">&#128722;</div>
+                    <div class="feature-item__title">Merch Drops</div>
+                    <div class="feature-item__text">Limited edition merch tied to Alex's viral moments and catchphrases</div>
+                </div>
+                <div class="feature-item animate-on-scroll">
+                    <div class="feature-item__icon">&#127752;</div>
+                    <div class="feature-item__title">Fan Community</div>
+                    <div class="feature-item__text">Connect with fellow fans, share fan art, and get featured</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Stats Strip ── -->
+    <div class="stats-strip">
+        <div class="container">
+            <div class="stats-strip__grid">
+                <div class="stat animate-on-scroll">
+                    <div class="stat__number">17M+</div>
+                    <div class="stat__label">YouTube Subscribers</div>
+                </div>
+                <div class="stat animate-on-scroll">
+                    <div class="stat__number">15M+</div>
+                    <div class="stat__label">Instagram Followers</div>
+                </div>
+                <div class="stat animate-on-scroll">
+                    <div class="stat__number">500+</div>
+                    <div class="stat__label">Vlogs & Videos</div>
+                </div>
+                <div class="stat animate-on-scroll">
+                    <div class="stat__number">2B+</div>
+                    <div class="stat__label">Total Views</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Featured Vlogs ── -->
+    <section class="section featured-vlogs">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-header__eyebrow">latest drops</span>
+                <h2 class="section-header__title">Featured Vlogs</h2>
+                <p class="section-header__subtitle">The freshest content from your favorite ate — curated and categorized just for you</p>
+            </div>
+            <div class="grid grid--3" id="featured-vlogs">
+                <!-- Demo cards -->
+                <div class="card vlog-featured-card animate-on-scroll">
+                    <div class="vlog-featured-card__thumbnail">
+                        &#127916;
+                        <div class="vlog-featured-card__play">&#9654;</div>
+                        <span class="vlog-featured-card__duration">15:42</span>
+                    </div>
+                    <div class="card__body">
+                        <span class="card__tag">Comedy</span>
+                        <h3 class="card__title">My Most Embarrassing Moment EVER (Grabe!)</h3>
+                        <div class="card__meta">
+                            <span>&#128065; 2.1M views</span>
+                            <span>3 days ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card vlog-featured-card animate-on-scroll">
+                    <div class="vlog-featured-card__thumbnail">
+                        &#127916;
+                        <div class="vlog-featured-card__play">&#9654;</div>
+                        <span class="vlog-featured-card__duration">22:08</span>
+                    </div>
+                    <div class="card__body">
+                        <span class="card__tag card__tag--purple">Family</span>
+                        <h3 class="card__title">Surprising Toni With Her Birthday Gift! (Umiyak!)</h3>
+                        <div class="card__meta">
+                            <span>&#128065; 4.8M views</span>
+                            <span>1 week ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card vlog-featured-card animate-on-scroll">
+                    <div class="vlog-featured-card__thumbnail">
+                        &#127916;
+                        <div class="vlog-featured-card__play">&#9654;</div>
+                        <span class="vlog-featured-card__duration">18:55</span>
+                    </div>
+                    <div class="card__body">
+                        <span class="card__tag card__tag--gold">Mukbang</span>
+                        <h3 class="card__title">Ultimate Filipino Street Food Challenge (Sobrang Sarap!)</h3>
+                        <div class="card__meta">
+                            <span>&#128065; 3.5M views</span>
+                            <span>2 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="/vlogs.html" class="btn btn--secondary">Browse All Vlogs &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Drop Countdown Banner ── -->
+    <section class="drop-banner">
+        <div class="drop-banner__content">
+            <h2 class="drop-banner__title">&#128293; Next Limited Merch Drop</h2>
+            <p class="drop-banner__subtitle">"Charot Lang" Collection — Limited to 500 pieces</p>
+            <div class="countdown" id="drop-countdown"></div>
+            <div class="mt-2">
+                <a href="/merch.html" class="btn btn--gold">Shop Merch &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Merch Preview ── -->
+    <section class="section merch-preview">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-header__eyebrow">merch store</span>
+                <h2 class="section-header__title">Rep Your Ate</h2>
+                <p class="section-header__subtitle">Limited drops inspired by Alex's most iconic moments and catchphrases</p>
+            </div>
+            <div class="grid grid--4" id="merch-preview">
+                <div class="card merch-card animate-on-scroll">
+                    <div class="merch-card__badge">
+                        <span class="badge badge--pink">Limited</span>
+                    </div>
+                    <div class="merch-card__image">&#128085;</div>
+                    <div class="card__body">
+                        <h3 class="card__title">"Charot Lang" Hoodie</h3>
+                        <div class="merch-card__price">&#8369;1,299</div>
+                    </div>
+                </div>
+                <div class="card merch-card animate-on-scroll">
+                    <div class="merch-card__image">&#127925;</div>
+                    <div class="card__body">
+                        <h3 class="card__title">"Ate Girl" Tee</h3>
+                        <div class="merch-card__price">&#8369;599</div>
+                    </div>
+                </div>
+                <div class="card merch-card animate-on-scroll">
+                    <div class="merch-card__badge">
+                        <span class="badge badge--gold">New</span>
+                    </div>
+                    <div class="merch-card__image">&#128092;</div>
+                    <div class="card__body">
+                        <h3 class="card__title">Alex Nation Cap</h3>
+                        <div class="merch-card__price">&#8369;449</div>
+                    </div>
+                </div>
+                <div class="card merch-card animate-on-scroll">
+                    <div class="merch-card__image">&#9749;</div>
+                    <div class="card__body">
+                        <h3 class="card__title">"Walang Kupas" Mug</h3>
+                        <div class="merch-card__price">&#8369;349</div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="/merch.html" class="btn btn--primary">View All Merch &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Community Preview ── -->
+    <section class="section community-preview">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-header__eyebrow">the fam</span>
+                <h2 class="section-header__title">Alex Nation Community</h2>
+                <p class="section-header__subtitle">Join thousands of fans sharing their love for Alex</p>
+            </div>
+            <div class="grid grid--3" id="community-preview">
+                <div class="community-post animate-on-scroll">
+                    <div class="community-post__header">
+                        <div class="community-post__avatar">M</div>
+                        <div>
+                            <div class="community-post__username">@manilaFanGirl</div>
+                            <div class="community-post__time">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="community-post__content">
+                        Just rewatched Alex's wedding vlog for the 100th time and I'm still crying!!! Why is she so funny even on her wedding day?! &#128557;&#128150;
+                    </div>
+                    <div class="community-post__actions">
+                        <button class="community-post__action">&#10084; 234</button>
+                        <button class="community-post__action">&#128172; 18</button>
+                    </div>
+                </div>
+                <div class="community-post animate-on-scroll">
+                    <div class="community-post__header">
+                        <div class="community-post__avatar" style="background:var(--gradient-purple)">K</div>
+                        <div>
+                            <div class="community-post__username">@kuya_art</div>
+                            <div class="community-post__time">5 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="community-post__content">
+                        Made this fan art of Alex! Hope she sees it! &#127912;
+                    </div>
+                    <div class="community-post__image">&#127912; Fan Art</div>
+                    <div class="community-post__actions">
+                        <button class="community-post__action">&#10084; 512</button>
+                        <button class="community-post__action">&#128172; 45</button>
+                    </div>
+                </div>
+                <div class="community-post animate-on-scroll">
+                    <div class="community-post__header">
+                        <div class="community-post__avatar" style="background:var(--gradient-gold)">R</div>
+                        <div>
+                            <div class="community-post__username">@reyesJM</div>
+                            <div class="community-post__time">Yesterday</div>
+                        </div>
+                    </div>
+                    <div class="community-post__content">
+                        Alex's energy is literally what gets me through Monday mornings at work. The "Charot Lang" merch just arrived and my officemates are jealous haha! &#128293;
+                    </div>
+                    <div class="community-post__actions">
+                        <button class="community-post__action">&#10084; 167</button>
+                        <button class="community-post__action">&#128172; 12</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="/community.html" class="btn btn--purple">Join the Community &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CTA Section ── -->
+    <section class="cta-section">
+        <div class="cta-section__content container">
+            <h2>Ready to Join the Alex Nation?</h2>
+            <p>Get exclusive access to BTS content, early vlog drops, personal messages, and merch discounts. Your ate is waiting!</p>
+            <a href="/membership.html" class="btn btn--gold btn--lg">See Membership Plans &rarr;</a>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand">
+                        ALEX GONZAGA
+                        <span class="footer__brand-sub">official fan hub</span>
+                    </div>
+                    <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
+                    <div class="footer__socials">
+                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
+                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
+                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="Facebook">f</a>
+                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Explore</h4>
+                    <ul class="footer__list">
+                        <li><a href="/vlogs.html">Vlog Archive</a></li>
+                        <li><a href="/merch.html">Merch Store</a></li>
+                        <li><a href="/community.html">Community</a></li>
+                        <li><a href="/react.html">Alex Reacts</a></li>
+                        <li><a href="/membership.html">Membership</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Account</h4>
+                    <ul class="footer__list">
+                        <li><a href="/signup.html">Create Account</a></li>
+                        <li><a href="/login.html">Log In</a></li>
+                        <li><a href="/profile.html">My Profile</a></li>
+                        <li><a href="/profile.html#orders">My Orders</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Management</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Business Inquiries</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Brand Partnerships</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>&copy; 2026 Alex Gonzaga Official. All rights reserved.</span>
+                <span>A <a href="#" style="color:var(--pink-light);">Global Media</a> Project</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script>
+        // Set up countdown — demo date set 7 days from now
+        const dropDate = new Date();
+        dropDate.setDate(dropDate.getDate() + 7);
+        initCountdown('drop-countdown', dropDate.toISOString());
+    </script>
+</body>
+</html>

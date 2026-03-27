@@ -1,0 +1,10 @@
+{
+  "name": "alexgonzaga-official",
+  "version": "1.0.0",
+  "description": "Alex Gonzaga Official Fan Hub & Merch Store",
+  "dependencies": {
+    "airtable": "^0.12.2",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  }
+}

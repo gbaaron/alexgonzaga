@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In — Alex Gonzaga Official Fan Hub</title>
+    <meta name="description" content="Log in to your Alex Gonzaga fan account. Access exclusive content, merch, and the Alex Nation community.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* ── Login Page Styles ── */
+        .auth-page {
+            min-height: 100vh;
+            padding-top: 72px;
+        }
+
+        .auth-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 72px);
+        }
+
+        /* Left side — fun branding panel */
+        .auth-brand {
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: var(--space-3xl);
+        }
+
+        .auth-brand::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5l5 10 10 2-7 7 2 10-10-5-10 5 2-10-7-7 10-2z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
+        }
+
+        .auth-brand__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .auth-brand__logo {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-sm);
+        }
+
+        .auth-brand__logo span {
+            font-family: var(--font-accent);
+            font-size: 1.4rem;
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: -4px;
+        }
+
+        .auth-brand__tagline {
+            font-family: var(--font-accent);
+            font-size: 2rem;
+            color: var(--yellow-light);
+            margin: var(--space-xl) 0;
+        }
+
+        .auth-brand__text {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .auth-brand__perks {
+            list-style: none;
+            text-align: left;
+        }
+
+        .auth-brand__perks li {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            padding: var(--space-sm) 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .auth-brand__perks li::before {
+            content: '';
+            flex-shrink: 0;
+        }
+
+        /* Floating emojis */
+        .auth-emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: emojiFloat 6s ease-in-out infinite;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .auth-emoji--1 { top: 10%; left: 10%; animation-delay: 0s; font-size: 2.5rem; }
+        .auth-emoji--2 { top: 25%; right: 8%; animation-delay: -1s; font-size: 1.8rem; }
+        .auth-emoji--3 { bottom: 30%; left: 15%; animation-delay: -2s; font-size: 2.2rem; }
+        .auth-emoji--4 { bottom: 15%; right: 12%; animation-delay: -3s; font-size: 1.6rem; }
+        .auth-emoji--5 { top: 50%; left: 5%; animation-delay: -4s; font-size: 1.9rem; }
+        .auth-emoji--6 { top: 70%; right: 20%; animation-delay: -5s; font-size: 2.1rem; }
+
+        @keyframes emojiFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(5deg); }
+            50% { transform: translateY(-25px) rotate(-3deg); }
+            75% { transform: translateY(-10px) rotate(4deg); }
+        }
+
+        /* Right side — form panel */
+        .auth-form-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-3xl) var(--space-2xl);
+            background: var(--white);
+        }
+
+        .auth-form-wrapper {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .auth-form__header {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .auth-form__greeting {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            color: var(--pink);
+            margin-bottom: var(--space-xs);
+        }
+
+        .auth-form__title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gray-800);
+            margin-bottom: var(--space-sm);
+        }
+
+        .auth-form__subtitle {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+        }
+
+        /* Form elements */
+        .auth-form .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .auth-form .form-label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .auth-form .form-input {
+            padding: 16px 18px;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+        }
+
+        .auth-form__forgot {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: var(--purple);
+            font-weight: 600;
+            margin-top: calc(-1 * var(--space-sm));
+            margin-bottom: var(--space-lg);
+        }
+
+        .auth-form__forgot:hover {
+            color: var(--pink);
+        }
+
+        .auth-form__submit {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.05rem;
+            font-family: var(--font-display);
+            font-weight: 800;
+            color: var(--white);
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: 0 4px 20px rgba(255, 0, 110, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-form__submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 0, 110, 0.4);
+        }
+
+        .auth-form__submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .auth-form__submit .spinner {
+            width: 20px;
+            height: 20px;
+            border-width: 3px;
+            border-color: rgba(255,255,255,0.3);
+            border-top-color: var(--white);
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .auth-form__divider {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin: var(--space-xl) 0;
+            color: var(--gray-300);
+            font-size: 0.85rem;
+        }
+
+        .auth-form__divider::before,
+        .auth-form__divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gray-200);
+        }
+
+        .auth-form__switch {
+            text-align: center;
+            margin-top: var(--space-xl);
+            font-size: 0.95rem;
+            color: var(--gray-500);
+        }
+
+        .auth-form__switch a {
+            color: var(--pink);
+            font-weight: 700;
+            font-family: var(--font-display);
+        }
+
+        .auth-form__switch a:hover {
+            color: var(--purple);
+        }
+
+        .auth-form__error {
+            background: rgba(255, 0, 110, 0.08);
+            border: 1px solid rgba(255, 0, 110, 0.2);
+            color: var(--pink);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            display: none;
+        }
+
+        .auth-form__error.visible {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        /* Password visibility toggle */
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--gray-400);
+            padding: 4px;
+            transition: color var(--transition-fast);
+        }
+
+        .password-toggle:hover {
+            color: var(--pink);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .auth-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-brand {
+                display: none;
+            }
+
+            .auth-form-panel {
+                min-height: calc(100vh - 72px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .auth-form-panel {
+                padding: var(--space-xl) var(--space-md);
+            }
+
+            .auth-form__title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ── Navigation ── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">ALEX GONZAGA<span>official fan hub</span></a>
+            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <ul class="nav__links">
+                <li><a href="/" class="nav__link">Home</a></li>
+                <li><a href="/vlogs.html" class="nav__link">Vlogs</a></li>
+                <li><a href="/community.html" class="nav__link">Community</a></li>
+                <li><a href="/merch.html" class="nav__link">Merch</a></li>
+                <li><a href="/react.html" class="nav__link">Alex Reacts</a></li>
+                <li><a href="/membership.html" class="nav__link">Membership</a></li>
+                <li data-guest><a href="/login.html" class="nav__link">Log In</a></li>
+                <li data-guest><a href="/signup.html" class="nav__link nav__cta">Join the Fam!</a></li>
+                <li data-auth style="display:none"><a href="/profile.html" class="nav__link">My Profile</a></li>
+                <li data-auth style="display:none"><a href="#" class="nav__link" onclick="Auth.clearSession();window.location.reload();">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── Auth Layout ── -->
+    <div class="auth-page">
+        <div class="auth-layout">
+            <!-- Left: Branding Panel -->
+            <div class="auth-brand">
+                <!-- Floating emojis -->
+                <div class="auth-emoji auth-emoji--1">&#128150;</div>
+                <div class="auth-emoji auth-emoji--2">&#10024;</div>
+                <div class="auth-emoji auth-emoji--3">&#127775;</div>
+                <div class="auth-emoji auth-emoji--4">&#128293;</div>
+                <div class="auth-emoji auth-emoji--5">&#127881;</div>
+                <div class="auth-emoji auth-emoji--6">&#128588;</div>
+
+                <div class="auth-brand__content">
+                    <div class="auth-brand__logo">
+                        ALEX GONZAGA
+                        <span>official fan hub</span>
+                    </div>
+                    <div class="auth-brand__tagline">Welcome back, fam!</div>
+                    <p class="auth-brand__text">
+                        Log in to unlock the full Alex Gonzaga experience. Your ate missed you na!
+                    </p>
+                    <ul class="auth-brand__perks">
+                        <li>&#127909; Access exclusive vlog content</li>
+                        <li>&#128142; Members-only merch drops</li>
+                        <li>&#128172; Join the Alex Nation community</li>
+                        <li>&#127775; Submit videos for Alex Reacts</li>
+                        <li>&#127873; Earn rewards and badges</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right: Login Form -->
+            <div class="auth-form-panel">
+                <div class="auth-form-wrapper">
+                    <div class="auth-form__header">
+                        <div class="auth-form__greeting">Heyy, welcome back!</div>
+                        <h1 class="auth-form__title">Log In to Your Account</h1>
+                        <p class="auth-form__subtitle">Enter your credentials and let's get this party started! &#127881;</p>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="auth-form__error" id="login-error">
+                        <span>&#9888;</span>
+                        <span id="login-error-text">Something went wrong</span>
+                    </div>
+
+                    <form class="auth-form" id="login-form" novalidate>
+                        <div class="form-group">
+                            <label class="form-label" for="login-email">&#128231; Email Address</label>
+                            <input
+                                type="email"
+                                id="login-email"
+                                class="form-input"
+                                placeholder="yourfaveate@email.com"
+                                required
+                                autocomplete="email"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="login-password">&#128274; Password</label>
+                            <div class="password-wrapper">
+                                <input
+                                    type="password"
+                                    id="login-password"
+                                    class="form-input"
+                                    placeholder="Enter your password"
+                                    required
+                                    autocomplete="current-password"
+                                >
+                                <button type="button" class="password-toggle" onclick="togglePassword('login-password', this)" aria-label="Toggle password visibility">&#128065;</button>
+                            </div>
+                        </div>
+
+                        <a href="#" class="auth-form__forgot">Forgot password?</a>
+
+                        <button type="submit" class="auth-form__submit" id="login-submit">
+                            Log In &#128640;
+                        </button>
+                    </form>
+
+                    <div class="auth-form__divider">or</div>
+
+                    <div class="auth-form__switch">
+                        Don't have an account? <a href="/signup.html">Join the Fam!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
+                    <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
+                    <div class="footer__socials">
+                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
+                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
+                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="Facebook">f</a>
+                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Explore</h4>
+                    <ul class="footer__list">
+                        <li><a href="/vlogs.html">Vlog Archive</a></li>
+                        <li><a href="/merch.html">Merch Store</a></li>
+                        <li><a href="/community.html">Community</a></li>
+                        <li><a href="/react.html">Alex Reacts</a></li>
+                        <li><a href="/membership.html">Membership</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Account</h4>
+                    <ul class="footer__list">
+                        <li><a href="/signup.html">Create Account</a></li>
+                        <li><a href="/login.html">Log In</a></li>
+                        <li><a href="/profile.html">My Profile</a></li>
+                        <li><a href="/profile.html#orders">My Orders</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Management</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Business Inquiries</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Brand Partnerships</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>&copy; 2026 Alex Gonzaga Official. All rights reserved.</span>
+                <span>A <a href="#" style="color:var(--pink-light);">Global Media</a> Project</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script>
+        /* ── Login Page Logic ── */
+        (function() {
+            // If already logged in, redirect away
+            if (Auth.isLoggedIn()) {
+                const params = new URLSearchParams(window.location.search);
+                window.location.href = params.get('redirect') || '/profile.html';
+                return;
+            }
+
+            const form = document.getElementById('login-form');
+            const emailInput = document.getElementById('login-email');
+            const passwordInput = document.getElementById('login-password');
+            const submitBtn = document.getElementById('login-submit');
+            const errorBox = document.getElementById('login-error');
+            const errorText = document.getElementById('login-error-text');
+
+            function showError(message) {
+                errorText.textContent = message;
+                errorBox.classList.add('visible');
+            }
+
+            function hideError() {
+                errorBox.classList.remove('visible');
+            }
+
+            function setLoading(loading) {
+                submitBtn.disabled = loading;
+                submitBtn.innerHTML = loading
+                    ? '<div class="spinner"></div> Logging in...'
+                    : 'Log In &#128640;';
+            }
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                hideError();
+
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+
+                // Basic validation
+                if (!email) {
+                    showError('Please enter your email address, fam!');
+                    emailInput.focus();
+                    return;
+                }
+
+                if (!email.includes('@') || !email.includes('.')) {
+                    showError('Hmm, that doesn\'t look like a valid email. Try again?');
+                    emailInput.focus();
+                    return;
+                }
+
+                if (!password) {
+                    showError('You forgot your password! (the field, not the actual password haha)');
+                    passwordInput.focus();
+                    return;
+                }
+
+                setLoading(true);
+
+                try {
+                    const data = await api('login', {
+                        method: 'POST',
+                        body: { email, password }
+                    });
+
+                    Auth.setSession(data.token, data.user);
+                    showToast('Welcome back, fam! Let\'s go!', 'success');
+
+                    // Redirect to intended page or profile
+                    const params = new URLSearchParams(window.location.search);
+                    const redirect = params.get('redirect') || '/profile.html';
+
+                    setTimeout(() => {
+                        window.location.href = redirect;
+                    }, 500);
+
+                } catch (err) {
+                    showError(err.message || 'Login failed. Check your credentials and try again!');
+                    setLoading(false);
+                }
+            });
+
+            // Clear error on input
+            emailInput.addEventListener('input', hideError);
+            passwordInput.addEventListener('input', hideError);
+        })();
+
+        /* ── Password Toggle ── */
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerHTML = '&#128064;';
+            } else {
+                input.type = 'password';
+                btn.innerHTML = '&#128065;';
+            }
+        }
+    </script>
+</body>
+</html>

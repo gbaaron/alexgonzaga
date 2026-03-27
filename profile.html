@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile — Alex Gonzaga Official Fan Hub</title>
+    <meta name="description" content="Manage your Alex Gonzaga fan profile. View orders, submissions, membership status, and account settings.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* ── Profile Page Styles ── */
+        .profile-page {
+            padding-top: 72px;
+            min-height: 100vh;
+            background: var(--off-white);
+        }
+
+        /* Profile Header */
+        .profile-header {
+            background: var(--gradient-dark);
+            padding: var(--space-4xl) 0 var(--space-3xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5l5 10 10 2-7 7 2 10-10-5-10 5 2-10-7-7 10-2z' fill='rgba(255,255,255,0.02)'/%3E%3C/svg%3E");
+        }
+
+        .profile-header__inner {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2xl);
+        }
+
+        .profile-header__avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+            font-family: var(--font-display);
+            font-weight: 900;
+            flex-shrink: 0;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .profile-header__info {
+            flex: 1;
+        }
+
+        .profile-header__name {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 2px;
+        }
+
+        .profile-header__username {
+            font-size: 1rem;
+            color: var(--gray-400);
+            margin-bottom: var(--space-sm);
+        }
+
+        .profile-header__meta {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .profile-header__meta-item {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .profile-header__tier-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .tier-badge--bestie {
+            background: var(--pink-glow);
+            color: var(--pink-light);
+        }
+
+        .tier-badge--vip {
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--purple-light);
+        }
+
+        .tier-badge--inner-circle {
+            background: rgba(255, 214, 0, 0.15);
+            color: var(--yellow-light);
+        }
+
+        /* Profile Content */
+        .profile-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--space-2xl) var(--space-xl);
+        }
+
+        /* Tabs */
+        .profile-tabs {
+            display: flex;
+            gap: var(--space-xs);
+            border-bottom: 2px solid var(--gray-200);
+            margin-bottom: var(--space-2xl);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .profile-tab {
+            padding: var(--space-md) var(--space-lg);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--gray-400);
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .profile-tab:hover {
+            color: var(--pink);
+        }
+
+        .profile-tab.active {
+            color: var(--pink);
+            border-bottom-color: var(--pink);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+            animation: tabFadeIn 300ms ease;
+        }
+
+        @keyframes tabFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Membership Card */
+        .membership-card {
+            background: var(--gradient-dark);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+        }
+
+        .membership-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .membership-card::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -20%;
+            width: 300px;
+            height: 300px;
+            background: var(--purple);
+            border-radius: 50%;
+            opacity: 0.08;
+        }
+
+        .membership-card__inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .membership-card__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-xl);
+        }
+
+        .membership-card__brand {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .membership-card__tier {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .membership-card__tier--bestie { color: var(--pink-light); }
+        .membership-card__tier--vip { color: var(--purple-light); }
+        .membership-card__tier--inner-circle { color: var(--yellow-light); }
+
+        .membership-card__name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .membership-card__username {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-lg);
+        }
+
+        .membership-card__details {
+            display: flex;
+            gap: var(--space-2xl);
+        }
+
+        .membership-card__detail-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 2px;
+        }
+
+        .membership-card__detail-value {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .membership-card__upgrade {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .membership-card__upgrade-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Profile Tab Content */
+        .profile-section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-card);
+            margin-bottom: var(--space-xl);
+        }
+
+        .profile-section__title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        /* Bio section */
+        .profile-bio {
+            color: var(--gray-500);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            font-style: italic;
+        }
+
+        /* Edit profile form */
+        .edit-profile-form .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .edit-profile-form .form-actions {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+
+        /* Order history */
+        .order-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            align-items: center;
+            gap: var(--space-lg);
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--gray-100);
+            transition: background var(--transition-fast);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item:hover {
+            background: var(--gray-50);
+        }
+
+        .order-item__number {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--pink);
+        }
+
+        .order-item__details {
+            min-width: 0;
+        }
+
+        .order-item__products {
+            font-weight: 700;
+            color: var(--gray-700);
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .order-item__date {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .order-item__total {
+            font-family: var(--font-display);
+            font-weight: 800;
+            color: var(--gray-700);
+            white-space: nowrap;
+        }
+
+        .order-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+        }
+
+        .order-status--delivered {
+            background: rgba(6, 214, 160, 0.12);
+            color: #059669;
+        }
+
+        .order-status--shipped {
+            background: rgba(139, 92, 246, 0.12);
+            color: var(--purple);
+        }
+
+        .order-status--processing {
+            background: rgba(255, 214, 0, 0.15);
+            color: #B8860B;
+        }
+
+        .order-status--cancelled {
+            background: rgba(255, 0, 110, 0.08);
+            color: var(--pink);
+        }
+
+        /* Submissions */
+        .submission-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--gray-100);
+            transition: background var(--transition-fast);
+        }
+
+        .submission-item:last-child {
+            border-bottom: none;
+        }
+
+        .submission-item:hover {
+            background: var(--gray-50);
+        }
+
+        .submission-item__thumb {
+            width: 80px;
+            height: 56px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, #FFE4F0 0%, #F0E4FF 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .submission-item__info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .submission-item__title {
+            font-weight: 700;
+            color: var(--gray-700);
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .submission-item__date {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .submission-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+        }
+
+        .submission-status--featured {
+            background: rgba(255, 214, 0, 0.15);
+            color: #B8860B;
+        }
+
+        .submission-status--approved {
+            background: rgba(6, 214, 160, 0.12);
+            color: #059669;
+        }
+
+        .submission-status--pending {
+            background: rgba(139, 92, 246, 0.12);
+            color: var(--purple);
+        }
+
+        .submission-status--rejected {
+            background: rgba(255, 0, 110, 0.08);
+            color: var(--pink);
+        }
+
+        /* Settings */
+        .settings-section {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .settings-section__title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--gray-700);
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--gray-100);
+        }
+
+        .notification-pref {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .notification-pref:last-child {
+            border-bottom: none;
+        }
+
+        .notification-pref__info h4 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            margin-bottom: 2px;
+        }
+
+        .notification-pref__info p {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        /* Toggle switch */
+        .toggle {
+            position: relative;
+            width: 48px;
+            height: 26px;
+            flex-shrink: 0;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle__slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: var(--gray-200);
+            border-radius: var(--radius-full);
+            transition: all var(--transition-base);
+        }
+
+        .toggle__slider::before {
+            content: '';
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background: var(--white);
+            border-radius: 50%;
+            transition: all var(--transition-base);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .toggle input:checked + .toggle__slider {
+            background: var(--gradient-cta);
+        }
+
+        .toggle input:checked + .toggle__slider::before {
+            transform: translateX(22px);
+        }
+
+        /* Password change form */
+        .password-change-form .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--gray-400);
+            padding: 4px;
+            transition: color var(--transition-fast);
+        }
+
+        .password-toggle:hover {
+            color: var(--pink);
+        }
+
+        /* Danger zone */
+        .danger-zone {
+            border: 2px solid rgba(255, 0, 110, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            background: rgba(255, 0, 110, 0.03);
+        }
+
+        .danger-zone h4 {
+            color: var(--pink);
+            font-family: var(--font-display);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+
+        .danger-zone p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-bottom: var(--space-md);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .profile-header__inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-header__meta {
+                justify-content: center;
+            }
+
+            .profile-header__avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 2.2rem;
+            }
+
+            .profile-header__name {
+                font-size: 1.5rem;
+            }
+
+            .profile-content {
+                padding: var(--space-lg) var(--space-md);
+            }
+
+            .profile-tabs {
+                gap: 0;
+            }
+
+            .profile-tab {
+                padding: var(--space-sm) var(--space-md);
+                font-size: 0.85rem;
+            }
+
+            .order-item {
+                grid-template-columns: 1fr;
+                gap: var(--space-sm);
+            }
+
+            .membership-card__details {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+
+            .membership-card__upgrade {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+
+            .submission-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .membership-card {
+                padding: var(--space-lg);
+            }
+
+            .profile-section {
+                padding: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ── Navigation ── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">ALEX GONZAGA<span>official fan hub</span></a>
+            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <ul class="nav__links">
+                <li><a href="/" class="nav__link">Home</a></li>
+                <li><a href="/vlogs.html" class="nav__link">Vlogs</a></li>
+                <li><a href="/community.html" class="nav__link">Community</a></li>
+                <li><a href="/merch.html" class="nav__link">Merch</a></li>
+                <li><a href="/react.html" class="nav__link">Alex Reacts</a></li>
+                <li><a href="/membership.html" class="nav__link">Membership</a></li>
+                <li data-guest><a href="/login.html" class="nav__link">Log In</a></li>
+                <li data-guest><a href="/signup.html" class="nav__link nav__cta">Join the Fam!</a></li>
+                <li data-auth style="display:none"><a href="/profile.html" class="nav__link">My Profile</a></li>
+                <li data-auth style="display:none"><a href="#" class="nav__link" onclick="Auth.clearSession();window.location.reload();">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── Profile Page ── -->
+    <div class="profile-page">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="container">
+                <div class="profile-header__inner">
+                    <div class="profile-header__avatar" id="profile-avatar">?</div>
+                    <div class="profile-header__info">
+                        <h1 class="profile-header__name" id="profile-display-name">Loading...</h1>
+                        <div class="profile-header__username" id="profile-username">@...</div>
+                        <div class="profile-header__meta">
+                            <span class="profile-header__tier-badge tier-badge--bestie" id="profile-tier-badge">
+                                &#128150; Bestie
+                            </span>
+                            <span class="profile-header__meta-item" id="profile-member-since">
+                                &#128197; Member since ...
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <!-- Membership Card -->
+            <div class="membership-card" id="membership-card">
+                <div class="membership-card__inner">
+                    <div class="membership-card__header">
+                        <span class="membership-card__brand">Alex Gonzaga Fan Hub</span>
+                        <span class="membership-card__tier membership-card__tier--bestie" id="card-tier">&#128150; Bestie</span>
+                    </div>
+                    <div class="membership-card__name" id="card-name">Fan Member</div>
+                    <div class="membership-card__username" id="card-username">@username</div>
+                    <div class="membership-card__details">
+                        <div>
+                            <div class="membership-card__detail-label">Member Since</div>
+                            <div class="membership-card__detail-value" id="card-since">Jan 2026</div>
+                        </div>
+                        <div>
+                            <div class="membership-card__detail-label">Member ID</div>
+                            <div class="membership-card__detail-value" id="card-id">AG-000000</div>
+                        </div>
+                        <div>
+                            <div class="membership-card__detail-label">Status</div>
+                            <div class="membership-card__detail-value">&#9679; Active</div>
+                        </div>
+                    </div>
+                    <div class="membership-card__upgrade" id="card-upgrade">
+                        <span class="membership-card__upgrade-text">Upgrade your membership for exclusive perks and content!</span>
+                        <a href="/membership.html" class="btn btn--gold btn--sm">Upgrade Now &#10024;</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="profile-tabs" role="tablist">
+                <button class="profile-tab active" data-tab="profile" role="tab" aria-selected="true">&#128100; Profile</button>
+                <button class="profile-tab" data-tab="orders" role="tab" aria-selected="false">&#128230; My Orders</button>
+                <button class="profile-tab" data-tab="submissions" role="tab" aria-selected="false">&#127909; My Submissions</button>
+                <button class="profile-tab" data-tab="settings" role="tab" aria-selected="false">&#9881; Settings</button>
+            </div>
+
+            <!-- Tab: Profile -->
+            <div class="tab-panel active" id="tab-profile" role="tabpanel">
+                <div class="profile-section">
+                    <h2 class="profile-section__title">&#128172; About Me</h2>
+                    <div class="profile-bio" id="profile-bio">
+                        Proud member of the Alex Nation! Living for ate's chaotic energy since day one. Gonzaga family forever!
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2 class="profile-section__title">&#9999; Edit Profile</h2>
+                    <form class="edit-profile-form" id="edit-profile-form">
+                        <div class="form-group">
+                            <label class="form-label" for="edit-name">Display Name</label>
+                            <input type="text" id="edit-name" class="form-input" placeholder="Your display name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="edit-bio">Bio</label>
+                            <textarea id="edit-bio" class="form-input" placeholder="Tell the fam about yourself..." rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="edit-location">Location</label>
+                            <input type="text" id="edit-location" class="form-input" placeholder="Where are you from?">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn--primary">Save Changes</button>
+                            <button type="button" class="btn btn--ghost" onclick="resetEditForm()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tab: My Orders -->
+            <div class="tab-panel" id="tab-orders" role="tabpanel">
+                <div class="profile-section">
+                    <h2 class="profile-section__title">&#128230; Order History</h2>
+                    <div id="orders-list">
+                        <!-- Demo order data -->
+                        <div class="order-item">
+                            <div class="order-item__number">AG-7K2M9X</div>
+                            <div class="order-item__details">
+                                <div class="order-item__products">"Charot Lang" Hoodie (M), Alex Nation Cap</div>
+                                <div class="order-item__date">Mar 15, 2026</div>
+                            </div>
+                            <span class="order-status order-status--delivered">&#9679; Delivered</span>
+                            <div class="order-item__total">&#8369;1,748</div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-item__number">AG-P3N8WQ</div>
+                            <div class="order-item__details">
+                                <div class="order-item__products">"Ate Girl" Tee (L) x2, "Walang Kupas" Mug</div>
+                                <div class="order-item__date">Mar 8, 2026</div>
+                            </div>
+                            <span class="order-status order-status--shipped">&#9679; Shipped</span>
+                            <div class="order-item__total">&#8369;1,547</div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-item__number">AG-R5T1YZ</div>
+                            <div class="order-item__details">
+                                <div class="order-item__products">Alex Gonzaga 2026 Calendar, Sticker Pack (Set of 5)</div>
+                                <div class="order-item__date">Feb 22, 2026</div>
+                            </div>
+                            <span class="order-status order-status--delivered">&#9679; Delivered</span>
+                            <div class="order-item__total">&#8369;899</div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-item__number">AG-J8K4LP</div>
+                            <div class="order-item__details">
+                                <div class="order-item__products">"Charot Lang" Hoodie (XL)</div>
+                                <div class="order-item__date">Feb 10, 2026</div>
+                            </div>
+                            <span class="order-status order-status--cancelled">&#9679; Cancelled</span>
+                            <div class="order-item__total">&#8369;1,299</div>
+                        </div>
+                        <div class="order-item">
+                            <div class="order-item__number">AG-M2V6HN</div>
+                            <div class="order-item__details">
+                                <div class="order-item__products">Gonzaga Strong Tote Bag, Phone Case (iPhone 15)</div>
+                                <div class="order-item__date">Jan 28, 2026</div>
+                            </div>
+                            <span class="order-status order-status--processing">&#9679; Processing</span>
+                            <div class="order-item__total">&#8369;1,048</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: My Submissions -->
+            <div class="tab-panel" id="tab-submissions" role="tabpanel">
+                <div class="profile-section">
+                    <h2 class="profile-section__title">&#127909; Alex Reacts Submissions</h2>
+                    <div id="submissions-list">
+                        <!-- Demo submission data -->
+                        <div class="submission-item">
+                            <div class="submission-item__thumb">&#127916;</div>
+                            <div class="submission-item__info">
+                                <div class="submission-item__title">My Alex Gonzaga Impression (Ate Would Be Proud!)</div>
+                                <div class="submission-item__date">Submitted Mar 20, 2026</div>
+                            </div>
+                            <span class="submission-status submission-status--featured">&#127775; Featured</span>
+                        </div>
+                        <div class="submission-item">
+                            <div class="submission-item__thumb">&#127908;</div>
+                            <div class="submission-item__info">
+                                <div class="submission-item__title">Singing Alex's Song at Karaoke Night</div>
+                                <div class="submission-item__date">Submitted Mar 12, 2026</div>
+                            </div>
+                            <span class="submission-status submission-status--approved">&#9989; Approved</span>
+                        </div>
+                        <div class="submission-item">
+                            <div class="submission-item__thumb">&#128248;</div>
+                            <div class="submission-item__info">
+                                <div class="submission-item__title">Fan Art: Alex as a Cartoon Character</div>
+                                <div class="submission-item__date">Submitted Mar 5, 2026</div>
+                            </div>
+                            <span class="submission-status submission-status--pending">&#9203; Pending Review</span>
+                        </div>
+                        <div class="submission-item">
+                            <div class="submission-item__thumb">&#127916;</div>
+                            <div class="submission-item__info">
+                                <div class="submission-item__title">Recreating Alex's Viral Dance (Attempt #47)</div>
+                                <div class="submission-item__date">Submitted Feb 18, 2026</div>
+                            </div>
+                            <span class="submission-status submission-status--approved">&#9989; Approved</span>
+                        </div>
+                        <div class="submission-item">
+                            <div class="submission-item__thumb">&#127916;</div>
+                            <div class="submission-item__info">
+                                <div class="submission-item__title">Unboxing My Alex Gonzaga Merch Haul</div>
+                                <div class="submission-item__date">Submitted Feb 2, 2026</div>
+                            </div>
+                            <span class="submission-status submission-status--rejected">&#10060; Not Selected</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-2">
+                    <a href="/react.html" class="btn btn--primary">Submit New Video &#127909;</a>
+                </div>
+            </div>
+
+            <!-- Tab: Settings -->
+            <div class="tab-panel" id="tab-settings" role="tabpanel">
+                <!-- Change Password -->
+                <div class="profile-section">
+                    <h2 class="profile-section__title">&#128274; Change Password</h2>
+                    <form class="password-change-form" id="change-password-form">
+                        <div class="form-group">
+                            <label class="form-label" for="current-password">Current Password</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="current-password" class="form-input" placeholder="Enter current password" autocomplete="current-password">
+                                <button type="button" class="password-toggle" onclick="togglePassword('current-password', this)" aria-label="Toggle visibility">&#128065;</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="new-password">New Password</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="new-password" class="form-input" placeholder="Enter new password" autocomplete="new-password">
+                                <button type="button" class="password-toggle" onclick="togglePassword('new-password', this)" aria-label="Toggle visibility">&#128065;</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="confirm-new-password">Confirm New Password</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="confirm-new-password" class="form-input" placeholder="Confirm new password" autocomplete="new-password">
+                                <button type="button" class="password-toggle" onclick="togglePassword('confirm-new-password', this)" aria-label="Toggle visibility">&#128065;</button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn--primary">Update Password</button>
+                    </form>
+                </div>
+
+                <!-- Notification Preferences -->
+                <div class="profile-section">
+                    <h2 class="profile-section__title">&#128276; Notification Preferences</h2>
+                    <div class="notification-pref">
+                        <div class="notification-pref__info">
+                            <h4>New Vlog Alerts</h4>
+                            <p>Get notified when Alex drops a new vlog</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="toggle__slider"></span>
+                        </label>
+                    </div>
+                    <div class="notification-pref">
+                        <div class="notification-pref__info">
+                            <h4>Merch Drops</h4>
+                            <p>Be the first to know about new merch releases</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="toggle__slider"></span>
+                        </label>
+                    </div>
+                    <div class="notification-pref">
+                        <div class="notification-pref__info">
+                            <h4>Community Highlights</h4>
+                            <p>Weekly digest of top community posts and fan art</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="toggle__slider"></span>
+                        </label>
+                    </div>
+                    <div class="notification-pref">
+                        <div class="notification-pref__info">
+                            <h4>Alex Reacts Updates</h4>
+                            <p>Get notified when your submission is reviewed</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="toggle__slider"></span>
+                        </label>
+                    </div>
+                    <div class="notification-pref">
+                        <div class="notification-pref__info">
+                            <h4>Promotional Emails</h4>
+                            <p>Deals, events, and special announcements</p>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox">
+                            <span class="toggle__slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Danger Zone -->
+                <div class="profile-section">
+                    <h2 class="profile-section__title">&#9888; Account</h2>
+                    <div class="danger-zone">
+                        <h4>Delete Account</h4>
+                        <p>Once you delete your account, there is no going back. All your data, orders, and submissions will be permanently removed. Please be certain!</p>
+                        <button class="btn btn--ghost btn--sm" onclick="confirmDeleteAccount()" style="border-color: var(--pink); color: var(--pink);">Delete My Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
+                    <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
+                    <div class="footer__socials">
+                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
+                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
+                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="Facebook">f</a>
+                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Explore</h4>
+                    <ul class="footer__list">
+                        <li><a href="/vlogs.html">Vlog Archive</a></li>
+                        <li><a href="/merch.html">Merch Store</a></li>
+                        <li><a href="/community.html">Community</a></li>
+                        <li><a href="/react.html">Alex Reacts</a></li>
+                        <li><a href="/membership.html">Membership</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Account</h4>
+                    <ul class="footer__list">
+                        <li><a href="/signup.html">Create Account</a></li>
+                        <li><a href="/login.html">Log In</a></li>
+                        <li><a href="/profile.html">My Profile</a></li>
+                        <li><a href="/profile.html#orders">My Orders</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Management</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Business Inquiries</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Brand Partnerships</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>&copy; 2026 Alex Gonzaga Official. All rights reserved.</span>
+                <span>A <a href="#" style="color:var(--pink-light);">Global Media</a> Project</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script>
+        /* ── Profile Page Logic ── */
+        (function() {
+            // Auth guard — redirect to login if not authenticated
+            if (!Auth.requireAuth('/profile.html')) return;
+
+            const user = Auth.getUser();
+            const tier = Auth.getUserTier();
+
+            /* ── Populate profile header ── */
+            const initials = (user.name || 'F')
+                .split(' ')
+                .map(w => w[0])
+                .join('')
+                .toUpperCase()
+                .substring(0, 2);
+
+            document.getElementById('profile-avatar').textContent = initials;
+            document.getElementById('profile-display-name').textContent = user.name || 'Alex Nation Fan';
+            document.getElementById('profile-username').textContent = '@' + (user.username || 'fan');
+
+            // Member since
+            const memberSince = user.createdAt
+                ? formatDate(user.createdAt)
+                : 'Jan 2026';
+            document.getElementById('profile-member-since').innerHTML = '&#128197; Member since ' + memberSince;
+
+            // Tier badge
+            const tierBadge = document.getElementById('profile-tier-badge');
+            const tierConfig = {
+                'Free':         { label: '&#128150; Bestie',        class: 'tier-badge--bestie' },
+                'Bestie':       { label: '&#128150; Bestie',        class: 'tier-badge--bestie' },
+                'VIP':          { label: '&#128142; VIP',           class: 'tier-badge--vip' },
+                'Inner Circle': { label: '&#128081; Inner Circle',  class: 'tier-badge--inner-circle' },
+            };
+            const tc = tierConfig[tier] || tierConfig['Free'];
+            tierBadge.className = 'profile-header__tier-badge ' + tc.class;
+            tierBadge.innerHTML = tc.label;
+
+            /* ── Membership Card ── */
+            const cardTierConfig = {
+                'Free':         { label: '&#128150; Bestie',        class: 'membership-card__tier--bestie' },
+                'Bestie':       { label: '&#128150; Bestie',        class: 'membership-card__tier--bestie' },
+                'VIP':          { label: '&#128142; VIP',           class: 'membership-card__tier--vip' },
+                'Inner Circle': { label: '&#128081; Inner Circle',  class: 'membership-card__tier--inner-circle' },
+            };
+            const ctc = cardTierConfig[tier] || cardTierConfig['Free'];
+            const cardTier = document.getElementById('card-tier');
+            cardTier.className = 'membership-card__tier ' + ctc.class;
+            cardTier.innerHTML = ctc.label;
+
+            document.getElementById('card-name').textContent = user.name || 'Fan Member';
+            document.getElementById('card-username').textContent = '@' + (user.username || 'fan');
+            document.getElementById('card-since').textContent = memberSince;
+            document.getElementById('card-id').textContent = 'AG-' + (user.id || '000000').toString().substring(0, 6).toUpperCase();
+
+            // Hide upgrade CTA for Inner Circle
+            if (tier === 'Inner Circle') {
+                document.getElementById('card-upgrade').style.display = 'none';
+            }
+
+            /* ── Populate edit form ── */
+            document.getElementById('edit-name').value = user.name || '';
+            document.getElementById('edit-bio').value = user.bio || '';
+            document.getElementById('edit-location').value = user.location || '';
+
+            if (user.bio) {
+                document.getElementById('profile-bio').textContent = user.bio;
+            }
+
+            /* ── Tab Switching ── */
+            const tabs = document.querySelectorAll('.profile-tab');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            function switchTab(tabName) {
+                tabs.forEach(t => {
+                    t.classList.toggle('active', t.dataset.tab === tabName);
+                    t.setAttribute('aria-selected', t.dataset.tab === tabName);
+                });
+                panels.forEach(p => {
+                    p.classList.toggle('active', p.id === 'tab-' + tabName);
+                });
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+            });
+
+            // Handle hash-based tab switching (e.g., /profile.html#orders)
+            const hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById('tab-' + hash)) {
+                switchTab(hash);
+            }
+
+            window.addEventListener('hashchange', () => {
+                const h = window.location.hash.replace('#', '');
+                if (h && document.getElementById('tab-' + h)) {
+                    switchTab(h);
+                }
+            });
+
+            /* ── Edit Profile Form ── */
+            document.getElementById('edit-profile-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('edit-name').value.trim();
+                const bio = document.getElementById('edit-bio').value.trim();
+                const location = document.getElementById('edit-location').value.trim();
+
+                if (!name) {
+                    showToast('Name cannot be empty!', 'error');
+                    return;
+                }
+
+                try {
+                    const updatedUser = await api('update-profile', {
+                        method: 'POST',
+                        body: { name, bio, location }
+                    });
+
+                    // Update local session
+                    const currentUser = Auth.getUser();
+                    const merged = { ...currentUser, name, bio, location, ...updatedUser.user };
+                    Auth.setSession(Auth.getToken(), merged);
+
+                    // Update UI
+                    document.getElementById('profile-display-name').textContent = name;
+                    document.getElementById('card-name').textContent = name;
+                    if (bio) {
+                        document.getElementById('profile-bio').textContent = bio;
+                    }
+
+                    const newInitials = name.split(' ').map(w => w[0]).join('').toUpperCase().substring(0, 2);
+                    document.getElementById('profile-avatar').textContent = newInitials;
+
+                    showToast('Profile updated! Looking fresh, fam!', 'success');
+                } catch (err) {
+                    showToast(err.message || 'Could not update profile. Try again!', 'error');
+                }
+            });
+
+            /* ── Change Password Form ── */
+            document.getElementById('change-password-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const current = document.getElementById('current-password').value;
+                const newPw = document.getElementById('new-password').value;
+                const confirmPw = document.getElementById('confirm-new-password').value;
+
+                if (!current || !newPw || !confirmPw) {
+                    showToast('Please fill in all password fields!', 'error');
+                    return;
+                }
+
+                if (newPw.length < 8) {
+                    showToast('New password must be at least 8 characters!', 'error');
+                    return;
+                }
+
+                if (newPw !== confirmPw) {
+                    showToast('New passwords don\'t match!', 'error');
+                    return;
+                }
+
+                try {
+                    await api('change-password', {
+                        method: 'POST',
+                        body: { currentPassword: current, newPassword: newPw }
+                    });
+
+                    document.getElementById('current-password').value = '';
+                    document.getElementById('new-password').value = '';
+                    document.getElementById('confirm-new-password').value = '';
+
+                    showToast('Password updated! Your account is extra secure now!', 'success');
+                } catch (err) {
+                    showToast(err.message || 'Could not change password. Check your current password!', 'error');
+                }
+            });
+        })();
+
+        /* ── Helper functions ── */
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerHTML = '&#128064;';
+            } else {
+                input.type = 'password';
+                btn.innerHTML = '&#128065;';
+            }
+        }
+
+        function resetEditForm() {
+            const user = Auth.getUser();
+            document.getElementById('edit-name').value = user.name || '';
+            document.getElementById('edit-bio').value = user.bio || '';
+            document.getElementById('edit-location').value = user.location || '';
+            showToast('Changes discarded', 'info');
+        }
+
+        function confirmDeleteAccount() {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone! All your data will be permanently removed.')) {
+                if (confirm('This is your last chance, fam! Are you REALLY sure?')) {
+                    // Call delete account API
+                    api('delete-account', { method: 'POST' })
+                        .then(() => {
+                            Auth.clearSession();
+                            showToast('Account deleted. We\'ll miss you, fam!', 'info');
+                            setTimeout(() => {
+                                window.location.href = '/';
+                            }, 1500);
+                        })
+                        .catch(err => {
+                            showToast(err.message || 'Could not delete account. Try again later.', 'error');
+                        });
+                }
+            }
+        }
+    </script>
+</body>
+</html>

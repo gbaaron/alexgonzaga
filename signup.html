@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Fam! — Alex Gonzaga Official Fan Hub</title>
+    <meta name="description" content="Create your Alex Gonzaga fan account. Join the Alex Nation and unlock exclusive content, merch, and community features.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* ── Signup Page Styles ── */
+        .auth-page {
+            min-height: 100vh;
+            padding-top: 72px;
+        }
+
+        .auth-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 72px);
+        }
+
+        /* Left side — fun branding panel */
+        .auth-brand {
+            background: var(--gradient-hero);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: var(--space-3xl);
+        }
+
+        .auth-brand::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5l5 10 10 2-7 7 2 10-10-5-10 5 2-10-7-7 10-2z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
+        }
+
+        .auth-brand__content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .auth-brand__logo {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-sm);
+        }
+
+        .auth-brand__logo span {
+            font-family: var(--font-accent);
+            font-size: 1.4rem;
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: -4px;
+        }
+
+        .auth-brand__tagline {
+            font-family: var(--font-accent);
+            font-size: 2rem;
+            color: var(--yellow-light);
+            margin: var(--space-xl) 0;
+        }
+
+        .auth-brand__text {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .auth-brand__tiers {
+            list-style: none;
+            text-align: left;
+        }
+
+        .auth-brand__tier {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.08);
+            margin-bottom: var(--space-sm);
+            transition: all var(--transition-base);
+        }
+
+        .auth-brand__tier:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateX(4px);
+        }
+
+        .auth-brand__tier-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .auth-brand__tier-name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        .auth-brand__tier-desc {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        /* Floating emojis */
+        .auth-emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: emojiFloat 6s ease-in-out infinite;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .auth-emoji--1 { top: 8%; left: 8%; animation-delay: 0s; font-size: 2.5rem; }
+        .auth-emoji--2 { top: 20%; right: 10%; animation-delay: -1.2s; font-size: 1.8rem; }
+        .auth-emoji--3 { bottom: 25%; left: 12%; animation-delay: -2.4s; font-size: 2.2rem; }
+        .auth-emoji--4 { bottom: 10%; right: 15%; animation-delay: -3.6s; font-size: 1.6rem; }
+        .auth-emoji--5 { top: 45%; left: 3%; animation-delay: -4.2s; font-size: 1.9rem; }
+        .auth-emoji--6 { top: 65%; right: 5%; animation-delay: -5s; font-size: 2.1rem; }
+
+        @keyframes emojiFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(5deg); }
+            50% { transform: translateY(-25px) rotate(-3deg); }
+            75% { transform: translateY(-10px) rotate(4deg); }
+        }
+
+        /* Right side — form panel */
+        .auth-form-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-3xl) var(--space-2xl);
+            background: var(--white);
+            overflow-y: auto;
+        }
+
+        .auth-form-wrapper {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .auth-form__header {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .auth-form__greeting {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            color: var(--pink);
+            margin-bottom: var(--space-xs);
+        }
+
+        .auth-form__title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gray-800);
+            margin-bottom: var(--space-sm);
+        }
+
+        .auth-form__subtitle {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+        }
+
+        /* Form elements */
+        .auth-form .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .auth-form .form-label {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .auth-form .form-input {
+            padding: 16px 18px;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+        }
+
+        .auth-form .form-input.input--error {
+            border-color: var(--pink);
+            box-shadow: 0 0 0 4px var(--pink-glow);
+        }
+
+        .auth-form .form-input.input--success {
+            border-color: var(--teal);
+            box-shadow: 0 0 0 4px rgba(6, 214, 160, 0.12);
+        }
+
+        .field-hint {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            margin-top: 4px;
+        }
+
+        .field-error {
+            font-size: 0.8rem;
+            color: var(--pink);
+            font-weight: 600;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .field-error.visible {
+            display: block;
+        }
+
+        /* Password requirements */
+        .password-requirements {
+            margin-top: var(--space-sm);
+            padding: var(--space-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-sm);
+        }
+
+        .password-requirements__title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gray-600);
+            margin-bottom: var(--space-xs);
+            font-family: var(--font-display);
+        }
+
+        .password-requirements__list {
+            list-style: none;
+        }
+
+        .password-requirements__item {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color var(--transition-fast);
+        }
+
+        .password-requirements__item::before {
+            content: '&#9675;';
+            font-size: 0.65rem;
+            flex-shrink: 0;
+        }
+
+        .password-requirements__item.met {
+            color: var(--teal);
+        }
+
+        .password-requirements__item.met::before {
+            content: '&#9679;';
+        }
+
+        .auth-form__submit {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.05rem;
+            font-family: var(--font-display);
+            font-weight: 800;
+            color: var(--white);
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: 0 4px 20px rgba(255, 0, 110, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-form__submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 0, 110, 0.4);
+        }
+
+        .auth-form__submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .auth-form__submit .spinner {
+            width: 20px;
+            height: 20px;
+            border-width: 3px;
+            border-color: rgba(255,255,255,0.3);
+            border-top-color: var(--white);
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .auth-form__switch {
+            text-align: center;
+            margin-top: var(--space-xl);
+            font-size: 0.95rem;
+            color: var(--gray-500);
+        }
+
+        .auth-form__switch a {
+            color: var(--pink);
+            font-weight: 700;
+            font-family: var(--font-display);
+        }
+
+        .auth-form__switch a:hover {
+            color: var(--purple);
+        }
+
+        .auth-form__error {
+            background: rgba(255, 0, 110, 0.08);
+            border: 1px solid rgba(255, 0, 110, 0.2);
+            color: var(--pink);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            display: none;
+        }
+
+        .auth-form__error.visible {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        /* Password visibility toggle */
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--gray-400);
+            padding: 4px;
+            transition: color var(--transition-fast);
+        }
+
+        .password-toggle:hover {
+            color: var(--pink);
+        }
+
+        /* Terms text */
+        .auth-form__terms {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            text-align: center;
+            margin-top: var(--space-md);
+            line-height: 1.5;
+        }
+
+        .auth-form__terms a {
+            color: var(--purple);
+            font-weight: 600;
+        }
+
+        /* Name row */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .auth-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-brand {
+                display: none;
+            }
+
+            .auth-form-panel {
+                min-height: calc(100vh - 72px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .auth-form-panel {
+                padding: var(--space-xl) var(--space-md);
+            }
+
+            .auth-form__title {
+                font-size: 1.6rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ── Navigation ── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav__inner">
+            <a href="/" class="nav__logo">ALEX GONZAGA<span>official fan hub</span></a>
+            <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <ul class="nav__links">
+                <li><a href="/" class="nav__link">Home</a></li>
+                <li><a href="/vlogs.html" class="nav__link">Vlogs</a></li>
+                <li><a href="/community.html" class="nav__link">Community</a></li>
+                <li><a href="/merch.html" class="nav__link">Merch</a></li>
+                <li><a href="/react.html" class="nav__link">Alex Reacts</a></li>
+                <li><a href="/membership.html" class="nav__link">Membership</a></li>
+                <li data-guest><a href="/login.html" class="nav__link">Log In</a></li>
+                <li data-guest><a href="/signup.html" class="nav__link nav__cta">Join the Fam!</a></li>
+                <li data-auth style="display:none"><a href="/profile.html" class="nav__link">My Profile</a></li>
+                <li data-auth style="display:none"><a href="#" class="nav__link" onclick="Auth.clearSession();window.location.reload();">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── Auth Layout ── -->
+    <div class="auth-page">
+        <div class="auth-layout">
+            <!-- Left: Branding Panel -->
+            <div class="auth-brand">
+                <!-- Floating emojis -->
+                <div class="auth-emoji auth-emoji--1">&#127881;</div>
+                <div class="auth-emoji auth-emoji--2">&#128150;</div>
+                <div class="auth-emoji auth-emoji--3">&#10024;</div>
+                <div class="auth-emoji auth-emoji--4">&#127775;</div>
+                <div class="auth-emoji auth-emoji--5">&#128293;</div>
+                <div class="auth-emoji auth-emoji--6">&#128588;</div>
+
+                <div class="auth-brand__content">
+                    <div class="auth-brand__logo">
+                        ALEX GONZAGA
+                        <span>official fan hub</span>
+                    </div>
+                    <div class="auth-brand__tagline">Tara na, join the fam!</div>
+                    <p class="auth-brand__text">
+                        Create your account and become part of the Alex Nation. Pick a membership tier and unlock your ate's world!
+                    </p>
+                    <ul class="auth-brand__tiers">
+                        <li class="auth-brand__tier">
+                            <div class="auth-brand__tier-icon">&#128150;</div>
+                            <div>
+                                <div class="auth-brand__tier-name">Bestie Tier</div>
+                                <div class="auth-brand__tier-desc">Free access to community &amp; basic content</div>
+                            </div>
+                        </li>
+                        <li class="auth-brand__tier">
+                            <div class="auth-brand__tier-icon">&#128142;</div>
+                            <div>
+                                <div class="auth-brand__tier-name">VIP Tier</div>
+                                <div class="auth-brand__tier-desc">Exclusive vlogs, merch discounts, early access</div>
+                            </div>
+                        </li>
+                        <li class="auth-brand__tier">
+                            <div class="auth-brand__tier-icon">&#128081;</div>
+                            <div>
+                                <div class="auth-brand__tier-name">Inner Circle</div>
+                                <div class="auth-brand__tier-desc">Personal shoutouts, meet &amp; greets, everything</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right: Signup Form -->
+            <div class="auth-form-panel">
+                <div class="auth-form-wrapper">
+                    <div class="auth-form__header">
+                        <div class="auth-form__greeting">OMG hiii!</div>
+                        <h1 class="auth-form__title">Join the Alex Nation</h1>
+                        <p class="auth-form__subtitle">Create your account and officially become one of the fam! &#128588;</p>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="auth-form__error" id="signup-error">
+                        <span>&#9888;</span>
+                        <span id="signup-error-text">Something went wrong</span>
+                    </div>
+
+                    <form class="auth-form" id="signup-form" novalidate>
+                        <div class="form-group">
+                            <label class="form-label" for="signup-name">&#128075; Full Name</label>
+                            <input
+                                type="text"
+                                id="signup-name"
+                                class="form-input"
+                                placeholder="What should we call you?"
+                                required
+                                autocomplete="name"
+                            >
+                            <div class="field-error" id="name-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="signup-username">&#127775; Username</label>
+                            <input
+                                type="text"
+                                id="signup-username"
+                                class="form-input"
+                                placeholder="@your_fan_name"
+                                required
+                                autocomplete="username"
+                            >
+                            <div class="field-hint">This is how other fans will see you. Letters, numbers, and underscores only.</div>
+                            <div class="field-error" id="username-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="signup-email">&#128231; Email Address</label>
+                            <input
+                                type="email"
+                                id="signup-email"
+                                class="form-input"
+                                placeholder="yourfaveate@email.com"
+                                required
+                                autocomplete="email"
+                            >
+                            <div class="field-error" id="email-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="signup-password">&#128274; Password</label>
+                            <div class="password-wrapper">
+                                <input
+                                    type="password"
+                                    id="signup-password"
+                                    class="form-input"
+                                    placeholder="Create a strong password"
+                                    required
+                                    autocomplete="new-password"
+                                >
+                                <button type="button" class="password-toggle" onclick="togglePassword('signup-password', this)" aria-label="Toggle password visibility">&#128065;</button>
+                            </div>
+                            <div class="password-requirements" id="password-reqs">
+                                <div class="password-requirements__title">Password must have:</div>
+                                <ul class="password-requirements__list">
+                                    <li class="password-requirements__item" data-req="length">At least 8 characters</li>
+                                    <li class="password-requirements__item" data-req="upper">One uppercase letter</li>
+                                    <li class="password-requirements__item" data-req="lower">One lowercase letter</li>
+                                    <li class="password-requirements__item" data-req="number">One number</li>
+                                </ul>
+                            </div>
+                            <div class="field-error" id="password-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="signup-confirm">&#128274; Confirm Password</label>
+                            <div class="password-wrapper">
+                                <input
+                                    type="password"
+                                    id="signup-confirm"
+                                    class="form-input"
+                                    placeholder="Type it again para sure!"
+                                    required
+                                    autocomplete="new-password"
+                                >
+                                <button type="button" class="password-toggle" onclick="togglePassword('signup-confirm', this)" aria-label="Toggle password visibility">&#128065;</button>
+                            </div>
+                            <div class="field-error" id="confirm-error"></div>
+                        </div>
+
+                        <button type="submit" class="auth-form__submit" id="signup-submit">
+                            Join the Fam! &#127881;
+                        </button>
+
+                        <p class="auth-form__terms">
+                            By signing up you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. We promise, walang scam dito!
+                        </p>
+                    </form>
+
+                    <div class="auth-form__switch">
+                        Already have an account? <a href="/login.html">Log In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
+                    <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
+                    <div class="footer__socials">
+                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
+                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
+                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="Facebook">f</a>
+                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Explore</h4>
+                    <ul class="footer__list">
+                        <li><a href="/vlogs.html">Vlog Archive</a></li>
+                        <li><a href="/merch.html">Merch Store</a></li>
+                        <li><a href="/community.html">Community</a></li>
+                        <li><a href="/react.html">Alex Reacts</a></li>
+                        <li><a href="/membership.html">Membership</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Account</h4>
+                    <ul class="footer__list">
+                        <li><a href="/signup.html">Create Account</a></li>
+                        <li><a href="/login.html">Log In</a></li>
+                        <li><a href="/profile.html">My Profile</a></li>
+                        <li><a href="/profile.html#orders">My Orders</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Management</h4>
+                    <ul class="footer__list">
+                        <li><a href="#">Business Inquiries</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Brand Partnerships</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>&copy; 2026 Alex Gonzaga Official. All rights reserved.</span>
+                <span>A <a href="#" style="color:var(--pink-light);">Global Media</a> Project</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+    <script>
+        /* ── Signup Page Logic ── */
+        (function() {
+            // If already logged in, redirect
+            if (Auth.isLoggedIn()) {
+                window.location.href = '/profile.html';
+                return;
+            }
+
+            const form = document.getElementById('signup-form');
+            const nameInput = document.getElementById('signup-name');
+            const usernameInput = document.getElementById('signup-username');
+            const emailInput = document.getElementById('signup-email');
+            const passwordInput = document.getElementById('signup-password');
+            const confirmInput = document.getElementById('signup-confirm');
+            const submitBtn = document.getElementById('signup-submit');
+            const errorBox = document.getElementById('signup-error');
+            const errorText = document.getElementById('signup-error-text');
+
+            /* ── Field error helpers ── */
+            function showFieldError(id, message) {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.textContent = message;
+                    el.classList.add('visible');
+                }
+            }
+
+            function hideFieldError(id) {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.remove('visible');
+                }
+            }
+
+            function showError(message) {
+                errorText.textContent = message;
+                errorBox.classList.add('visible');
+            }
+
+            function hideError() {
+                errorBox.classList.remove('visible');
+            }
+
+            function setLoading(loading) {
+                submitBtn.disabled = loading;
+                submitBtn.innerHTML = loading
+                    ? '<div class="spinner"></div> Creating your account...'
+                    : 'Join the Fam! &#127881;';
+            }
+
+            /* ── Password requirements live validation ── */
+            const requirements = {
+                length: (pw) => pw.length >= 8,
+                upper: (pw) => /[A-Z]/.test(pw),
+                lower: (pw) => /[a-z]/.test(pw),
+                number: (pw) => /[0-9]/.test(pw),
+            };
+
+            passwordInput.addEventListener('input', function() {
+                const pw = this.value;
+                Object.entries(requirements).forEach(([key, check]) => {
+                    const item = document.querySelector(`[data-req="${key}"]`);
+                    if (item) {
+                        item.classList.toggle('met', check(pw));
+                    }
+                });
+                hideFieldError('password-error');
+
+                // Also check confirm match if confirm has value
+                if (confirmInput.value) {
+                    if (confirmInput.value !== pw) {
+                        showFieldError('confirm-error', 'Passwords don\'t match yet!');
+                        confirmInput.classList.add('input--error');
+                        confirmInput.classList.remove('input--success');
+                    } else {
+                        hideFieldError('confirm-error');
+                        confirmInput.classList.remove('input--error');
+                        confirmInput.classList.add('input--success');
+                    }
+                }
+            });
+
+            confirmInput.addEventListener('input', function() {
+                if (this.value && this.value !== passwordInput.value) {
+                    showFieldError('confirm-error', 'Passwords don\'t match yet!');
+                    this.classList.add('input--error');
+                    this.classList.remove('input--success');
+                } else if (this.value && this.value === passwordInput.value) {
+                    hideFieldError('confirm-error');
+                    this.classList.remove('input--error');
+                    this.classList.add('input--success');
+                } else {
+                    hideFieldError('confirm-error');
+                    this.classList.remove('input--error', 'input--success');
+                }
+            });
+
+            /* ── Username formatting ── */
+            usernameInput.addEventListener('input', function() {
+                this.value = this.value.toLowerCase().replace(/[^a-z0-9_]/g, '');
+                hideFieldError('username-error');
+            });
+
+            /* ── Clear errors on input ── */
+            nameInput.addEventListener('input', () => hideFieldError('name-error'));
+            emailInput.addEventListener('input', () => hideFieldError('email-error'));
+
+            /* ── Client-side validation ── */
+            function validateForm() {
+                let valid = true;
+
+                // Name
+                const name = nameInput.value.trim();
+                if (!name) {
+                    showFieldError('name-error', 'We need your name, fam!');
+                    nameInput.classList.add('input--error');
+                    valid = false;
+                } else if (name.length < 2) {
+                    showFieldError('name-error', 'Name must be at least 2 characters');
+                    nameInput.classList.add('input--error');
+                    valid = false;
+                } else {
+                    nameInput.classList.remove('input--error');
+                }
+
+                // Username
+                const username = usernameInput.value.trim();
+                if (!username) {
+                    showFieldError('username-error', 'Pick a username so we know you!');
+                    usernameInput.classList.add('input--error');
+                    valid = false;
+                } else if (username.length < 3) {
+                    showFieldError('username-error', 'Username must be at least 3 characters');
+                    usernameInput.classList.add('input--error');
+                    valid = false;
+                } else if (username.length > 20) {
+                    showFieldError('username-error', 'Username can\'t be longer than 20 characters');
+                    usernameInput.classList.add('input--error');
+                    valid = false;
+                } else {
+                    usernameInput.classList.remove('input--error');
+                }
+
+                // Email
+                const email = emailInput.value.trim();
+                if (!email) {
+                    showFieldError('email-error', 'We need your email to keep in touch!');
+                    emailInput.classList.add('input--error');
+                    valid = false;
+                } else if (!email.includes('@') || !email.includes('.')) {
+                    showFieldError('email-error', 'That doesn\'t look like a valid email address');
+                    emailInput.classList.add('input--error');
+                    valid = false;
+                } else {
+                    emailInput.classList.remove('input--error');
+                }
+
+                // Password
+                const password = passwordInput.value;
+                if (!password) {
+                    showFieldError('password-error', 'You need a password to protect your account!');
+                    passwordInput.classList.add('input--error');
+                    valid = false;
+                } else {
+                    const allMet = Object.values(requirements).every(check => check(password));
+                    if (!allMet) {
+                        showFieldError('password-error', 'Password doesn\'t meet all requirements yet');
+                        passwordInput.classList.add('input--error');
+                        valid = false;
+                    } else {
+                        passwordInput.classList.remove('input--error');
+                    }
+                }
+
+                // Confirm password
+                const confirm = confirmInput.value;
+                if (!confirm) {
+                    showFieldError('confirm-error', 'Please confirm your password!');
+                    confirmInput.classList.add('input--error');
+                    valid = false;
+                } else if (confirm !== password) {
+                    showFieldError('confirm-error', 'Passwords don\'t match. Double check!');
+                    confirmInput.classList.add('input--error');
+                    valid = false;
+                } else {
+                    confirmInput.classList.remove('input--error');
+                }
+
+                return valid;
+            }
+
+            /* ── Form submission ── */
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                hideError();
+
+                if (!validateForm()) {
+                    return;
+                }
+
+                setLoading(true);
+
+                const payload = {
+                    name: nameInput.value.trim(),
+                    username: usernameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    password: passwordInput.value,
+                };
+
+                try {
+                    // Create account
+                    const signupData = await api('signup', {
+                        method: 'POST',
+                        body: payload,
+                    });
+
+                    // Auto-login after signup
+                    const loginData = await api('login', {
+                        method: 'POST',
+                        body: {
+                            email: payload.email,
+                            password: payload.password,
+                        },
+                    });
+
+                    Auth.setSession(loginData.token, loginData.user);
+                    showToast('Welcome to the fam! Your ate is happy na!', 'success');
+
+                    setTimeout(() => {
+                        window.location.href = '/profile.html';
+                    }, 800);
+
+                } catch (err) {
+                    showError(err.message || 'Something went wrong. Try again, fam!');
+                    setLoading(false);
+                }
+            });
+        })();
+
+        /* ── Password Toggle ── */
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerHTML = '&#128064;';
+            } else {
+                input.type = 'password';
+                btn.innerHTML = '&#128065;';
+            }
+        }
+    </script>
+</body>
+</html>
