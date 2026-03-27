@@ -880,8 +880,8 @@
         (function () {
             'use strict';
 
-            // Demo vlog data
-            const vlogs = [
+            // Demo vlog data (fallback if Airtable fetch fails)
+            let vlogs = [
                 {
                     id: 1,
                     title: 'I Tried Living Like Toni For 24 Hours... DISASTER!',
@@ -1100,6 +1100,72 @@
                 }
             ];
 
+            // Demo featured vlog (fallback if Airtable fetch fails)
+            let featuredVlog = {
+                id: 'featured-1',
+                title: 'GONZAGA FAMILY REUNION 2025 — Full Chaos Mode! (Toni Cried!!)',
+                category: 'family',
+                mood: 'wholesome',
+                views: 8200000,
+                viewsLabel: '8.2M views',
+                date: '2025-12-28',
+                dateLabel: 'Dec 28, 2025',
+                duration: '28:14',
+                emoji: '&#127916;',
+                thumbnail: '',
+                description: 'The whole Gonzaga fam in one house for three days. Pranks, karaoke battles, Daddy\'s cooking challenge, and Toni\'s emotional surprise for Mommy. This vlog has EVERYTHING.',
+                likes: 412000,
+                likesLabel: '412K likes',
+                youtubeUrl: ''
+            };
+
+            // Format raw view/like counts to human-readable labels
+            function formatViews(num) {
+                if (!num && num !== 0) return '0 views';
+                if (num >= 1000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M views';
+                if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K views';
+                return num + ' views';
+            }
+
+            function formatLikes(num) {
+                if (!num && num !== 0) return '0 likes';
+                if (num >= 1000000) return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M likes';
+                if (num >= 1000) return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K likes';
+                return num + ' likes';
+            }
+
+            // Map Airtable record to local vlog object
+            function mapAirtableVlog(record) {
+                var f = record.fields || record;
+                var views = f.views || f.Views || 0;
+                var likes = f.likes || f.Likes || 0;
+                var date = f.date || f.Date || f.publishDate || f.PublishDate || '';
+                var thumbnailArr = f.thumbnail || f.Thumbnail || [];
+                var thumbnailUrl = '';
+                if (Array.isArray(thumbnailArr) && thumbnailArr.length > 0) {
+                    thumbnailUrl = thumbnailArr[0].url || thumbnailArr[0];
+                } else if (typeof thumbnailArr === 'string') {
+                    thumbnailUrl = thumbnailArr;
+                }
+                return {
+                    id: record.id || f.id || Math.random().toString(36).substr(2, 9),
+                    title: f.title || f.Title || 'Untitled Vlog',
+                    category: (f.category || f.Category || 'comedy').toLowerCase(),
+                    mood: (f.mood || f.Mood || 'funny').toLowerCase(),
+                    views: views,
+                    viewsLabel: formatViews(views),
+                    date: date,
+                    dateLabel: date ? formatDate(date) : '',
+                    duration: f.duration || f.Duration || '',
+                    emoji: f.emoji || f.Emoji || '&#127916;',
+                    thumbnail: thumbnailUrl,
+                    description: f.description || f.Description || '',
+                    likes: likes,
+                    likesLabel: formatLikes(likes),
+                    youtubeUrl: f.youtubeUrl || f.YoutubeUrl || f.youtube_url || ''
+                };
+            }
+
             // State
             let activeCategory = 'all';
             let activeMoods = [];
@@ -1160,22 +1226,27 @@
             function buildCard(vlog) {
                 var colorMod = categoryColors[vlog.category] || '';
                 var catClass = colorMod ? ' vlog-card__category' + colorMod : '';
-                return '<div class="vlog-card" data-id="' + vlog.id + '">' +
+                var thumbnailContent = vlog.thumbnail
+                    ? '<img src="' + vlog.thumbnail + '" alt="' + vlog.title.replace(/"/g, '&quot;') + '" style="width:100%;height:100%;object-fit:cover;">'
+                    : vlog.emoji;
+                var linkOpen = vlog.youtubeUrl ? '<a href="' + vlog.youtubeUrl + '" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">' : '';
+                var linkClose = vlog.youtubeUrl ? '</a>' : '';
+                return linkOpen + '<div class="vlog-card" data-id="' + vlog.id + '">' +
                     '<div class="vlog-card__thumbnail">' +
-                        vlog.emoji +
+                        thumbnailContent +
                         '<div class="vlog-card__play">&#9654;</div>' +
-                        '<span class="vlog-card__duration">' + vlog.duration + '</span>' +
-                        '<span class="vlog-card__category' + catClass + '">' + categoryLabels[vlog.category] + '</span>' +
+                        (vlog.duration ? '<span class="vlog-card__duration">' + vlog.duration + '</span>' : '') +
+                        '<span class="vlog-card__category' + catClass + '">' + (categoryLabels[vlog.category] || vlog.category) + '</span>' +
                     '</div>' +
                     '<div class="vlog-card__body">' +
-                        '<span class="vlog-card__mood vlog-card__mood--' + vlog.mood + '">' + moodLabels[vlog.mood] + '</span>' +
+                        '<span class="vlog-card__mood vlog-card__mood--' + vlog.mood + '">' + (moodLabels[vlog.mood] || vlog.mood) + '</span>' +
                         '<h3 class="vlog-card__title">' + vlog.title + '</h3>' +
                         '<div class="vlog-card__meta">' +
                             '<span>&#128065; ' + vlog.viewsLabel + '</span>' +
                             '<span>&#128197; ' + vlog.dateLabel + '</span>' +
                         '</div>' +
                     '</div>' +
-                '</div>';
+                '</div>' + linkClose;
             }
 
             // Filter + sort + render
@@ -1320,7 +1391,67 @@
                 render();
             });
 
-            // Initial render
+            // Render the Alex Picks featured vlog section
+            function renderFeatured() {
+                var v = featuredVlog;
+                var picksCard = document.querySelector('.alex-picks__card');
+                if (!picksCard) return;
+
+                var thumbnailContent = v.thumbnail
+                    ? '<img src="' + v.thumbnail + '" alt="' + v.title.replace(/"/g, '&quot;') + '" style="width:100%;height:100%;object-fit:cover;">'
+                    : (v.emoji || '&#127916;');
+
+                var linkOpen = v.youtubeUrl ? '<a href="' + v.youtubeUrl + '" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">' : '';
+                var linkClose = v.youtubeUrl ? '</a>' : '';
+
+                picksCard.innerHTML = linkOpen +
+                    '<div class="alex-picks__thumbnail">' +
+                        thumbnailContent +
+                        '<div class="alex-picks__play">&#9654;</div>' +
+                        (v.duration ? '<span class="alex-picks__duration">' + v.duration + '</span>' : '') +
+                    '</div>' +
+                    '<div class="alex-picks__info">' +
+                        '<span class="alex-picks__tag">' + (categoryLabels[v.category] || v.category || 'Featured') + '</span>' +
+                        '<h2 class="alex-picks__title">' + v.title + '</h2>' +
+                        (v.description ? '<p class="alex-picks__desc">' + v.description + '</p>' : '') +
+                        '<div class="alex-picks__meta">' +
+                            '<span>&#128065; ' + v.viewsLabel + '</span>' +
+                            '<span>&#128197; ' + v.dateLabel + '</span>' +
+                            '<span>&#128150; ' + v.likesLabel + '</span>' +
+                        '</div>' +
+                    '</div>' + linkClose;
+            }
+
+            // Fetch featured vlog from Airtable via Netlify function
+            fetch('/.netlify/functions/get-vlogs?featured=true&limit=1')
+                .then(function (res) { return res.ok ? res.json() : Promise.reject(res); })
+                .then(function (data) {
+                    var records = data.records || data;
+                    if (Array.isArray(records) && records.length > 0) {
+                        featuredVlog = mapAirtableVlog(records[0]);
+                    }
+                })
+                .catch(function () { /* silently fall back to demo featured vlog */ })
+                .finally(function () {
+                    renderFeatured();
+                });
+
+            // Fetch all vlogs from Airtable via Netlify function
+            fetch('/.netlify/functions/get-vlogs?limit=100')
+                .then(function (res) { return res.ok ? res.json() : Promise.reject(res); })
+                .then(function (data) {
+                    var records = data.records || data;
+                    if (Array.isArray(records) && records.length > 0) {
+                        vlogs = records.map(mapAirtableVlog);
+                    }
+                })
+                .catch(function () { /* silently fall back to demo vlogs */ })
+                .finally(function () {
+                    render();
+                });
+
+            // Initial render with demo data (will be re-rendered after fetch completes)
+            renderFeatured();
             render();
         })();
     </script>

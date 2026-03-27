@@ -827,12 +827,12 @@
     </div>
 
     <!-- ── Limited Drop Banner ── -->
-    <section class="limited-drop-banner">
+    <section class="limited-drop-banner" id="limited-drop-banner">
         <div class="limited-drop-banner__content container">
             <span class="limited-drop-banner__eyebrow">&#128293; Limited Drop Alert</span>
-            <h2 class="limited-drop-banner__title">Next Exclusive Drop</h2>
-            <div class="limited-drop-banner__collection">"Charot Lang" Collection</div>
-            <p class="limited-drop-banner__pieces">Limited to 500 pieces — once it's gone, it's gone!</p>
+            <h2 class="limited-drop-banner__title" id="drop-title">Next Exclusive Drop</h2>
+            <div class="limited-drop-banner__collection" id="drop-collection">"Charot Lang" Collection</div>
+            <p class="limited-drop-banner__pieces" id="drop-description">Limited to 500 pieces — once it's gone, it's gone!</p>
             <div class="countdown" id="merch-drop-countdown"></div>
         </div>
     </section>
@@ -865,173 +865,9 @@
     <!-- ── Product Grid ── -->
     <section class="merch-grid-section">
         <div class="container">
-            <p class="merch-results" id="merch-results">Showing <strong>12</strong> products</p>
+            <p class="merch-results" id="merch-results">Showing <strong>0</strong> products</p>
             <div class="merch-grid" id="product-grid">
-
-                <!-- 1. "Charot Lang" Hoodie — LIMITED -->
-                <div class="product-card product-card--limited animate-on-scroll" data-category="apparel,limited" data-price="1299" data-date="2026-03-20" data-sales="420">
-                    <div class="product-card__inner">
-                        <div class="product-card__badges">
-                            <span class="product-badge product-badge--limited">&#128293; Limited</span>
-                        </div>
-                        <div class="product-card__image product-card__image--1">&#129509;</div>
-                        <div class="product-card__body">
-                            <div class="product-card__name">"Charot Lang" Hoodie</div>
-                            <div class="product-card__price">&#8369;1,299</div>
-                            <div class="product-card__sizes">
-                                <button class="size-btn" data-size="XS">XS</button>
-                                <button class="size-btn" data-size="S">S</button>
-                                <button class="size-btn size-btn--active" data-size="M">M</button>
-                                <button class="size-btn" data-size="L">L</button>
-                                <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="product-card__add-btn" data-product="charot-hoodie" data-name="&quot;Charot Lang&quot; Hoodie" data-price="1299" data-emoji="&#129509;" data-has-size="true">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. "Ate Girl" Tee -->
-                <div class="product-card animate-on-scroll" data-category="apparel" data-price="599" data-date="2026-03-10" data-sales="890">
-                    <div class="product-card__badges">
-                        <span class="product-badge product-badge--new">&#10024; New</span>
-                    </div>
-                    <div class="product-card__image product-card__image--2">&#128085;</div>
-                    <div class="product-card__body">
-                        <div class="product-card__name">"Ate Girl" Tee</div>
-                        <div class="product-card__price">&#8369;599</div>
-                        <div class="product-card__sizes">
-                            <button class="size-btn" data-size="XS">XS</button>
-                            <button class="size-btn" data-size="S">S</button>
-                            <button class="size-btn size-btn--active" data-size="M">M</button>
-                            <button class="size-btn" data-size="L">L</button>
-                            <button class="size-btn" data-size="XL">XL</button>
-                        </div>
-                        <button class="product-card__add-btn" data-product="ate-girl-tee" data-name="&quot;Ate Girl&quot; Tee" data-price="599" data-emoji="&#128085;" data-has-size="true">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- 3. Alex Nation Cap -->
-                <div class="product-card animate-on-scroll" data-category="accessories" data-price="449" data-date="2026-03-15" data-sales="650">
-                    <div class="product-card__badges">
-                        <span class="product-badge product-badge--new">&#10024; New</span>
-                    </div>
-                    <div class="product-card__image product-card__image--3">&#129506;</div>
-                    <div class="product-card__body">
-                        <div class="product-card__name">Alex Nation Cap</div>
-                        <div class="product-card__price">&#8369;449</div>
-                        <button class="product-card__add-btn" data-product="alex-nation-cap" data-name="Alex Nation Cap" data-price="449" data-emoji="&#129506;">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- 4. "Walang Kupas" Mug -->
-                <div class="product-card animate-on-scroll" data-category="home" data-price="349" data-date="2026-02-20" data-sales="780">
-                    <div class="product-card__image product-card__image--4">&#9749;</div>
-                    <div class="product-card__body">
-                        <div class="product-card__name">"Walang Kupas" Mug</div>
-                        <div class="product-card__price">&#8369;349</div>
-                        <button class="product-card__add-btn" data-product="walang-kupas-mug" data-name="&quot;Walang Kupas&quot; Mug" data-price="349" data-emoji="&#9749;">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- 5. "GRWM with Alex" Tote Bag -->
-                <div class="product-card animate-on-scroll" data-category="accessories" data-price="399" data-date="2026-03-05" data-sales="520">
-                    <div class="product-card__image product-card__image--5">&#128092;</div>
-                    <div class="product-card__body">
-                        <div class="product-card__name">"GRWM with Alex" Tote Bag</div>
-                        <div class="product-card__price">&#8369;399</div>
-                        <button class="product-card__add-btn" data-product="grwm-tote" data-name="&quot;GRWM with Alex&quot; Tote Bag" data-price="399" data-emoji="&#128092;">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- 6. Alex Gonzaga Sticker Pack -->
-                <div class="product-card animate-on-scroll" data-category="stickers" data-price="149" data-date="2026-03-01" data-sales="1200">
-                    <div class="product-card__image product-card__image--6">&#127912;</div>
-                    <div class="product-card__body">
-                        <div class="product-card__name">Alex Gonzaga Sticker Pack</div>
-                        <div class="product-card__price">&#8369;149</div>
-                        <button class="product-card__add-btn" data-product="sticker-pack" data-name="Alex Gonzaga Sticker Pack" data-price="149" data-emoji="&#127912;">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- 7. "Lodi" Phone Case -->
-                <div class="product-card animate-on-scroll" data-category="accessories" data-price="499" data-date="2026-02-28" data-sales="430">
-                    <div class="product-card__image product-card__image--1">&#128241;</div>
-                    <div class="product-card__body">
-                        <div class="product-card__name">"Lodi" Phone Case</div>
-                        <div class="product-card__price">&#8369;499</div>
-                        <button class="product-card__add-btn" data-product="lodi-phone-case" data-name="&quot;Lodi&quot; Phone Case" data-price="499" data-emoji="&#128241;">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- 8. "Gonzaga Strong" Crew Neck — LIMITED -->
-                <div class="product-card product-card--limited animate-on-scroll" data-category="apparel,limited" data-price="899" data-date="2026-03-18" data-sales="310">
-                    <div class="product-card__inner">
-                        <div class="product-card__badges">
-                            <span class="product-badge product-badge--limited">&#128293; Limited</span>
-                        </div>
-                        <div class="product-card__image product-card__image--2">&#128085;</div>
-                        <div class="product-card__body">
-                            <div class="product-card__name">"Gonzaga Strong" Crew Neck</div>
-                            <div class="product-card__price">&#8369;899</div>
-                            <div class="product-card__sizes">
-                                <button class="size-btn" data-size="S">S</button>
-                                <button class="size-btn size-btn--active" data-size="M">M</button>
-                                <button class="size-btn" data-size="L">L</button>
-                                <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                            <button class="product-card__add-btn" data-product="gonzaga-strong-crew" data-name="&quot;Gonzaga Strong&quot; Crew Neck" data-price="899" data-emoji="&#128085;" data-has-size="true">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 9. Alex G Enamel Pin Set -->
-                <div class="product-card animate-on-scroll" data-category="accessories,stickers" data-price="249" data-date="2026-02-15" data-sales="950">
-                    <div class="product-card__image product-card__image--3">&#128204;</div>
-                    <div class="product-card__body">
-                        <div class="product-card__name">Alex G Enamel Pin Set</div>
-                        <div class="product-card__price">&#8369;249</div>
-                        <button class="product-card__add-btn" data-product="enamel-pin-set" data-name="Alex G Enamel Pin Set" data-price="249" data-emoji="&#128204;">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- 10. "Charot Lang" Bucket Hat — LIMITED -->
-                <div class="product-card product-card--limited animate-on-scroll" data-category="accessories,limited" data-price="549" data-date="2026-03-20" data-sales="280">
-                    <div class="product-card__inner">
-                        <div class="product-card__badges">
-                            <span class="product-badge product-badge--limited">&#128293; Limited</span>
-                        </div>
-                        <div class="product-card__image product-card__image--4">&#127913;</div>
-                        <div class="product-card__body">
-                            <div class="product-card__name">"Charot Lang" Bucket Hat</div>
-                            <div class="product-card__price">&#8369;549</div>
-                            <button class="product-card__add-btn" data-product="charot-bucket-hat" data-name="&quot;Charot Lang&quot; Bucket Hat" data-price="549" data-emoji="&#127913;">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 11. Fan Club Lanyard -->
-                <div class="product-card animate-on-scroll" data-category="accessories" data-price="199" data-date="2026-01-20" data-sales="1050">
-                    <div class="product-card__image product-card__image--5">&#127991;</div>
-                    <div class="product-card__body">
-                        <div class="product-card__name">Fan Club Lanyard</div>
-                        <div class="product-card__price">&#8369;199</div>
-                        <button class="product-card__add-btn" data-product="fan-club-lanyard" data-name="Fan Club Lanyard" data-price="199" data-emoji="&#127991;">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- 12. "Ate Girl" Laptop Sleeve — SOLD OUT -->
-                <div class="product-card product-card--sold-out animate-on-scroll" data-category="accessories" data-price="699" data-date="2026-02-10" data-sales="500">
-                    <div class="product-card__badges">
-                        <span class="product-badge product-badge--sold-out">Sold Out</span>
-                    </div>
-                    <div class="product-card__image product-card__image--6">&#128187;</div>
-                    <div class="product-card__body">
-                        <div class="product-card__name">"Ate Girl" Laptop Sleeve</div>
-                        <div class="product-card__price">&#8369;699</div>
-                        <button class="product-card__add-btn" disabled>Sold Out</button>
-                    </div>
-                </div>
-
+                <!-- Products rendered dynamically by JS -->
             </div>
         </div>
     </section>
@@ -1110,10 +946,329 @@
     <script src="/js/app.js"></script>
     <script>
         /* ═══════════════════════════════════════════════════
-           MERCH PAGE — Cart, Filtering, Sorting
+           MERCH PAGE — Dynamic Products, Cart, Filtering, Sorting
            ═══════════════════════════════════════════════════ */
 
         const CART_KEY = 'ag_cart';
+
+        /* ── Demo Fallback Data ── */
+        let merchProducts = [
+            { id: 'charot-hoodie', name: '"Charot Lang" Hoodie', price: 1299, category: 'Apparel', sizes: 'XS,S,M,L,XL', stock: 50, badge: 'Limited', status: 'Active', emoji: '\u{1F9E5}', image: null, images: null, description: 'Premium hoodie featuring the iconic Charot Lang catchphrase.', isLimitedDrop: true, dropDate: null, sales: 420, createdDate: '2026-03-20' },
+            { id: 'ate-girl-tee', name: '"Ate Girl" Tee', price: 599, category: 'Apparel', sizes: 'XS,S,M,L,XL', stock: 200, badge: 'New', status: 'Active', emoji: '\u{1F455}', image: null, images: null, description: 'Classic tee for the ultimate Ate Girl.', isLimitedDrop: false, dropDate: null, sales: 890, createdDate: '2026-03-10' },
+            { id: 'alex-nation-cap', name: 'Alex Nation Cap', price: 449, category: 'Accessories', sizes: null, stock: 150, badge: 'New', status: 'Active', emoji: '\u{1F9E2}', image: null, images: null, description: 'Adjustable cap for the Alex Nation fam.', isLimitedDrop: false, dropDate: null, sales: 650, createdDate: '2026-03-15' },
+            { id: 'walang-kupas-mug', name: '"Walang Kupas" Mug', price: 349, category: 'Home & Lifestyle', sizes: null, stock: 300, badge: null, status: 'Active', emoji: '\u2615', image: null, images: null, description: 'Ceramic mug that reminds you: walang kupas!', isLimitedDrop: false, dropDate: null, sales: 780, createdDate: '2026-02-20' },
+            { id: 'grwm-tote', name: '"GRWM with Alex" Tote Bag', price: 399, category: 'Accessories', sizes: null, stock: 180, badge: null, status: 'Active', emoji: '\u{1F45C}', image: null, images: null, description: 'Canvas tote perfect for your daily GRWM essentials.', isLimitedDrop: false, dropDate: null, sales: 520, createdDate: '2026-03-05' },
+            { id: 'sticker-pack', name: 'Alex Gonzaga Sticker Pack', price: 149, category: 'Stickers & Fun', sizes: null, stock: 500, badge: null, status: 'Active', emoji: '\u{1F3A8}', image: null, images: null, description: '12-piece sticker pack with Alex catchphrases and icons.', isLimitedDrop: false, dropDate: null, sales: 1200, createdDate: '2026-03-01' },
+            { id: 'lodi-phone-case', name: '"Lodi" Phone Case', price: 499, category: 'Accessories', sizes: null, stock: 120, badge: null, status: 'Active', emoji: '\u{1F4F1}', image: null, images: null, description: 'Durable phone case that says Lodi loud and proud.', isLimitedDrop: false, dropDate: null, sales: 430, createdDate: '2026-02-28' },
+            { id: 'gonzaga-strong-crew', name: '"Gonzaga Strong" Crew Neck', price: 899, category: 'Apparel', sizes: 'S,M,L,XL', stock: 75, badge: 'Limited', status: 'Active', emoji: '\u{1F455}', image: null, images: null, description: 'Limited edition crew neck for the Gonzaga Strong movement.', isLimitedDrop: true, dropDate: null, sales: 310, createdDate: '2026-03-18' },
+            { id: 'enamel-pin-set', name: 'Alex G Enamel Pin Set', price: 249, category: 'Accessories', sizes: null, stock: 400, badge: null, status: 'Active', emoji: '\u{1F4CC}', image: null, images: null, description: '5-piece enamel pin set featuring Alex-inspired designs.', isLimitedDrop: false, dropDate: null, sales: 950, createdDate: '2026-02-15' },
+            { id: 'charot-bucket-hat', name: '"Charot Lang" Bucket Hat', price: 549, category: 'Accessories', sizes: null, stock: 60, badge: 'Limited', status: 'Active', emoji: '\u{1F3A9}', image: null, images: null, description: 'Limited bucket hat from the Charot Lang collection.', isLimitedDrop: true, dropDate: null, sales: 280, createdDate: '2026-03-20' },
+            { id: 'fan-club-lanyard', name: 'Fan Club Lanyard', price: 199, category: 'Accessories', sizes: null, stock: 350, badge: null, status: 'Active', emoji: '\u{1F3F7}\uFE0F', image: null, images: null, description: 'Official fan club lanyard with detachable clip.', isLimitedDrop: false, dropDate: null, sales: 1050, createdDate: '2026-01-20' },
+            { id: 'ate-girl-laptop-sleeve', name: '"Ate Girl" Laptop Sleeve', price: 699, category: 'Accessories', sizes: null, stock: 0, badge: 'Sold Out', status: 'Active', emoji: '\u{1F4BB}', image: null, images: null, description: 'Padded laptop sleeve with Ate Girl branding.', isLimitedDrop: false, dropDate: null, sales: 500, createdDate: '2026-02-10' },
+        ];
+
+        /* ── Default drop fallback ── */
+        let dropInfo = {
+            name: '"Charot Lang" Collection',
+            description: 'Limited to 500 pieces \u2014 once it\'s gone, it\'s gone!',
+            dropDate: null
+        };
+
+        /* ── Category Mapping (Airtable -> filter key) ── */
+        function categoryToFilter(category) {
+            if (!category) return '';
+            const map = {
+                'Apparel': 'apparel',
+                'Accessories': 'accessories',
+                'Home & Lifestyle': 'home',
+                'Stickers & Fun': 'stickers',
+            };
+            return map[category] || category.toLowerCase();
+        }
+
+        /* ── Image gradient backgrounds ── */
+        const imageGradients = [
+            'product-card__image--1',
+            'product-card__image--2',
+            'product-card__image--3',
+            'product-card__image--4',
+            'product-card__image--5',
+            'product-card__image--6',
+        ];
+
+        /* ── Render Product Grid ── */
+        function renderProducts(products) {
+            const grid = document.getElementById('product-grid');
+            const resultsEl = document.getElementById('merch-results');
+
+            grid.innerHTML = products.map((p, i) => {
+                const isLimited = p.badge === 'Limited';
+                const isSoldOut = p.stock === 0 || p.badge === 'Sold Out';
+                const isNew = p.badge === 'New';
+                const slug = p.id || p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                const gradClass = imageGradients[i % imageGradients.length];
+                const filterCats = categoryToFilter(p.category) + (isLimited ? ',limited' : '');
+                const sizesArr = p.sizes ? p.sizes.split(',').map(s => s.trim()) : [];
+                const hasSize = sizesArr.length > 0;
+
+                // Product image: use <img> if images URL exists, else emoji
+                const imageContent = p.images
+                    ? `<img src="${p.images}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">`
+                    : (p.emoji || '\u{1F6CD}\uFE0F');
+
+                // Build badges
+                let badgesHTML = '';
+                if (isLimited) {
+                    badgesHTML = `<div class="product-card__badges"><span class="product-badge product-badge--limited">&#128293; Limited</span></div>`;
+                } else if (isSoldOut) {
+                    badgesHTML = `<div class="product-card__badges"><span class="product-badge product-badge--sold-out">Sold Out</span></div>`;
+                } else if (isNew) {
+                    badgesHTML = `<div class="product-card__badges"><span class="product-badge product-badge--new">&#10024; New</span></div>`;
+                }
+
+                // Build sizes
+                const sizesHTML = hasSize ? `
+                    <div class="product-card__sizes">
+                        ${sizesArr.map((s, si) => `<button class="size-btn${si === Math.floor(sizesArr.length / 2) ? ' size-btn--active' : ''}" data-size="${s}">${s}</button>`).join('')}
+                    </div>
+                ` : '';
+
+                // Build add-to-cart button
+                const btnHTML = isSoldOut
+                    ? `<button class="product-card__add-btn" disabled>Sold Out</button>`
+                    : `<button class="product-card__add-btn" data-product="${slug}" data-name="${p.name.replace(/"/g, '&quot;')}" data-price="${p.price}" data-emoji="${p.emoji || '\u{1F6CD}\uFE0F'}"${hasSize ? ' data-has-size="true"' : ''}>Add to Cart</button>`;
+
+                // Card wrapper differs for limited vs regular
+                if (isLimited) {
+                    return `
+                        <div class="product-card product-card--limited animate-on-scroll" data-category="${filterCats}" data-price="${p.price}" data-date="${p.createdDate || ''}" data-sales="${p.sales || 0}">
+                            <div class="product-card__inner">
+                                ${badgesHTML}
+                                <div class="product-card__image ${gradClass}">${imageContent}</div>
+                                <div class="product-card__body">
+                                    <div class="product-card__name">${p.name}</div>
+                                    <div class="product-card__price">${formatPrice(p.price)}</div>
+                                    ${sizesHTML}
+                                    ${btnHTML}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                if (isSoldOut) {
+                    return `
+                        <div class="product-card product-card--sold-out animate-on-scroll" data-category="${filterCats}" data-price="${p.price}" data-date="${p.createdDate || ''}" data-sales="${p.sales || 0}">
+                            ${badgesHTML}
+                            <div class="product-card__image ${gradClass}">${imageContent}</div>
+                            <div class="product-card__body">
+                                <div class="product-card__name">${p.name}</div>
+                                <div class="product-card__price">${formatPrice(p.price)}</div>
+                                ${sizesHTML}
+                                ${btnHTML}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="product-card animate-on-scroll" data-category="${filterCats}" data-price="${p.price}" data-date="${p.createdDate || ''}" data-sales="${p.sales || 0}">
+                        ${badgesHTML}
+                        <div class="product-card__image ${gradClass}">${imageContent}</div>
+                        <div class="product-card__body">
+                            <div class="product-card__name">${p.name}</div>
+                            <div class="product-card__price">${formatPrice(p.price)}</div>
+                            ${sizesHTML}
+                            ${btnHTML}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            resultsEl.innerHTML = `Showing <strong>${products.length}</strong> product${products.length !== 1 ? 's' : ''}`;
+
+            // Re-bind add-to-cart buttons
+            bindAddToCartButtons();
+            // Re-bind size selectors
+            bindSizeSelectors();
+            // Re-init scroll animations for new cards
+            initScrollAnimations();
+            // Re-bind filters and sort to new DOM
+            bindFiltersAndSort();
+        }
+
+        /* ── Bind Add-to-Cart Buttons ── */
+        function bindAddToCartButtons() {
+            document.querySelectorAll('.product-card__add-btn').forEach(btn => {
+                if (btn.disabled) return;
+                btn.addEventListener('click', function () {
+                    const product = this.dataset.product;
+                    const name = this.dataset.name;
+                    const price = this.dataset.price;
+                    const emoji = this.dataset.emoji;
+                    const hasSize = this.dataset.hasSize;
+
+                    let size = null;
+                    if (hasSize) {
+                        const card = this.closest('.product-card__body') || this.closest('.product-card__inner')?.querySelector('.product-card__body') || this.closest('.product-card');
+                        const activeSize = card.querySelector('.size-btn--active');
+                        size = activeSize ? activeSize.dataset.size : 'M';
+                    }
+
+                    addToCart(product, name, price, emoji, size);
+                });
+            });
+        }
+
+        /* ── Bind Size Selectors ── */
+        function bindSizeSelectors() {
+            document.querySelectorAll('.product-card__sizes').forEach(container => {
+                container.querySelectorAll('.size-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        container.querySelectorAll('.size-btn').forEach(b => b.classList.remove('size-btn--active'));
+                        this.classList.add('size-btn--active');
+                    });
+                });
+            });
+        }
+
+        /* ── Category Filtering & Sorting (works on dynamic data) ── */
+        function bindFiltersAndSort() {
+            const filterPills = document.querySelectorAll('.filter-pill');
+            const productGrid = document.getElementById('product-grid');
+            const resultsEl = document.getElementById('merch-results');
+
+            filterPills.forEach(pill => {
+                // Clone & replace to remove old listeners
+                const newPill = pill.cloneNode(true);
+                pill.parentNode.replaceChild(newPill, pill);
+
+                newPill.addEventListener('click', function () {
+                    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('filter-pill--active'));
+                    this.classList.add('filter-pill--active');
+
+                    const filter = this.dataset.filter;
+                    const cards = document.querySelectorAll('.product-card');
+                    let visibleCount = 0;
+
+                    cards.forEach(card => {
+                        const categories = card.dataset.category || '';
+                        if (filter === 'all' || categories.split(',').includes(filter)) {
+                            card.style.display = '';
+                            visibleCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    resultsEl.innerHTML = `Showing <strong>${visibleCount}</strong> product${visibleCount !== 1 ? 's' : ''}`;
+                });
+            });
+
+            const sortSelect = document.getElementById('sort-select');
+            // Clone & replace to remove old listener
+            const newSortSelect = sortSelect.cloneNode(true);
+            sortSelect.parentNode.replaceChild(newSortSelect, sortSelect);
+
+            newSortSelect.addEventListener('change', function () {
+                const cards = Array.from(document.querySelectorAll('.product-card'));
+
+                cards.sort((a, b) => {
+                    switch (this.value) {
+                        case 'price-low':
+                            return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+                        case 'price-high':
+                            return parseInt(b.dataset.price) - parseInt(a.dataset.price);
+                        case 'newest':
+                            return new Date(b.dataset.date) - new Date(a.dataset.date);
+                        case 'best':
+                        default:
+                            return parseInt(b.dataset.sales) - parseInt(a.dataset.sales);
+                    }
+                });
+
+                cards.forEach(card => productGrid.appendChild(card));
+            });
+        }
+
+        /* ── Update Drop Banner ── */
+        function updateDropBanner(products) {
+            // Find limited drops: isLimitedDrop=true AND status is Coming Soon or Active
+            const limitedDrops = products.filter(p =>
+                (p.isLimitedDrop || p.badge === 'Limited') &&
+                (p.status === 'Coming Soon' || p.status === 'Active')
+            );
+
+            if (limitedDrops.length > 0) {
+                const drop = limitedDrops[0];
+                const titleEl = document.getElementById('drop-title');
+                const collectionEl = document.getElementById('drop-collection');
+                const descEl = document.getElementById('drop-description');
+
+                if (titleEl) titleEl.textContent = 'Next Exclusive Drop';
+                if (collectionEl) collectionEl.textContent = drop.name;
+                if (descEl && drop.description) descEl.textContent = drop.description;
+
+                // Use real drop date if available, else fallback to 7 days from now
+                const targetDate = drop.dropDate
+                    ? new Date(drop.dropDate).toISOString()
+                    : (() => { const d = new Date(); d.setDate(d.getDate() + 7); return d.toISOString(); })();
+
+                initCountdown('merch-drop-countdown', targetDate);
+            } else {
+                // No drops found — use default fallback
+                const fallbackDate = new Date();
+                fallbackDate.setDate(fallbackDate.getDate() + 7);
+                initCountdown('merch-drop-countdown', fallbackDate.toISOString());
+            }
+        }
+
+        /* ── Normalize Airtable product to local shape ── */
+        function normalizeProduct(p) {
+            return {
+                id: p.id || p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                name: p.name || 'Untitled Product',
+                price: p.price || 0,
+                category: p.category || '',
+                sizes: p.sizes || null,
+                stock: typeof p.stock === 'number' ? p.stock : 999,
+                badge: p.badge || null,
+                status: p.status || 'Active',
+                emoji: p.emoji || null,
+                image: p.image || null,
+                images: p.images || null,
+                description: p.description || null,
+                isLimitedDrop: p.isLimitedDrop || p.badge === 'Limited',
+                dropDate: p.dropDate || null,
+                sales: p.sales || 0,
+                createdDate: p.createdDate || '',
+            };
+        }
+
+        /* ── Fetch & Init Products ── */
+        async function loadMerchProducts() {
+            // Show skeleton loading
+            createSkeletonCards(8, '#product-grid');
+
+            try {
+                const res = await fetch('/.netlify/functions/get-merch');
+                if (!res.ok) throw new Error('Fetch failed');
+                const data = await res.json();
+
+                if (data.products && data.products.length > 0) {
+                    merchProducts = data.products.map(normalizeProduct);
+                }
+            } catch (err) {
+                // Silently fall back to demo data (graceful degradation)
+                console.warn('Merch fetch failed, using demo data:', err.message);
+            }
+
+            // Render products (either from Airtable or fallback)
+            renderProducts(merchProducts);
+
+            // Update drop banner with product data
+            updateDropBanner(merchProducts);
+        }
 
         /* ── Cart State ── */
         function getCart() {
@@ -1255,96 +1410,10 @@
         document.getElementById('cart-close-btn').addEventListener('click', closeCart);
         document.getElementById('cart-overlay').addEventListener('click', closeCart);
 
-        /* ── Add to Cart Buttons ── */
-        document.querySelectorAll('.product-card__add-btn').forEach(btn => {
-            if (btn.disabled) return;
-            btn.addEventListener('click', function () {
-                const product = this.dataset.product;
-                const name = this.dataset.name;
-                const price = this.dataset.price;
-                const emoji = this.dataset.emoji;
-                const hasSize = this.dataset.hasSize;
-
-                let size = null;
-                if (hasSize) {
-                    const card = this.closest('.product-card__body') || this.closest('.product-card__inner')?.querySelector('.product-card__body') || this.closest('.product-card');
-                    const activeSize = card.querySelector('.size-btn--active');
-                    size = activeSize ? activeSize.dataset.size : 'M';
-                }
-
-                addToCart(product, name, price, emoji, size);
-            });
-        });
-
-        /* ── Size Selector ── */
-        document.querySelectorAll('.product-card__sizes').forEach(container => {
-            container.querySelectorAll('.size-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    container.querySelectorAll('.size-btn').forEach(b => b.classList.remove('size-btn--active'));
-                    this.classList.add('size-btn--active');
-                });
-            });
-        });
-
-        /* ── Category Filtering ── */
-        const filterPills = document.querySelectorAll('.filter-pill');
-        const productCards = document.querySelectorAll('.product-card');
-        const resultsEl = document.getElementById('merch-results');
-
-        filterPills.forEach(pill => {
-            pill.addEventListener('click', function () {
-                filterPills.forEach(p => p.classList.remove('filter-pill--active'));
-                this.classList.add('filter-pill--active');
-
-                const filter = this.dataset.filter;
-                let visibleCount = 0;
-
-                productCards.forEach(card => {
-                    const categories = card.dataset.category || '';
-                    if (filter === 'all' || categories.split(',').includes(filter)) {
-                        card.style.display = '';
-                        visibleCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-
-                resultsEl.innerHTML = `Showing <strong>${visibleCount}</strong> product${visibleCount !== 1 ? 's' : ''}`;
-            });
-        });
-
-        /* ── Sorting ── */
-        const sortSelect = document.getElementById('sort-select');
-        const productGrid = document.getElementById('product-grid');
-
-        sortSelect.addEventListener('change', function () {
-            const cards = Array.from(productCards);
-
-            cards.sort((a, b) => {
-                switch (this.value) {
-                    case 'price-low':
-                        return parseInt(a.dataset.price) - parseInt(b.dataset.price);
-                    case 'price-high':
-                        return parseInt(b.dataset.price) - parseInt(a.dataset.price);
-                    case 'newest':
-                        return new Date(b.dataset.date) - new Date(a.dataset.date);
-                    case 'best':
-                    default:
-                        return parseInt(b.dataset.sales) - parseInt(a.dataset.sales);
-                }
-            });
-
-            cards.forEach(card => productGrid.appendChild(card));
-        });
-
-        /* ── Countdown Timer ── */
-        const dropDate = new Date();
-        dropDate.setDate(dropDate.getDate() + 7);
-        initCountdown('merch-drop-countdown', dropDate.toISOString());
-
         /* ── Init ── */
         updateCartCount();
         renderCart();
+        loadMerchProducts();
     </script>
 </body>
 </html>

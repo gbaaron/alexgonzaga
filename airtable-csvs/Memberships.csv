@@ -1,0 +1,8 @@
+UserEmail,Tier,StartDate,EndDate,Status,PaymentReference,Amount,AutoRenew
+maria@email.com,VIP,2026-01-01,2027-01-01,Active,GCASH-2026-001,4188,true
+kevin@email.com,Bestie,2025-12-01,2026-12-01,Active,MAYA-2025-042,1788,true
+sam@email.com,VIP,2026-02-15,2027-02-15,Active,GCASH-2026-015,4188,false
+dave@email.com,Bestie,2025-11-30,2026-11-30,Active,BANK-2025-088,1788,true
+angel@email.com,Inner Circle,2026-03-01,2027-03-01,Active,GCASH-2026-033,9588,true
+ryan@email.com,Bestie,2025-10-15,2026-10-15,Active,MAYA-2025-071,1788,false
+chris@email.com,VIP,2026-01-15,2027-01-15,Active,GCASH-2026-008,4188,true

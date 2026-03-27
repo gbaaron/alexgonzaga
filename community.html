@@ -785,310 +785,11 @@
                     </div>
                 </div>
 
-                <!-- ── Pinned Post ── -->
-                <div class="pinned-post feed-post" data-type="featured" data-featured="true">
-                    <div class="pinned-post__label">&#128204; Pinned</div>
-                    <div class="feed-post__header" style="margin-top: var(--space-md);">
-                        <div class="feed-post__avatar" style="background: var(--gradient-gold);">&#9733;</div>
-                        <div class="feed-post__user-info">
-                            <div class="feed-post__username">@AlexGonzagaOfficial <span class="badge badge--gold" style="font-size:0.65rem;">Admin</span></div>
-                            <div class="feed-post__meta">
-                                <span class="feed-post__time">March 20, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feed-post__content">
-                        Hey Alex Nation! Grabe, sobrang thankful ako sa inyong lahat! We just hit 24K members in this community! To celebrate, we are doing a FAN ART CONTEST this month. Best fan art wins a signed merch bundle + a personal video message from yours truly. Tara na, submit na kayo! Tag your entries with #AlexNationArt &#127912;&#128150;&#128293;
-                    </div>
-                    <div class="feed-post__actions">
-                        <button class="feed-post__action-btn feed-post__action-btn--liked" onclick="toggleLike(this)">
-                            <span class="icon">&#10084;</span>
-                            <span class="count">2,847</span>
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128172;</span>
-                            <span class="count">312</span> Comments
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128257;</span>
-                            Share
-                        </button>
-                    </div>
-                </div>
+                <!-- ── Pinned Post (dynamically rendered) ── -->
+                <div id="pinnedPostContainer"></div>
 
-                <!-- ── Post 1: Fan Art ── -->
-                <div class="feed-post" data-type="fanart" data-featured="true">
-                    <div class="feed-post__header">
-                        <div class="feed-post__avatar" style="background: var(--gradient-purple);">K</div>
-                        <div class="feed-post__user-info">
-                            <div class="feed-post__username">@kuya_art</div>
-                            <div class="feed-post__meta">
-                                <span class="badge badge--purple">Fan Art</span>
-                                <span class="feed-post__time">2 hours ago</span>
-                                <span class="feed-post__featured-badge">&#11088; Featured</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feed-post__content">
-                        Spent 3 weeks on this digital painting of Alex from the "Ate Girl Era" era! Watercolor style! Hope she sees it! &#127912;&#10024;
-                    </div>
-                    <div class="feed-post__image">
-                        <div class="feed-post__image-placeholder" style="background: linear-gradient(135deg, #F0E4FF 0%, #FFE4F0 50%, #E4F0FF 100%);">
-                            <span>&#127912;</span>
-                            <span style="color: var(--purple);">Digital Watercolor Fan Art</span>
-                        </div>
-                    </div>
-                    <div class="feed-post__actions">
-                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
-                            <span class="icon">&#9825;</span>
-                            <span class="count">1,203</span>
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128172;</span>
-                            <span class="count">89</span> Comments
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128257;</span>
-                            Share
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ── Post 2: Meme ── -->
-                <div class="feed-post" data-type="meme">
-                    <div class="feed-post__header">
-                        <div class="feed-post__avatar" style="background: var(--gradient-cta);">J</div>
-                        <div class="feed-post__user-info">
-                            <div class="feed-post__username">@jollibee_memes</div>
-                            <div class="feed-post__meta">
-                                <span class="badge badge--coral">Meme</span>
-                                <span class="feed-post__time">4 hours ago</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feed-post__content">
-                        When Alex says "Charot lang" but you know she's 100% serious &#128514;&#128514;&#128514;
-                    </div>
-                    <div class="feed-post__image">
-                        <div class="feed-post__image-placeholder" style="background: linear-gradient(135deg, #FFE4E4 0%, #FFF0E4 100%); height: 240px;">
-                            <span>&#128514;</span>
-                            <span style="color: var(--coral);">Charot Lang Meme</span>
-                        </div>
-                    </div>
-                    <div class="feed-post__actions">
-                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
-                            <span class="icon">&#9825;</span>
-                            <span class="count">876</span>
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128172;</span>
-                            <span class="count">54</span> Comments
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128257;</span>
-                            Share
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ── Post 3: Text Post ── -->
-                <div class="feed-post" data-type="post">
-                    <div class="feed-post__header">
-                        <div class="feed-post__avatar" style="background: var(--gradient-primary);">M</div>
-                        <div class="feed-post__user-info">
-                            <div class="feed-post__username">@manilaFanGirl</div>
-                            <div class="feed-post__meta">
-                                <span class="badge badge--pink">Post</span>
-                                <span class="feed-post__time">5 hours ago</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feed-post__content">
-                        Just rewatched Alex's wedding vlog for the 100th time and I'm still crying! Why is she so funny even on her wedding day?! The way Mikee was looking at her during the vows... my heart cannot take it! Gonzaga genes are really something else. Anyone else ugly crying right now or just me? &#128557;&#128150;
-                    </div>
-                    <div class="feed-post__actions">
-                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
-                            <span class="icon">&#9825;</span>
-                            <span class="count">432</span>
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128172;</span>
-                            <span class="count">28</span> Comments
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128257;</span>
-                            Share
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ── Post 4: Question ── -->
-                <div class="feed-post" data-type="question">
-                    <div class="feed-post__header">
-                        <div class="feed-post__avatar" style="background: linear-gradient(135deg, var(--orange), var(--yellow));">D</div>
-                        <div class="feed-post__user-info">
-                            <div class="feed-post__username">@dave_cebufan</div>
-                            <div class="feed-post__meta">
-                                <span class="badge badge--gold">Question</span>
-                                <span class="feed-post__time">6 hours ago</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feed-post__content">
-                        Guys, question! What's your all-time FAVORITE Alex vlog? I need to make a binge-watch list this weekend. I've been a fan for years but I feel like I've missed some gems. Drop your top 3 below! &#128071;&#128071;&#128071;
-                    </div>
-                    <div class="feed-post__actions">
-                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
-                            <span class="icon">&#9825;</span>
-                            <span class="count">215</span>
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128172;</span>
-                            <span class="count">142</span> Comments
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128257;</span>
-                            Share
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ── Post 5: Story ── -->
-                <div class="feed-post" data-type="story" data-featured="true">
-                    <div class="feed-post__header">
-                        <div class="feed-post__avatar" style="background: linear-gradient(135deg, var(--teal), #06D6A0);">A</div>
-                        <div class="feed-post__user-info">
-                            <div class="feed-post__username">@angel_iligan</div>
-                            <div class="feed-post__meta">
-                                <span class="badge badge--teal">Story</span>
-                                <span class="feed-post__time">8 hours ago</span>
-                                <span class="feed-post__featured-badge">&#11088; Featured</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feed-post__content">
-                        I have to share this! Last year I was going through a really tough time — lost my job, feeling down about everything. Then I binged Alex's vlogs and her energy literally pulled me out of it. She reminded me that life doesn't have to be perfect to be funny and beautiful. Yesterday, I finally started my own small business and I named my first product line "Walang Kupas" in her honor. Thank you, Ate Alex, for being our sunshine! &#9728;&#128150;
-                    </div>
-                    <div class="feed-post__actions">
-                        <button class="feed-post__action-btn feed-post__action-btn--liked" onclick="toggleLike(this)">
-                            <span class="icon">&#10084;</span>
-                            <span class="count">1,890</span>
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128172;</span>
-                            <span class="count">203</span> Comments
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128257;</span>
-                            Share
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ── Post 6: Fan Art with Image ── -->
-                <div class="feed-post" data-type="fanart">
-                    <div class="feed-post__header">
-                        <div class="feed-post__avatar" style="background: var(--gradient-purple);">S</div>
-                        <div class="feed-post__user-info">
-                            <div class="feed-post__username">@sketch_by_sam</div>
-                            <div class="feed-post__meta">
-                                <span class="badge badge--purple">Fan Art</span>
-                                <span class="feed-post__time">10 hours ago</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feed-post__content">
-                        Quick chibi doodle of Alex and Toni! Sisters goals talaga sila &#128150; Took me about 2 hours. Should I do a full series of Gonzaga family chibis?
-                    </div>
-                    <div class="feed-post__image">
-                        <div class="feed-post__image-placeholder" style="background: linear-gradient(135deg, #E8D5FF 0%, #FFD5E5 100%); height: 300px;">
-                            <span>&#9998;</span>
-                            <span style="color: var(--purple);">Chibi Sisters Fan Art</span>
-                        </div>
-                    </div>
-                    <div class="feed-post__actions">
-                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
-                            <span class="icon">&#9825;</span>
-                            <span class="count">654</span>
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128172;</span>
-                            <span class="count">47</span> Comments
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128257;</span>
-                            Share
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ── Post 7: Meme ── -->
-                <div class="feed-post" data-type="meme">
-                    <div class="feed-post__header">
-                        <div class="feed-post__avatar" style="background: linear-gradient(135deg, var(--coral), var(--pink));">R</div>
-                        <div class="feed-post__user-info">
-                            <div class="feed-post__username">@reyesJM</div>
-                            <div class="feed-post__meta">
-                                <span class="badge badge--coral">Meme</span>
-                                <span class="feed-post__time">12 hours ago</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feed-post__content">
-                        POV: You're explaining to your friends why you need to leave the party early because Alex just uploaded a new vlog &#128514; No regrets. Priorities, people!
-                    </div>
-                    <div class="feed-post__image">
-                        <div class="feed-post__image-placeholder" style="background: linear-gradient(135deg, #FFE8E8 0%, #FFF5E0 100%); height: 220px;">
-                            <span>&#128694;</span>
-                            <span style="color: var(--coral);">Priorities Meme</span>
-                        </div>
-                    </div>
-                    <div class="feed-post__actions">
-                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
-                            <span class="icon">&#9825;</span>
-                            <span class="count">543</span>
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128172;</span>
-                            <span class="count">31</span> Comments
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128257;</span>
-                            Share
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ── Post 8: Text Post ── -->
-                <div class="feed-post" data-type="post">
-                    <div class="feed-post__header">
-                        <div class="feed-post__avatar" style="background: var(--gradient-primary);">L</div>
-                        <div class="feed-post__user-info">
-                            <div class="feed-post__username">@lovelyLiza_ph</div>
-                            <div class="feed-post__meta">
-                                <span class="badge badge--pink">Post</span>
-                                <span class="feed-post__time">Yesterday</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feed-post__content">
-                        Alex's energy is literally what gets me through Monday mornings at work. Just got my "Charot Lang" hoodie delivered and my officemates are SO jealous! Best purchase I've made this year. Now I need the matching cap! Anyone know when the caps are restocking? &#128293;&#128085;
-                    </div>
-                    <div class="feed-post__actions">
-                        <button class="feed-post__action-btn" onclick="toggleLike(this)">
-                            <span class="icon">&#9825;</span>
-                            <span class="count">167</span>
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128172;</span>
-                            <span class="count">12</span> Comments
-                        </button>
-                        <button class="feed-post__action-btn">
-                            <span class="icon">&#128257;</span>
-                            Share
-                        </button>
-                    </div>
-                </div>
+                <!-- ── Feed Posts (dynamically rendered) ── -->
+                <div id="feedPostsContainer"></div>
 
             </div>
 
@@ -1238,34 +939,365 @@
 
     <script src="/js/app.js"></script>
     <script>
-        /* ── Community Page Interactions ── */
+        /* ── Community Page — Dynamic Rendering ── */
         (function() {
             'use strict';
 
-            // ── Filter Tabs ──
-            const filterTabs = document.querySelectorAll('.filter-tab');
-            const feedPosts = document.querySelectorAll('.community-feed .feed-post');
+            // ══════════════════════════════════════
+            // ── Demo Fallback Data ──
+            // ══════════════════════════════════════
 
+            var demoPosts = [
+                {
+                    id: 'pinned-1',
+                    username: '@AlexGonzagaOfficial',
+                    avatarUrl: null,
+                    avatarInitial: '\u2733',
+                    avatarBg: 'var(--gradient-gold)',
+                    type: 'featured',
+                    badge: null,
+                    badgeClass: null,
+                    time: 'March 20, 2026',
+                    content: 'Hey Alex Nation! Grabe, sobrang thankful ako sa inyong lahat! We just hit 24K members in this community! To celebrate, we are doing a FAN ART CONTEST this month. Best fan art wins a signed merch bundle + a personal video message from yours truly. Tara na, submit na kayo! Tag your entries with #AlexNationArt \uD83C\uDFA8\uD83D\uDC96\uD83D\uDD25',
+                    image: null,
+                    likes: 2847,
+                    liked: true,
+                    comments: 312,
+                    featured: true,
+                    pinnedBy: 'Admin',
+                    adminBadge: 'Admin'
+                },
+                {
+                    id: 'post-1',
+                    username: '@kuya_art',
+                    avatarUrl: null,
+                    avatarInitial: 'K',
+                    avatarBg: 'var(--gradient-purple)',
+                    type: 'fanart',
+                    badge: 'Fan Art',
+                    badgeClass: 'badge--purple',
+                    time: '2 hours ago',
+                    content: 'Spent 3 weeks on this digital painting of Alex from the "Ate Girl Era" era! Watercolor style! Hope she sees it! \uD83C\uDFA8\u2728',
+                    image: { placeholder: true, bg: 'linear-gradient(135deg, #F0E4FF 0%, #FFE4F0 50%, #E4F0FF 100%)', icon: '\uD83C\uDFA8', label: 'Digital Watercolor Fan Art', labelColor: 'var(--purple)', height: 280 },
+                    likes: 1203,
+                    liked: false,
+                    comments: 89,
+                    featured: true,
+                    pinnedBy: null
+                },
+                {
+                    id: 'post-2',
+                    username: '@jollibee_memes',
+                    avatarUrl: null,
+                    avatarInitial: 'J',
+                    avatarBg: 'var(--gradient-cta)',
+                    type: 'meme',
+                    badge: 'Meme',
+                    badgeClass: 'badge--coral',
+                    time: '4 hours ago',
+                    content: 'When Alex says "Charot lang" but you know she\'s 100% serious \uD83D\uDE02\uD83D\uDE02\uD83D\uDE02',
+                    image: { placeholder: true, bg: 'linear-gradient(135deg, #FFE4E4 0%, #FFF0E4 100%)', icon: '\uD83D\uDE02', label: 'Charot Lang Meme', labelColor: 'var(--coral)', height: 240 },
+                    likes: 876,
+                    liked: false,
+                    comments: 54,
+                    featured: false,
+                    pinnedBy: null
+                },
+                {
+                    id: 'post-3',
+                    username: '@manilaFanGirl',
+                    avatarUrl: null,
+                    avatarInitial: 'M',
+                    avatarBg: 'var(--gradient-primary)',
+                    type: 'post',
+                    badge: 'Post',
+                    badgeClass: 'badge--pink',
+                    time: '5 hours ago',
+                    content: 'Just rewatched Alex\'s wedding vlog for the 100th time and I\'m still crying! Why is she so funny even on her wedding day?! The way Mikee was looking at her during the vows... my heart cannot take it! Gonzaga genes are really something else. Anyone else ugly crying right now or just me? \uD83D\uDE2D\uD83D\uDC96',
+                    image: null,
+                    likes: 432,
+                    liked: false,
+                    comments: 28,
+                    featured: false,
+                    pinnedBy: null
+                },
+                {
+                    id: 'post-4',
+                    username: '@dave_cebufan',
+                    avatarUrl: null,
+                    avatarInitial: 'D',
+                    avatarBg: 'linear-gradient(135deg, var(--orange), var(--yellow))',
+                    type: 'question',
+                    badge: 'Question',
+                    badgeClass: 'badge--gold',
+                    time: '6 hours ago',
+                    content: 'Guys, question! What\'s your all-time FAVORITE Alex vlog? I need to make a binge-watch list this weekend. I\'ve been a fan for years but I feel like I\'ve missed some gems. Drop your top 3 below! \uD83D\uDC47\uD83D\uDC47\uD83D\uDC47',
+                    image: null,
+                    likes: 215,
+                    liked: false,
+                    comments: 142,
+                    featured: false,
+                    pinnedBy: null
+                },
+                {
+                    id: 'post-5',
+                    username: '@angel_iligan',
+                    avatarUrl: null,
+                    avatarInitial: 'A',
+                    avatarBg: 'linear-gradient(135deg, var(--teal), #06D6A0)',
+                    type: 'story',
+                    badge: 'Story',
+                    badgeClass: 'badge--teal',
+                    time: '8 hours ago',
+                    content: 'I have to share this! Last year I was going through a really tough time \u2014 lost my job, feeling down about everything. Then I binged Alex\'s vlogs and her energy literally pulled me out of it. She reminded me that life doesn\'t have to be perfect to be funny and beautiful. Yesterday, I finally started my own small business and I named my first product line \u201CWalang Kupas\u201D in her honor. Thank you, Ate Alex, for being our sunshine! \u2600\uFE0F\uD83D\uDC96',
+                    image: null,
+                    likes: 1890,
+                    liked: true,
+                    comments: 203,
+                    featured: true,
+                    pinnedBy: null
+                },
+                {
+                    id: 'post-6',
+                    username: '@sketch_by_sam',
+                    avatarUrl: null,
+                    avatarInitial: 'S',
+                    avatarBg: 'var(--gradient-purple)',
+                    type: 'fanart',
+                    badge: 'Fan Art',
+                    badgeClass: 'badge--purple',
+                    time: '10 hours ago',
+                    content: 'Quick chibi doodle of Alex and Toni! Sisters goals talaga sila \uD83D\uDC96 Took me about 2 hours. Should I do a full series of Gonzaga family chibis?',
+                    image: { placeholder: true, bg: 'linear-gradient(135deg, #E8D5FF 0%, #FFD5E5 100%)', icon: '\u270E', label: 'Chibi Sisters Fan Art', labelColor: 'var(--purple)', height: 300 },
+                    likes: 654,
+                    liked: false,
+                    comments: 47,
+                    featured: false,
+                    pinnedBy: null
+                },
+                {
+                    id: 'post-7',
+                    username: '@reyesJM',
+                    avatarUrl: null,
+                    avatarInitial: 'R',
+                    avatarBg: 'linear-gradient(135deg, var(--coral), var(--pink))',
+                    type: 'meme',
+                    badge: 'Meme',
+                    badgeClass: 'badge--coral',
+                    time: '12 hours ago',
+                    content: 'POV: You\'re explaining to your friends why you need to leave the party early because Alex just uploaded a new vlog \uD83D\uDE02 No regrets. Priorities, people!',
+                    image: { placeholder: true, bg: 'linear-gradient(135deg, #FFE8E8 0%, #FFF5E0 100%)', icon: '\uD83D\uDEB6', label: 'Priorities Meme', labelColor: 'var(--coral)', height: 220 },
+                    likes: 543,
+                    liked: false,
+                    comments: 31,
+                    featured: false,
+                    pinnedBy: null
+                },
+                {
+                    id: 'post-8',
+                    username: '@lovelyLiza_ph',
+                    avatarUrl: null,
+                    avatarInitial: 'L',
+                    avatarBg: 'var(--gradient-primary)',
+                    type: 'post',
+                    badge: 'Post',
+                    badgeClass: 'badge--pink',
+                    time: 'Yesterday',
+                    content: 'Alex\'s energy is literally what gets me through Monday mornings at work. Just got my \u201CCharot Lang\u201D hoodie delivered and my officemates are SO jealous! Best purchase I\'ve made this year. Now I need the matching cap! Anyone know when the caps are restocking? \uD83D\uDD25\uD83D\uDC55',
+                    image: null,
+                    likes: 167,
+                    liked: false,
+                    comments: 12,
+                    featured: false,
+                    pinnedBy: null
+                }
+            ];
+
+            // Active data — starts as demo, replaced if Airtable fetch succeeds
+            var communityPosts = demoPosts.slice();
+
+            // ══════════════════════════════════════
+            // ── Rendering Helpers ──
+            // ══════════════════════════════════════
+
+            function renderAvatar(post, size) {
+                var s = size || 44;
+                if (post.avatarUrl) {
+                    return '<img src="' + post.avatarUrl + '" alt="' + post.username + '" style="width:' + s + 'px;height:' + s + 'px;border-radius:50%;object-fit:cover;flex-shrink:0;">';
+                }
+                return '<div class="feed-post__avatar" style="background:' + (post.avatarBg || 'var(--gradient-primary)') + ';width:' + s + 'px;height:' + s + 'px;">' + (post.avatarInitial || post.username.charAt(1).toUpperCase()) + '</div>';
+            }
+
+            function renderImage(img) {
+                if (!img) return '';
+                if (img.placeholder) {
+                    return '<div class="feed-post__image">' +
+                        '<div class="feed-post__image-placeholder" style="background:' + img.bg + ';height:' + (img.height || 280) + 'px;">' +
+                            '<span>' + img.icon + '</span>' +
+                            '<span style="color:' + img.labelColor + ';">' + img.label + '</span>' +
+                        '</div>' +
+                    '</div>';
+                }
+                // Real image URL from Airtable
+                return '<div class="feed-post__image">' +
+                    '<img src="' + img.url + '" alt="Post image" style="width:100%;border-radius:var(--radius-md);display:block;">' +
+                '</div>';
+            }
+
+            function renderPostCard(post) {
+                var isPinned = !!post.pinnedBy;
+                var wrapperClass = isPinned ? 'pinned-post feed-post' : 'feed-post';
+                var dataAttrs = 'data-type="' + post.type + '"' + (post.featured ? ' data-featured="true"' : '') + ' data-post-id="' + post.id + '"';
+                var headerMargin = isPinned ? ' style="margin-top: var(--space-md);"' : '';
+
+                var adminBadgeHtml = post.adminBadge
+                    ? ' <span class="badge badge--gold" style="font-size:0.65rem;">' + post.adminBadge + '</span>'
+                    : '';
+
+                var typeBadgeHtml = post.badge
+                    ? '<span class="badge ' + post.badgeClass + '">' + post.badge + '</span>'
+                    : '';
+
+                var featuredBadgeHtml = (post.featured && !isPinned)
+                    ? '<span class="feed-post__featured-badge">\u2B50 Featured</span>'
+                    : '';
+
+                var likeIcon = post.liked ? '\u2764' : '\u2661';
+                var likedClass = post.liked ? ' feed-post__action-btn--liked' : '';
+                var likesFormatted = post.likes.toLocaleString();
+                var commentsFormatted = post.comments.toLocaleString();
+
+                return '<div class="' + wrapperClass + '" ' + dataAttrs + '>' +
+                    (isPinned ? '<div class="pinned-post__label">\uD83D\uDCCC Pinned</div>' : '') +
+                    '<div class="feed-post__header"' + headerMargin + '>' +
+                        renderAvatar(post) +
+                        '<div class="feed-post__user-info">' +
+                            '<div class="feed-post__username">' + post.username + adminBadgeHtml + '</div>' +
+                            '<div class="feed-post__meta">' +
+                                typeBadgeHtml +
+                                '<span class="feed-post__time">' + post.time + '</span>' +
+                                featuredBadgeHtml +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="feed-post__content">' + post.content + '</div>' +
+                    renderImage(post.image) +
+                    '<div class="feed-post__actions">' +
+                        '<button class="feed-post__action-btn' + likedClass + '" data-like-btn data-post-id="' + post.id + '">' +
+                            '<span class="icon">' + likeIcon + '</span>' +
+                            '<span class="count">' + likesFormatted + '</span>' +
+                        '</button>' +
+                        '<button class="feed-post__action-btn">' +
+                            '<span class="icon">\uD83D\uDCAC</span>' +
+                            '<span class="count">' + commentsFormatted + '</span> Comments' +
+                        '</button>' +
+                        '<button class="feed-post__action-btn">' +
+                            '<span class="icon">\uD83D\uDD01</span>' +
+                            'Share' +
+                        '</button>' +
+                    '</div>' +
+                '</div>';
+            }
+
+            // ══════════════════════════════════════
+            // ── Render All Posts ──
+            // ══════════════════════════════════════
+
+            function renderFeed() {
+                var pinnedContainer = document.getElementById('pinnedPostContainer');
+                var feedContainer = document.getElementById('feedPostsContainer');
+                if (!pinnedContainer || !feedContainer) return;
+
+                // Separate pinned from regular posts
+                var pinned = communityPosts.filter(function(p) { return !!p.pinnedBy; });
+                var regular = communityPosts.filter(function(p) { return !p.pinnedBy; });
+
+                pinnedContainer.innerHTML = pinned.map(function(p) { return renderPostCard(p); }).join('');
+                feedContainer.innerHTML = regular.map(function(p) { return renderPostCard(p); }).join('');
+
+                // Re-attach like button listeners
+                attachLikeListeners();
+                // Apply current filter
+                applyCurrentFilter();
+            }
+
+            // ══════════════════════════════════════
+            // ── Filter Tabs ──
+            // ══════════════════════════════════════
+
+            function applyCurrentFilter() {
+                var activeTab = document.querySelector('.filter-tab.filter-tab--active');
+                if (!activeTab) return;
+                var filter = activeTab.getAttribute('data-filter');
+                var allPosts = document.querySelectorAll('.community-feed .feed-post');
+
+                allPosts.forEach(function(post) {
+                    if (filter === 'all') {
+                        post.style.display = '';
+                    } else if (filter === 'featured') {
+                        post.style.display = post.getAttribute('data-featured') === 'true' ? '' : 'none';
+                    } else {
+                        post.style.display = post.getAttribute('data-type') === filter ? '' : 'none';
+                    }
+                });
+            }
+
+            var filterTabs = document.querySelectorAll('.filter-tab');
             filterTabs.forEach(function(tab) {
                 tab.addEventListener('click', function() {
                     filterTabs.forEach(function(t) { t.classList.remove('filter-tab--active'); });
                     tab.classList.add('filter-tab--active');
-
-                    const filter = tab.getAttribute('data-filter');
-
-                    feedPosts.forEach(function(post) {
-                        if (filter === 'all') {
-                            post.style.display = '';
-                        } else if (filter === 'featured') {
-                            post.style.display = post.getAttribute('data-featured') === 'true' ? '' : 'none';
-                        } else {
-                            post.style.display = post.getAttribute('data-type') === filter ? '' : 'none';
-                        }
-                    });
+                    applyCurrentFilter();
                 });
             });
 
+            // ══════════════════════════════════════
+            // ── Like Buttons ──
+            // ══════════════════════════════════════
+
+            function attachLikeListeners() {
+                var likeBtns = document.querySelectorAll('[data-like-btn]');
+                likeBtns.forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        handleLike(btn);
+                    });
+                });
+            }
+
+            function handleLike(btn) {
+                var postId = btn.getAttribute('data-post-id');
+                var countEl = btn.querySelector('.count');
+                var iconEl = btn.querySelector('.icon');
+                var isLiked = btn.classList.contains('feed-post__action-btn--liked');
+
+                if (isLiked) {
+                    btn.classList.remove('feed-post__action-btn--liked');
+                    iconEl.textContent = '\u2661';
+                    if (countEl) {
+                        var val = parseInt(countEl.textContent.replace(/,/g, ''), 10);
+                        countEl.textContent = (val - 1).toLocaleString();
+                    }
+                } else {
+                    btn.classList.add('feed-post__action-btn--liked');
+                    iconEl.textContent = '\u2764';
+                    if (countEl) {
+                        var val = parseInt(countEl.textContent.replace(/,/g, ''), 10);
+                        countEl.textContent = (val + 1).toLocaleString();
+                    }
+                }
+
+                // Fire-and-forget API call
+                fetch('/.netlify/functions/like-post', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ postId: postId, liked: !isLiked })
+                }).catch(function() { /* silent fail */ });
+            }
+
+            // ══════════════════════════════════════
             // ── Post Creator Toggle ──
+            // ══════════════════════════════════════
+
             var postCreatorTrigger = document.getElementById('postCreatorTrigger');
             var postForm = document.getElementById('postForm');
             var postContent = document.getElementById('postContent');
@@ -1287,7 +1319,6 @@
                     btn.addEventListener('click', function() {
                         typeBtns.forEach(function(b) { b.classList.remove('post-type-btn--active'); });
                         btn.classList.add('post-type-btn--active');
-                        // Open the form when a type is selected
                         if (postForm) {
                             postForm.classList.add('post-creator__form--open');
                             if (postContent) postContent.focus();
@@ -1296,7 +1327,7 @@
                 });
             }
 
-            // ── Post Submit (demo) ──
+            // ── Post Submit ──
             var postSubmitBtn = document.getElementById('postSubmitBtn');
             if (postSubmitBtn) {
                 postSubmitBtn.addEventListener('click', function() {
@@ -1307,11 +1338,81 @@
                         }
                         return;
                     }
-                    if (typeof showToast === 'function') {
-                        showToast('Post shared with the Alex Nation!', 'success');
-                    }
-                    if (postContent) postContent.value = '';
-                    if (postForm) postForm.classList.remove('post-creator__form--open');
+
+                    // Get selected type
+                    var activeTypeBtn = postTypeSelector
+                        ? postTypeSelector.querySelector('.post-type-btn--active')
+                        : null;
+                    var selectedType = activeTypeBtn
+                        ? activeTypeBtn.getAttribute('data-type')
+                        : 'post';
+
+                    // Disable button while submitting
+                    postSubmitBtn.disabled = true;
+                    postSubmitBtn.textContent = 'Posting...';
+
+                    fetch('/.netlify/functions/create-community-post', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            content: content,
+                            type: selectedType
+                        })
+                    })
+                    .then(function(res) { return res.json(); })
+                    .then(function(newPost) {
+                        if (newPost && newPost.id) {
+                            // Add the new post to the top of the feed
+                            communityPosts.splice(1, 0, mapAirtablePost(newPost));
+                            renderFeed();
+                        }
+                        if (typeof showToast === 'function') {
+                            showToast('Post shared with the Alex Nation!', 'success');
+                        }
+                    })
+                    .catch(function() {
+                        // Fallback: add locally even if API fails
+                        var session = (typeof Auth !== 'undefined' && Auth.getSession) ? Auth.getSession() : null;
+                        var localUsername = session ? ('@' + (session.username || session.name || 'fan')) : '@fan';
+                        var badgeMap = {
+                            post: { badge: 'Post', badgeClass: 'badge--pink' },
+                            fanart: { badge: 'Fan Art', badgeClass: 'badge--purple' },
+                            meme: { badge: 'Meme', badgeClass: 'badge--coral' },
+                            story: { badge: 'Story', badgeClass: 'badge--teal' },
+                            question: { badge: 'Question', badgeClass: 'badge--gold' },
+                            edit: { badge: 'Edit', badgeClass: 'badge--gold' }
+                        };
+                        var bInfo = badgeMap[selectedType] || badgeMap.post;
+
+                        communityPosts.splice(1, 0, {
+                            id: 'local-' + Date.now(),
+                            username: localUsername,
+                            avatarUrl: null,
+                            avatarInitial: localUsername.charAt(1).toUpperCase(),
+                            avatarBg: 'var(--gradient-primary)',
+                            type: selectedType,
+                            badge: bInfo.badge,
+                            badgeClass: bInfo.badgeClass,
+                            time: 'Just now',
+                            content: content,
+                            image: null,
+                            likes: 0,
+                            liked: false,
+                            comments: 0,
+                            featured: false,
+                            pinnedBy: null
+                        });
+                        renderFeed();
+                        if (typeof showToast === 'function') {
+                            showToast('Post shared with the Alex Nation!', 'success');
+                        }
+                    })
+                    .finally(function() {
+                        postSubmitBtn.disabled = false;
+                        postSubmitBtn.textContent = 'Post It!';
+                        if (postContent) postContent.value = '';
+                        if (postForm) postForm.classList.remove('post-creator__form--open');
+                    });
                 });
             }
 
@@ -1319,7 +1420,6 @@
             var fabNewPost = document.getElementById('fabNewPost');
             if (fabNewPost) {
                 fabNewPost.addEventListener('click', function() {
-                    // On mobile, scroll to post creator or show login prompt
                     var postCreator = document.getElementById('postCreator');
                     if (postCreator && postCreator.style.display !== 'none') {
                         postCreator.classList.toggle('post-creator--mobile-open');
@@ -1329,35 +1429,104 @@
                             if (postContent) postContent.focus();
                         }
                     } else {
-                        // Guest — redirect to signup
                         window.location.href = '/signup.html';
                     }
                 });
             }
-        })();
 
-        // ── Like Toggle ──
-        function toggleLike(btn) {
-            var countEl = btn.querySelector('.count');
-            var iconEl = btn.querySelector('.icon');
-            var isLiked = btn.classList.contains('feed-post__action-btn--liked');
+            // ══════════════════════════════════════
+            // ── Map Airtable record to post obj ──
+            // ══════════════════════════════════════
 
-            if (isLiked) {
-                btn.classList.remove('feed-post__action-btn--liked');
-                iconEl.innerHTML = '&#9825;';
-                if (countEl) {
-                    var val = parseInt(countEl.textContent.replace(/,/g, ''), 10);
-                    countEl.textContent = (val - 1).toLocaleString();
+            var badgeLookup = {
+                post:     { badge: 'Post',     badgeClass: 'badge--pink' },
+                fanart:   { badge: 'Fan Art',  badgeClass: 'badge--purple' },
+                meme:     { badge: 'Meme',     badgeClass: 'badge--coral' },
+                story:    { badge: 'Story',    badgeClass: 'badge--teal' },
+                question: { badge: 'Question', badgeClass: 'badge--gold' },
+                edit:     { badge: 'Edit',     badgeClass: 'badge--gold' },
+                featured: { badge: null,       badgeClass: null }
+            };
+
+            var avatarBgOptions = [
+                'var(--gradient-primary)',
+                'var(--gradient-purple)',
+                'var(--gradient-cta)',
+                'var(--gradient-gold)',
+                'linear-gradient(135deg, var(--teal), #06D6A0)',
+                'linear-gradient(135deg, var(--orange), var(--yellow))',
+                'linear-gradient(135deg, var(--coral), var(--pink))'
+            ];
+
+            function mapAirtablePost(rec) {
+                var f = rec.fields || rec;
+                var postType = (f.type || f.Type || 'post').toLowerCase();
+                var bInfo = badgeLookup[postType] || badgeLookup.post;
+                var uname = f.username || f.Username || '@fan';
+                var initial = uname.charAt(uname.charAt(0) === '@' ? 1 : 0).toUpperCase();
+                var bgIndex = Math.abs(uname.split('').reduce(function(a, c) { return a + c.charCodeAt(0); }, 0)) % avatarBgOptions.length;
+
+                var img = null;
+                if (f.imageUrl || f.ImageUrl || f.image) {
+                    var imgUrl = f.imageUrl || f.ImageUrl || f.image;
+                    if (typeof imgUrl === 'string' && imgUrl.length > 0) {
+                        img = { url: imgUrl };
+                    } else if (Array.isArray(imgUrl) && imgUrl.length > 0) {
+                        img = { url: imgUrl[0].url || imgUrl[0] };
+                    }
                 }
-            } else {
-                btn.classList.add('feed-post__action-btn--liked');
-                iconEl.innerHTML = '&#10084;';
-                if (countEl) {
-                    var val = parseInt(countEl.textContent.replace(/,/g, ''), 10);
-                    countEl.textContent = (val + 1).toLocaleString();
-                }
+
+                return {
+                    id: rec.id || f.id || ('at-' + Date.now() + '-' + Math.random()),
+                    username: uname,
+                    avatarUrl: f.avatarUrl || f.AvatarUrl || null,
+                    avatarInitial: initial,
+                    avatarBg: f.avatarBg || avatarBgOptions[bgIndex],
+                    type: postType,
+                    badge: bInfo.badge,
+                    badgeClass: bInfo.badgeClass,
+                    time: f.time || f.Time || f.createdAt || 'Recently',
+                    content: f.content || f.Content || '',
+                    image: img,
+                    likes: parseInt(f.likes || f.Likes || 0, 10),
+                    liked: !!(f.liked || f.Liked),
+                    comments: parseInt(f.comments || f.Comments || 0, 10),
+                    featured: !!(f.featured || f.Featured),
+                    pinnedBy: f.pinnedBy || f.PinnedBy || null,
+                    adminBadge: f.adminBadge || f.AdminBadge || null
+                };
             }
-        }
+
+            // ══════════════════════════════════════
+            // ── Fetch from Airtable via Netlify ──
+            // ══════════════════════════════════════
+
+            function loadPosts() {
+                // Render demo data immediately for fast first paint
+                renderFeed();
+
+                fetch('/.netlify/functions/get-community-posts?limit=20')
+                    .then(function(res) {
+                        if (!res.ok) throw new Error('Network response was not ok');
+                        return res.json();
+                    })
+                    .then(function(data) {
+                        var records = Array.isArray(data) ? data : (data.records || data.posts || []);
+                        if (records.length > 0) {
+                            communityPosts = records.map(mapAirtablePost);
+                            renderFeed();
+                        }
+                        // If no records came back, keep demo data (already rendered)
+                    })
+                    .catch(function() {
+                        // Silently fall back to demo data (already rendered)
+                    });
+            }
+
+            // ── Kick off ──
+            loadPosts();
+
+        })();
     </script>
 </body>
 </html>

@@ -1,0 +1,6 @@
+OrderNumber,UserEmail,Items,TotalAmount,Status,ShippingAddress,ContactNumber,PaymentMethod,OrderDate,TrackingNumber,Notes
+AG-7K2M9X,maria@email.com,"[{""name"":""Charot Lang Hoodie"",""size"":""M"",""qty"":1,""price"":1299},{""name"":""Alex Nation Cap"",""qty"":1,""price"":449}]",1748,Delivered,"123 Makati Ave, Makati City, Metro Manila 1200",09171234567,GCash,2026-03-10,PH2026031012345,
+AG-3P8N5R,kevin@email.com,"[{""name"":""Ate Girl Tee"",""size"":""L"",""qty"":2,""price"":599}]",1198,Shipped,"456 Cebu St, Cebu City 6000",09181234567,Maya,2026-03-18,PH2026031854321,
+AG-9T1W4K,sam@email.com,"[{""name"":""Alex Gonzaga Sticker Pack"",""qty"":1,""price"":149},{""name"":""Walang Kupas Mug"",""qty"":1,""price"":349},{""name"":""Alex G Enamel Pin Set"",""qty"":1,""price"":249}]",747,Confirmed,"789 Davao Rd, Davao City 8000",09191234567,GCash,2026-03-22,,Gift wrap please!
+AG-6L2H8M,angel@email.com,"[{""name"":""Gonzaga Strong Crew Neck"",""size"":""S"",""qty"":1,""price"":899},{""name"":""Charot Lang Bucket Hat"",""qty"":1,""price"":549}]",1448,Pending,"321 Iligan Blvd, Iligan City 9200",09201234567,COD,2026-03-24,,
+AG-4D7F1B,jake@email.com,"[{""name"":""Lodi Phone Case"",""size"":""iPhone 15"",""qty"":1,""price"":499}]",499,Cancelled,"654 QC Ave, Quezon City 1100",09211234567,Bank Transfer,2026-03-12,,Customer requested cancellation

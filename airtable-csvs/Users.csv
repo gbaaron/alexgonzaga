@@ -1,0 +1,11 @@
+Name,Email,Username,PasswordHash,Avatar,Bio,MembershipTier,MembershipExpiry,JoinDate,IsAdmin
+Alex Gonzaga,alex@alexgonzaga.com,alexgonzagaofficial,,https://res.cloudinary.com/placeholder/alex-avatar.jpg,Your favorite ate! Official account.,Inner Circle,,2024-01-01,true
+Maria Santos,maria@email.com,manilaFanGirl,,https://res.cloudinary.com/placeholder/maria-avatar.jpg,Biggest Alex fan since day 1! Manila based.,VIP,2027-01-01,2024-03-15,false
+Kevin Cruz,kevin@email.com,kuya_art,,https://res.cloudinary.com/placeholder/kevin-avatar.jpg,Fan artist. DMs open for commissions!,Bestie,2026-12-01,2024-05-20,false
+Jake Reyes,jake@email.com,reyesJM,,https://res.cloudinary.com/placeholder/jake-avatar.jpg,Office worker by day Alex fan by night.,Free,,2024-06-10,false
+Samantha Lim,sam@email.com,sketch_by_sam,,https://res.cloudinary.com/placeholder/sam-avatar.jpg,Digital artist. Alex is my muse!,VIP,2027-02-15,2024-04-01,false
+Dave Tan,dave@email.com,dave_cebufan,,https://res.cloudinary.com/placeholder/dave-avatar.jpg,Cebu represent! Gonzaga fam forever.,Bestie,2026-11-30,2024-07-22,false
+Angel Rivera,angel@email.com,angel_iligan,,https://res.cloudinary.com/placeholder/angel-avatar.jpg,Iligan City fan club president.,Inner Circle,2027-03-01,2024-02-14,false
+Liza Mendoza,liza@email.com,lovelyLiza_ph,,https://res.cloudinary.com/placeholder/liza-avatar.jpg,Teacher and proud Alex Nation member.,Free,,2024-08-05,false
+Ryan Aquino,ryan@email.com,jollibee_memes,,https://res.cloudinary.com/placeholder/ryan-avatar.jpg,Meme creator. Alex content is my specialty.,Bestie,2026-10-15,2024-09-01,false
+Chris Navarro,chris@email.com,chrisnav_edits,,https://res.cloudinary.com/placeholder/chris-avatar.jpg,Video editor. I make Alex edits!,VIP,2027-01-15,2024-04-20,false

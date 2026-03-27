@@ -465,6 +465,46 @@
             color: var(--gray-800);
         }
 
+        .preview-item__thumb-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .preview-item__title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 32px 14px 12px;
+            background: linear-gradient(to top, rgba(26,15,46,0.7) 0%, transparent 100%);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--white);
+            line-height: 1.3;
+            z-index: 1;
+        }
+
+        .preview-item__type-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            background: rgba(255,255,255,0.18);
+            color: var(--white);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+
         /* ── Testimonials Section ── */
         .testimonials-section {
             background: var(--off-white);
@@ -1031,71 +1071,8 @@
                 <p class="section-header__subtitle">Here's a taste of what's waiting behind the curtain. Join a tier to unlock everything!</p>
             </div>
 
-            <div class="preview-grid">
-                <div class="preview-item animate-on-scroll">
-                    <div class="preview-item__placeholder">&#127916;</div>
-                    <div class="preview-item__overlay">
-                        <div class="preview-item__lock">&#128274;</div>
-                        <div class="preview-item__label">Bestie+</div>
-                    </div>
-                    <span class="preview-item__tag preview-item__tag--bestie">BTS</span>
-                </div>
-                <div class="preview-item animate-on-scroll">
-                    <div class="preview-item__placeholder">&#127881;</div>
-                    <div class="preview-item__overlay">
-                        <div class="preview-item__lock">&#128274;</div>
-                        <div class="preview-item__label">VIP Only</div>
-                    </div>
-                    <span class="preview-item__tag preview-item__tag--vip">Uncut</span>
-                </div>
-                <div class="preview-item animate-on-scroll">
-                    <div class="preview-item__placeholder">&#128248;</div>
-                    <div class="preview-item__overlay">
-                        <div class="preview-item__lock">&#128274;</div>
-                        <div class="preview-item__label">Inner Circle</div>
-                    </div>
-                    <span class="preview-item__tag preview-item__tag--inner-circle">Personal</span>
-                </div>
-                <div class="preview-item animate-on-scroll">
-                    <div class="preview-item__placeholder">&#127908;</div>
-                    <div class="preview-item__overlay">
-                        <div class="preview-item__lock">&#128274;</div>
-                        <div class="preview-item__label">VIP Only</div>
-                    </div>
-                    <span class="preview-item__tag preview-item__tag--vip">Early Access</span>
-                </div>
-                <div class="preview-item animate-on-scroll">
-                    <div class="preview-item__placeholder">&#128247;</div>
-                    <div class="preview-item__overlay">
-                        <div class="preview-item__lock">&#128274;</div>
-                        <div class="preview-item__label">Bestie+</div>
-                    </div>
-                    <span class="preview-item__tag preview-item__tag--bestie">Exclusive</span>
-                </div>
-                <div class="preview-item animate-on-scroll">
-                    <div class="preview-item__placeholder">&#127775;</div>
-                    <div class="preview-item__overlay">
-                        <div class="preview-item__lock">&#128274;</div>
-                        <div class="preview-item__label">Inner Circle</div>
-                    </div>
-                    <span class="preview-item__tag preview-item__tag--inner-circle">Live Replay</span>
-                </div>
-                <div class="preview-item animate-on-scroll">
-                    <div class="preview-item__placeholder">&#128085;</div>
-                    <div class="preview-item__overlay">
-                        <div class="preview-item__lock">&#128274;</div>
-                        <div class="preview-item__label">Inner Circle</div>
-                    </div>
-                    <span class="preview-item__tag preview-item__tag--inner-circle">Merch Drop</span>
-                </div>
-                <div class="preview-item animate-on-scroll">
-                    <div class="preview-item__placeholder">&#128150;</div>
-                    <div class="preview-item__overlay">
-                        <div class="preview-item__lock">&#128274;</div>
-                        <div class="preview-item__label">VIP Only</div>
-                    </div>
-                    <span class="preview-item__tag preview-item__tag--vip">React</span>
-                </div>
+            <div class="preview-grid" id="previewGrid">
+                <!-- Dynamically rendered by JS — falls back to demo data if fetch fails -->
             </div>
         </div>
     </section>
@@ -1303,7 +1280,123 @@
 
     <script src="/js/app.js"></script>
     <script>
-        // ── FAQ Accordion ──
+        // ═══════════════════════════════════════════════════════
+        //  Dynamic Exclusive Content Previews
+        //  Pattern: demo fallback → fetch from Airtable via Netlify → render
+        // ═══════════════════════════════════════════════════════
+
+        (function() {
+            // Demo fallback data — matches the original 8 hardcoded items
+            const demoExclusiveContent = [
+                { id: 'demo-1', title: 'Behind the Scenes: Vlog Shoot Day', contentType: 'video', accessTier: 'Bestie', category: 'BTS', emoji: '🎬', thumbnailURL: '' },
+                { id: 'demo-2', title: 'Uncut Moments: Family Prank Wars', contentType: 'video', accessTier: 'VIP', category: 'Uncut', emoji: '🎉', thumbnailURL: '' },
+                { id: 'demo-3', title: 'Personal Message: Birthday Shoutouts', contentType: 'video', accessTier: 'Inner Circle', category: 'Personal', emoji: '📸', thumbnailURL: '' },
+                { id: 'demo-4', title: 'Early Access: New Vlog Drop', contentType: 'video', accessTier: 'VIP', category: 'Early Access', emoji: '🎤', thumbnailURL: '' },
+                { id: 'demo-5', title: 'Exclusive Photo Set: Concert Night', contentType: 'photo_gallery', accessTier: 'Bestie', category: 'Exclusive', emoji: '📷', thumbnailURL: '' },
+                { id: 'demo-6', title: 'Live Stream Replay: Q&A with Alex', contentType: 'video', accessTier: 'Inner Circle', category: 'Live Replay', emoji: '🌟', thumbnailURL: '' },
+                { id: 'demo-7', title: 'Merch Drop Preview: Limited Edition', contentType: 'article', accessTier: 'Inner Circle', category: 'Merch Drop', emoji: '👗', thumbnailURL: '' },
+                { id: 'demo-8', title: 'Alex Reacts: Fan Edits Compilation', contentType: 'video', accessTier: 'VIP', category: 'React', emoji: '💖', thumbnailURL: '' }
+            ];
+
+            let exclusiveContent = demoExclusiveContent;
+            const userTier = (typeof Auth !== 'undefined') ? Auth.getUserTier() : 'Free';
+
+            // Tier hierarchy for locking logic
+            const tierRank = { 'Free': 0, 'Bestie': 1, 'VIP': 2, 'Inner Circle': 3 };
+
+            // Fetch real data from Airtable via Netlify function — silent fallback to demo
+            const headers = {};
+            if (typeof Auth !== 'undefined' && Auth.getToken()) {
+                headers['Authorization'] = 'Bearer ' + Auth.getToken();
+            }
+            fetch('/.netlify/functions/get-exclusive-content', { headers: headers })
+                .then(r => r.ok ? r.json() : Promise.reject())
+                .then(data => {
+                    if (data.content && data.content.length) {
+                        exclusiveContent = data.content;
+                        renderExclusivePreviews();
+                    }
+                })
+                .catch(() => { /* silently use demo fallback */ });
+
+            function renderExclusivePreviews() {
+                const grid = document.getElementById('previewGrid');
+                if (!grid) return;
+
+                grid.innerHTML = exclusiveContent.map(item => {
+                    const isLocked = tierRank[item.accessTier] > tierRank[userTier];
+
+                    // Tier badge CSS class + label
+                    const tierClassMap = { 'Bestie': 'bestie', 'VIP': 'vip', 'Inner Circle': 'inner-circle' };
+                    const tierClass = tierClassMap[item.accessTier] || 'bestie';
+                    const lockLabel = item.accessTier === 'Bestie' ? 'Bestie+'
+                                    : item.accessTier === 'VIP' ? 'VIP Only'
+                                    : 'Inner Circle';
+
+                    // Thumbnail: real image or emoji placeholder
+                    const thumbContent = item.thumbnailURL
+                        ? `<img class="preview-item__thumb-img" src="${item.thumbnailURL}" alt="${item.title}" loading="lazy">`
+                        : `<div class="preview-item__placeholder">${item.emoji || '&#127916;'}</div>`;
+
+                    // Content type tag (top-right)
+                    const typeLabel = (item.contentType || 'video').replace(/_/g, ' ');
+
+                    return `
+                        <div class="preview-item animate-on-scroll" data-id="${item.id}" data-tier="${item.accessTier}">
+                            ${thumbContent}
+                            ${isLocked ? `
+                                <div class="preview-item__overlay">
+                                    <div class="preview-item__lock">&#128274;</div>
+                                    <div class="preview-item__label">${lockLabel}</div>
+                                </div>
+                            ` : ''}
+                            <span class="preview-item__tag preview-item__tag--${tierClass}">${item.category || item.contentType}</span>
+                            <span class="preview-item__type-tag">${typeLabel}</span>
+                            ${item.title ? `<div class="preview-item__title">${item.title}</div>` : ''}
+                        </div>
+                    `;
+                }).join('');
+
+                // Re-observe for scroll animations
+                if (typeof IntersectionObserver !== 'undefined') {
+                    const observer = new IntersectionObserver(entries => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    grid.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+                }
+            }
+
+            // Initial render with demo data
+            renderExclusivePreviews();
+        })();
+
+        // ═══════════════════════════════════════════════════════
+        //  CTA Button Auth Wiring
+        //  Check auth state → redirect to signup or upgrade
+        // ═══════════════════════════════════════════════════════
+
+        document.querySelectorAll('.tier-card__cta').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                if (typeof Auth !== 'undefined' && Auth.isLoggedIn()) {
+                    // Already logged in — redirect to profile/upgrade or the tier signup
+                    window.location.href = href;
+                } else {
+                    // Not logged in — redirect to signup with tier param
+                    window.location.href = href;
+                }
+            });
+        });
+
+        // ═══════════════════════════════════════════════════════
+        //  FAQ Accordion
+        // ═══════════════════════════════════════════════════════
+
         document.querySelectorAll('.faq-item__question').forEach(btn => {
             btn.addEventListener('click', () => {
                 const item = btn.closest('.faq-item');
@@ -1323,7 +1416,10 @@
             });
         });
 
-        // ── Smooth scroll for anchor links ──
+        // ═══════════════════════════════════════════════════════
+        //  Smooth Scroll for Anchor Links
+        // ═══════════════════════════════════════════════════════
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 const target = document.querySelector(anchor.getAttribute('href'));
