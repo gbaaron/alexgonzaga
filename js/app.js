@@ -244,6 +244,82 @@ function generateOrderNumber() {
     return result;
 }
 
+/* ── Site Config (loads from Airtable SiteConfig table) ── */
+const SiteConfig = {
+    _cache: null,
+    _loading: null,
+
+    async load() {
+        if (this._cache) return this._cache;
+        if (this._loading) return this._loading;
+
+        this._loading = fetch(`${APP.API_BASE}/get-site-config`)
+            .then(r => r.ok ? r.json() : Promise.reject())
+            .then(data => {
+                this._cache = data.config || {};
+                this._loading = null;
+                return this._cache;
+            })
+            .catch(() => {
+                this._cache = {};
+                this._loading = null;
+                return {};
+            });
+
+        return this._loading;
+    },
+
+    get(key, fallback) {
+        if (!this._cache) return fallback || '';
+        const item = this._cache[key];
+        return item ? (item.value || fallback || '') : (fallback || '');
+    },
+
+    getImage(key, fallback) {
+        if (!this._cache) return fallback || '';
+        const item = this._cache[key];
+        return item ? (item.imageURL || fallback || '') : (fallback || '');
+    },
+
+    // Apply config values to elements with data-config attributes
+    applyToPage() {
+        if (!this._cache) return;
+
+        // Text content: <span data-config="hero_title">fallback</span>
+        document.querySelectorAll('[data-config]').forEach(el => {
+            const key = el.dataset.config;
+            const val = this.get(key);
+            if (val) el.textContent = val;
+        });
+
+        // Images: <img data-config-img="hero_photo">
+        document.querySelectorAll('[data-config-img]').forEach(el => {
+            const key = el.dataset.configImg;
+            const url = this.getImage(key);
+            if (url) {
+                el.src = url;
+                el.style.display = '';
+            }
+        });
+
+        // Background images: <div data-config-bg="hero_photo">
+        document.querySelectorAll('[data-config-bg]').forEach(el => {
+            const key = el.dataset.configBg;
+            const url = this.getImage(key);
+            if (url) {
+                el.style.backgroundImage = `url(${url})`;
+            }
+        });
+
+        // Social links: <a data-config-href="social_youtube">
+        document.querySelectorAll('[data-config-href]').forEach(el => {
+            const key = el.dataset.configHref;
+            const val = this.get(key);
+            if (val) el.href = val;
+        });
+    }
+};
+
 /* ── Scroll Animations ── */
 function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
@@ -264,4 +340,9 @@ function initScrollAnimations() {
 document.addEventListener('DOMContentLoaded', () => {
     initNav();
     initScrollAnimations();
+
+    // Load site config from Airtable and apply to page
+    SiteConfig.load().then(() => {
+        SiteConfig.applyToPage();
+    });
 });

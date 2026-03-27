@@ -1,0 +1,37 @@
+Key,Value,ImageURL,Description,Category
+hero_photo,,,"Main hero photo of Alex on the homepage",Homepage
+hero_title,Welcome to the Alex Gonzaga Universe!,,"Main heading text on homepage hero",Homepage
+hero_subtitle,"Your ate's digital home. Exclusive content, merch drops, fan community, and all the chaotic energy you love — all in one place. Tara na!",,"Subtitle text under hero heading",Homepage
+hero_cta_primary,Become a Member,,"Primary CTA button text on hero",Homepage
+hero_cta_secondary,Watch Vlogs,,"Secondary CTA button text on hero",Homepage
+stat_youtube,17M+,,"YouTube subscriber count",Stats
+stat_instagram,15M+,,"Instagram follower count",Stats
+stat_vlogs,500+,,"Total vlogs count",Stats
+stat_views,2B+,,"Total views count",Stats
+ticker_items,"ATE GIRL ERA,CHAOTIC QUEEN,GONZAGA STRONG,ALEX NATION,WALANG KUPAS,LODI ENERGY",,"Scrolling ticker text items (comma-separated)",Homepage
+social_youtube,https://youtube.com/@alexgonzaga,,"YouTube channel URL",Socials
+social_instagram,https://instagram.com/cathygonzaga,,"Instagram profile URL",Socials
+social_tiktok,https://tiktok.com/@alexgonzaga,,"TikTok profile URL",Socials
+social_facebook,https://facebook.com/AlexGonzagaOfficial,,"Facebook page URL",Socials
+social_twitter,https://twitter.com/MyAlexGonzaga,,"Twitter/X profile URL",Socials
+about_alex,"Alex Gonzaga is one of the Philippines' biggest YouTube content creators, actresses, and comedians with over 17 million subscribers.",,"Short bio for about sections",About
+login_brand_tagline,"Welcome back, fam!",,"Login page branding tagline",Auth
+login_brand_subtitle,"Log in to unlock the full Alex Gonzaga experience. Your ate missed you na!",,"Login page branding subtitle",Auth
+signup_brand_tagline,"Tara na, join the fam!",,"Signup page branding tagline",Auth
+community_hero_title,Alex Nation Community,,"Community page hero title",Community
+community_hero_subtitle,"The ultimate hangout for Alex fans! Share fan art, memes, stories, and connect with fellow fans from around the world.",,"Community page hero subtitle",Community
+merch_hero_title,Alex Gonzaga Merch,,"Merch page hero title",Merch
+merch_hero_tagline,Wear the charot energy!,,"Merch page hero tagline",Merch
+react_hero_title,Submit to Alex Reacts!,,"React page hero title",React
+react_hero_subtitle,"Got something hilarious, cringe-worthy, or mind-blowing? Submit it here and you might get featured in Alex's next reaction video!",,"React page hero subtitle",React
+membership_hero_title,Get Closer to Alex,,"Membership page hero title",Membership
+membership_hero_subtitle,"Unlock behind-the-scenes content, uncut moments, early vlog access, and personal messages from your favorite ate.",,"Membership page hero subtitle",Membership
+membership_alex_quote,"To my Alex Nation — this is MY way of giving back to you. You've supported me through everything, so I wanted to create a space where we can be even closer. Dito, walang filter — just me, being real with you. Kasi kayo ang dahilan kung bakit masaya ako sa ginagawa ko. Love you, fam!",,"Alex's personal quote on membership page",Membership
+membership_bestie_price,149,,"Bestie tier monthly price in PHP",Membership
+membership_vip_price,349,,"VIP tier monthly price in PHP",Membership
+membership_innercircle_price,799,,"Inner Circle tier monthly price in PHP",Membership
+cta_title,Ready to Join the Alex Nation?,,"Final CTA section title",Homepage
+cta_subtitle,"Get exclusive access to BTS content, early vlog drops, personal messages, and merch discounts. Your ate is waiting!",,"Final CTA section subtitle",Homepage
+footer_description,"The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.",,"Footer brand description",Footer
+og_image,,,"Default Open Graph / social share image",SEO
+favicon,,,"Site favicon URL",SEO
