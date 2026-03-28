@@ -884,244 +884,11 @@
         (function () {
             'use strict';
 
-            // Demo vlog data (fallback if Airtable fetch fails)
-            let vlogs = [
-                {
-                    id: 1,
-                    title: 'I Tried Living Like Toni For 24 Hours... DISASTER!',
-                    category: 'comedy',
-                    mood: 'chaotic',
-                    views: 5200000,
-                    viewsLabel: '5.2M views',
-                    date: '2026-03-20',
-                    dateLabel: 'Mar 20, 2026',
-                    duration: '18:32',
-                    emoji: '<i data-lucide="clapperboard"></i>'
-                },
-                {
-                    id: 2,
-                    title: 'Extreme Spicy Noodle Challenge With Mommy Pinty (Grabe Ang Init!)',
-                    category: 'challenges',
-                    mood: 'funny',
-                    views: 3800000,
-                    viewsLabel: '3.8M views',
-                    date: '2026-03-15',
-                    dateLabel: 'Mar 15, 2026',
-                    duration: '22:15',
-                    emoji: '<i data-lucide="utensils"></i>'
-                },
-                {
-                    id: 3,
-                    title: 'Wedding Anniversary Surprise for Mikee — He CRIED!',
-                    category: 'family',
-                    mood: 'emotional',
-                    views: 7100000,
-                    viewsLabel: '7.1M views',
-                    date: '2026-03-10',
-                    dateLabel: 'Mar 10, 2026',
-                    duration: '25:48',
-                    emoji: '<i data-lucide="heart"></i>'
-                },
-                {
-                    id: 4,
-                    title: 'Japan Vlog Day 1: Lost in Tokyo at 2AM (Help!)',
-                    category: 'travel',
-                    mood: 'chaotic',
-                    views: 4500000,
-                    viewsLabel: '4.5M views',
-                    date: '2026-03-05',
-                    dateLabel: 'Mar 5, 2026',
-                    duration: '31:20',
-                    emoji: '<i data-lucide="map-pin"></i>'
-                },
-                {
-                    id: 5,
-                    title: 'Eating EVERYTHING at Jollibee Menu — Complete Mukbang!',
-                    category: 'mukbang',
-                    mood: 'funny',
-                    views: 6300000,
-                    viewsLabel: '6.3M views',
-                    date: '2026-02-28',
-                    dateLabel: 'Feb 28, 2026',
-                    duration: '35:12',
-                    emoji: '<i data-lucide="utensils"></i>'
-                },
-                {
-                    id: 6,
-                    title: 'What Really Happens Behind My Show (BTS Secrets!)',
-                    category: 'bts',
-                    mood: 'wholesome',
-                    views: 2900000,
-                    viewsLabel: '2.9M views',
-                    date: '2026-02-22',
-                    dateLabel: 'Feb 22, 2026',
-                    duration: '19:44',
-                    emoji: '<i data-lucide="video"></i>'
-                },
-                {
-                    id: 7,
-                    title: 'Pranking Daddy Bonoy With a Fake Tattoo (GALIT!)',
-                    category: 'pranks',
-                    mood: 'savage',
-                    views: 8100000,
-                    viewsLabel: '8.1M views',
-                    date: '2026-02-14',
-                    dateLabel: 'Feb 14, 2026',
-                    duration: '16:08',
-                    emoji: '<i data-lucide="zap"></i>'
-                },
-                {
-                    id: 8,
-                    title: 'Answering Your Most CHAOTIC Questions — Q&A Special',
-                    category: 'qa',
-                    mood: 'funny',
-                    views: 2400000,
-                    viewsLabel: '2.4M views',
-                    date: '2026-02-08',
-                    dateLabel: 'Feb 8, 2026',
-                    duration: '27:30',
-                    emoji: '<i data-lucide="help-circle"></i>'
-                },
-                {
-                    id: 9,
-                    title: 'Collab With Vice Ganda — We Almost Got Kicked Out!',
-                    category: 'collabs',
-                    mood: 'chaotic',
-                    views: 9400000,
-                    viewsLabel: '9.4M views',
-                    date: '2026-01-30',
-                    dateLabel: 'Jan 30, 2026',
-                    duration: '24:55',
-                    emoji: '<i data-lucide="star"></i>'
-                },
-                {
-                    id: 10,
-                    title: 'GRWM: My Everyday Glow-Up Routine (Affordable Products!)',
-                    category: 'grwm',
-                    mood: 'wholesome',
-                    views: 3200000,
-                    viewsLabel: '3.2M views',
-                    date: '2026-01-22',
-                    dateLabel: 'Jan 22, 2026',
-                    duration: '20:16',
-                    emoji: '<i data-lucide="sparkles"></i>'
-                },
-                {
-                    id: 11,
-                    title: 'The REAL Story Behind Our Biggest Family Fight (Storytime)',
-                    category: 'storytime',
-                    mood: 'emotional',
-                    views: 5800000,
-                    viewsLabel: '5.8M views',
-                    date: '2026-01-15',
-                    dateLabel: 'Jan 15, 2026',
-                    duration: '29:03',
-                    emoji: '<i data-lucide="message-circle"></i>'
-                },
-                {
-                    id: 12,
-                    title: 'How I Went From Crying to Comedy Queen — My Story',
-                    category: 'storytime',
-                    mood: 'inspirational',
-                    views: 4100000,
-                    viewsLabel: '4.1M views',
-                    date: '2026-01-08',
-                    dateLabel: 'Jan 8, 2026',
-                    duration: '33:47',
-                    emoji: '<i data-lucide="sparkles"></i>'
-                },
-                {
-                    id: 13,
-                    title: 'Toni vs Alex: Sister Cook-Off Challenge (Sino Mas Masarap?)',
-                    category: 'challenges',
-                    mood: 'savage',
-                    views: 6700000,
-                    viewsLabel: '6.7M views',
-                    date: '2025-12-20',
-                    dateLabel: 'Dec 20, 2025',
-                    duration: '26:11',
-                    emoji: '<i data-lucide="utensils"></i>'
-                },
-                {
-                    id: 14,
-                    title: 'My First Time Riding a Roller Coaster... NEVER AGAIN!',
-                    category: 'travel',
-                    mood: 'funny',
-                    views: 4900000,
-                    viewsLabel: '4.9M views',
-                    date: '2025-12-12',
-                    dateLabel: 'Dec 12, 2025',
-                    duration: '17:38',
-                    emoji: '<i data-lucide="map-pin"></i>'
-                },
-                {
-                    id: 15,
-                    title: 'Midnight Street Food Tour in Cebu — MASARAP LAHAT!',
-                    category: 'mukbang',
-                    mood: 'wholesome',
-                    views: 3600000,
-                    viewsLabel: '3.6M views',
-                    date: '2025-12-05',
-                    dateLabel: 'Dec 5, 2025',
-                    duration: '28:22',
-                    emoji: '<i data-lucide="utensils"></i>'
-                },
-                {
-                    id: 16,
-                    title: 'Kilig Overload: Reading Love Letters From Mikee On Cam',
-                    category: 'family',
-                    mood: 'kilig',
-                    views: 5500000,
-                    viewsLabel: '5.5M views',
-                    date: '2025-11-28',
-                    dateLabel: 'Nov 28, 2025',
-                    duration: '14:50',
-                    emoji: '<i data-lucide="heart"></i>'
-                },
-                {
-                    id: 17,
-                    title: 'Hidden Camera Prank on My Entire Team (SORRY NA!)',
-                    category: 'pranks',
-                    mood: 'savage',
-                    views: 7300000,
-                    viewsLabel: '7.3M views',
-                    date: '2025-11-20',
-                    dateLabel: 'Nov 20, 2025',
-                    duration: '21:05',
-                    emoji: '<i data-lucide="camera"></i>'
-                },
-                {
-                    id: 18,
-                    title: 'GRWM for My Concert Look + Backstage Reveal!',
-                    category: 'grwm',
-                    mood: 'kilig',
-                    views: 2800000,
-                    viewsLabel: '2.8M views',
-                    date: '2025-11-12',
-                    dateLabel: 'Nov 12, 2025',
-                    duration: '23:19',
-                    emoji: '<i data-lucide="mic"></i>'
-                }
-            ];
+            // Vlogs loaded from Airtable (no hardcoded demo data)
+            let vlogs = [];
 
-            // Demo featured vlog (fallback if Airtable fetch fails)
-            let featuredVlog = {
-                id: 'featured-1',
-                title: 'GONZAGA FAMILY REUNION 2025 — Full Chaos Mode! (Toni Cried!!)',
-                category: 'family',
-                mood: 'wholesome',
-                views: 8200000,
-                viewsLabel: '8.2M views',
-                date: '2025-12-28',
-                dateLabel: 'Dec 28, 2025',
-                duration: '28:14',
-                emoji: '<i data-lucide="clapperboard"></i>',
-                thumbnail: '',
-                description: 'The whole Gonzaga fam in one house for three days. Pranks, karaoke battles, Daddy\'s cooking challenge, and Toni\'s emotional surprise for Mommy. This vlog has EVERYTHING.',
-                likes: 412000,
-                likesLabel: '412K likes',
-                youtubeUrl: ''
-            };
+            // Featured vlog loaded from Airtable
+            let featuredVlog = null;
 
             // Format raw view/like counts to human-readable labels
             function formatViews(num) {
@@ -1416,7 +1183,14 @@
             function renderFeatured() {
                 var v = featuredVlog;
                 var picksCard = document.querySelector('.alex-picks__card');
+                var picksSection = document.querySelector('.alex-picks');
                 if (!picksCard) return;
+                // Hide section if no featured vlog loaded yet
+                if (!v) {
+                    if (picksSection) picksSection.style.display = 'none';
+                    return;
+                }
+                if (picksSection) picksSection.style.display = '';
 
                 var thumbnailContent = v.thumbnail
                     ? '<img src="' + v.thumbnail + '" alt="' + v.title.replace(/"/g, '&quot;') + '" style="width:100%;height:100%;object-fit:cover;">'
