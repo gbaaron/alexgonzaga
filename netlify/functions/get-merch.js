@@ -63,21 +63,35 @@ exports.handler = async (event) => {
             fetchNextPage();
         });
 
-        const products = allRecords.map(record => ({
-            id: record.id,
-            name: record.fields.Name,
-            description: record.fields.Description || null,
-            price: record.fields.Price || 0,
-            comparePrice: record.fields.ComparePrice || null,
-            image: record.fields.Image || null,
-            images: record.fields.Images || null,
-            category: record.fields.Category || null,
-            sizes: record.fields.Sizes || null,
-            colors: record.fields.Colors || null,
-            stock: record.fields.Stock || 0,
-            status: record.fields.Status,
-            badge: record.fields.Badge || null
-        }));
+        const products = allRecords.map(record => {
+            // Extract image URL from Airtable attachment array or plain URL string
+            const imgField = record.fields.Images || record.fields.Image || null;
+            let images = null;
+            if (Array.isArray(imgField) && imgField.length > 0) {
+                images = imgField[0].url || imgField[0];
+            } else if (typeof imgField === 'string') {
+                images = imgField;
+            }
+
+            return {
+                id: record.id,
+                name: record.fields.Name,
+                description: record.fields.Description || null,
+                price: record.fields.Price || 0,
+                comparePrice: record.fields.ComparePrice || null,
+                image: images,
+                images: images,
+                category: record.fields.Category || null,
+                sizes: record.fields.Sizes || null,
+                colors: record.fields.Colors || null,
+                stock: record.fields.Stock != null ? record.fields.Stock : 0,
+                status: record.fields.Status,
+                badge: record.fields.Badge || null,
+                isLimitedDrop: !!record.fields.IsLimitedDrop,
+                sales: record.fields.Sales || 0,
+                createdDate: record.fields.CreatedDate || null
+            };
+        });
 
         return {
             statusCode: 200,

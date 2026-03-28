@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <style>
+        /* Lucide icon defaults */
+        [data-lucide] { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; }
+
         /* ── Login Page Styles ── */
         .auth-page {
             min-height: 100vh;
@@ -95,30 +98,6 @@
         .auth-brand__perks li::before {
             content: '';
             flex-shrink: 0;
-        }
-
-        /* Floating emojis */
-        .auth-emoji {
-            position: absolute;
-            font-size: 2rem;
-            animation: emojiFloat 6s ease-in-out infinite;
-            opacity: 0.5;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .auth-emoji--1 { top: 10%; left: 10%; animation-delay: 0s; font-size: 2.5rem; }
-        .auth-emoji--2 { top: 25%; right: 8%; animation-delay: -1s; font-size: 1.8rem; }
-        .auth-emoji--3 { bottom: 30%; left: 15%; animation-delay: -2s; font-size: 2.2rem; }
-        .auth-emoji--4 { bottom: 15%; right: 12%; animation-delay: -3s; font-size: 1.6rem; }
-        .auth-emoji--5 { top: 50%; left: 5%; animation-delay: -4s; font-size: 1.9rem; }
-        .auth-emoji--6 { top: 70%; right: 20%; animation-delay: -5s; font-size: 2.1rem; }
-
-        @keyframes emojiFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-15px) rotate(5deg); }
-            50% { transform: translateY(-25px) rotate(-3deg); }
-            75% { transform: translateY(-10px) rotate(4deg); }
         }
 
         /* Right side — form panel */
@@ -355,14 +334,6 @@
         <div class="auth-layout">
             <!-- Left: Branding Panel -->
             <div class="auth-brand">
-                <!-- Floating emojis -->
-                <div class="auth-emoji auth-emoji--1">&#128150;</div>
-                <div class="auth-emoji auth-emoji--2">&#10024;</div>
-                <div class="auth-emoji auth-emoji--3">&#127775;</div>
-                <div class="auth-emoji auth-emoji--4">&#128293;</div>
-                <div class="auth-emoji auth-emoji--5">&#127881;</div>
-                <div class="auth-emoji auth-emoji--6">&#128588;</div>
-
                 <div class="auth-brand__content">
                     <div class="auth-brand__logo">
                         ALEX GONZAGA
@@ -373,11 +344,11 @@
                         Log in to unlock the full Alex Gonzaga experience. Your ate missed you na!
                     </p>
                     <ul class="auth-brand__perks">
-                        <li>&#127909; Access exclusive vlog content</li>
-                        <li>&#128142; Members-only merch drops</li>
-                        <li>&#128172; Join the Alex Nation community</li>
-                        <li>&#127775; Submit videos for Alex Reacts</li>
-                        <li>&#127873; Earn rewards and badges</li>
+                        <li><i data-lucide="video"></i> Access exclusive vlog content</li>
+                        <li><i data-lucide="gem"></i> Members-only merch drops</li>
+                        <li><i data-lucide="message-circle"></i> Join the Alex Nation community</li>
+                        <li><i data-lucide="star"></i> Submit videos for Alex Reacts</li>
+                        <li><i data-lucide="gift"></i> Earn rewards and badges</li>
                     </ul>
                 </div>
             </div>
@@ -388,18 +359,18 @@
                     <div class="auth-form__header">
                         <div class="auth-form__greeting">Heyy, welcome back!</div>
                         <h1 class="auth-form__title">Log In to Your Account</h1>
-                        <p class="auth-form__subtitle">Enter your credentials and let's get this party started! &#127881;</p>
+                        <p class="auth-form__subtitle">Enter your credentials and let's get this party started!</p>
                     </div>
 
                     <!-- Error Message -->
                     <div class="auth-form__error" id="login-error">
-                        <span>&#9888;</span>
+                        <span><i data-lucide="alert-triangle"></i></span>
                         <span id="login-error-text">Something went wrong</span>
                     </div>
 
                     <form class="auth-form" id="login-form" novalidate>
                         <div class="form-group">
-                            <label class="form-label" for="login-email">&#128231; Email Address</label>
+                            <label class="form-label" for="login-email"><i data-lucide="mail"></i> Email Address</label>
                             <input
                                 type="email"
                                 id="login-email"
@@ -411,7 +382,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="login-password">&#128274; Password</label>
+                            <label class="form-label" for="login-password"><i data-lucide="lock"></i> Password</label>
                             <div class="password-wrapper">
                                 <input
                                     type="password"
@@ -421,14 +392,14 @@
                                     required
                                     autocomplete="current-password"
                                 >
-                                <button type="button" class="password-toggle" onclick="togglePassword('login-password', this)" aria-label="Toggle password visibility">&#128065;</button>
+                                <button type="button" class="password-toggle" onclick="togglePassword('login-password', this)" aria-label="Toggle password visibility"><i data-lucide="eye"></i></button>
                             </div>
                         </div>
 
                         <a href="#" class="auth-form__forgot">Forgot password?</a>
 
                         <button type="submit" class="auth-form__submit" id="login-submit">
-                            Log In &#128640;
+                            Log In
                         </button>
                     </form>
 
@@ -450,11 +421,11 @@
                     <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
                     <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
                     <div class="footer__socials">
-                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
-                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
-                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="YouTube"><i data-lucide="play"></i></a>
+                        <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="camera"></i></a>
+                        <a href="#" class="footer__social" aria-label="TikTok"><i data-lucide="music"></i></a>
                         <a href="#" class="footer__social" aria-label="Facebook">f</a>
-                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                        <a href="#" class="footer__social" aria-label="Twitter"><i data-lucide="at-sign"></i></a>
                     </div>
                 </div>
                 <div>
@@ -493,6 +464,7 @@
         </div>
     </footer>
 
+    <script src="/js/lucide.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
         /* ── Login Page Logic ── */
@@ -524,7 +496,7 @@
                 submitBtn.disabled = loading;
                 submitBtn.innerHTML = loading
                     ? '<div class="spinner"></div> Logging in...'
-                    : 'Log In &#128640;';
+                    : 'Log In';
             }
 
             form.addEventListener('submit', async function(e) {
@@ -588,12 +560,17 @@
             const input = document.getElementById(inputId);
             if (input.type === 'password') {
                 input.type = 'text';
-                btn.innerHTML = '&#128064;';
+                btn.innerHTML = '<i data-lucide="eye-off"></i>';
+                if (window.lucide) lucide.createIcons();
             } else {
                 input.type = 'password';
-                btn.innerHTML = '&#128065;';
+                btn.innerHTML = '<i data-lucide="eye"></i>';
+                if (window.lucide) lucide.createIcons();
             }
         }
+
+        // Initialize Lucide icons
+        if (window.lucide) lucide.createIcons();
     </script>
 </body>
 </html>

@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <style>
+        /* Lucide icon defaults */
+        [data-lucide] { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; }
+
         /* ── Community Page Styles ── */
 
         /* Hero */
@@ -577,8 +580,7 @@
             border-bottom: 1px solid var(--gray-100);
         }
 
-        .guidelines-list li::before {
-            content: attr(data-icon);
+        .guidelines-list li [data-lucide] {
             flex-shrink: 0;
         }
 
@@ -734,11 +736,11 @@
         <div class="container">
             <div class="community-filters__inner">
                 <button class="filter-tab filter-tab--active" data-filter="all">All Posts</button>
-                <button class="filter-tab" data-filter="fanart">&#127912; Fan Art</button>
-                <button class="filter-tab" data-filter="meme">&#128514; Memes</button>
-                <button class="filter-tab" data-filter="story">&#128214; Stories</button>
-                <button class="filter-tab" data-filter="question">&#10067; Questions</button>
-                <button class="filter-tab" data-filter="featured">&#11088; Featured</button>
+                <button class="filter-tab" data-filter="fanart"><i data-lucide="palette"></i> Fan Art</button>
+                <button class="filter-tab" data-filter="meme"><i data-lucide="smile"></i> Memes</button>
+                <button class="filter-tab" data-filter="story"><i data-lucide="book-open"></i> Stories</button>
+                <button class="filter-tab" data-filter="question"><i data-lucide="help-circle"></i> Questions</button>
+                <button class="filter-tab" data-filter="featured"><i data-lucide="star"></i> Featured</button>
             </div>
         </div>
     </div>
@@ -757,20 +759,20 @@
                         <div class="post-creator__input-fake" id="postCreatorTrigger">What's on your mind, fan?</div>
                     </div>
                     <div class="post-creator__types" id="postTypeSelector">
-                        <button class="post-type-btn post-type-btn--active" data-type="post">&#128172; Post</button>
-                        <button class="post-type-btn" data-type="fanart">&#127912; Fan Art</button>
-                        <button class="post-type-btn" data-type="meme">&#128514; Meme</button>
-                        <button class="post-type-btn" data-type="story">&#128214; Story</button>
-                        <button class="post-type-btn" data-type="question">&#10067; Question</button>
-                        <button class="post-type-btn" data-type="edit">&#9998; Edit</button>
+                        <button class="post-type-btn post-type-btn--active" data-type="post"><i data-lucide="message-circle"></i> Post</button>
+                        <button class="post-type-btn" data-type="fanart"><i data-lucide="palette"></i> Fan Art</button>
+                        <button class="post-type-btn" data-type="meme"><i data-lucide="smile"></i> Meme</button>
+                        <button class="post-type-btn" data-type="story"><i data-lucide="book-open"></i> Story</button>
+                        <button class="post-type-btn" data-type="question"><i data-lucide="help-circle"></i> Question</button>
+                        <button class="post-type-btn" data-type="edit"><i data-lucide="pencil"></i> Edit</button>
                     </div>
                     <div class="post-creator__form" id="postForm">
                         <textarea class="post-creator__textarea" placeholder="Share something with the Alex Nation..." id="postContent"></textarea>
                         <div class="post-creator__actions">
                             <div class="post-creator__attachments">
-                                <button class="post-creator__attach-btn" title="Add photo" aria-label="Add photo">&#128247;</button>
+                                <button class="post-creator__attach-btn" title="Add photo" aria-label="Add photo"><i data-lucide="camera"></i></button>
                                 <button class="post-creator__attach-btn" title="Add GIF" aria-label="Add GIF">GIF</button>
-                                <button class="post-creator__attach-btn" title="Add poll" aria-label="Add poll">&#128202;</button>
+                                <button class="post-creator__attach-btn" title="Add poll" aria-label="Add poll"><i data-lucide="bar-chart-2"></i></button>
                             </div>
                             <button class="btn btn--primary btn--sm" id="postSubmitBtn">Post It!</button>
                         </div>
@@ -780,7 +782,7 @@
                 <!-- Post Creator (guest view) -->
                 <div class="post-creator" data-guest>
                     <div class="post-creator__guest-cta">
-                        <p>&#128150; Want to share your thoughts with the Alex Nation? Join the fam!</p>
+                        <p>Want to share your thoughts with the Alex Nation? Join the fam!</p>
                         <a href="/signup.html" class="btn btn--primary">Join to Post</a>
                     </div>
                 </div>
@@ -798,7 +800,7 @@
 
                 <!-- Community Stats -->
                 <div class="sidebar-card">
-                    <h3 class="sidebar-card__title">&#128202; Community Stats</h3>
+                    <h3 class="sidebar-card__title"><i data-lucide="bar-chart-2"></i> Community Stats</h3>
                     <div class="community-stat">
                         <span class="community-stat__label">Total Members</span>
                         <span class="community-stat__value">24,823</span>
@@ -823,7 +825,7 @@
 
                 <!-- Top Contributors -->
                 <div class="sidebar-card">
-                    <h3 class="sidebar-card__title">&#127942; Top Contributors</h3>
+                    <h3 class="sidebar-card__title"><i data-lucide="trophy"></i> Top Contributors</h3>
                     <div class="leaderboard-item">
                         <span class="leaderboard-item__rank">1</span>
                         <div class="leaderboard-item__avatar" style="background: var(--gradient-gold);">K</div>
@@ -868,14 +870,14 @@
 
                 <!-- Community Guidelines -->
                 <div class="sidebar-card">
-                    <h3 class="sidebar-card__title">&#128220; Community Guidelines</h3>
+                    <h3 class="sidebar-card__title"><i data-lucide="scroll-text"></i> Community Guidelines</h3>
                     <ul class="guidelines-list">
-                        <li data-icon="&#128150;">Spread love and positivity. We're all here because we love Alex!</li>
-                        <li data-icon="&#128588;">Be respectful to all members. No hate, bullying, or discrimination.</li>
-                        <li data-icon="&#127912;">Credit original artists when sharing fan art or edits.</li>
-                        <li data-icon="&#128683;">No spam, self-promotion, or off-topic content.</li>
-                        <li data-icon="&#128274;">Don't share personal info about Alex or other members.</li>
-                        <li data-icon="&#127881;">Have fun! This is your space to celebrate our favorite ate!</li>
+                        <li><i data-lucide="heart"></i> Spread love and positivity. We're all here because we love Alex!</li>
+                        <li><i data-lucide="sparkles"></i> Be respectful to all members. No hate, bullying, or discrimination.</li>
+                        <li><i data-lucide="palette"></i> Credit original artists when sharing fan art or edits.</li>
+                        <li><i data-lucide="ban"></i> No spam, self-promotion, or off-topic content.</li>
+                        <li><i data-lucide="lock"></i> Don't share personal info about Alex or other members.</li>
+                        <li><i data-lucide="sparkles"></i> Have fun! This is your space to celebrate our favorite ate!</li>
                     </ul>
                 </div>
 
@@ -894,11 +896,11 @@
                     <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
                     <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
                     <div class="footer__socials">
-                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
-                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
-                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="YouTube"><i data-lucide="play"></i></a>
+                        <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="camera"></i></a>
+                        <a href="#" class="footer__social" aria-label="TikTok"><i data-lucide="music"></i></a>
                         <a href="#" class="footer__social" aria-label="Facebook">f</a>
-                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                        <a href="#" class="footer__social" aria-label="Twitter"><i data-lucide="at-sign"></i></a>
                     </div>
                 </div>
                 <div>
@@ -937,6 +939,7 @@
         </div>
     </footer>
 
+    <script src="/js/lucide.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
         /* ── Community Page — Dynamic Rendering ── */
@@ -952,13 +955,13 @@
                     id: 'pinned-1',
                     username: '@AlexGonzagaOfficial',
                     avatarUrl: null,
-                    avatarInitial: '\u2733',
+                    avatarInitial: 'A',
                     avatarBg: 'var(--gradient-gold)',
                     type: 'featured',
                     badge: null,
                     badgeClass: null,
                     time: 'March 20, 2026',
-                    content: 'Hey Alex Nation! Grabe, sobrang thankful ako sa inyong lahat! We just hit 24K members in this community! To celebrate, we are doing a FAN ART CONTEST this month. Best fan art wins a signed merch bundle + a personal video message from yours truly. Tara na, submit na kayo! Tag your entries with #AlexNationArt \uD83C\uDFA8\uD83D\uDC96\uD83D\uDD25',
+                    content: 'Hey Alex Nation! Grabe, sobrang thankful ako sa inyong lahat! We just hit 24K members in this community! To celebrate, we are doing a FAN ART CONTEST this month. Best fan art wins a signed merch bundle + a personal video message from yours truly. Tara na, submit na kayo! Tag your entries with #AlexNationArt',
                     image: null,
                     likes: 2847,
                     liked: true,
@@ -977,8 +980,8 @@
                     badge: 'Fan Art',
                     badgeClass: 'badge--purple',
                     time: '2 hours ago',
-                    content: 'Spent 3 weeks on this digital painting of Alex from the "Ate Girl Era" era! Watercolor style! Hope she sees it! \uD83C\uDFA8\u2728',
-                    image: { placeholder: true, bg: 'linear-gradient(135deg, #F0E4FF 0%, #FFE4F0 50%, #E4F0FF 100%)', icon: '\uD83C\uDFA8', label: 'Digital Watercolor Fan Art', labelColor: 'var(--purple)', height: 280 },
+                    content: 'Spent 3 weeks on this digital painting of Alex from the "Ate Girl Era" era! Watercolor style! Hope she sees it!',
+                    image: { placeholder: true, bg: 'linear-gradient(135deg, #F0E4FF 0%, #FFE4F0 50%, #E4F0FF 100%)', icon: '<i data-lucide="palette"></i>', label: 'Digital Watercolor Fan Art', labelColor: 'var(--purple)', height: 280 },
                     likes: 1203,
                     liked: false,
                     comments: 89,
@@ -995,8 +998,8 @@
                     badge: 'Meme',
                     badgeClass: 'badge--coral',
                     time: '4 hours ago',
-                    content: 'When Alex says "Charot lang" but you know she\'s 100% serious \uD83D\uDE02\uD83D\uDE02\uD83D\uDE02',
-                    image: { placeholder: true, bg: 'linear-gradient(135deg, #FFE4E4 0%, #FFF0E4 100%)', icon: '\uD83D\uDE02', label: 'Charot Lang Meme', labelColor: 'var(--coral)', height: 240 },
+                    content: 'When Alex says "Charot lang" but you know she\'s 100% serious',
+                    image: { placeholder: true, bg: 'linear-gradient(135deg, #FFE4E4 0%, #FFF0E4 100%)', icon: '<i data-lucide="smile"></i>', label: 'Charot Lang Meme', labelColor: 'var(--coral)', height: 240 },
                     likes: 876,
                     liked: false,
                     comments: 54,
@@ -1013,7 +1016,7 @@
                     badge: 'Post',
                     badgeClass: 'badge--pink',
                     time: '5 hours ago',
-                    content: 'Just rewatched Alex\'s wedding vlog for the 100th time and I\'m still crying! Why is she so funny even on her wedding day?! The way Mikee was looking at her during the vows... my heart cannot take it! Gonzaga genes are really something else. Anyone else ugly crying right now or just me? \uD83D\uDE2D\uD83D\uDC96',
+                    content: 'Just rewatched Alex\'s wedding vlog for the 100th time and I\'m still crying! Why is she so funny even on her wedding day?! The way Mikee was looking at her during the vows... my heart cannot take it! Gonzaga genes are really something else. Anyone else ugly crying right now or just me?',
                     image: null,
                     likes: 432,
                     liked: false,
@@ -1031,7 +1034,7 @@
                     badge: 'Question',
                     badgeClass: 'badge--gold',
                     time: '6 hours ago',
-                    content: 'Guys, question! What\'s your all-time FAVORITE Alex vlog? I need to make a binge-watch list this weekend. I\'ve been a fan for years but I feel like I\'ve missed some gems. Drop your top 3 below! \uD83D\uDC47\uD83D\uDC47\uD83D\uDC47',
+                    content: 'Guys, question! What\'s your all-time FAVORITE Alex vlog? I need to make a binge-watch list this weekend. I\'ve been a fan for years but I feel like I\'ve missed some gems. Drop your top 3 below!',
                     image: null,
                     likes: 215,
                     liked: false,
@@ -1049,7 +1052,7 @@
                     badge: 'Story',
                     badgeClass: 'badge--teal',
                     time: '8 hours ago',
-                    content: 'I have to share this! Last year I was going through a really tough time \u2014 lost my job, feeling down about everything. Then I binged Alex\'s vlogs and her energy literally pulled me out of it. She reminded me that life doesn\'t have to be perfect to be funny and beautiful. Yesterday, I finally started my own small business and I named my first product line \u201CWalang Kupas\u201D in her honor. Thank you, Ate Alex, for being our sunshine! \u2600\uFE0F\uD83D\uDC96',
+                    content: 'I have to share this! Last year I was going through a really tough time \u2014 lost my job, feeling down about everything. Then I binged Alex\'s vlogs and her energy literally pulled me out of it. She reminded me that life doesn\'t have to be perfect to be funny and beautiful. Yesterday, I finally started my own small business and I named my first product line \u201CWalang Kupas\u201D in her honor. Thank you, Ate Alex, for being our sunshine!',
                     image: null,
                     likes: 1890,
                     liked: true,
@@ -1067,8 +1070,8 @@
                     badge: 'Fan Art',
                     badgeClass: 'badge--purple',
                     time: '10 hours ago',
-                    content: 'Quick chibi doodle of Alex and Toni! Sisters goals talaga sila \uD83D\uDC96 Took me about 2 hours. Should I do a full series of Gonzaga family chibis?',
-                    image: { placeholder: true, bg: 'linear-gradient(135deg, #E8D5FF 0%, #FFD5E5 100%)', icon: '\u270E', label: 'Chibi Sisters Fan Art', labelColor: 'var(--purple)', height: 300 },
+                    content: 'Quick chibi doodle of Alex and Toni! Sisters goals talaga sila! Took me about 2 hours. Should I do a full series of Gonzaga family chibis?',
+                    image: { placeholder: true, bg: 'linear-gradient(135deg, #E8D5FF 0%, #FFD5E5 100%)', icon: '<i data-lucide="pencil"></i>', label: 'Chibi Sisters Fan Art', labelColor: 'var(--purple)', height: 300 },
                     likes: 654,
                     liked: false,
                     comments: 47,
@@ -1085,8 +1088,8 @@
                     badge: 'Meme',
                     badgeClass: 'badge--coral',
                     time: '12 hours ago',
-                    content: 'POV: You\'re explaining to your friends why you need to leave the party early because Alex just uploaded a new vlog \uD83D\uDE02 No regrets. Priorities, people!',
-                    image: { placeholder: true, bg: 'linear-gradient(135deg, #FFE8E8 0%, #FFF5E0 100%)', icon: '\uD83D\uDEB6', label: 'Priorities Meme', labelColor: 'var(--coral)', height: 220 },
+                    content: 'POV: You\'re explaining to your friends why you need to leave the party early because Alex just uploaded a new vlog. No regrets. Priorities, people!',
+                    image: { placeholder: true, bg: 'linear-gradient(135deg, #FFE8E8 0%, #FFF5E0 100%)', icon: '<i data-lucide="footprints"></i>', label: 'Priorities Meme', labelColor: 'var(--coral)', height: 220 },
                     likes: 543,
                     liked: false,
                     comments: 31,
@@ -1103,7 +1106,7 @@
                     badge: 'Post',
                     badgeClass: 'badge--pink',
                     time: 'Yesterday',
-                    content: 'Alex\'s energy is literally what gets me through Monday mornings at work. Just got my \u201CCharot Lang\u201D hoodie delivered and my officemates are SO jealous! Best purchase I\'ve made this year. Now I need the matching cap! Anyone know when the caps are restocking? \uD83D\uDD25\uD83D\uDC55',
+                    content: 'Alex\'s energy is literally what gets me through Monday mornings at work. Just got my \u201CCharot Lang\u201D hoodie delivered and my officemates are SO jealous! Best purchase I\'ve made this year. Now I need the matching cap! Anyone know when the caps are restocking?',
                     image: null,
                     likes: 167,
                     liked: false,
@@ -1159,16 +1162,16 @@
                     : '';
 
                 var featuredBadgeHtml = (post.featured && !isPinned)
-                    ? '<span class="feed-post__featured-badge">\u2B50 Featured</span>'
+                    ? '<span class="feed-post__featured-badge"><i data-lucide="star"></i> Featured</span>'
                     : '';
 
-                var likeIcon = post.liked ? '\u2764' : '\u2661';
+                var likeIcon = post.liked ? '<i data-lucide="heart" style="fill:var(--coral);color:var(--coral)"></i>' : '<i data-lucide="heart"></i>';
                 var likedClass = post.liked ? ' feed-post__action-btn--liked' : '';
                 var likesFormatted = post.likes.toLocaleString();
                 var commentsFormatted = post.comments.toLocaleString();
 
                 return '<div class="' + wrapperClass + '" ' + dataAttrs + '>' +
-                    (isPinned ? '<div class="pinned-post__label">\uD83D\uDCCC Pinned</div>' : '') +
+                    (isPinned ? '<div class="pinned-post__label"><i data-lucide="pin"></i> Pinned</div>' : '') +
                     '<div class="feed-post__header"' + headerMargin + '>' +
                         renderAvatar(post) +
                         '<div class="feed-post__user-info">' +
@@ -1188,11 +1191,11 @@
                             '<span class="count">' + likesFormatted + '</span>' +
                         '</button>' +
                         '<button class="feed-post__action-btn">' +
-                            '<span class="icon">\uD83D\uDCAC</span>' +
+                            '<span class="icon"><i data-lucide="message-circle"></i></span>' +
                             '<span class="count">' + commentsFormatted + '</span> Comments' +
                         '</button>' +
                         '<button class="feed-post__action-btn">' +
-                            '<span class="icon">\uD83D\uDD01</span>' +
+                            '<span class="icon"><i data-lucide="share-2"></i></span>' +
                             'Share' +
                         '</button>' +
                     '</div>' +
@@ -1214,6 +1217,9 @@
 
                 pinnedContainer.innerHTML = pinned.map(function(p) { return renderPostCard(p); }).join('');
                 feedContainer.innerHTML = regular.map(function(p) { return renderPostCard(p); }).join('');
+
+                // Re-initialize Lucide icons after dynamic rendering
+                if (window.lucide) lucide.createIcons();
 
                 // Re-attach like button listeners
                 attachLikeListeners();
@@ -1272,14 +1278,14 @@
 
                 if (isLiked) {
                     btn.classList.remove('feed-post__action-btn--liked');
-                    iconEl.textContent = '\u2661';
+                    iconEl.innerHTML = '<i data-lucide="heart"></i>'; if (window.lucide) lucide.createIcons({nodes: [iconEl]});
                     if (countEl) {
                         var val = parseInt(countEl.textContent.replace(/,/g, ''), 10);
                         countEl.textContent = (val - 1).toLocaleString();
                     }
                 } else {
                     btn.classList.add('feed-post__action-btn--liked');
-                    iconEl.textContent = '\u2764';
+                    iconEl.innerHTML = '<i data-lucide="heart" style="fill:var(--coral);color:var(--coral)"></i>'; if (window.lucide) lucide.createIcons({nodes: [iconEl]});
                     if (countEl) {
                         var val = parseInt(countEl.textContent.replace(/,/g, ''), 10);
                         countEl.textContent = (val + 1).toLocaleString();
@@ -1525,6 +1531,9 @@
 
             // ── Kick off ──
             loadPosts();
+
+            // Initialize Lucide icons
+            if (window.lucide) lucide.createIcons();
 
         })();
     </script>

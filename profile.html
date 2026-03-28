@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <style>
+        /* Lucide icon defaults */
+        [data-lucide] { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; }
+
         /* ── Profile Page Styles ── */
         .profile-page {
             padding-top: 72px;
@@ -723,10 +726,10 @@
                         <div class="profile-header__username" id="profile-username">@...</div>
                         <div class="profile-header__meta">
                             <span class="profile-header__tier-badge tier-badge--bestie" id="profile-tier-badge">
-                                &#128150; Bestie
+                                <i data-lucide="heart"></i> Bestie
                             </span>
                             <span class="profile-header__meta-item" id="profile-member-since">
-                                &#128197; Member since ...
+                                <i data-lucide="calendar"></i> Member since ...
                             </span>
                         </div>
                     </div>
@@ -741,7 +744,7 @@
                 <div class="membership-card__inner">
                     <div class="membership-card__header">
                         <span class="membership-card__brand">Alex Gonzaga Fan Hub</span>
-                        <span class="membership-card__tier membership-card__tier--bestie" id="card-tier">&#128150; Bestie</span>
+                        <span class="membership-card__tier membership-card__tier--bestie" id="card-tier"><i data-lucide="heart"></i> Bestie</span>
                     </div>
                     <div class="membership-card__name" id="card-name">Fan Member</div>
                     <div class="membership-card__username" id="card-username">@username</div>
@@ -761,30 +764,30 @@
                     </div>
                     <div class="membership-card__upgrade" id="card-upgrade">
                         <span class="membership-card__upgrade-text">Upgrade your membership for exclusive perks and content!</span>
-                        <a href="/membership.html" class="btn btn--gold btn--sm">Upgrade Now &#10024;</a>
+                        <a href="/membership.html" class="btn btn--gold btn--sm">Upgrade Now <i data-lucide="sparkles"></i></a>
                     </div>
                 </div>
             </div>
 
             <!-- Tabs -->
             <div class="profile-tabs" role="tablist">
-                <button class="profile-tab active" data-tab="profile" role="tab" aria-selected="true">&#128100; Profile</button>
-                <button class="profile-tab" data-tab="orders" role="tab" aria-selected="false">&#128230; My Orders</button>
-                <button class="profile-tab" data-tab="submissions" role="tab" aria-selected="false">&#127909; My Submissions</button>
-                <button class="profile-tab" data-tab="settings" role="tab" aria-selected="false">&#9881; Settings</button>
+                <button class="profile-tab active" data-tab="profile" role="tab" aria-selected="true"><i data-lucide="user"></i> Profile</button>
+                <button class="profile-tab" data-tab="orders" role="tab" aria-selected="false"><i data-lucide="package"></i> My Orders</button>
+                <button class="profile-tab" data-tab="submissions" role="tab" aria-selected="false"><i data-lucide="video"></i> My Submissions</button>
+                <button class="profile-tab" data-tab="settings" role="tab" aria-selected="false"><i data-lucide="settings"></i> Settings</button>
             </div>
 
             <!-- Tab: Profile -->
             <div class="tab-panel active" id="tab-profile" role="tabpanel">
                 <div class="profile-section">
-                    <h2 class="profile-section__title">&#128172; About Me</h2>
+                    <h2 class="profile-section__title"><i data-lucide="message-circle"></i> About Me</h2>
                     <div class="profile-bio" id="profile-bio">
                         Proud member of the Alex Nation! Living for ate's chaotic energy since day one. Gonzaga family forever!
                     </div>
                 </div>
 
                 <div class="profile-section">
-                    <h2 class="profile-section__title">&#9999; Edit Profile</h2>
+                    <h2 class="profile-section__title"><i data-lucide="pencil"></i> Edit Profile</h2>
                     <form class="edit-profile-form" id="edit-profile-form">
                         <div class="form-group">
                             <label class="form-label" for="edit-name">Display Name</label>
@@ -809,7 +812,7 @@
             <!-- Tab: My Orders -->
             <div class="tab-panel" id="tab-orders" role="tabpanel">
                 <div class="profile-section">
-                    <h2 class="profile-section__title">&#128230; Order History</h2>
+                    <h2 class="profile-section__title"><i data-lucide="package"></i> Order History</h2>
                     <div id="orders-list">
                         <!-- Demo order data -->
                         <div class="order-item">
@@ -864,54 +867,54 @@
             <!-- Tab: My Submissions -->
             <div class="tab-panel" id="tab-submissions" role="tabpanel">
                 <div class="profile-section">
-                    <h2 class="profile-section__title">&#127909; Alex Reacts Submissions</h2>
+                    <h2 class="profile-section__title"><i data-lucide="video"></i> Alex Reacts Submissions</h2>
                     <div id="submissions-list">
                         <!-- Demo submission data -->
                         <div class="submission-item">
-                            <div class="submission-item__thumb">&#127916;</div>
+                            <div class="submission-item__thumb"><i data-lucide="clapperboard"></i></div>
                             <div class="submission-item__info">
                                 <div class="submission-item__title">My Alex Gonzaga Impression (Ate Would Be Proud!)</div>
                                 <div class="submission-item__date">Submitted Mar 20, 2026</div>
                             </div>
-                            <span class="submission-status submission-status--featured">&#127775; Featured</span>
+                            <span class="submission-status submission-status--featured"><i data-lucide="star"></i> Featured</span>
                         </div>
                         <div class="submission-item">
-                            <div class="submission-item__thumb">&#127908;</div>
+                            <div class="submission-item__thumb"><i data-lucide="clapperboard"></i></div>
                             <div class="submission-item__info">
                                 <div class="submission-item__title">Singing Alex's Song at Karaoke Night</div>
                                 <div class="submission-item__date">Submitted Mar 12, 2026</div>
                             </div>
-                            <span class="submission-status submission-status--approved">&#9989; Approved</span>
+                            <span class="submission-status submission-status--approved"><i data-lucide="check-circle"></i> Approved</span>
                         </div>
                         <div class="submission-item">
-                            <div class="submission-item__thumb">&#128248;</div>
+                            <div class="submission-item__thumb"><i data-lucide="camera"></i></div>
                             <div class="submission-item__info">
                                 <div class="submission-item__title">Fan Art: Alex as a Cartoon Character</div>
                                 <div class="submission-item__date">Submitted Mar 5, 2026</div>
                             </div>
-                            <span class="submission-status submission-status--pending">&#9203; Pending Review</span>
+                            <span class="submission-status submission-status--pending"><i data-lucide="clock"></i> Pending Review</span>
                         </div>
                         <div class="submission-item">
-                            <div class="submission-item__thumb">&#127916;</div>
+                            <div class="submission-item__thumb"><i data-lucide="clapperboard"></i></div>
                             <div class="submission-item__info">
                                 <div class="submission-item__title">Recreating Alex's Viral Dance (Attempt #47)</div>
                                 <div class="submission-item__date">Submitted Feb 18, 2026</div>
                             </div>
-                            <span class="submission-status submission-status--approved">&#9989; Approved</span>
+                            <span class="submission-status submission-status--approved"><i data-lucide="check-circle"></i> Approved</span>
                         </div>
                         <div class="submission-item">
-                            <div class="submission-item__thumb">&#127916;</div>
+                            <div class="submission-item__thumb"><i data-lucide="clapperboard"></i></div>
                             <div class="submission-item__info">
                                 <div class="submission-item__title">Unboxing My Alex Gonzaga Merch Haul</div>
                                 <div class="submission-item__date">Submitted Feb 2, 2026</div>
                             </div>
-                            <span class="submission-status submission-status--rejected">&#10060; Not Selected</span>
+                            <span class="submission-status submission-status--rejected"><i data-lucide="x-circle"></i> Not Selected</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="text-center mt-2">
-                    <a href="/react.html" class="btn btn--primary">Submit New Video &#127909;</a>
+                    <a href="/react.html" class="btn btn--primary">Submit New Video <i data-lucide="video"></i></a>
                 </div>
             </div>
 
@@ -919,27 +922,27 @@
             <div class="tab-panel" id="tab-settings" role="tabpanel">
                 <!-- Change Password -->
                 <div class="profile-section">
-                    <h2 class="profile-section__title">&#128274; Change Password</h2>
+                    <h2 class="profile-section__title"><i data-lucide="lock"></i> Change Password</h2>
                     <form class="password-change-form" id="change-password-form">
                         <div class="form-group">
                             <label class="form-label" for="current-password">Current Password</label>
                             <div class="password-wrapper">
                                 <input type="password" id="current-password" class="form-input" placeholder="Enter current password" autocomplete="current-password">
-                                <button type="button" class="password-toggle" onclick="togglePassword('current-password', this)" aria-label="Toggle visibility">&#128065;</button>
+                                <button type="button" class="password-toggle" onclick="togglePassword('current-password', this)" aria-label="Toggle visibility"><i data-lucide="eye"></i></button>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="new-password">New Password</label>
                             <div class="password-wrapper">
                                 <input type="password" id="new-password" class="form-input" placeholder="Enter new password" autocomplete="new-password">
-                                <button type="button" class="password-toggle" onclick="togglePassword('new-password', this)" aria-label="Toggle visibility">&#128065;</button>
+                                <button type="button" class="password-toggle" onclick="togglePassword('new-password', this)" aria-label="Toggle visibility"><i data-lucide="eye"></i></button>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="confirm-new-password">Confirm New Password</label>
                             <div class="password-wrapper">
                                 <input type="password" id="confirm-new-password" class="form-input" placeholder="Confirm new password" autocomplete="new-password">
-                                <button type="button" class="password-toggle" onclick="togglePassword('confirm-new-password', this)" aria-label="Toggle visibility">&#128065;</button>
+                                <button type="button" class="password-toggle" onclick="togglePassword('confirm-new-password', this)" aria-label="Toggle visibility"><i data-lucide="eye"></i></button>
                             </div>
                         </div>
                         <button type="submit" class="btn btn--primary">Update Password</button>
@@ -948,7 +951,7 @@
 
                 <!-- Notification Preferences -->
                 <div class="profile-section">
-                    <h2 class="profile-section__title">&#128276; Notification Preferences</h2>
+                    <h2 class="profile-section__title"><i data-lucide="bell"></i> Notification Preferences</h2>
                     <div class="notification-pref">
                         <div class="notification-pref__info">
                             <h4>New Vlog Alerts</h4>
@@ -1003,7 +1006,7 @@
 
                 <!-- Danger Zone -->
                 <div class="profile-section">
-                    <h2 class="profile-section__title">&#9888; Account</h2>
+                    <h2 class="profile-section__title"><i data-lucide="alert-triangle"></i> Account</h2>
                     <div class="danger-zone">
                         <h4>Delete Account</h4>
                         <p>Once you delete your account, there is no going back. All your data, orders, and submissions will be permanently removed. Please be certain!</p>
@@ -1022,11 +1025,11 @@
                     <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
                     <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
                     <div class="footer__socials">
-                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
-                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
-                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="YouTube"><i data-lucide="play"></i></a>
+                        <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="camera"></i></a>
+                        <a href="#" class="footer__social" aria-label="TikTok"><i data-lucide="music"></i></a>
                         <a href="#" class="footer__social" aria-label="Facebook">f</a>
-                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                        <a href="#" class="footer__social" aria-label="Twitter"><i data-lucide="at-sign"></i></a>
                     </div>
                 </div>
                 <div>
@@ -1065,6 +1068,7 @@
         </div>
     </footer>
 
+    <script src="/js/lucide.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
         /* ── Profile Page Logic ── */
@@ -1091,31 +1095,33 @@
             const memberSince = user.createdAt
                 ? formatDate(user.createdAt)
                 : 'Jan 2026';
-            document.getElementById('profile-member-since').innerHTML = '&#128197; Member since ' + memberSince;
+            document.getElementById('profile-member-since').innerHTML = '<i data-lucide="calendar"></i> Member since ' + memberSince;
 
             // Tier badge
             const tierBadge = document.getElementById('profile-tier-badge');
             const tierConfig = {
-                'Free':         { label: '&#128150; Bestie',        class: 'tier-badge--bestie' },
-                'Bestie':       { label: '&#128150; Bestie',        class: 'tier-badge--bestie' },
-                'VIP':          { label: '&#128142; VIP',           class: 'tier-badge--vip' },
-                'Inner Circle': { label: '&#128081; Inner Circle',  class: 'tier-badge--inner-circle' },
+                'Free':         { label: '<i data-lucide="heart"></i> Bestie',        class: 'tier-badge--bestie' },
+                'Bestie':       { label: '<i data-lucide="heart"></i> Bestie',        class: 'tier-badge--bestie' },
+                'VIP':          { label: '<i data-lucide="gem"></i> VIP',           class: 'tier-badge--vip' },
+                'Inner Circle': { label: '<i data-lucide="crown"></i> Inner Circle',  class: 'tier-badge--inner-circle' },
             };
             const tc = tierConfig[tier] || tierConfig['Free'];
             tierBadge.className = 'profile-header__tier-badge ' + tc.class;
             tierBadge.innerHTML = tc.label;
+            if (window.lucide) lucide.createIcons();
 
             /* ── Membership Card ── */
             const cardTierConfig = {
-                'Free':         { label: '&#128150; Bestie',        class: 'membership-card__tier--bestie' },
-                'Bestie':       { label: '&#128150; Bestie',        class: 'membership-card__tier--bestie' },
-                'VIP':          { label: '&#128142; VIP',           class: 'membership-card__tier--vip' },
-                'Inner Circle': { label: '&#128081; Inner Circle',  class: 'membership-card__tier--inner-circle' },
+                'Free':         { label: '<i data-lucide="heart"></i> Bestie',        class: 'membership-card__tier--bestie' },
+                'Bestie':       { label: '<i data-lucide="heart"></i> Bestie',        class: 'membership-card__tier--bestie' },
+                'VIP':          { label: '<i data-lucide="gem"></i> VIP',           class: 'membership-card__tier--vip' },
+                'Inner Circle': { label: '<i data-lucide="crown"></i> Inner Circle',  class: 'membership-card__tier--inner-circle' },
             };
             const ctc = cardTierConfig[tier] || cardTierConfig['Free'];
             const cardTier = document.getElementById('card-tier');
             cardTier.className = 'membership-card__tier ' + ctc.class;
             cardTier.innerHTML = ctc.label;
+            if (window.lucide) lucide.createIcons();
 
             document.getElementById('card-name').textContent = user.name || 'Fan Member';
             document.getElementById('card-username').textContent = '@' + (user.username || 'fan');
@@ -1252,11 +1258,12 @@
             const input = document.getElementById(inputId);
             if (input.type === 'password') {
                 input.type = 'text';
-                btn.innerHTML = '&#128064;';
+                btn.innerHTML = '<i data-lucide="eye-off"></i>';
             } else {
                 input.type = 'password';
-                btn.innerHTML = '&#128065;';
+                btn.innerHTML = '<i data-lucide="eye"></i>';
             }
+            if (window.lucide) lucide.createIcons();
         }
 
         function resetEditForm() {
@@ -1285,6 +1292,9 @@
                 }
             }
         }
+
+        // Initialize Lucide icons
+        if (window.lucide) lucide.createIcons();
     </script>
 </body>
 </html>

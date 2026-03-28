@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <style>
+        /* Lucide icon defaults */
+        [data-lucide] { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; }
+
         /* ── Signup Page Styles ── */
         .auth-page {
             min-height: 100vh;
@@ -114,30 +117,6 @@
         .auth-brand__tier-desc {
             font-size: 0.8rem;
             color: rgba(255, 255, 255, 0.65);
-        }
-
-        /* Floating emojis */
-        .auth-emoji {
-            position: absolute;
-            font-size: 2rem;
-            animation: emojiFloat 6s ease-in-out infinite;
-            opacity: 0.5;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .auth-emoji--1 { top: 8%; left: 8%; animation-delay: 0s; font-size: 2.5rem; }
-        .auth-emoji--2 { top: 20%; right: 10%; animation-delay: -1.2s; font-size: 1.8rem; }
-        .auth-emoji--3 { bottom: 25%; left: 12%; animation-delay: -2.4s; font-size: 2.2rem; }
-        .auth-emoji--4 { bottom: 10%; right: 15%; animation-delay: -3.6s; font-size: 1.6rem; }
-        .auth-emoji--5 { top: 45%; left: 3%; animation-delay: -4.2s; font-size: 1.9rem; }
-        .auth-emoji--6 { top: 65%; right: 5%; animation-delay: -5s; font-size: 2.1rem; }
-
-        @keyframes emojiFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-15px) rotate(5deg); }
-            50% { transform: translateY(-25px) rotate(-3deg); }
-            75% { transform: translateY(-10px) rotate(4deg); }
         }
 
         /* Right side — form panel */
@@ -441,14 +420,6 @@
         <div class="auth-layout">
             <!-- Left: Branding Panel -->
             <div class="auth-brand">
-                <!-- Floating emojis -->
-                <div class="auth-emoji auth-emoji--1">&#127881;</div>
-                <div class="auth-emoji auth-emoji--2">&#128150;</div>
-                <div class="auth-emoji auth-emoji--3">&#10024;</div>
-                <div class="auth-emoji auth-emoji--4">&#127775;</div>
-                <div class="auth-emoji auth-emoji--5">&#128293;</div>
-                <div class="auth-emoji auth-emoji--6">&#128588;</div>
-
                 <div class="auth-brand__content">
                     <div class="auth-brand__logo">
                         ALEX GONZAGA
@@ -460,21 +431,21 @@
                     </p>
                     <ul class="auth-brand__tiers">
                         <li class="auth-brand__tier">
-                            <div class="auth-brand__tier-icon">&#128150;</div>
+                            <div class="auth-brand__tier-icon"><i data-lucide="heart"></i></div>
                             <div>
                                 <div class="auth-brand__tier-name">Bestie Tier</div>
                                 <div class="auth-brand__tier-desc">Free access to community &amp; basic content</div>
                             </div>
                         </li>
                         <li class="auth-brand__tier">
-                            <div class="auth-brand__tier-icon">&#128142;</div>
+                            <div class="auth-brand__tier-icon"><i data-lucide="gem"></i></div>
                             <div>
                                 <div class="auth-brand__tier-name">VIP Tier</div>
                                 <div class="auth-brand__tier-desc">Exclusive vlogs, merch discounts, early access</div>
                             </div>
                         </li>
                         <li class="auth-brand__tier">
-                            <div class="auth-brand__tier-icon">&#128081;</div>
+                            <div class="auth-brand__tier-icon"><i data-lucide="crown"></i></div>
                             <div>
                                 <div class="auth-brand__tier-name">Inner Circle</div>
                                 <div class="auth-brand__tier-desc">Personal shoutouts, meet &amp; greets, everything</div>
@@ -490,18 +461,18 @@
                     <div class="auth-form__header">
                         <div class="auth-form__greeting">OMG hiii!</div>
                         <h1 class="auth-form__title">Join the Alex Nation</h1>
-                        <p class="auth-form__subtitle">Create your account and officially become one of the fam! &#128588;</p>
+                        <p class="auth-form__subtitle">Create your account and officially become one of the fam!</p>
                     </div>
 
                     <!-- Error Message -->
                     <div class="auth-form__error" id="signup-error">
-                        <span>&#9888;</span>
+                        <span><i data-lucide="alert-triangle"></i></span>
                         <span id="signup-error-text">Something went wrong</span>
                     </div>
 
                     <form class="auth-form" id="signup-form" novalidate>
                         <div class="form-group">
-                            <label class="form-label" for="signup-name">&#128075; Full Name</label>
+                            <label class="form-label" for="signup-name"><i data-lucide="user"></i> Full Name</label>
                             <input
                                 type="text"
                                 id="signup-name"
@@ -514,7 +485,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="signup-username">&#127775; Username</label>
+                            <label class="form-label" for="signup-username"><i data-lucide="star"></i> Username</label>
                             <input
                                 type="text"
                                 id="signup-username"
@@ -528,7 +499,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="signup-email">&#128231; Email Address</label>
+                            <label class="form-label" for="signup-email"><i data-lucide="mail"></i> Email Address</label>
                             <input
                                 type="email"
                                 id="signup-email"
@@ -541,7 +512,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="signup-password">&#128274; Password</label>
+                            <label class="form-label" for="signup-password"><i data-lucide="lock"></i> Password</label>
                             <div class="password-wrapper">
                                 <input
                                     type="password"
@@ -551,7 +522,7 @@
                                     required
                                     autocomplete="new-password"
                                 >
-                                <button type="button" class="password-toggle" onclick="togglePassword('signup-password', this)" aria-label="Toggle password visibility">&#128065;</button>
+                                <button type="button" class="password-toggle" onclick="togglePassword('signup-password', this)" aria-label="Toggle password visibility"><i data-lucide="eye"></i></button>
                             </div>
                             <div class="password-requirements" id="password-reqs">
                                 <div class="password-requirements__title">Password must have:</div>
@@ -566,7 +537,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="form-label" for="signup-confirm">&#128274; Confirm Password</label>
+                            <label class="form-label" for="signup-confirm"><i data-lucide="lock"></i> Confirm Password</label>
                             <div class="password-wrapper">
                                 <input
                                     type="password"
@@ -576,13 +547,13 @@
                                     required
                                     autocomplete="new-password"
                                 >
-                                <button type="button" class="password-toggle" onclick="togglePassword('signup-confirm', this)" aria-label="Toggle password visibility">&#128065;</button>
+                                <button type="button" class="password-toggle" onclick="togglePassword('signup-confirm', this)" aria-label="Toggle password visibility"><i data-lucide="eye"></i></button>
                             </div>
                             <div class="field-error" id="confirm-error"></div>
                         </div>
 
                         <button type="submit" class="auth-form__submit" id="signup-submit">
-                            Join the Fam! &#127881;
+                            Join the Fam!
                         </button>
 
                         <p class="auth-form__terms">
@@ -606,11 +577,11 @@
                     <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
                     <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
                     <div class="footer__socials">
-                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
-                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
-                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="YouTube"><i data-lucide="play"></i></a>
+                        <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="camera"></i></a>
+                        <a href="#" class="footer__social" aria-label="TikTok"><i data-lucide="music"></i></a>
                         <a href="#" class="footer__social" aria-label="Facebook">f</a>
-                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                        <a href="#" class="footer__social" aria-label="Twitter"><i data-lucide="at-sign"></i></a>
                     </div>
                 </div>
                 <div>
@@ -649,6 +620,7 @@
         </div>
     </footer>
 
+    <script src="/js/lucide.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
         /* ── Signup Page Logic ── */
@@ -698,7 +670,7 @@
                 submitBtn.disabled = loading;
                 submitBtn.innerHTML = loading
                     ? '<div class="spinner"></div> Creating your account...'
-                    : 'Join the Fam! &#127881;';
+                    : 'Join the Fam!';
             }
 
             /* ── Password requirements live validation ── */
@@ -895,12 +867,17 @@
             const input = document.getElementById(inputId);
             if (input.type === 'password') {
                 input.type = 'text';
-                btn.innerHTML = '&#128064;';
+                btn.innerHTML = '<i data-lucide="eye-off"></i>';
+                if (window.lucide) lucide.createIcons();
             } else {
                 input.type = 'password';
-                btn.innerHTML = '&#128065;';
+                btn.innerHTML = '<i data-lucide="eye"></i>';
+                if (window.lucide) lucide.createIcons();
             }
         }
+
+        // Initialize Lucide icons
+        if (window.lucide) lucide.createIcons();
     </script>
 </body>
 </html>

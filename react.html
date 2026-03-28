@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <style>
+        /* Lucide icon defaults */
+        [data-lucide] { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; }
+
         /* ── React Page Specific Styles ── */
 
         /* Hero */
@@ -805,7 +808,7 @@
         </div>
         <div class="hero__content">
             <h1 class="animate-on-scroll">
-                <span class="emoji-pop">&#128293;</span>
+                <span class="emoji-pop"><i data-lucide="flame"></i></span>
                 Submit to <span class="highlight">Alex Reacts!</span>
             </h1>
             <p class="hero__subtitle animate-on-scroll">
@@ -854,7 +857,7 @@
 
                 <!-- Submission Form (shown when logged in) -->
                 <div class="submit-card animate-on-scroll" id="submit-form-card" style="display:none;">
-                    <h2 class="submit-card__title">&#127775; Drop Your Submission</h2>
+                    <h2 class="submit-card__title"><i data-lucide="star"></i> Drop Your Submission</h2>
                     <p class="submit-card__subtitle">Share something that will make Alex scream, laugh, or cringe. You know the vibe.</p>
                     <form id="react-submit-form" onsubmit="handleSubmission(event)">
                         <div class="form-group">
@@ -870,26 +873,26 @@
                             <label class="form-label" for="submit-category">Category</label>
                             <select id="submit-category" class="form-select" required>
                                 <option value="" disabled selected>Pick a category...</option>
-                                <option value="funny">&#128514; Funny Video</option>
-                                <option value="meme">&#129315; Meme</option>
-                                <option value="tiktok">&#127925; TikTok</option>
-                                <option value="fan">&#127912; Fan Creation</option>
-                                <option value="challenge">&#128170; Challenge</option>
-                                <option value="throwback">&#9203; Throwback</option>
-                                <option value="cringe">&#128556; Cringe</option>
+                                <option value="funny">Funny Video</option>
+                                <option value="meme">Meme</option>
+                                <option value="tiktok">TikTok</option>
+                                <option value="fan">Fan Creation</option>
+                                <option value="challenge">Challenge</option>
+                                <option value="throwback">Throwback</option>
+                                <option value="cringe">Cringe</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="submit-desc">Why should Alex react to this?</label>
                             <textarea id="submit-desc" class="form-input" placeholder="Tell Alex why this is a MUST react! Be creative and funny!" rows="4" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn--submit">Send It! &#128640;</button>
+                        <button type="submit" class="btn btn--submit">Send It!</button>
                     </form>
                 </div>
 
                 <!-- Login Gate (shown when NOT logged in) -->
                 <div class="login-gate animate-on-scroll" id="login-gate">
-                    <span class="login-gate__icon">&#128274;</span>
+                    <span class="login-gate__icon"><i data-lucide="lock"></i></span>
                     <h2 class="login-gate__title">Log in to Submit!</h2>
                     <p class="login-gate__text">You need an account to submit content for Alex to react to. Join the fam — it only takes a minute!</p>
                     <div class="login-gate__buttons">
@@ -900,7 +903,7 @@
 
                 <!-- Top Submissions -->
                 <div class="sort-bar animate-on-scroll">
-                    <h2 class="sort-bar__title">&#128200; Top Submissions</h2>
+                    <h2 class="sort-bar__title"><i data-lucide="bar-chart-3"></i> Top Submissions</h2>
                     <div class="sort-bar__controls">
                         <button class="sort-btn sort-btn--active" data-sort="votes" onclick="sortSubmissions('votes', this)">Most Voted</button>
                         <button class="sort-btn" data-sort="newest" onclick="sortSubmissions('newest', this)">Newest</button>
@@ -918,30 +921,30 @@
             <aside class="sidebar">
                 <!-- Guidelines -->
                 <div class="sidebar-card animate-on-scroll">
-                    <h3 class="sidebar-card__title"><span>&#128220;</span> Submission Rules</h3>
+                    <h3 class="sidebar-card__title"><span><i data-lucide="scroll-text"></i></span> Submission Rules</h3>
                     <ul class="guidelines-list">
                         <li>
-                            <span class="gl-icon">&#9989;</span>
+                            <span class="gl-icon"><i data-lucide="check-circle"></i></span>
                             Content must be family-friendly — no NSFW, violence, or hate speech
                         </li>
                         <li>
-                            <span class="gl-icon">&#9989;</span>
+                            <span class="gl-icon"><i data-lucide="check-circle"></i></span>
                             Only YouTube, TikTok, and Instagram links accepted
                         </li>
                         <li>
-                            <span class="gl-icon">&#9989;</span>
+                            <span class="gl-icon"><i data-lucide="check-circle"></i></span>
                             Must be original or have proper credits to the creator
                         </li>
                         <li>
-                            <span class="gl-icon">&#9989;</span>
+                            <span class="gl-icon"><i data-lucide="check-circle"></i></span>
                             One submission per person per day
                         </li>
                         <li>
-                            <span class="gl-icon">&#9989;</span>
+                            <span class="gl-icon"><i data-lucide="check-circle"></i></span>
                             No spam or self-promotion — keep it fun!
                         </li>
                         <li>
-                            <span class="gl-icon">&#11088;</span>
+                            <span class="gl-icon"><i data-lucide="star"></i></span>
                             Higher votes = higher chance Alex sees it!
                         </li>
                     </ul>
@@ -949,7 +952,7 @@
 
                 <!-- Top Submitters leaderboard -->
                 <div class="sidebar-card animate-on-scroll">
-                    <h3 class="sidebar-card__title"><span>&#127942;</span> Top Submitters</h3>
+                    <h3 class="sidebar-card__title"><span><i data-lucide="trophy"></i></span> Top Submitters</h3>
                     <div class="leaderboard-item">
                         <span class="leaderboard-rank leaderboard-rank--1">1</span>
                         <div class="leaderboard-avatar" style="background:var(--gradient-gold)">B</div>
@@ -994,7 +997,7 @@
 
                 <!-- How it works -->
                 <div class="sidebar-card animate-on-scroll">
-                    <h3 class="sidebar-card__title"><span>&#128161;</span> How It Works</h3>
+                    <h3 class="sidebar-card__title"><span><i data-lucide="lightbulb"></i></span> How It Works</h3>
                     <ul class="guidelines-list">
                         <li>
                             <span class="gl-icon" style="font-weight:800;color:var(--pink);">1</span>
@@ -1037,7 +1040,7 @@
         <div class="react-cta__content container">
             <h2>Got Something Alex NEEDS to See?</h2>
             <p>Don't be shy! Submit your content and let the fam vote. Your video could be in the next Alex Reacts episode!</p>
-            <a href="#submit-form-card" class="btn btn--gold btn--lg" onclick="scrollToSubmit()">Submit Now &#128640;</a>
+            <a href="#submit-form-card" class="btn btn--gold btn--lg" onclick="scrollToSubmit()">Submit Now</a>
         </div>
     </section>
 
@@ -1049,11 +1052,11 @@
                     <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
                     <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
                     <div class="footer__socials">
-                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
-                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
-                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="YouTube"><i data-lucide="play"></i></a>
+                        <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="camera"></i></a>
+                        <a href="#" class="footer__social" aria-label="TikTok"><i data-lucide="music"></i></a>
                         <a href="#" class="footer__social" aria-label="Facebook">f</a>
-                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                        <a href="#" class="footer__social" aria-label="Twitter"><i data-lucide="at-sign"></i></a>
                     </div>
                 </div>
                 <div>
@@ -1092,14 +1095,15 @@
         </div>
     </footer>
 
+    <script src="/js/lucide.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
         /* ── React Page Logic ── */
 
         // ── Category config ──
         const categoryEmojis = {
-            funny: '&#128514;', meme: '&#129315;', tiktok: '&#127925;',
-            fan: '&#127912;', challenge: '&#128170;', throwback: '&#9203;', cringe: '&#128556;'
+            funny: '<i data-lucide="smile"></i>', meme: '<i data-lucide="smile"></i>', tiktok: '<i data-lucide="music"></i>',
+            fan: '<i data-lucide="palette"></i>', challenge: '<i data-lucide="zap"></i>', throwback: '<i data-lucide="clock"></i>', cringe: '<i data-lucide="frown"></i>'
         };
         const categoryLabels = {
             funny: 'Funny', meme: 'Meme', tiktok: 'TikTok',
@@ -1139,18 +1143,18 @@
 
         // ── Render a single submission card ──
         function renderSubmissionCard(item) {
-            const emoji = categoryEmojis[item.category] || '&#128196;';
+            const emoji = categoryEmojis[item.category] || '<i data-lucide="file-text"></i>';
             const label = categoryLabels[item.category] || item.category;
             const badgeClass = 'cat-badge--' + item.category;
             const featuredClass = item.featured ? ' submission-card--featured' : '';
             const starBadge = item.featured
-                ? '<span class="submission-card__star-badge">&#11088; Alex\'s Pick</span>'
+                ? '<span class="submission-card__star-badge"><i data-lucide="star"></i> Alex\'s Pick</span>'
                 : '';
 
             return `<div class="submission-card${featuredClass} animate-on-scroll" data-id="${item.id}" data-votes="${item.votes}" data-date="${item.date}" data-category="${item.category}">
                 <div class="submission-card__thumbnail">
                     ${emoji}
-                    <div class="submission-card__play">&#9654;</div>
+                    <div class="submission-card__play"><i data-lucide="play"></i></div>
                     ${starBadge}
                     <span class="submission-card__category"><span class="cat-badge ${badgeClass}">${label}</span></span>
                 </div>
@@ -1162,10 +1166,10 @@
                     </div>
                     <div class="submission-card__footer">
                         <button class="upvote-btn" onclick="toggleUpvote(this, '${item.id}')">
-                            <span class="upvote-btn__icon">&#9650;</span>
+                            <span class="upvote-btn__icon"><i data-lucide="arrow-up"></i></span>
                             <span class="upvote-btn__count">${item.votes.toLocaleString()}</span>
                         </button>
-                        <span class="submission-card__comments">&#128172; ${item.comments}</span>
+                        <span class="submission-card__comments"><i data-lucide="message-circle"></i> ${item.comments}</span>
                     </div>
                 </div>
             </div>`;
@@ -1176,6 +1180,7 @@
             const grid = document.getElementById('submissions-grid');
             const sorted = sortData(submissionsData, currentSort);
             grid.innerHTML = sorted.map(item => renderSubmissionCard(item)).join('');
+            if (window.lucide) lucide.createIcons();
         }
 
         // ── Sort data array by mode ──
@@ -1194,10 +1199,10 @@
         function renderFeaturedCard(item) {
             return `<div class="featured-card animate-on-scroll">
                 <div class="featured-card__thumbnail">
-                    &#127916;
-                    <div class="featured-card__play">&#9654;</div>
+                    <i data-lucide="clapperboard"></i>
+                    <div class="featured-card__play"><i data-lucide="play"></i></div>
                 </div>
-                <div class="featured-card__gold-strip">&#11088; Featured in Ep. ${item.episode}</div>
+                <div class="featured-card__gold-strip"><i data-lucide="star"></i> Featured in Ep. ${item.episode}</div>
                 <div class="featured-card__body">
                     <div class="featured-card__title">${item.title}</div>
                     <div class="featured-card__info">Submitted by ${item.submitter} &#183; ${item.votes} votes &#183; ${item.date}</div>
@@ -1210,6 +1215,7 @@
         function renderFeatured() {
             const grid = document.getElementById('featured-grid');
             grid.innerHTML = featuredData.map(item => renderFeaturedCard(item)).join('');
+            if (window.lucide) lucide.createIcons();
         }
 
         // ── Fetch submissions from Airtable via Netlify function ──
@@ -1218,8 +1224,9 @@
                 const res = await fetch('/.netlify/functions/get-reactions?sort=votes&limit=20');
                 if (!res.ok) throw new Error('Fetch failed');
                 const data = await res.json();
-                if (data && data.length) {
-                    submissionsData = data;
+                var records = data.submissions || data.records || data;
+                if (Array.isArray(records) && records.length) {
+                    submissionsData = records;
                 }
             } catch (err) {
                 // Silently fall back to demo data
@@ -1234,8 +1241,9 @@
                 const res = await fetch('/.netlify/functions/get-reactions?status=Used+in+Video&limit=10');
                 if (!res.ok) throw new Error('Fetch failed');
                 const data = await res.json();
-                if (data && data.length) {
-                    featuredData = data;
+                var records = data.submissions || data.records || data;
+                if (Array.isArray(records) && records.length) {
+                    featuredData = records;
                 }
             } catch (err) {
                 // Silently fall back to demo data
@@ -1302,12 +1310,12 @@
 
                 if (!res.ok) throw new Error('Submit failed');
 
-                showToast('Submission sent! Alex might just react to this! \uD83D\uDD25', 'success');
+                showToast('Submission sent! Alex might just react to this!', 'success');
                 e.target.reset();
                 // Refresh submissions to include the new one
                 fetchSubmissions();
             } catch (err) {
-                showToast('Submission sent! Alex might just react to this! \uD83D\uDD25', 'success');
+                showToast('Submission sent! Alex might just react to this!', 'success');
                 e.target.reset();
             } finally {
                 submitBtn.disabled = false;
@@ -1372,6 +1380,7 @@
             const grid = document.getElementById('submissions-grid');
             const sorted = sortData(submissionsData, mode);
             grid.innerHTML = sorted.map(item => renderSubmissionCard(item)).join('');
+            if (window.lucide) lucide.createIcons();
 
             // Animate cards in
             const cards = grid.querySelectorAll('.submission-card');
@@ -1407,6 +1416,9 @@
             updateSubmitVisibility();
             fetchSubmissions();
             fetchFeatured();
+
+            // Initialize Lucide icons
+            if (window.lucide) lucide.createIcons();
         });
     </script>
 </body>

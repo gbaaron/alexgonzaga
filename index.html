@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <style>
+        /* Lucide icon defaults */
+        [data-lucide] { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; }
+
         /* ── Index-specific styles ── */
         .hero--home {
             background: var(--off-white);
@@ -566,18 +569,18 @@
                 <div class="hero__photo-frame">
                     <img data-config-img="hero_photo" src="" alt="Alex Gonzaga" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:calc(var(--radius-xl) - 3px);">
                     <div class="hero__photo-placeholder" id="heroPlaceholder">
-                        <span>&#9733;</span>
+                        <span><i data-lucide="star"></i></span>
                         <span>ALEX G PHOTO</span>
                     </div>
                 </div>
                 <div class="hero__float-badge hero__float-badge--1">
-                    &#10024; 17M+ Subscribers
+                    <i data-lucide="sparkles"></i> 17M+ Subscribers
                 </div>
                 <div class="hero__float-badge hero__float-badge--2">
-                    &#127881; 500+ Vlogs
+                    <i data-lucide="sparkles"></i> 500+ Vlogs
                 </div>
                 <div class="hero__float-badge hero__float-badge--3">
-                    &#128150; #AlexNation
+                    <i data-lucide="heart"></i> #AlexNation
                 </div>
             </div>
         </div>
@@ -606,22 +609,22 @@
         <div class="container">
             <div class="features-strip__grid">
                 <div class="feature-item animate-on-scroll">
-                    <div class="feature-item__icon">&#127909;</div>
+                    <div class="feature-item__icon"><i data-lucide="video"></i></div>
                     <div class="feature-item__title">Vlog Archive</div>
                     <div class="feature-item__text">All of Alex's content organized by mood, category, and more</div>
                 </div>
                 <div class="feature-item animate-on-scroll">
-                    <div class="feature-item__icon">&#128142;</div>
+                    <div class="feature-item__icon"><i data-lucide="gem"></i></div>
                     <div class="feature-item__title">Exclusive Access</div>
                     <div class="feature-item__text">BTS footage, uncut moments, and personal messages from Alex</div>
                 </div>
                 <div class="feature-item animate-on-scroll">
-                    <div class="feature-item__icon">&#128722;</div>
+                    <div class="feature-item__icon"><i data-lucide="shopping-bag"></i></div>
                     <div class="feature-item__title">Merch Drops</div>
                     <div class="feature-item__text">Limited edition merch tied to Alex's viral moments and catchphrases</div>
                 </div>
                 <div class="feature-item animate-on-scroll">
-                    <div class="feature-item__icon">&#127752;</div>
+                    <div class="feature-item__icon"><i data-lucide="users"></i></div>
                     <div class="feature-item__title">Fan Community</div>
                     <div class="feature-item__text">Connect with fellow fans, share fan art, and get featured</div>
                 </div>
@@ -673,7 +676,7 @@
     <!-- ── Drop Countdown Banner ── -->
     <section class="drop-banner">
         <div class="drop-banner__content">
-            <h2 class="drop-banner__title">&#128293; Next Limited Merch Drop</h2>
+            <h2 class="drop-banner__title"><i data-lucide="flame"></i> Next Limited Merch Drop</h2>
             <p class="drop-banner__subtitle">"Charot Lang" Collection — Limited to 500 pieces</p>
             <div class="countdown" id="drop-countdown"></div>
             <div class="mt-2">
@@ -736,11 +739,11 @@
                     </div>
                     <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
                     <div class="footer__socials">
-                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
-                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
-                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="YouTube"><i data-lucide="play"></i></a>
+                        <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="camera"></i></a>
+                        <a href="#" class="footer__social" aria-label="TikTok"><i data-lucide="music"></i></a>
                         <a href="#" class="footer__social" aria-label="Facebook">f</a>
-                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                        <a href="#" class="footer__social" aria-label="Twitter"><i data-lucide="at-sign"></i></a>
                     </div>
                 </div>
                 <div>
@@ -779,6 +782,7 @@
         </div>
     </footer>
 
+    <script src="/js/lucide.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
         // Hide hero placeholder when real photo loads from SiteConfig
@@ -841,32 +845,44 @@
                 return formatDate(dateStr);
             }
 
+            function extractYoutubeId(url) {
+                if (!url) return '';
+                var match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+                return match ? match[1] : '';
+            }
+
             function renderVlogs(vlogs) {
                 const grid = document.getElementById('featured-vlogs');
                 if (!grid) return;
                 grid.innerHTML = vlogs.slice(0, 3).map(vlog => {
                     const tagClass = vlog.tagClass || '';
-                    const thumbnail = vlog.thumbnailURL
-                        ? `<img src="${vlog.thumbnailURL}" alt="${vlog.title}" style="width:100%;height:100%;object-fit:cover">`
-                        : '\u{1F3AC}';
-                    return `
+                    const ytUrl = vlog.youtubeUrl || vlog.YoutubeUrl || vlog.videoUrl || '';
+                    const ytId = vlog.youtubeId || extractYoutubeId(ytUrl) || '';
+                    const thumbUrl = vlog.thumbnailURL || vlog.thumbnail || (ytId ? 'https://img.youtube.com/vi/' + ytId + '/hqdefault.jpg' : '');
+                    const thumbnail = thumbUrl
+                        ? `<img src="${thumbUrl}" alt="${vlog.title}" style="width:100%;height:100%;object-fit:cover">`
+                        : '<i data-lucide="clapperboard"></i>';
+                    const linkOpen = ytUrl ? `<a href="${ytUrl}" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">` : '';
+                    const linkClose = ytUrl ? '</a>' : '';
+                    return `${linkOpen}
                         <div class="card vlog-featured-card animate-on-scroll">
                             <div class="vlog-featured-card__thumbnail">
                                 ${thumbnail}
-                                <div class="vlog-featured-card__play">\u25B6</div>
+                                <div class="vlog-featured-card__play"><i data-lucide="play" class="play-icon"></i></div>
                                 <span class="vlog-featured-card__duration">${vlog.duration || ''}</span>
                             </div>
                             <div class="card__body">
                                 <span class="card__tag ${tagClass}">${vlog.category || 'Vlog'}</span>
                                 <h3 class="card__title">${vlog.title}</h3>
                                 <div class="card__meta">
-                                    <span>\u{1F441} ${formatViews(vlog.views || 0)}</span>
-                                    <span>${timeAgo(vlog.publishedDate)}</span>
+                                    <span><i data-lucide="eye"></i> ${formatViews(vlog.views || 0)}</span>
+                                    <span>${timeAgo(vlog.publishedDate || vlog.publishDate)}</span>
                                 </div>
                             </div>
-                        </div>`;
+                        </div>${linkClose}`;
                 }).join('');
                 initScrollAnimations();
+                if (window.lucide) lucide.createIcons();
             }
 
             renderVlogs(fallbackVlogs);
@@ -879,10 +895,10 @@
         // ==================== MERCH PREVIEW FROM AIRTABLE ====================
         (function() {
             const fallbackMerch = [
-                { name: '"Charot Lang" Hoodie', price: 1299, badge: 'Limited', badgeClass: 'badge--pink', imageURL: '', emoji: '\u{1F455}' },
-                { name: '"Ate Girl" Tee', price: 599, badge: '', badgeClass: '', imageURL: '', emoji: '\u{1F3B5}' },
-                { name: 'Alex Nation Cap', price: 449, badge: 'New', badgeClass: 'badge--gold', imageURL: '', emoji: '\u{1F9E2}' },
-                { name: '"Walang Kupas" Mug', price: 349, badge: '', badgeClass: '', imageURL: '', emoji: '\u2615' }
+                { name: '"Charot Lang" Hoodie', price: 1299, badge: 'Limited', badgeClass: 'badge--pink', imageURL: '', emoji: '<i data-lucide="shirt"></i>' },
+                { name: '"Ate Girl" Tee', price: 599, badge: '', badgeClass: '', imageURL: '', emoji: '<i data-lucide="shirt"></i>' },
+                { name: 'Alex Nation Cap', price: 449, badge: 'New', badgeClass: 'badge--gold', imageURL: '', emoji: '<i data-lucide="hard-hat"></i>' },
+                { name: '"Walang Kupas" Mug', price: 349, badge: '', badgeClass: '', imageURL: '', emoji: '<i data-lucide="coffee"></i>' }
             ];
 
             function renderMerch(items) {
@@ -894,7 +910,7 @@
                         : '';
                     const imageHTML = item.imageURL
                         ? `<img src="${item.imageURL}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover">`
-                        : (item.emoji || '\u{1F6CD}');
+                        : (item.emoji || '<i data-lucide="shopping-bag"></i>');
                     return `
                         <div class="card merch-card animate-on-scroll">
                             ${badgeHTML}
@@ -906,6 +922,7 @@
                         </div>`;
                 }).join('');
                 initScrollAnimations();
+                if (window.lucide) lucide.createIcons();
             }
 
             renderMerch(fallbackMerch);
@@ -923,7 +940,7 @@
                     avatarURL: '',
                     avatarStyle: '',
                     timePosted: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-                    content: "Just rewatched Alex's wedding vlog for the 100th time and I'm still crying!!! Why is she so funny even on her wedding day?! \u{1F62D}\u{1F496}",
+                    content: "Just rewatched Alex's wedding vlog for the 100th time and I'm still crying!!! Why is she so funny even on her wedding day?!",
                     imageURL: '',
                     likes: 234,
                     comments: 18
@@ -933,9 +950,9 @@
                     avatarURL: '',
                     avatarStyle: 'background:var(--gradient-purple)',
                     timePosted: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(),
-                    content: 'Made this fan art of Alex! Hope she sees it! \u{1F3A8}',
+                    content: 'Made this fan art of Alex! Hope she sees it!',
                     imageURL: '',
-                    imageEmoji: '\u{1F3A8} Fan Art',
+                    imageEmoji: '<i data-lucide="palette"></i> Fan Art',
                     likes: 512,
                     comments: 45
                 },
@@ -944,7 +961,7 @@
                     avatarURL: '',
                     avatarStyle: 'background:var(--gradient-gold)',
                     timePosted: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
-                    content: 'Alex\'s energy is literally what gets me through Monday mornings at work. The "Charot Lang" merch just arrived and my officemates are jealous haha! \u{1F525}',
+                    content: 'Alex\'s energy is literally what gets me through Monday mornings at work. The "Charot Lang" merch just arrived and my officemates are jealous haha!',
                     imageURL: '',
                     likes: 167,
                     comments: 12
@@ -987,12 +1004,13 @@
                             <div class="community-post__content">${post.content}</div>
                             ${imageSection}
                             <div class="community-post__actions">
-                                <button class="community-post__action">\u2764 ${post.likes || 0}</button>
-                                <button class="community-post__action">\u{1F4AC} ${post.comments || 0}</button>
+                                <button class="community-post__action"><i data-lucide="heart"></i> ${post.likes || 0}</button>
+                                <button class="community-post__action"><i data-lucide="message-circle"></i> ${post.comments || 0}</button>
                             </div>
                         </div>`;
                 }).join('');
                 initScrollAnimations();
+                if (window.lucide) lucide.createIcons();
             }
 
             renderCommunity(fallbackPosts);
@@ -1013,9 +1031,10 @@
             function updateDropBanner(name, subtitle, date) {
                 const titleEl = document.querySelector('.drop-banner__title');
                 const subtitleEl = document.querySelector('.drop-banner__subtitle');
-                if (titleEl) titleEl.innerHTML = '\u{1F525} Next Limited Merch Drop';
+                if (titleEl) titleEl.innerHTML = '<i data-lucide="flame"></i> Next Limited Merch Drop';
                 if (subtitleEl) subtitleEl.textContent = `${name} \u2014 ${subtitle}`;
                 initCountdown('drop-countdown', date);
+                if (window.lucide) lucide.createIcons();
             }
 
             updateDropBanner(demoDropName, demoDropSubtitle, demoDropDate.toISOString());
@@ -1033,6 +1052,9 @@
                 })
                 .catch(() => {});
         })();
+
+        // Initialize Lucide icons
+        if (window.lucide) lucide.createIcons();
     </script>
 </body>
 </html>

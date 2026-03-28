@@ -21,6 +21,7 @@ exports.handler = async (event) => {
         const category = params.category;
         const mood = params.mood;
         const search = params.search;
+        const featured = params.featured;
         const sort = params.sort || 'newest';
         const page = parseInt(params.page) || 1;
         const limit = parseInt(params.limit) || 12;
@@ -29,6 +30,9 @@ exports.handler = async (event) => {
 
         // Build filter formula
         const filters = [];
+        if (featured === 'true') {
+            filters.push(`{Featured} = TRUE()`);
+        }
         if (category) {
             filters.push(`{Category} = '${category.replace(/'/g, "\\'")}'`);
         }
@@ -79,20 +83,33 @@ exports.handler = async (event) => {
         const startIndex = (page - 1) * limit;
         const paginatedRecords = allRecords.slice(startIndex, startIndex + limit);
 
-        const vlogs = paginatedRecords.map(record => ({
-            id: record.id,
-            title: record.fields.Title,
-            description: record.fields.Description || null,
-            thumbnail: record.fields.Thumbnail || null,
-            videoUrl: record.fields.VideoUrl || null,
-            youtubeId: record.fields.YoutubeId || null,
-            category: record.fields.Category || null,
-            mood: record.fields.Mood || null,
-            duration: record.fields.Duration || null,
-            views: record.fields.Views || 0,
-            likes: record.fields.Likes || 0,
-            publishDate: record.fields.PublishDate || null
-        }));
+        const vlogs = paginatedRecords.map(record => {
+            // Extract thumbnail URL from Airtable attachment array or plain URL string
+            const thumbField = record.fields.Thumbnail || null;
+            let thumbnail = null;
+            if (Array.isArray(thumbField) && thumbField.length > 0) {
+                thumbnail = thumbField[0].url || thumbField[0];
+            } else if (typeof thumbField === 'string') {
+                thumbnail = thumbField;
+            }
+
+            return {
+                id: record.id,
+                title: record.fields.Title || null,
+                description: record.fields.Description || null,
+                thumbnail,
+                videoUrl: record.fields.VideoUrl || null,
+                youtubeUrl: record.fields.YoutubeUrl || record.fields.YoutubeURL || record.fields.VideoUrl || null,
+                youtubeId: record.fields.YoutubeId || null,
+                category: record.fields.Category || null,
+                mood: record.fields.Mood || null,
+                duration: record.fields.Duration || null,
+                views: record.fields.Views || 0,
+                likes: record.fields.Likes || 0,
+                publishDate: record.fields.PublishDate || null,
+                featured: !!record.fields.Featured
+            };
+        });
 
         return {
             statusCode: 200,

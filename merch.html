@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <style>
+        /* Lucide icon defaults */
+        [data-lucide] { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; }
+
         /* ── Merch Page Styles ── */
 
         /* Hero */
@@ -793,7 +796,7 @@
 
     <!-- ── Cart Toggle Button ── -->
     <button class="cart-toggle" id="cart-toggle-btn" aria-label="Open shopping cart">
-        &#128722;
+        <i data-lucide="shopping-cart"></i>
         <span class="cart-toggle__count" id="cart-count"></span>
     </button>
 
@@ -829,7 +832,7 @@
     <!-- ── Limited Drop Banner ── -->
     <section class="limited-drop-banner" id="limited-drop-banner">
         <div class="limited-drop-banner__content container">
-            <span class="limited-drop-banner__eyebrow">&#128293; Limited Drop Alert</span>
+            <span class="limited-drop-banner__eyebrow"><i data-lucide="flame"></i> Limited Drop Alert</span>
             <h2 class="limited-drop-banner__title" id="drop-title">Next Exclusive Drop</h2>
             <div class="limited-drop-banner__collection" id="drop-collection">"Charot Lang" Collection</div>
             <p class="limited-drop-banner__pieces" id="drop-description">Limited to 500 pieces — once it's gone, it's gone!</p>
@@ -876,7 +879,7 @@
     <div class="cart-overlay" id="cart-overlay"></div>
     <div class="cart-panel" id="cart-panel">
         <div class="cart-panel__header">
-            <h2 class="cart-panel__title">&#128722; Your Cart</h2>
+            <h2 class="cart-panel__title"><i data-lucide="shopping-cart"></i> Your Cart</h2>
             <button class="cart-panel__close" id="cart-close-btn" aria-label="Close cart">&times;</button>
         </div>
         <div class="cart-panel__items" id="cart-items">
@@ -900,11 +903,11 @@
                     <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
                     <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
                     <div class="footer__socials">
-                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
-                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
-                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="YouTube"><i data-lucide="play"></i></a>
+                        <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="camera"></i></a>
+                        <a href="#" class="footer__social" aria-label="TikTok"><i data-lucide="music"></i></a>
                         <a href="#" class="footer__social" aria-label="Facebook">f</a>
-                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                        <a href="#" class="footer__social" aria-label="Twitter"><i data-lucide="at-sign"></i></a>
                     </div>
                 </div>
                 <div>
@@ -943,6 +946,7 @@
         </div>
     </footer>
 
+    <script src="/js/lucide.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
         /* ═══════════════════════════════════════════════════
@@ -953,18 +957,18 @@
 
         /* ── Demo Fallback Data ── */
         let merchProducts = [
-            { id: 'charot-hoodie', name: '"Charot Lang" Hoodie', price: 1299, category: 'Apparel', sizes: 'XS,S,M,L,XL', stock: 50, badge: 'Limited', status: 'Active', emoji: '\u{1F9E5}', image: null, images: null, description: 'Premium hoodie featuring the iconic Charot Lang catchphrase.', isLimitedDrop: true, dropDate: null, sales: 420, createdDate: '2026-03-20' },
-            { id: 'ate-girl-tee', name: '"Ate Girl" Tee', price: 599, category: 'Apparel', sizes: 'XS,S,M,L,XL', stock: 200, badge: 'New', status: 'Active', emoji: '\u{1F455}', image: null, images: null, description: 'Classic tee for the ultimate Ate Girl.', isLimitedDrop: false, dropDate: null, sales: 890, createdDate: '2026-03-10' },
-            { id: 'alex-nation-cap', name: 'Alex Nation Cap', price: 449, category: 'Accessories', sizes: null, stock: 150, badge: 'New', status: 'Active', emoji: '\u{1F9E2}', image: null, images: null, description: 'Adjustable cap for the Alex Nation fam.', isLimitedDrop: false, dropDate: null, sales: 650, createdDate: '2026-03-15' },
-            { id: 'walang-kupas-mug', name: '"Walang Kupas" Mug', price: 349, category: 'Home & Lifestyle', sizes: null, stock: 300, badge: null, status: 'Active', emoji: '\u2615', image: null, images: null, description: 'Ceramic mug that reminds you: walang kupas!', isLimitedDrop: false, dropDate: null, sales: 780, createdDate: '2026-02-20' },
-            { id: 'grwm-tote', name: '"GRWM with Alex" Tote Bag', price: 399, category: 'Accessories', sizes: null, stock: 180, badge: null, status: 'Active', emoji: '\u{1F45C}', image: null, images: null, description: 'Canvas tote perfect for your daily GRWM essentials.', isLimitedDrop: false, dropDate: null, sales: 520, createdDate: '2026-03-05' },
-            { id: 'sticker-pack', name: 'Alex Gonzaga Sticker Pack', price: 149, category: 'Stickers & Fun', sizes: null, stock: 500, badge: null, status: 'Active', emoji: '\u{1F3A8}', image: null, images: null, description: '12-piece sticker pack with Alex catchphrases and icons.', isLimitedDrop: false, dropDate: null, sales: 1200, createdDate: '2026-03-01' },
-            { id: 'lodi-phone-case', name: '"Lodi" Phone Case', price: 499, category: 'Accessories', sizes: null, stock: 120, badge: null, status: 'Active', emoji: '\u{1F4F1}', image: null, images: null, description: 'Durable phone case that says Lodi loud and proud.', isLimitedDrop: false, dropDate: null, sales: 430, createdDate: '2026-02-28' },
-            { id: 'gonzaga-strong-crew', name: '"Gonzaga Strong" Crew Neck', price: 899, category: 'Apparel', sizes: 'S,M,L,XL', stock: 75, badge: 'Limited', status: 'Active', emoji: '\u{1F455}', image: null, images: null, description: 'Limited edition crew neck for the Gonzaga Strong movement.', isLimitedDrop: true, dropDate: null, sales: 310, createdDate: '2026-03-18' },
-            { id: 'enamel-pin-set', name: 'Alex G Enamel Pin Set', price: 249, category: 'Accessories', sizes: null, stock: 400, badge: null, status: 'Active', emoji: '\u{1F4CC}', image: null, images: null, description: '5-piece enamel pin set featuring Alex-inspired designs.', isLimitedDrop: false, dropDate: null, sales: 950, createdDate: '2026-02-15' },
-            { id: 'charot-bucket-hat', name: '"Charot Lang" Bucket Hat', price: 549, category: 'Accessories', sizes: null, stock: 60, badge: 'Limited', status: 'Active', emoji: '\u{1F3A9}', image: null, images: null, description: 'Limited bucket hat from the Charot Lang collection.', isLimitedDrop: true, dropDate: null, sales: 280, createdDate: '2026-03-20' },
-            { id: 'fan-club-lanyard', name: 'Fan Club Lanyard', price: 199, category: 'Accessories', sizes: null, stock: 350, badge: null, status: 'Active', emoji: '\u{1F3F7}\uFE0F', image: null, images: null, description: 'Official fan club lanyard with detachable clip.', isLimitedDrop: false, dropDate: null, sales: 1050, createdDate: '2026-01-20' },
-            { id: 'ate-girl-laptop-sleeve', name: '"Ate Girl" Laptop Sleeve', price: 699, category: 'Accessories', sizes: null, stock: 0, badge: 'Sold Out', status: 'Active', emoji: '\u{1F4BB}', image: null, images: null, description: 'Padded laptop sleeve with Ate Girl branding.', isLimitedDrop: false, dropDate: null, sales: 500, createdDate: '2026-02-10' },
+            { id: 'charot-hoodie', name: '"Charot Lang" Hoodie', price: 1299, category: 'Apparel', sizes: 'XS,S,M,L,XL', stock: 50, badge: 'Limited', status: 'Active', emoji: '<i data-lucide="shirt"></i>', image: null, images: null, description: 'Premium hoodie featuring the iconic Charot Lang catchphrase.', isLimitedDrop: true, dropDate: null, sales: 420, createdDate: '2026-03-20' },
+            { id: 'ate-girl-tee', name: '"Ate Girl" Tee', price: 599, category: 'Apparel', sizes: 'XS,S,M,L,XL', stock: 200, badge: 'New', status: 'Active', emoji: '<i data-lucide="shirt"></i>', image: null, images: null, description: 'Classic tee for the ultimate Ate Girl.', isLimitedDrop: false, dropDate: null, sales: 890, createdDate: '2026-03-10' },
+            { id: 'alex-nation-cap', name: 'Alex Nation Cap', price: 449, category: 'Accessories', sizes: null, stock: 150, badge: 'New', status: 'Active', emoji: '<i data-lucide="hard-hat"></i>', image: null, images: null, description: 'Adjustable cap for the Alex Nation fam.', isLimitedDrop: false, dropDate: null, sales: 650, createdDate: '2026-03-15' },
+            { id: 'walang-kupas-mug', name: '"Walang Kupas" Mug', price: 349, category: 'Home & Lifestyle', sizes: null, stock: 300, badge: null, status: 'Active', emoji: '<i data-lucide="coffee"></i>', image: null, images: null, description: 'Ceramic mug that reminds you: walang kupas!', isLimitedDrop: false, dropDate: null, sales: 780, createdDate: '2026-02-20' },
+            { id: 'grwm-tote', name: '"GRWM with Alex" Tote Bag', price: 399, category: 'Accessories', sizes: null, stock: 180, badge: null, status: 'Active', emoji: '<i data-lucide="shopping-bag"></i>', image: null, images: null, description: 'Canvas tote perfect for your daily GRWM essentials.', isLimitedDrop: false, dropDate: null, sales: 520, createdDate: '2026-03-05' },
+            { id: 'sticker-pack', name: 'Alex Gonzaga Sticker Pack', price: 149, category: 'Stickers & Fun', sizes: null, stock: 500, badge: null, status: 'Active', emoji: '<i data-lucide="palette"></i>', image: null, images: null, description: '12-piece sticker pack with Alex catchphrases and icons.', isLimitedDrop: false, dropDate: null, sales: 1200, createdDate: '2026-03-01' },
+            { id: 'lodi-phone-case', name: '"Lodi" Phone Case', price: 499, category: 'Accessories', sizes: null, stock: 120, badge: null, status: 'Active', emoji: '<i data-lucide="smartphone"></i>', image: null, images: null, description: 'Durable phone case that says Lodi loud and proud.', isLimitedDrop: false, dropDate: null, sales: 430, createdDate: '2026-02-28' },
+            { id: 'gonzaga-strong-crew', name: '"Gonzaga Strong" Crew Neck', price: 899, category: 'Apparel', sizes: 'S,M,L,XL', stock: 75, badge: 'Limited', status: 'Active', emoji: '<i data-lucide="shirt"></i>', image: null, images: null, description: 'Limited edition crew neck for the Gonzaga Strong movement.', isLimitedDrop: true, dropDate: null, sales: 310, createdDate: '2026-03-18' },
+            { id: 'enamel-pin-set', name: 'Alex G Enamel Pin Set', price: 249, category: 'Accessories', sizes: null, stock: 400, badge: null, status: 'Active', emoji: '<i data-lucide="pin"></i>', image: null, images: null, description: '5-piece enamel pin set featuring Alex-inspired designs.', isLimitedDrop: false, dropDate: null, sales: 950, createdDate: '2026-02-15' },
+            { id: 'charot-bucket-hat', name: '"Charot Lang" Bucket Hat', price: 549, category: 'Accessories', sizes: null, stock: 60, badge: 'Limited', status: 'Active', emoji: '<i data-lucide="hard-hat"></i>', image: null, images: null, description: 'Limited bucket hat from the Charot Lang collection.', isLimitedDrop: true, dropDate: null, sales: 280, createdDate: '2026-03-20' },
+            { id: 'fan-club-lanyard', name: 'Fan Club Lanyard', price: 199, category: 'Accessories', sizes: null, stock: 350, badge: null, status: 'Active', emoji: '<i data-lucide="tag"></i>', image: null, images: null, description: 'Official fan club lanyard with detachable clip.', isLimitedDrop: false, dropDate: null, sales: 1050, createdDate: '2026-01-20' },
+            { id: 'ate-girl-laptop-sleeve', name: '"Ate Girl" Laptop Sleeve', price: 699, category: 'Accessories', sizes: null, stock: 0, badge: 'Sold Out', status: 'Active', emoji: '<i data-lucide="laptop"></i>', image: null, images: null, description: 'Padded laptop sleeve with Ate Girl branding.', isLimitedDrop: false, dropDate: null, sales: 500, createdDate: '2026-02-10' },
         ];
 
         /* ── Default drop fallback ── */
@@ -1014,16 +1018,16 @@
                 // Product image: use <img> if images URL exists, else emoji
                 const imageContent = p.images
                     ? `<img src="${p.images}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">`
-                    : (p.emoji || '\u{1F6CD}\uFE0F');
+                    : (p.emoji || '<i data-lucide="shopping-bag"></i>');
 
                 // Build badges
                 let badgesHTML = '';
                 if (isLimited) {
-                    badgesHTML = `<div class="product-card__badges"><span class="product-badge product-badge--limited">&#128293; Limited</span></div>`;
+                    badgesHTML = `<div class="product-card__badges"><span class="product-badge product-badge--limited"><i data-lucide="flame"></i> Limited</span></div>`;
                 } else if (isSoldOut) {
                     badgesHTML = `<div class="product-card__badges"><span class="product-badge product-badge--sold-out">Sold Out</span></div>`;
                 } else if (isNew) {
-                    badgesHTML = `<div class="product-card__badges"><span class="product-badge product-badge--new">&#10024; New</span></div>`;
+                    badgesHTML = `<div class="product-card__badges"><span class="product-badge product-badge--new"><i data-lucide="sparkles"></i> New</span></div>`;
                 }
 
                 // Build sizes
@@ -1036,7 +1040,7 @@
                 // Build add-to-cart button
                 const btnHTML = isSoldOut
                     ? `<button class="product-card__add-btn" disabled>Sold Out</button>`
-                    : `<button class="product-card__add-btn" data-product="${slug}" data-name="${p.name.replace(/"/g, '&quot;')}" data-price="${p.price}" data-emoji="${p.emoji || '\u{1F6CD}\uFE0F'}"${hasSize ? ' data-has-size="true"' : ''}>Add to Cart</button>`;
+                    : `<button class="product-card__add-btn" data-product="${slug}" data-name="${p.name.replace(/"/g, '&quot;')}" data-price="${p.price}" data-emoji="${(p.emoji || '<i data-lucide="shopping-bag"></i>').replace(/"/g, '&quot;')}"${hasSize ? ' data-has-size="true"' : ''}>Add to Cart</button>`;
 
                 // Card wrapper differs for limited vs regular
                 if (isLimited) {
@@ -1095,6 +1099,8 @@
             initScrollAnimations();
             // Re-bind filters and sort to new DOM
             bindFiltersAndSort();
+            // Re-initialize Lucide icons for dynamically rendered products
+            if (window.lucide) lucide.createIcons();
         }
 
         /* ── Bind Add-to-Cart Buttons ── */
@@ -1354,12 +1360,13 @@
             if (cart.length === 0) {
                 itemsEl.innerHTML = `
                     <div class="cart-panel__empty">
-                        <div class="cart-panel__empty-icon">&#128722;</div>
+                        <div class="cart-panel__empty-icon"><i data-lucide="shopping-cart"></i></div>
                         <p class="cart-panel__empty-text">Your cart is empty!</p>
                         <p style="font-size:0.85rem;color:var(--gray-400);margin-top:8px;">Browse the merch and add something fun.</p>
                     </div>
                 `;
                 footerEl.style.display = 'none';
+                if (window.lucide) lucide.createIcons();
                 return;
             }
 
@@ -1414,6 +1421,9 @@
         updateCartCount();
         renderCart();
         loadMerchProducts();
+
+        // Initialize Lucide icons
+        if (window.lucide) lucide.createIcons();
     </script>
 </body>
 </html>

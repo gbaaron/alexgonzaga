@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <style>
+        /* Lucide icon defaults */
+        [data-lucide] { width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; }
+
         /* ── Vlogs Page Styles ── */
 
         /* Hero / Search */
@@ -714,7 +717,7 @@
             <p class="vlogs-hero__subtitle">Over 500 vlogs of chaos, comedy, family moments, and everything in between. Search, filter, and binge!</p>
             <div class="vlogs-search">
                 <input type="text" class="vlogs-search__input" id="vlogSearch" placeholder="Search for chaos, mukbang, Toni moments..." aria-label="Search vlogs">
-                <button class="vlogs-search__btn" aria-label="Search" id="searchBtn">&#128269;</button>
+                <button class="vlogs-search__btn" aria-label="Search" id="searchBtn"><i data-lucide="search"></i></button>
             </div>
         </div>
     </section>
@@ -722,11 +725,11 @@
     <!-- ── Alex Picks ── -->
     <section class="alex-picks">
         <div class="container">
-            <div class="alex-picks__label">&#11088; Alex Picks <span>ate's fave!</span></div>
+            <div class="alex-picks__label"><i data-lucide="star"></i> Alex Picks <span>ate's fave!</span></div>
             <div class="alex-picks__card">
                 <div class="alex-picks__thumbnail">
-                    &#127916;
-                    <div class="alex-picks__play">&#9654;</div>
+                    <i data-lucide="clapperboard"></i>
+                    <div class="alex-picks__play"><i data-lucide="play"></i></div>
                     <span class="alex-picks__duration">28:14</span>
                 </div>
                 <div class="alex-picks__info">
@@ -734,9 +737,9 @@
                     <h2 class="alex-picks__title">GONZAGA FAMILY REUNION 2025 — Full Chaos Mode! (Toni Cried!!)</h2>
                     <p class="alex-picks__desc">The whole Gonzaga fam in one house for three days. Pranks, karaoke battles, Daddy's cooking challenge, and Toni's emotional surprise for Mommy. This vlog has EVERYTHING.</p>
                     <div class="alex-picks__meta">
-                        <span>&#128065; 8.2M views</span>
-                        <span>&#128197; Dec 28, 2025</span>
-                        <span>&#128150; 412K likes</span>
+                        <span><i data-lucide="eye"></i> 8.2M views</span>
+                        <span><i data-lucide="calendar"></i> Dec 28, 2025</span>
+                        <span><i data-lucide="heart"></i> 412K likes</span>
                     </div>
                 </div>
             </div>
@@ -772,13 +775,13 @@
                 <div class="filter-bar__row">
                     <span class="filter-bar__label">Mood</span>
                     <div class="filter-pills" id="moodFilters">
-                        <button class="filter-pill mood-pill--funny" data-mood="funny">&#128514; Funny</button>
-                        <button class="filter-pill mood-pill--emotional" data-mood="emotional">&#128557; Emotional</button>
-                        <button class="filter-pill mood-pill--chaotic" data-mood="chaotic">&#129395; Chaotic</button>
-                        <button class="filter-pill mood-pill--wholesome" data-mood="wholesome">&#128150; Wholesome</button>
-                        <button class="filter-pill mood-pill--savage" data-mood="savage">&#128293; Savage</button>
-                        <button class="filter-pill mood-pill--kilig" data-mood="kilig">&#129392; Kilig</button>
-                        <button class="filter-pill mood-pill--inspirational" data-mood="inspirational">&#10024; Inspirational</button>
+                        <button class="filter-pill mood-pill--funny" data-mood="funny"><i data-lucide="smile"></i> Funny</button>
+                        <button class="filter-pill mood-pill--emotional" data-mood="emotional"><i data-lucide="heart"></i> Emotional</button>
+                        <button class="filter-pill mood-pill--chaotic" data-mood="chaotic"><i data-lucide="zap"></i> Chaotic</button>
+                        <button class="filter-pill mood-pill--wholesome" data-mood="wholesome"><i data-lucide="sun"></i> Wholesome</button>
+                        <button class="filter-pill mood-pill--savage" data-mood="savage"><i data-lucide="flame"></i> Savage</button>
+                        <button class="filter-pill mood-pill--kilig" data-mood="kilig"><i data-lucide="sparkles"></i> Kilig</button>
+                        <button class="filter-pill mood-pill--inspirational" data-mood="inspirational"><i data-lucide="star"></i> Inspirational</button>
                     </div>
                 </div>
             </div>
@@ -811,14 +814,14 @@
 
             <!-- No Results -->
             <div class="no-results" id="noResults">
-                <div class="no-results__icon">&#128533;</div>
+                <div class="no-results__icon"><i data-lucide="search-x"></i></div>
                 <h3 class="no-results__title">No vlogs found, sis!</h3>
                 <p class="no-results__text">Try a different search term or clear your filters to see all the content.</p>
             </div>
 
             <!-- Load More -->
             <div class="load-more" id="loadMore">
-                <button class="btn btn--secondary" id="loadMoreBtn">Load More Vlogs &#128293;</button>
+                <button class="btn btn--secondary" id="loadMoreBtn">Load More Vlogs</button>
             </div>
         </div>
     </section>
@@ -831,11 +834,11 @@
                     <div class="footer__brand">ALEX GONZAGA<span class="footer__brand-sub">official fan hub</span></div>
                     <p class="footer__desc">The official digital home of Alex Gonzaga. Exclusive content, merch, community, and everything your favorite ate has to offer.</p>
                     <div class="footer__socials">
-                        <a href="#" class="footer__social" aria-label="YouTube">&#9654;</a>
-                        <a href="#" class="footer__social" aria-label="Instagram">&#128247;</a>
-                        <a href="#" class="footer__social" aria-label="TikTok">&#127925;</a>
+                        <a href="#" class="footer__social" aria-label="YouTube"><i data-lucide="play"></i></a>
+                        <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="camera"></i></a>
+                        <a href="#" class="footer__social" aria-label="TikTok"><i data-lucide="music"></i></a>
                         <a href="#" class="footer__social" aria-label="Facebook">f</a>
-                        <a href="#" class="footer__social" aria-label="Twitter">&#120143;</a>
+                        <a href="#" class="footer__social" aria-label="Twitter"><i data-lucide="at-sign"></i></a>
                     </div>
                 </div>
                 <div>
@@ -874,6 +877,7 @@
         </div>
     </footer>
 
+    <script src="/js/lucide.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
         /* ── Vlogs Page — Client-Side Filtering ── */
@@ -892,7 +896,7 @@
                     date: '2026-03-20',
                     dateLabel: 'Mar 20, 2026',
                     duration: '18:32',
-                    emoji: '&#127916;'
+                    emoji: '<i data-lucide="clapperboard"></i>'
                 },
                 {
                     id: 2,
@@ -904,7 +908,7 @@
                     date: '2026-03-15',
                     dateLabel: 'Mar 15, 2026',
                     duration: '22:15',
-                    emoji: '&#127836;'
+                    emoji: '<i data-lucide="utensils"></i>'
                 },
                 {
                     id: 3,
@@ -916,7 +920,7 @@
                     date: '2026-03-10',
                     dateLabel: 'Mar 10, 2026',
                     duration: '25:48',
-                    emoji: '&#128150;'
+                    emoji: '<i data-lucide="heart"></i>'
                 },
                 {
                     id: 4,
@@ -928,7 +932,7 @@
                     date: '2026-03-05',
                     dateLabel: 'Mar 5, 2026',
                     duration: '31:20',
-                    emoji: '&#127471;&#127477;'
+                    emoji: '<i data-lucide="map-pin"></i>'
                 },
                 {
                     id: 5,
@@ -940,7 +944,7 @@
                     date: '2026-02-28',
                     dateLabel: 'Feb 28, 2026',
                     duration: '35:12',
-                    emoji: '&#127831;'
+                    emoji: '<i data-lucide="utensils"></i>'
                 },
                 {
                     id: 6,
@@ -952,7 +956,7 @@
                     date: '2026-02-22',
                     dateLabel: 'Feb 22, 2026',
                     duration: '19:44',
-                    emoji: '&#127909;'
+                    emoji: '<i data-lucide="video"></i>'
                 },
                 {
                     id: 7,
@@ -964,7 +968,7 @@
                     date: '2026-02-14',
                     dateLabel: 'Feb 14, 2026',
                     duration: '16:08',
-                    emoji: '&#128520;'
+                    emoji: '<i data-lucide="zap"></i>'
                 },
                 {
                     id: 8,
@@ -976,7 +980,7 @@
                     date: '2026-02-08',
                     dateLabel: 'Feb 8, 2026',
                     duration: '27:30',
-                    emoji: '&#129300;'
+                    emoji: '<i data-lucide="help-circle"></i>'
                 },
                 {
                     id: 9,
@@ -988,7 +992,7 @@
                     date: '2026-01-30',
                     dateLabel: 'Jan 30, 2026',
                     duration: '24:55',
-                    emoji: '&#127775;'
+                    emoji: '<i data-lucide="star"></i>'
                 },
                 {
                     id: 10,
@@ -1000,7 +1004,7 @@
                     date: '2026-01-22',
                     dateLabel: 'Jan 22, 2026',
                     duration: '20:16',
-                    emoji: '&#128132;'
+                    emoji: '<i data-lucide="sparkles"></i>'
                 },
                 {
                     id: 11,
@@ -1012,7 +1016,7 @@
                     date: '2026-01-15',
                     dateLabel: 'Jan 15, 2026',
                     duration: '29:03',
-                    emoji: '&#128172;'
+                    emoji: '<i data-lucide="message-circle"></i>'
                 },
                 {
                     id: 12,
@@ -1024,7 +1028,7 @@
                     date: '2026-01-08',
                     dateLabel: 'Jan 8, 2026',
                     duration: '33:47',
-                    emoji: '&#10024;'
+                    emoji: '<i data-lucide="sparkles"></i>'
                 },
                 {
                     id: 13,
@@ -1036,7 +1040,7 @@
                     date: '2025-12-20',
                     dateLabel: 'Dec 20, 2025',
                     duration: '26:11',
-                    emoji: '&#127859;'
+                    emoji: '<i data-lucide="utensils"></i>'
                 },
                 {
                     id: 14,
@@ -1048,7 +1052,7 @@
                     date: '2025-12-12',
                     dateLabel: 'Dec 12, 2025',
                     duration: '17:38',
-                    emoji: '&#127906;'
+                    emoji: '<i data-lucide="map-pin"></i>'
                 },
                 {
                     id: 15,
@@ -1060,7 +1064,7 @@
                     date: '2025-12-05',
                     dateLabel: 'Dec 5, 2025',
                     duration: '28:22',
-                    emoji: '&#127846;'
+                    emoji: '<i data-lucide="utensils"></i>'
                 },
                 {
                     id: 16,
@@ -1072,7 +1076,7 @@
                     date: '2025-11-28',
                     dateLabel: 'Nov 28, 2025',
                     duration: '14:50',
-                    emoji: '&#128140;'
+                    emoji: '<i data-lucide="heart"></i>'
                 },
                 {
                     id: 17,
@@ -1084,7 +1088,7 @@
                     date: '2025-11-20',
                     dateLabel: 'Nov 20, 2025',
                     duration: '21:05',
-                    emoji: '&#128248;'
+                    emoji: '<i data-lucide="camera"></i>'
                 },
                 {
                     id: 18,
@@ -1096,7 +1100,7 @@
                     date: '2025-11-12',
                     dateLabel: 'Nov 12, 2025',
                     duration: '23:19',
-                    emoji: '&#127924;'
+                    emoji: '<i data-lucide="mic"></i>'
                 }
             ];
 
@@ -1111,7 +1115,7 @@
                 date: '2025-12-28',
                 dateLabel: 'Dec 28, 2025',
                 duration: '28:14',
-                emoji: '&#127916;',
+                emoji: '<i data-lucide="clapperboard"></i>',
                 thumbnail: '',
                 description: 'The whole Gonzaga fam in one house for three days. Pranks, karaoke battles, Daddy\'s cooking challenge, and Toni\'s emotional surprise for Mommy. This vlog has EVERYTHING.',
                 likes: 412000,
@@ -1134,19 +1138,33 @@
                 return num + ' likes';
             }
 
+            // Extract YouTube video ID from any YouTube URL format
+            function extractYoutubeId(url) {
+                if (!url) return '';
+                var match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+                return match ? match[1] : '';
+            }
+
             // Map Airtable record to local vlog object
             function mapAirtableVlog(record) {
                 var f = record.fields || record;
                 var views = f.views || f.Views || 0;
                 var likes = f.likes || f.Likes || 0;
                 var date = f.date || f.Date || f.publishDate || f.PublishDate || '';
+                var youtubeUrl = f.youtubeUrl || f.YoutubeUrl || f.YoutubeURL || f.youtube_url || f.videoUrl || f.VideoUrl || '';
+                var videoId = f.youtubeId || f.YoutubeId || extractYoutubeId(youtubeUrl) || '';
+
+                // Thumbnail priority: Airtable attachment > YouTube auto-thumbnail > empty
                 var thumbnailArr = f.thumbnail || f.Thumbnail || [];
                 var thumbnailUrl = '';
                 if (Array.isArray(thumbnailArr) && thumbnailArr.length > 0) {
                     thumbnailUrl = thumbnailArr[0].url || thumbnailArr[0];
-                } else if (typeof thumbnailArr === 'string') {
+                } else if (typeof thumbnailArr === 'string' && thumbnailArr) {
                     thumbnailUrl = thumbnailArr;
+                } else if (videoId) {
+                    thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';
                 }
+
                 return {
                     id: record.id || f.id || Math.random().toString(36).substr(2, 9),
                     title: f.title || f.Title || 'Untitled Vlog',
@@ -1157,12 +1175,12 @@
                     date: date,
                     dateLabel: date ? formatDate(date) : '',
                     duration: f.duration || f.Duration || '',
-                    emoji: f.emoji || f.Emoji || '&#127916;',
+                    emoji: f.emoji || f.Emoji || '<i data-lucide="clapperboard"></i>',
                     thumbnail: thumbnailUrl,
                     description: f.description || f.Description || '',
                     likes: likes,
                     likesLabel: formatLikes(likes),
-                    youtubeUrl: f.youtubeUrl || f.YoutubeUrl || f.youtube_url || ''
+                    youtubeUrl: youtubeUrl
                 };
             }
 
@@ -1234,7 +1252,7 @@
                 return linkOpen + '<div class="vlog-card" data-id="' + vlog.id + '">' +
                     '<div class="vlog-card__thumbnail">' +
                         thumbnailContent +
-                        '<div class="vlog-card__play">&#9654;</div>' +
+                        '<div class="vlog-card__play"><i data-lucide="play"></i></div>' +
                         (vlog.duration ? '<span class="vlog-card__duration">' + vlog.duration + '</span>' : '') +
                         '<span class="vlog-card__category' + catClass + '">' + (categoryLabels[vlog.category] || vlog.category) + '</span>' +
                     '</div>' +
@@ -1242,8 +1260,8 @@
                         '<span class="vlog-card__mood vlog-card__mood--' + vlog.mood + '">' + (moodLabels[vlog.mood] || vlog.mood) + '</span>' +
                         '<h3 class="vlog-card__title">' + vlog.title + '</h3>' +
                         '<div class="vlog-card__meta">' +
-                            '<span>&#128065; ' + vlog.viewsLabel + '</span>' +
-                            '<span>&#128197; ' + vlog.dateLabel + '</span>' +
+                            '<span><i data-lucide="eye"></i> ' + vlog.viewsLabel + '</span>' +
+                            '<span><i data-lucide="calendar"></i> ' + vlog.dateLabel + '</span>' +
                         '</div>' +
                     '</div>' +
                 '</div>' + linkClose;
@@ -1297,6 +1315,9 @@
                 // Clear filters button
                 var hasFilters = activeCategory !== 'all' || activeMoods.length > 0 || searchQuery !== '';
                 clearBtn.classList.toggle('clear-filters--visible', hasFilters);
+
+                // Re-initialize Lucide icons for dynamically rendered cards
+                if (window.lucide) lucide.createIcons();
             }
 
             // Category pills
@@ -1399,7 +1420,7 @@
 
                 var thumbnailContent = v.thumbnail
                     ? '<img src="' + v.thumbnail + '" alt="' + v.title.replace(/"/g, '&quot;') + '" style="width:100%;height:100%;object-fit:cover;">'
-                    : (v.emoji || '&#127916;');
+                    : (v.emoji || '<i data-lucide="clapperboard"></i>');
 
                 var linkOpen = v.youtubeUrl ? '<a href="' + v.youtubeUrl + '" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">' : '';
                 var linkClose = v.youtubeUrl ? '</a>' : '';
@@ -1407,7 +1428,7 @@
                 picksCard.innerHTML = linkOpen +
                     '<div class="alex-picks__thumbnail">' +
                         thumbnailContent +
-                        '<div class="alex-picks__play">&#9654;</div>' +
+                        '<div class="alex-picks__play"><i data-lucide="play"></i></div>' +
                         (v.duration ? '<span class="alex-picks__duration">' + v.duration + '</span>' : '') +
                     '</div>' +
                     '<div class="alex-picks__info">' +
@@ -1415,18 +1436,21 @@
                         '<h2 class="alex-picks__title">' + v.title + '</h2>' +
                         (v.description ? '<p class="alex-picks__desc">' + v.description + '</p>' : '') +
                         '<div class="alex-picks__meta">' +
-                            '<span>&#128065; ' + v.viewsLabel + '</span>' +
-                            '<span>&#128197; ' + v.dateLabel + '</span>' +
-                            '<span>&#128150; ' + v.likesLabel + '</span>' +
+                            '<span><i data-lucide="eye"></i> ' + v.viewsLabel + '</span>' +
+                            '<span><i data-lucide="calendar"></i> ' + v.dateLabel + '</span>' +
+                            '<span><i data-lucide="heart"></i> ' + v.likesLabel + '</span>' +
                         '</div>' +
                     '</div>' + linkClose;
+
+                // Re-initialize Lucide icons for featured card
+                if (window.lucide) lucide.createIcons();
             }
 
             // Fetch featured vlog from Airtable via Netlify function
             fetch('/.netlify/functions/get-vlogs?featured=true&limit=1')
                 .then(function (res) { return res.ok ? res.json() : Promise.reject(res); })
                 .then(function (data) {
-                    var records = data.records || data;
+                    var records = data.vlogs || data.records || data;
                     if (Array.isArray(records) && records.length > 0) {
                         featuredVlog = mapAirtableVlog(records[0]);
                     }
@@ -1440,7 +1464,7 @@
             fetch('/.netlify/functions/get-vlogs?limit=100')
                 .then(function (res) { return res.ok ? res.json() : Promise.reject(res); })
                 .then(function (data) {
-                    var records = data.records || data;
+                    var records = data.vlogs || data.records || data;
                     if (Array.isArray(records) && records.length > 0) {
                         vlogs = records.map(mapAirtableVlog);
                     }
@@ -1453,6 +1477,9 @@
             // Initial render with demo data (will be re-rendered after fetch completes)
             renderFeatured();
             render();
+
+            // Initialize Lucide icons
+            if (window.lucide) lucide.createIcons();
         })();
     </script>
 </body>
