@@ -57,7 +57,7 @@ exports.handler = async (event) => {
                 sortConfig = [{ field: 'PublishDate', direction: 'asc' }];
                 break;
             case 'popular':
-                sortConfig = [{ field: 'Views', direction: 'desc' }];
+                sortConfig = [{ field: 'ViewCount', direction: 'desc' }];
                 break;
             case 'newest':
             default:

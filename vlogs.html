@@ -1448,28 +1448,38 @@
 
             // Fetch featured vlog from Airtable via Netlify function
             fetch('/.netlify/functions/get-vlogs?featured=true&limit=1')
-                .then(function (res) { return res.ok ? res.json() : Promise.reject(res); })
+                .then(function (res) {
+                    console.log('[Vlogs] Featured fetch status:', res.status);
+                    return res.ok ? res.json() : Promise.reject(res);
+                })
                 .then(function (data) {
+                    console.log('[Vlogs] Featured data:', JSON.stringify(data).substring(0, 200));
                     var records = data.vlogs || data.records || data;
                     if (Array.isArray(records) && records.length > 0) {
                         featuredVlog = mapAirtableVlog(records[0]);
+                        console.log('[Vlogs] Featured vlog set:', featuredVlog.title);
                     }
                 })
-                .catch(function () { /* silently fall back to demo featured vlog */ })
+                .catch(function (err) { console.warn('[Vlogs] Featured fetch failed, using demo:', err); })
                 .finally(function () {
                     renderFeatured();
                 });
 
             // Fetch all vlogs from Airtable via Netlify function
             fetch('/.netlify/functions/get-vlogs?limit=100')
-                .then(function (res) { return res.ok ? res.json() : Promise.reject(res); })
+                .then(function (res) {
+                    console.log('[Vlogs] All vlogs fetch status:', res.status);
+                    return res.ok ? res.json() : Promise.reject(res);
+                })
                 .then(function (data) {
+                    console.log('[Vlogs] All vlogs data count:', (data.vlogs || data.records || data || []).length);
                     var records = data.vlogs || data.records || data;
                     if (Array.isArray(records) && records.length > 0) {
                         vlogs = records.map(mapAirtableVlog);
+                        console.log('[Vlogs] Loaded', vlogs.length, 'vlogs from Airtable');
                     }
                 })
-                .catch(function () { /* silently fall back to demo vlogs */ })
+                .catch(function (err) { console.warn('[Vlogs] All vlogs fetch failed, using demo:', err); })
                 .finally(function () {
                     render();
                 });
