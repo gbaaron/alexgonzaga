@@ -932,11 +932,17 @@
                     thumbnailUrl = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg';
                 }
 
+                // Handle fields that may be arrays (multi-select) or strings (single-select)
+                var rawCat = f.category || f.Category || 'comedy';
+                var rawMood = f.mood || f.Mood || 'funny';
+                if (Array.isArray(rawCat)) rawCat = rawCat[0] || 'comedy';
+                if (Array.isArray(rawMood)) rawMood = rawMood[0] || 'funny';
+
                 return {
                     id: record.id || f.id || Math.random().toString(36).substr(2, 9),
                     title: f.title || f.Title || 'Untitled Vlog',
-                    category: (f.category || f.Category || 'comedy').toLowerCase(),
-                    mood: (f.mood || f.Mood || 'funny').toLowerCase(),
+                    category: String(rawCat).toLowerCase(),
+                    mood: String(rawMood).toLowerCase(),
                     views: views,
                     viewsLabel: formatViews(views),
                     date: date,
