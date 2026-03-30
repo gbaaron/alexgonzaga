@@ -20,13 +20,16 @@ exports.handler = async (event) => {
         const params = event.queryStringParameters || {};
         const category = params.category;
         const sort = params.sort || 'newest';
-        const status = params.status || 'Active';
+        const status = params.status || 'all';
 
         const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
 
         // Build filter formula
         const filters = [];
-        filters.push(`{Status} = '${status.replace(/'/g, "\\'")}'`);
+        // Only filter by Status if explicitly passed (many tables leave Status empty)
+        if (status && status !== 'all') {
+            filters.push(`{Status} = '${status.replace(/'/g, "\\'")}'`);
+        }
 
         if (category) {
             filters.push(`{Category} = '${category.replace(/'/g, "\\'")}'`);
@@ -35,7 +38,7 @@ exports.handler = async (event) => {
         let filterFormula = '';
         if (filters.length === 1) {
             filterFormula = filters[0];
-        } else {
+        } else if (filters.length > 1) {
             filterFormula = `AND(${filters.join(', ')})`;
         }
 
@@ -50,7 +53,7 @@ exports.handler = async (event) => {
                 break;
             case 'newest':
             default:
-                sortConfig = [{ field: 'CreatedDate', direction: 'desc' }];
+                sortConfig = [{ field: 'SortOrder', direction: 'asc' }];
                 break;
         }
 
@@ -75,6 +78,7 @@ exports.handler = async (event) => {
 
             return {
                 id: record.id,
+                slug: record.fields.Slug || null,
                 name: record.fields.Name,
                 description: record.fields.Description || null,
                 price: record.fields.Price || 0,
@@ -85,10 +89,13 @@ exports.handler = async (event) => {
                 sizes: record.fields.Sizes || null,
                 colors: record.fields.Colors || null,
                 stock: record.fields.Stock != null ? record.fields.Stock : 0,
-                status: record.fields.Status,
+                status: record.fields.Status || 'Active',
                 badge: record.fields.Badge || null,
                 isLimitedDrop: !!record.fields.IsLimitedDrop,
+                dropName: record.fields.DropName || null,
+                dropDate: record.fields.DropDate || null,
                 sales: record.fields.Sales || 0,
+                sortOrder: record.fields.SortOrder || 0,
                 createdDate: record.fields.CreatedDate || null
             };
         });
