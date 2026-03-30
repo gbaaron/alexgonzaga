@@ -686,6 +686,304 @@
                 height: 40px;
             }
         }
+
+        /* Rating on vlog cards */
+        .vlog-card__rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: var(--space-xs);
+            font-size: 0.78rem;
+            color: var(--gray-500);
+        }
+        .vlog-card__rating-num {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--orange);
+        }
+        .vlog-card__rating-count {
+            color: var(--gray-400);
+            font-size: 0.7rem;
+        }
+
+        /* Modal overlay */
+        .vlog-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 9999;
+            justify-content: center;
+            align-items: flex-start;
+            padding: var(--space-xl);
+            overflow-y: auto;
+        }
+        .vlog-modal-overlay--active {
+            display: flex;
+        }
+        .vlog-modal {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            max-width: 720px;
+            width: 100%;
+            margin: var(--space-xl) auto;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .vlog-modal__close {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gray-100);
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-600);
+            transition: all var(--transition-fast);
+        }
+        .vlog-modal__close:hover {
+            background: var(--gray-200);
+        }
+        .vlog-modal__content {
+            padding: 0;
+        }
+
+        /* Modal inner sections */
+        .vlog-modal__thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .vlog-modal__thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .vlog-modal__body {
+            padding: var(--space-xl) var(--space-2xl) var(--space-2xl);
+        }
+        .vlog-modal__tags {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .vlog-modal__title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gray-800);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+        .vlog-modal__meta {
+            display: flex;
+            gap: var(--space-lg);
+            color: var(--gray-400);
+            font-size: 0.85rem;
+            margin-bottom: var(--space-lg);
+        }
+        .vlog-modal__desc {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: var(--space-xl);
+        }
+
+        /* Rating section in modal */
+        .rating-section {
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+        }
+        .rating-section__label {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-bottom: var(--space-sm);
+            font-style: italic;
+        }
+        .rating-section__title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: var(--space-lg);
+        }
+        .rating-input {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+        }
+        .rating-input__btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--gray-200);
+            background: var(--white);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .rating-input__btn:hover {
+            transform: scale(1.15);
+            border-color: var(--gray-300);
+            color: var(--gray-600);
+        }
+        .rating-input__btn--active {
+            transform: scale(1.15);
+            border-color: transparent;
+            color: var(--white);
+        }
+        .rating-input__btn--active[data-value="1"],
+        .rating-input__btn--active[data-value="2"],
+        .rating-input__btn--active[data-value="3"] { background: var(--coral); }
+        .rating-input__btn--active[data-value="4"],
+        .rating-input__btn--active[data-value="5"],
+        .rating-input__btn--active[data-value="6"] { background: var(--orange); }
+        .rating-input__btn--active[data-value="7"],
+        .rating-input__btn--active[data-value="8"] { background: #22c55e; }
+        .rating-input__btn--active[data-value="9"],
+        .rating-input__btn--active[data-value="10"] { background: var(--teal); }
+
+        .rating-feedback {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            min-height: 1.2em;
+            margin-bottom: var(--space-sm);
+        }
+        .rating-avg {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+        .rating-login-prompt {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+        .rating-login-prompt a {
+            color: var(--pink);
+            font-weight: 600;
+        }
+
+        /* Watch on YouTube button */
+        .vlog-modal__yt-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: #FF0000;
+            color: white;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            margin-bottom: var(--space-xl);
+        }
+        .vlog-modal__yt-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,0,0,0.3);
+        }
+
+        /* Fans Also Loved */
+        .modal-reco {
+            border-top: 1px solid var(--gray-100);
+            padding-top: var(--space-xl);
+        }
+        .modal-reco__title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-600);
+            margin-bottom: var(--space-md);
+        }
+        .modal-reco__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+        .modal-reco__item {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        .modal-reco__item:hover {
+            background: var(--gray-100);
+            transform: translateY(-2px);
+        }
+        .modal-reco__item-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 4px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .modal-reco__item-meta {
+            font-size: 0.7rem;
+            color: var(--gray-400);
+        }
+
+        /* Recommendation section */
+        .reco-section {
+            background: linear-gradient(135deg, rgba(255,0,110,0.04) 0%, rgba(139,92,246,0.04) 100%);
+            padding: var(--space-3xl) 0;
+            border-top: 1px solid var(--gray-100);
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .reco-section__title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--gray-800);
+            margin-bottom: var(--space-xs);
+        }
+        .reco-section__subtitle {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-xl);
+        }
+        .reco-section__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-lg);
+        }
+
+        /* Mobile responsive — rating/modal/reco */
+        @media (max-width: 768px) {
+            .vlog-modal { margin: var(--space-sm); }
+            .vlog-modal__body { padding: var(--space-lg); }
+            .rating-input__btn { width: 34px; height: 34px; font-size: 0.8rem; }
+            .rating-input { gap: 4px; }
+            .modal-reco__grid { grid-template-columns: 1fr; }
+            .reco-section__grid { grid-template-columns: 1fr; }
+            .vlog-modal__title { font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -746,6 +1044,15 @@
         </div>
     </section>
 
+    <!-- ── Because You Rated These Highly ── -->
+    <section class="reco-section" id="recoSection" style="display:none">
+        <div class="container">
+            <h2 class="reco-section__title"><i data-lucide="sparkles"></i> Because You Rated These Highly...</h2>
+            <p class="reco-section__subtitle">Based on the categories and moods you love most</p>
+            <div class="reco-section__grid" id="recoGrid"></div>
+        </div>
+    </section>
+
     <!-- ── Filter Bar ── -->
     <div class="filter-bar">
         <div class="container">
@@ -794,6 +1101,7 @@
                         <button class="sort-btn sort-btn--active" data-sort="newest">Newest</button>
                         <button class="sort-btn" data-sort="oldest">Oldest</button>
                         <button class="sort-btn" data-sort="popular">Most Popular</button>
+                        <button class="sort-btn" data-sort="foryou" id="forYouSort" style="display:none"><i data-lucide="sparkles"></i> For You</button>
                     </div>
                     <button class="clear-filters" id="clearFilters">Clear All Filters</button>
                 </div>
@@ -877,6 +1185,14 @@
         </div>
     </footer>
 
+    <!-- ── Vlog Modal ── -->
+    <div class="vlog-modal-overlay" id="vlogModal">
+        <div class="vlog-modal">
+            <button class="vlog-modal__close" id="vlogModalClose">&times;</button>
+            <div class="vlog-modal__content" id="vlogModalContent"></div>
+        </div>
+    </div>
+
     <script src="/js/lucide.min.js"></script>
     <script src="/js/app.js"></script>
     <script>
@@ -889,6 +1205,9 @@
 
             // Featured vlog loaded from Airtable
             let featuredVlog = null;
+
+            var userRatings = {}; // { vlogId: rating } — loaded from Airtable for logged-in users
+            var ratingsPublic = true; // controlled by SiteConfig
 
             // Format raw view/like counts to human-readable labels
             function formatViews(num) {
@@ -953,7 +1272,9 @@
                     description: f.description || f.Description || '',
                     likes: likes,
                     likesLabel: formatLikes(likes),
-                    youtubeUrl: youtubeUrl
+                    youtubeUrl: youtubeUrl,
+                    avgRating: f.avgRating || f.AvgRating || 0,
+                    ratingCount: f.ratingCount || f.RatingCount || 0
                 };
             }
 
@@ -1020,9 +1341,15 @@
                 var thumbnailContent = vlog.thumbnail
                     ? '<img src="' + vlog.thumbnail + '" alt="' + vlog.title.replace(/"/g, '&quot;') + '" style="width:100%;height:100%;object-fit:cover;">'
                     : vlog.emoji;
-                var linkOpen = vlog.youtubeUrl ? '<a href="' + vlog.youtubeUrl + '" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">' : '';
-                var linkClose = vlog.youtubeUrl ? '</a>' : '';
-                return linkOpen + '<div class="vlog-card" data-id="' + vlog.id + '">' +
+                var ratingHtml = '';
+                if (ratingsPublic && vlog.ratingCount > 0) {
+                    ratingHtml = '<div class="vlog-card__rating">' +
+                        '<i data-lucide="star" style="color:var(--orange);width:14px;height:14px;fill:var(--orange)"></i> ' +
+                        '<span class="vlog-card__rating-num">' + vlog.avgRating.toFixed(1) + '</span>' +
+                        '<span class="vlog-card__rating-count">(' + vlog.ratingCount + ')</span>' +
+                    '</div>';
+                }
+                return '<div class="vlog-card" data-id="' + vlog.id + '" style="cursor:pointer">' +
                     '<div class="vlog-card__thumbnail">' +
                         thumbnailContent +
                         '<div class="vlog-card__play"><i data-lucide="play"></i></div>' +
@@ -1031,13 +1358,14 @@
                     '</div>' +
                     '<div class="vlog-card__body">' +
                         '<span class="vlog-card__mood vlog-card__mood--' + vlog.mood + '">' + (moodLabels[vlog.mood] || vlog.mood) + '</span>' +
+                        ratingHtml +
                         '<h3 class="vlog-card__title">' + vlog.title + '</h3>' +
                         '<div class="vlog-card__meta">' +
                             '<span><i data-lucide="eye"></i> ' + vlog.viewsLabel + '</span>' +
                             '<span><i data-lucide="calendar"></i> ' + vlog.dateLabel + '</span>' +
                         '</div>' +
                     '</div>' +
-                '</div>' + linkClose;
+                '</div>';
             }
 
             // Filter + sort + render
@@ -1061,6 +1389,7 @@
                     if (activeSort === 'newest') return new Date(b.date) - new Date(a.date);
                     if (activeSort === 'oldest') return new Date(a.date) - new Date(b.date);
                     if (activeSort === 'popular') return b.views - a.views;
+                    if (activeSort === 'foryou') return (b._forYouScore || 0) - (a._forYouScore || 0);
                     return 0;
                 });
 
@@ -1202,10 +1531,10 @@
                     ? '<img src="' + v.thumbnail + '" alt="' + v.title.replace(/"/g, '&quot;') + '" style="width:100%;height:100%;object-fit:cover;">'
                     : (v.emoji || '<i data-lucide="clapperboard"></i>');
 
-                var linkOpen = v.youtubeUrl ? '<a href="' + v.youtubeUrl + '" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">' : '';
-                var linkClose = v.youtubeUrl ? '</a>' : '';
+                picksCard.dataset.id = v.id;
+                picksCard.style.cursor = 'pointer';
 
-                picksCard.innerHTML = linkOpen +
+                picksCard.innerHTML =
                     '<div class="alex-picks__thumbnail">' +
                         thumbnailContent +
                         '<div class="alex-picks__play"><i data-lucide="play"></i></div>' +
@@ -1220,9 +1549,256 @@
                             '<span><i data-lucide="calendar"></i> ' + v.dateLabel + '</span>' +
                             '<span><i data-lucide="heart"></i> ' + v.likesLabel + '</span>' +
                         '</div>' +
-                    '</div>' + linkClose;
+                    '</div>';
 
                 // Re-initialize Lucide icons for featured card
+                if (window.lucide) lucide.createIcons();
+            }
+
+            // ── Rating Feedback Messages ──
+            function getRatingFeedback(val) {
+                if (val <= 3) return "Hmm, not your fave? That's okay, ate has hundreds more!";
+                if (val <= 6) return "A solid pick! Every vlog has its moment.";
+                if (val <= 8) return "Great taste! This one's definitely up there.";
+                return "TOP TIER! Ate Alex at her absolute best!";
+            }
+
+            // ── Build modal content ──
+            function buildModalContent(vlog) {
+                var thumbHtml = vlog.thumbnail
+                    ? '<img src="' + vlog.thumbnail + '" alt="' + vlog.title.replace(/"/g, '&quot;') + '">'
+                    : '<div style="font-size:4rem;color:rgba(255,255,255,0.3)"><i data-lucide="play" style="width:80px;height:80px"></i></div>';
+
+                var catLabel = (categoryLabels[vlog.category] || vlog.category || '').toUpperCase();
+                var moodLabel = moodLabels[vlog.mood] || vlog.mood || '';
+
+                var userRating = userRatings[vlog.id] || 0;
+                var isLoggedIn = window.Auth && Auth.isLoggedIn();
+
+                // Rating UI
+                var ratingHtml = '';
+                if (isLoggedIn) {
+                    var buttons = '';
+                    for (var i = 1; i <= 10; i++) {
+                        var activeClass = (userRating === i) ? ' rating-input__btn--active' : '';
+                        buttons += '<button class="rating-input__btn' + activeClass + '" data-value="' + i + '" data-vlog-id="' + vlog.id + '">' + i + '</button>';
+                    }
+                    ratingHtml =
+                        '<div class="rating-section">' +
+                            '<div class="rating-section__label">This isn\'t about good or bad — it\'s about ranking Alex\'s best!</div>' +
+                            '<div class="rating-section__title">Your Rating</div>' +
+                            '<div class="rating-input" id="ratingInput">' + buttons + '</div>' +
+                            '<div class="rating-feedback" id="ratingFeedback">' + (userRating ? getRatingFeedback(userRating) : 'Tap a number to rate') + '</div>' +
+                            (vlog.ratingCount > 0 ? '<div class="rating-avg"><i data-lucide="users" style="width:12px;height:12px;display:inline-block;vertical-align:-2px"></i> ' + vlog.avgRating.toFixed(1) + '/10 from ' + vlog.ratingCount + ' fans</div>' : '<div class="rating-avg">Be the first to rate this vlog!</div>') +
+                        '</div>';
+                } else {
+                    ratingHtml =
+                        '<div class="rating-section">' +
+                            '<div class="rating-login-prompt"><a href="/login.html">Log in</a> to rate this vlog and get personalized recommendations!</div>' +
+                        '</div>';
+                }
+
+                // YouTube button
+                var ytBtnHtml = vlog.youtubeUrl
+                    ? '<a href="' + vlog.youtubeUrl + '" target="_blank" rel="noopener noreferrer" class="vlog-modal__yt-btn"><i data-lucide="play"></i> Watch on YouTube</a>'
+                    : '';
+
+                // Fans Also Loved
+                var related = getRelatedVlogs(vlog, 3);
+                var recoHtml = '';
+                if (related.length > 0) {
+                    var recoCards = related.map(function(rv) {
+                        return '<div class="modal-reco__item" data-reco-id="' + rv.id + '">' +
+                            '<div class="modal-reco__item-title">' + rv.title + '</div>' +
+                            '<div class="modal-reco__item-meta">' + (categoryLabels[rv.category] || rv.category) + ' &middot; ' + rv.viewsLabel + '</div>' +
+                        '</div>';
+                    }).join('');
+                    recoHtml = '<div class="modal-reco">' +
+                        '<div class="modal-reco__title"><i data-lucide="heart" style="width:16px;height:16px;display:inline-block;vertical-align:-2px"></i> Fans Also Loved</div>' +
+                        '<div class="modal-reco__grid">' + recoCards + '</div>' +
+                    '</div>';
+                }
+
+                return '<div class="vlog-modal__thumb">' + thumbHtml + '</div>' +
+                    '<div class="vlog-modal__body">' +
+                        '<div class="vlog-modal__tags">' +
+                            '<span class="vlog-card__category">' + catLabel + '</span>' +
+                            '<span class="vlog-card__mood vlog-card__mood--' + vlog.mood + '">' + moodLabel + '</span>' +
+                            (vlog.duration ? '<span style="color:var(--gray-400);font-size:0.8rem"><i data-lucide="clock" style="width:12px;height:12px;display:inline-block;vertical-align:-2px"></i> ' + vlog.duration + '</span>' : '') +
+                        '</div>' +
+                        '<h2 class="vlog-modal__title">' + vlog.title + '</h2>' +
+                        '<div class="vlog-modal__meta">' +
+                            '<span><i data-lucide="eye" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i> ' + vlog.viewsLabel + '</span>' +
+                            '<span><i data-lucide="calendar" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i> ' + vlog.dateLabel + '</span>' +
+                            (vlog.likesLabel ? '<span><i data-lucide="thumbs-up" style="width:14px;height:14px;display:inline-block;vertical-align:-2px"></i> ' + vlog.likesLabel + '</span>' : '') +
+                        '</div>' +
+                        (vlog.description ? '<p class="vlog-modal__desc">' + vlog.description + '</p>' : '') +
+                        ratingHtml +
+                        ytBtnHtml +
+                        recoHtml +
+                    '</div>';
+            }
+
+            // ── Get related vlogs ──
+            function getRelatedVlogs(currentVlog, count) {
+                return vlogs
+                    .filter(function(v) {
+                        return v.id !== currentVlog.id && (v.category === currentVlog.category || v.mood === currentVlog.mood);
+                    })
+                    .sort(function(a, b) { return (b.avgRating || 0) - (a.avgRating || 0); })
+                    .slice(0, count);
+            }
+
+            // ── Open/close modal ──
+            function openVlogModal(vlogId) {
+                var vlog = vlogs.find(function(v) { return v.id === vlogId; });
+                if (!vlog && featuredVlog && featuredVlog.id === vlogId) vlog = featuredVlog;
+                if (!vlog) return;
+                var modal = document.getElementById('vlogModal');
+                var content = document.getElementById('vlogModalContent');
+                content.innerHTML = buildModalContent(vlog);
+                modal.classList.add('vlog-modal-overlay--active');
+                document.body.style.overflow = 'hidden';
+                if (window.lucide) lucide.createIcons();
+
+                // Attach rating button listeners
+                content.querySelectorAll('.rating-input__btn').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var val = parseInt(this.dataset.value);
+                        var vid = this.dataset.vlogId;
+                        handleRating(vid, val);
+                        // Update all buttons in this modal
+                        content.querySelectorAll('.rating-input__btn').forEach(function(b) {
+                            b.classList.toggle('rating-input__btn--active', parseInt(b.dataset.value) === val);
+                        });
+                        var fb = document.getElementById('ratingFeedback');
+                        if (fb) fb.textContent = getRatingFeedback(val);
+                    });
+                });
+
+                // Attach reco item click listeners
+                content.querySelectorAll('.modal-reco__item').forEach(function(item) {
+                    item.addEventListener('click', function() {
+                        openVlogModal(this.dataset.recoId);
+                    });
+                });
+            }
+
+            function closeVlogModal() {
+                document.getElementById('vlogModal').classList.remove('vlog-modal-overlay--active');
+                document.body.style.overflow = '';
+            }
+
+            // ── Rating handler ──
+            function handleRating(vlogId, rating) {
+                if (!window.Auth || !Auth.isLoggedIn()) return;
+
+                userRatings[vlogId] = rating;
+
+                fetch('/.netlify/functions/rate-vlog', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + Auth.getToken()
+                    },
+                    body: JSON.stringify({ vlogId: vlogId, rating: rating })
+                })
+                .then(function(r) { return r.ok ? r.json() : Promise.reject(r); })
+                .then(function(data) {
+                    // Update local vlog data with new average
+                    var vlog = vlogs.find(function(v) { return v.id === vlogId; });
+                    if (vlog) {
+                        vlog.avgRating = data.avgRating;
+                        vlog.ratingCount = data.ratingCount;
+                    }
+                    if (featuredVlog && featuredVlog.id === vlogId) {
+                        featuredVlog.avgRating = data.avgRating;
+                        featuredVlog.ratingCount = data.ratingCount;
+                    }
+                    // Re-render cards to update rating display
+                    render();
+                    computeForYouScores();
+                    renderRecoSection();
+                })
+                .catch(function(err) { console.warn('[Vlogs] Rating save failed:', err); });
+            }
+
+            // ── For You scoring ──
+            function computeForYouScores() {
+                if (!window.Auth || !Auth.isLoggedIn() || Object.keys(userRatings).length === 0) return;
+
+                var categoryPrefs = {};
+                var moodPrefs = {};
+
+                Object.keys(userRatings).forEach(function(vlogId) {
+                    var vlog = vlogs.find(function(v) { return v.id === vlogId; });
+                    if (!vlog) return;
+                    var norm = (userRatings[vlogId] - 5.5) / 4.5;
+                    if (!categoryPrefs[vlog.category]) categoryPrefs[vlog.category] = 0;
+                    categoryPrefs[vlog.category] += norm;
+                    if (!moodPrefs[vlog.mood]) moodPrefs[vlog.mood] = 0;
+                    moodPrefs[vlog.mood] += norm;
+                });
+
+                vlogs.forEach(function(v) {
+                    var score = 0;
+                    score += (categoryPrefs[v.category] || 0) * 3;
+                    score += (moodPrefs[v.mood] || 0) * 2;
+                    score += ((v.avgRating || 0) / 10) * 1.5;
+                    if (userRatings[v.id]) score -= 5;
+                    if (v.date) {
+                        var daysSince = (Date.now() - new Date(v.date).getTime()) / (1000 * 60 * 60 * 24);
+                        score += Math.max(0, 1 - daysSince / 365);
+                    }
+                    v._forYouScore = score;
+                });
+            }
+
+            // ── Recommendation section ──
+            function renderRecoSection() {
+                var section = document.getElementById('recoSection');
+                var grid = document.getElementById('recoGrid');
+                if (!section || !grid) return;
+
+                if (!window.Auth || !Auth.isLoggedIn() || Object.keys(userRatings).length < 3) {
+                    section.style.display = 'none';
+                    return;
+                }
+
+                var categoryScores = {};
+                var moodScores = {};
+
+                vlogs.forEach(function(v) {
+                    var r = userRatings[v.id];
+                    if (!r || r < 7) return;
+                    if (!categoryScores[v.category]) categoryScores[v.category] = { total: 0, count: 0 };
+                    categoryScores[v.category].total += r;
+                    categoryScores[v.category].count += 1;
+                    if (!moodScores[v.mood]) moodScores[v.mood] = { total: 0, count: 0 };
+                    moodScores[v.mood].total += r;
+                    moodScores[v.mood].count += 1;
+                });
+
+                var topCats = Object.keys(categoryScores).sort(function(a, b) {
+                    return (categoryScores[b].total / categoryScores[b].count) - (categoryScores[a].total / categoryScores[a].count);
+                }).slice(0, 3);
+
+                var topMoods = Object.keys(moodScores).sort(function(a, b) {
+                    return (moodScores[b].total / moodScores[b].count) - (moodScores[a].total / moodScores[a].count);
+                }).slice(0, 3);
+
+                var candidates = vlogs.filter(function(v) {
+                    if (userRatings[v.id]) return false;
+                    return topCats.indexOf(v.category) !== -1 || topMoods.indexOf(v.mood) !== -1;
+                }).sort(function(a, b) { return (b.avgRating || 0) - (a.avgRating || 0); }).slice(0, 6);
+
+                if (candidates.length < 2) {
+                    section.style.display = 'none';
+                    return;
+                }
+
+                grid.innerHTML = candidates.map(function(v) { return buildCard(v); }).join('');
+                section.style.display = '';
                 if (window.lucide) lucide.createIcons();
             }
 
@@ -1264,9 +1840,52 @@
                     render();
                 });
 
+            // Fetch user's ratings if logged in
+            if (window.Auth && Auth.isLoggedIn()) {
+                fetch('/.netlify/functions/get-user-ratings', {
+                    headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
+                })
+                .then(function(res) { return res.ok ? res.json() : Promise.reject(res); })
+                .then(function(data) {
+                    var ratings = data.ratings || [];
+                    ratings.forEach(function(r) { userRatings[r.vlogId] = r.rating; });
+                    console.log('[Vlogs] Loaded', ratings.length, 'user ratings');
+                    computeForYouScores();
+                    renderRecoSection();
+                    render(); // re-render with user data
+                })
+                .catch(function() { console.warn('[Vlogs] Could not load user ratings'); });
+            }
+
             // Initial render with demo data (will be re-rendered after fetch completes)
             renderFeatured();
             render();
+
+            // Modal close handlers
+            document.getElementById('vlogModalClose').addEventListener('click', closeVlogModal);
+            document.getElementById('vlogModal').addEventListener('click', function(e) {
+                if (e.target === this) closeVlogModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeVlogModal();
+            });
+
+            // Card click → open modal (delegated on the grid and featured card)
+            document.addEventListener('click', function(e) {
+                var card = e.target.closest('.vlog-card, .alex-picks__card');
+                if (!card) return;
+                var vlogId = card.dataset.id;
+                if (vlogId) {
+                    e.preventDefault();
+                    openVlogModal(vlogId);
+                }
+            });
+
+            // Show "For You" sort for logged-in users
+            if (window.Auth && Auth.isLoggedIn()) {
+                var fyBtn = document.getElementById('forYouSort');
+                if (fyBtn) fyBtn.style.display = '';
+            }
 
             // Initialize Lucide icons
             if (window.lucide) lucide.createIcons();

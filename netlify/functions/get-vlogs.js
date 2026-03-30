@@ -107,7 +107,9 @@ exports.handler = async (event) => {
                 views: record.fields.ViewCount || record.fields.Views || 0,
                 likes: record.fields.Likes || 0,
                 publishDate: record.fields.PublishDate || null,
-                featured: !!record.fields.Featured
+                featured: !!record.fields.Featured,
+                avgRating: record.fields.AvgRating || 0,
+                ratingCount: record.fields.RatingCount || 0
             };
         });
 
