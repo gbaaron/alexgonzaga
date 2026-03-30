@@ -955,21 +955,8 @@
 
         const CART_KEY = 'ag_cart';
 
-        /* ── Demo Fallback Data ── */
-        let merchProducts = [
-            { id: 'charot-hoodie', name: '"Charot Lang" Hoodie', price: 1299, category: 'Apparel', sizes: 'XS,S,M,L,XL', stock: 50, badge: 'Limited', status: 'Active', emoji: '<i data-lucide="shirt"></i>', image: null, images: null, description: 'Premium hoodie featuring the iconic Charot Lang catchphrase.', isLimitedDrop: true, dropDate: null, sales: 420, createdDate: '2026-03-20' },
-            { id: 'ate-girl-tee', name: '"Ate Girl" Tee', price: 599, category: 'Apparel', sizes: 'XS,S,M,L,XL', stock: 200, badge: 'New', status: 'Active', emoji: '<i data-lucide="shirt"></i>', image: null, images: null, description: 'Classic tee for the ultimate Ate Girl.', isLimitedDrop: false, dropDate: null, sales: 890, createdDate: '2026-03-10' },
-            { id: 'alex-nation-cap', name: 'Alex Nation Cap', price: 449, category: 'Accessories', sizes: null, stock: 150, badge: 'New', status: 'Active', emoji: '<i data-lucide="hard-hat"></i>', image: null, images: null, description: 'Adjustable cap for the Alex Nation fam.', isLimitedDrop: false, dropDate: null, sales: 650, createdDate: '2026-03-15' },
-            { id: 'walang-kupas-mug', name: '"Walang Kupas" Mug', price: 349, category: 'Home & Lifestyle', sizes: null, stock: 300, badge: null, status: 'Active', emoji: '<i data-lucide="coffee"></i>', image: null, images: null, description: 'Ceramic mug that reminds you: walang kupas!', isLimitedDrop: false, dropDate: null, sales: 780, createdDate: '2026-02-20' },
-            { id: 'grwm-tote', name: '"GRWM with Alex" Tote Bag', price: 399, category: 'Accessories', sizes: null, stock: 180, badge: null, status: 'Active', emoji: '<i data-lucide="shopping-bag"></i>', image: null, images: null, description: 'Canvas tote perfect for your daily GRWM essentials.', isLimitedDrop: false, dropDate: null, sales: 520, createdDate: '2026-03-05' },
-            { id: 'sticker-pack', name: 'Alex Gonzaga Sticker Pack', price: 149, category: 'Stickers & Fun', sizes: null, stock: 500, badge: null, status: 'Active', emoji: '<i data-lucide="palette"></i>', image: null, images: null, description: '12-piece sticker pack with Alex catchphrases and icons.', isLimitedDrop: false, dropDate: null, sales: 1200, createdDate: '2026-03-01' },
-            { id: 'lodi-phone-case', name: '"Lodi" Phone Case', price: 499, category: 'Accessories', sizes: null, stock: 120, badge: null, status: 'Active', emoji: '<i data-lucide="smartphone"></i>', image: null, images: null, description: 'Durable phone case that says Lodi loud and proud.', isLimitedDrop: false, dropDate: null, sales: 430, createdDate: '2026-02-28' },
-            { id: 'gonzaga-strong-crew', name: '"Gonzaga Strong" Crew Neck', price: 899, category: 'Apparel', sizes: 'S,M,L,XL', stock: 75, badge: 'Limited', status: 'Active', emoji: '<i data-lucide="shirt"></i>', image: null, images: null, description: 'Limited edition crew neck for the Gonzaga Strong movement.', isLimitedDrop: true, dropDate: null, sales: 310, createdDate: '2026-03-18' },
-            { id: 'enamel-pin-set', name: 'Alex G Enamel Pin Set', price: 249, category: 'Accessories', sizes: null, stock: 400, badge: null, status: 'Active', emoji: '<i data-lucide="pin"></i>', image: null, images: null, description: '5-piece enamel pin set featuring Alex-inspired designs.', isLimitedDrop: false, dropDate: null, sales: 950, createdDate: '2026-02-15' },
-            { id: 'charot-bucket-hat', name: '"Charot Lang" Bucket Hat', price: 549, category: 'Accessories', sizes: null, stock: 60, badge: 'Limited', status: 'Active', emoji: '<i data-lucide="hard-hat"></i>', image: null, images: null, description: 'Limited bucket hat from the Charot Lang collection.', isLimitedDrop: true, dropDate: null, sales: 280, createdDate: '2026-03-20' },
-            { id: 'fan-club-lanyard', name: 'Fan Club Lanyard', price: 199, category: 'Accessories', sizes: null, stock: 350, badge: null, status: 'Active', emoji: '<i data-lucide="tag"></i>', image: null, images: null, description: 'Official fan club lanyard with detachable clip.', isLimitedDrop: false, dropDate: null, sales: 1050, createdDate: '2026-01-20' },
-            { id: 'ate-girl-laptop-sleeve', name: '"Ate Girl" Laptop Sleeve', price: 699, category: 'Accessories', sizes: null, stock: 0, badge: 'Sold Out', status: 'Active', emoji: '<i data-lucide="laptop"></i>', image: null, images: null, description: 'Padded laptop sleeve with Ate Girl branding.', isLimitedDrop: false, dropDate: null, sales: 500, createdDate: '2026-02-10' },
-        ];
+        /* ── Products loaded from Airtable (no hardcoded demo data) ── */
+        let merchProducts = [];
 
         /* ── Default drop fallback ── */
         let dropInfo = {
@@ -987,7 +974,8 @@
                 'Home & Lifestyle': 'home',
                 'Stickers & Fun': 'stickers',
             };
-            return map[category] || category.toLowerCase();
+            if (Array.isArray(category)) category = category[0] || '';
+            return map[category] || String(category).toLowerCase();
         }
 
         /* ── Image gradient backgrounds ── */
@@ -1231,12 +1219,16 @@
 
         /* ── Normalize Airtable product to local shape ── */
         function normalizeProduct(p) {
+            var cat = p.category || '';
+            if (Array.isArray(cat)) cat = cat[0] || '';
+            var sizes = p.sizes || null;
+            if (Array.isArray(sizes)) sizes = sizes.join(',');
             return {
-                id: p.id || p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+                id: p.id || String(p.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-'),
                 name: p.name || 'Untitled Product',
                 price: p.price || 0,
-                category: p.category || '',
-                sizes: p.sizes || null,
+                category: cat,
+                sizes: sizes,
                 stock: typeof p.stock === 'number' ? p.stock : 999,
                 badge: p.badge || null,
                 status: p.status || 'Active',
