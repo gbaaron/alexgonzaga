@@ -1573,7 +1573,7 @@
                 var moodLabel = moodLabels[vlog.mood] || vlog.mood || '';
 
                 var userRating = userRatings[vlog.id] || 0;
-                var isLoggedIn = window.Auth && Auth.isLoggedIn();
+                var isLoggedIn = typeof Auth !== 'undefined' && Auth.isLoggedIn();
 
                 // Rating UI
                 var ratingHtml = '';
@@ -1691,7 +1691,7 @@
 
             // ── Rating handler ──
             function handleRating(vlogId, rating) {
-                if (!window.Auth || !Auth.isLoggedIn()) return;
+                if (typeof Auth === 'undefined' || !Auth.isLoggedIn()) return;
 
                 userRatings[vlogId] = rating;
 
@@ -1725,7 +1725,7 @@
 
             // ── For You scoring ──
             function computeForYouScores() {
-                if (!window.Auth || !Auth.isLoggedIn() || Object.keys(userRatings).length === 0) return;
+                if (typeof Auth === 'undefined' || !Auth.isLoggedIn() || Object.keys(userRatings).length === 0) return;
 
                 var categoryPrefs = {};
                 var moodPrefs = {};
@@ -1760,7 +1760,7 @@
                 var grid = document.getElementById('recoGrid');
                 if (!section || !grid) return;
 
-                if (!window.Auth || !Auth.isLoggedIn() || Object.keys(userRatings).length < 3) {
+                if (typeof Auth === 'undefined' || !Auth.isLoggedIn() || Object.keys(userRatings).length < 3) {
                     section.style.display = 'none';
                     return;
                 }
@@ -1841,7 +1841,7 @@
                 });
 
             // Fetch user's ratings if logged in
-            if (window.Auth && Auth.isLoggedIn()) {
+            if (typeof Auth !== 'undefined' && Auth.isLoggedIn()) {
                 fetch('/.netlify/functions/get-user-ratings', {
                     headers: { 'Authorization': 'Bearer ' + Auth.getToken() }
                 })
@@ -1882,7 +1882,7 @@
             });
 
             // Show "For You" sort for logged-in users
-            if (window.Auth && Auth.isLoggedIn()) {
+            if (typeof Auth !== 'undefined' && Auth.isLoggedIn()) {
                 var fyBtn = document.getElementById('forYouSort');
                 if (fyBtn) fyBtn.style.display = '';
             }
